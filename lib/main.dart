@@ -5,6 +5,8 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 import 'app/routes/theme_app_pages.dart';
+import 'common/color_manager.dart';
+import 'common/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,14 +28,14 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) {
           return GetMaterialApp(
-              title: '',
-              initialRoute: '',
+              title:Constants.appName,
+              initialRoute: ThemeAppPages.initial,
               onReady: () async {},
-              //getPages: ThemeAppPages.routes,
+              getPages: ThemeAppPages.routes,
               debugShowCheckedModeBanner: false,
               defaultTransition: Transition.cupertino,
               theme: ThemeData(
-                //   primarySwatch: ColorManager.primarySwatchColors,
+                  primarySwatch: ColorManager.primarySwatchColors,
                   fontFamily: 'Cairo',
                   appBarTheme: const AppBarTheme(
                       iconTheme: IconThemeData(color: Colors.black),
