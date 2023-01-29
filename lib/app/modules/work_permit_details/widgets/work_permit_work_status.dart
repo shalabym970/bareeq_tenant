@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/images_paths.dart';
+import '../../../../common/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
-
 
 class WorkPermitWorkStatusWidget extends StatelessWidget {
   const WorkPermitWorkStatusWidget({Key? key}) : super(key: key);
@@ -10,16 +11,16 @@ class WorkPermitWorkStatusWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.all(10.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Work Status',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+          Text(
+            Strings.workStatus,
+            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 20.h,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,32 +28,32 @@ class WorkPermitWorkStatusWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomDetailsItem(
+                  customDetailsItem(
                       icon: ImagePaths.filingTime,
-                      title: 'Start Date',
+                      title: Strings.startDate,
                       value: '31-october-2021'),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height: 20.h,
                   ),
-                  CustomDetailsItem(
+                  customDetailsItem(
                       icon: ImagePaths.workers,
-                      title: 'Number of Workers',
+                      title: Strings.numberOfWorkers,
                       value: '5')
                 ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomDetailsItem(
+                  customDetailsItem(
                       icon: ImagePaths.filingTime,
-                      title: 'End Date',
+                      title: Strings.endDate,
                       value: '31-october-2021'),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                    height: 20.h,
                   ),
-                  CustomDetailsItem(
+                  customDetailsItem(
                       icon: ImagePaths.pylon,
-                      title: 'Status',
+                      title: Strings.status,
                       value: 'Draft')
                 ],
               )

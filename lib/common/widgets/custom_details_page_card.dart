@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../color_manager.dart';
+import '../strings.dart';
 
 class CustomDetailsPageCard extends StatelessWidget {
   const CustomDetailsPageCard({Key? key}) : super(key: key);
@@ -7,44 +11,44 @@ class CustomDetailsPageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        borderRadius:  BorderRadius.all(Radius.circular(10.h)),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 3,
-            offset: const Offset(0, 3), // changes position of shadow
+            spreadRadius: 1.h,
+            blurRadius: 3.h,
+            offset:  Offset(0, 3.h), // changes position of shadow
           ),
         ],
       ),
-      width: 157,
+      width: 157.h,
       child: Card(
-        color: const Color(0xffF5F7FF),
+        color:  ColorManager.textFieldBg,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
+          padding:  EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Text('subject',
+               Text(Strings.subject,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 10,
-                      color: Color(0xff00345B))),
-              const SizedBox(
-                height: 5,
+                      fontSize: 10.sp,
+                      color: ColorManager.darkBlue)),
+               SizedBox(
+                height: 5.h,
               ),
               Text('Carpentry',
                   style: TextStyle(
-                      fontSize: 12, color: Colors.black.withOpacity(0.7))),
-              const SizedBox(
-                height: 10,
+                      fontSize: 12.sp, color: Colors.black.withOpacity(0.7))),
+               SizedBox(
+                height: 10.h,
               ),
-              const Text(
+               Text(
                 'Overall tweaks and finalizations within the entire carpentry area.Overall tweaks and finalizations within the entire carpentry area',
                 style: TextStyle(
-                    height: 2,
-                    fontSize: 12, color: Colors.black),maxLines: 4,overflow: TextOverflow.visible,),
+                    height: 2.h,
+                    fontSize: 12.sp, color: ColorManager.black),maxLines: 4,overflow: TextOverflow.visible,),
             ],
           ),
         ),

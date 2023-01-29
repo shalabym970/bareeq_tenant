@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../common/color_manager.dart';
+import '../../../../../common/strings.dart';
 
 class RecentFitOutProcessesListItem extends StatelessWidget {
   const RecentFitOutProcessesListItem({Key? key}) : super(key: key);
@@ -6,23 +9,23 @@ class RecentFitOutProcessesListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      padding: EdgeInsets.symmetric(vertical: 5.h),
       child: GestureDetector(
           child: Container(
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          borderRadius: BorderRadius.all(Radius.circular(10.h)),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.1),
-              spreadRadius: 1,
-              blurRadius: 3,
-              offset: const Offset(0, 3), // changes position of shadow
+              spreadRadius: 1.h,
+              blurRadius: 3.h,
+              offset: Offset(0, 3.h), // changes position of shadow
             ),
           ],
         ),
-        height: 116,
+        height: 116.h,
         child: Card(
-          color: const Color(0xffF5F7FF),
+          color: ColorManager.textFieldBg,
           child: Row(
             children: [
               Expanded(
@@ -31,31 +34,33 @@ class RecentFitOutProcessesListItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
-                      children: const [
-                        Text('Name',
+                      children: [
+                        Text(Strings.name,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color(0xff00345B))),
+                                fontSize: 10.sp,
+                                color: ColorManager.darkBlue)),
                         SizedBox(
-                          height: 5,
+                          height: 5.h,
                         ),
                         Text('WP--21--018',
-                            style: TextStyle(fontSize: 12, color: Colors.black))
+                            style: TextStyle(
+                                fontSize: 12.sp, color: ColorManager.black))
                       ],
                     ),
                     Column(
-                      children: const [
-                        Text('Complete Date',
+                      children: [
+                        Text(Strings.completeDate,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color(0xff00345B))),
+                                fontSize: 10.sp,
+                                color: ColorManager.darkBlue)),
                         SizedBox(
-                          height: 5,
+                          height: 5.h,
                         ),
                         Text('20/2/2000',
-                            style: TextStyle(fontSize: 12, color: Colors.black))
+                            style: TextStyle(
+                                fontSize: 12.sp, color: ColorManager.black))
                       ],
                     ),
                   ],
@@ -67,35 +72,37 @@ class RecentFitOutProcessesListItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
-                      children: const [
+                      children: [
                         Text(
-                          'Opening Date',
+                          Strings.openingDate,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 10,
-                              color: Color(0xff00345B)),
+                              fontSize: 10.sp,
+                              color: ColorManager.darkBlue),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: 5.h,
                         ),
                         Text('04/3/2033',
-                            style: TextStyle(fontSize: 12, color: Colors.black))
+                            style: TextStyle(
+                                fontSize: 12.sp, color: ColorManager.black))
                       ],
                     ),
                     Column(
-                      children: const [
+                      children: [
                         Text(
-                          'Status',
+                          Strings.status,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 10,
-                              color: Color(0xff00345B)),
+                              fontSize: 10.sp,
+                              color: ColorManager.darkBlue),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: 5.h,
                         ),
                         Text('not yet started',
-                            style: TextStyle(fontSize: 12, color: Colors.black))
+                            style: TextStyle(
+                                fontSize: 12.sp, color: ColorManager.black))
                       ],
                     ),
                   ],
@@ -105,17 +112,18 @@ class RecentFitOutProcessesListItem extends StatelessWidget {
                 flex: 1,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text('Start Date',
+                  children: [
+                    Text(Strings.startDate,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 10,
-                            color: Color(0xff00345B))),
+                            fontSize: 10.sp,
+                            color: ColorManager.darkBlue)),
                     SizedBox(
-                      height: 5,
+                      height: 5.h,
                     ),
                     Text('12/10/2022',
-                        style: TextStyle(fontSize: 12, color: Colors.black))
+                        style: TextStyle(
+                            fontSize: 12.sp, color: ColorManager.black))
                   ],
                 ),
               )

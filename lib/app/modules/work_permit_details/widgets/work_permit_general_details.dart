@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:property_pro/common/images_paths.dart';
 
+import '../../../../common/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
 
 
@@ -10,16 +12,16 @@ class WorkPermitGeneralDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding:  EdgeInsets.all(10.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'General Details',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+           Text(
+            Strings.generalDetails,
+            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
           ),
-          const SizedBox(
-            height: 20,
+           SizedBox(
+            height: 20.h,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,32 +29,32 @@ class WorkPermitGeneralDetailsWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomDetailsItem(
+                  customDetailsItem(
                       icon: ImagePaths.group42,
-                      title: 'Unit',
+                      title: Strings.unit,
                       value: '10'),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                    height: 20.h,
                   ),
-                  CustomDetailsItem(
+                  customDetailsItem(
                       icon: ImagePaths.documentLayout,
-                      title: 'Type',
+                      title: Strings.type,
                       value: 'standard')
                 ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomDetailsItem(
+                  customDetailsItem(
                       icon: ImagePaths.manager,
-                      title: 'Contractor',
+                      title: Strings.contractor,
                       value: 'Ahmed Ahmed'),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                    height: 20.h,
                   ),
-                  CustomDetailsItem(
+                  customDetailsItem(
                       icon: ImagePaths.shirt,
-                      title: 'Customer',
+                      title: Strings.customer,
                       value: 'Aml Corporate')
                 ],
               )

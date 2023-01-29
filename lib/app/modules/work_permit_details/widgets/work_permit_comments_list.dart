@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/widgets/custom_details_page_card.dart';
 
@@ -9,7 +10,7 @@ class WorkPermitsCommentsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       scrollDirection: Axis.horizontal,
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding:  EdgeInsets.symmetric(vertical: 10.h),
       primary: false,
       shrinkWrap: true,
         itemCount: 4,

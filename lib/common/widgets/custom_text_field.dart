@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../color_manager.dart';
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField(
+  const CustomTextField(
       {Key? key,
       required this.hint,
       required this.controller,

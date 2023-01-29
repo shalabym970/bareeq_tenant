@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-Widget CustomDetailsItem({required String icon, required String title, required String value}){
+import '../color_manager.dart';
+
+Widget customDetailsItem(
+    {required String icon, required String title, required String value}) {
   return Row(
     children: [
       Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: SvgPicture.asset(
-            icon,
-            height: 24,
-            width: 24),
+        padding: EdgeInsets.all(5.h),
+        child: SvgPicture.asset(icon, height: 24.h, width: 24.w),
       ),
       Padding(
-        padding: const EdgeInsets.all(5.0),
+        padding: EdgeInsets.all(5.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children:  [
+          children: [
             Text(title,
-                style: const TextStyle(
+                style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 10,
-                    color: Color(0xff00345B))),
-            const SizedBox(
-              height: 5,
+                    fontSize: 10.sp,
+                    color: ColorManager.darkBlue)),
+            SizedBox(
+              height: 5.h,
             ),
             Text(value,
-                style: const TextStyle(fontSize: 14, color: Colors.black))
+                style: TextStyle(fontSize: 14.sp, color: ColorManager.black))
           ],
         ),
       )

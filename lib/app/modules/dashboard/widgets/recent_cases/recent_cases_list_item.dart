@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../common/color_manager.dart';
+import '../../../../../common/strings.dart';
 
 class RecentCasesListItem extends StatelessWidget {
   const RecentCasesListItem({Key? key}) : super(key: key);
@@ -6,23 +10,23 @@ class RecentCasesListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      padding:  EdgeInsets.symmetric(vertical: 5.h),
       child: GestureDetector(
           child: Container(
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          borderRadius:  BorderRadius.all(Radius.circular(10.h)),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.1),
-              spreadRadius: 1,
-              blurRadius: 3,
-              offset: const Offset(0, 3), // changes position of shadow
+              spreadRadius: 1.h,
+              blurRadius: 3.h,
+              offset:  Offset(0, 3.h), // changes position of shadow
             ),
           ],
         ),
-        height: 116,
+        height: 116.h,
         child: Card(
-          color: const Color(0xffF5F7FF),
+          color:ColorManager.textFieldBg,
           child: Row(
             children: [
               Expanded(
@@ -31,31 +35,31 @@ class RecentCasesListItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
-                      children: const [
-                        Text('Request Number',
+                      children:  [
+                        Text(Strings.requestNumber,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color(0xff00345B))),
+                                fontSize: 10.sp,
+                                color: ColorManager.darkBlue)),
                         SizedBox(
-                          height: 5,
+                          height: 5.h,
                         ),
                         Text('WP--21--018',
-                            style: TextStyle(fontSize: 12, color: Colors.black))
+                            style: TextStyle(fontSize: 12.sp, color: ColorManager.black))
                       ],
                     ),
                     Column(
-                      children: const [
-                        Text('Type',
+                      children:  [
+                        Text(Strings.type,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color(0xff00345B))),
+                                fontSize: 10.sp,
+                                color:  ColorManager.darkBlue)),
                         SizedBox(
-                          height: 5,
+                          height: 5.h,
                         ),
                         Text('problem',
-                            style: TextStyle(fontSize: 12, color: Colors.black))
+                            style: TextStyle(fontSize: 12.sp, color: ColorManager.black))
                       ],
                     ),
                   ],
@@ -67,35 +71,35 @@ class RecentCasesListItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
-                      children: const [
+                      children:  [
                         Text(
-                          'Title',
+                         Strings.title,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 10,
-                              color: Color(0xff00345B)),
+                              fontSize: 10.sp,
+                              color: ColorManager.darkBlue),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: 5.h,
                         ),
                         Text('test',
-                            style: TextStyle(fontSize: 12, color: Colors.black))
+                            style: TextStyle(fontSize: 12.sp, color: ColorManager.black))
                       ],
                     ),
                     Column(
-                      children: const [
+                      children:  [
                         Text(
-                          'Priority',
+                          Strings.priority,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 10,
-                              color: Color(0xff00345B)),
+                              fontSize: 10.sp,
+                              color: ColorManager.darkBlue),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: 5.h,
                         ),
                         Text('Normal',
-                            style: TextStyle(fontSize: 12, color: Colors.black))
+                            style: TextStyle(fontSize: 12.sp, color: ColorManager.black))
                       ],
                     ),
                   ],
@@ -105,17 +109,17 @@ class RecentCasesListItem extends StatelessWidget {
                 flex: 1,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text('Date',
+                  children:  [
+                    Text(Strings.date,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 10,
-                            color: Color(0xff00345B))),
+                            fontSize: 10.sp,
+                            color: ColorManager.darkBlue)),
                     SizedBox(
-                      height: 5,
+                      height: 5.h,
                     ),
                     Text('12/10/2022',
-                        style: TextStyle(fontSize: 12, color: Colors.black))
+                        style: TextStyle(fontSize: 12.sp, color: ColorManager.black))
                   ],
                 ),
               )

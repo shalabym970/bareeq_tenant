@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:property_pro/app/modules/dashboard/widgets/recent_cases/recent_cases_list.dart';
 import 'package:property_pro/common/images_paths.dart';
+
+import '../../../../../common/color_manager.dart';
+import '../../../../../common/strings.dart';
 
 class RecentCasesWidget extends StatelessWidget {
   const RecentCasesWidget({Key? key}) : super(key: key);
@@ -9,7 +13,7 @@ class RecentCasesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return   Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding:  EdgeInsets.symmetric(horizontal: 8.w),
       child: Column(
         children: [
           Row(
@@ -18,31 +22,31 @@ class RecentCasesWidget extends StatelessWidget {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(6.0),
+                    padding:  EdgeInsets.all(6.h),
                     child: SvgPicture.asset(ImagePaths.bug,
-                        height: 20, width: 20),
+                        height: 20.h, width: 20.w),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(6.0),
+                   Padding(
+                    padding: EdgeInsets.all(6.h),
                     child: Text(
-                      'Recent Cases',
+                      Strings.recentCases,
                       style: TextStyle(
-                          fontSize: 14, fontWeight: FontWeight.bold),
+                          fontSize: 14.sp, fontWeight: FontWeight.bold),
                     ),
                   )
                 ],
               ),
               SizedBox(
-                height: 32,
-                width: 32,
+                height: 32.h,
+                width: 32.w,
                 child: FloatingActionButton(
                   onPressed: () {},
                   heroTag: null,
-                  backgroundColor: const Color(0xff845D3F),
-                  child: const Icon(
+                  backgroundColor: ColorManager.primaryBTNColorBrown,
+                  child:  Icon(
                     Icons.add,
-                    color: Colors.white,
-                    size: 20.0,
+                    color: ColorManager.white,
+                    size: 20.sp,
                   ),
                 ),
               )

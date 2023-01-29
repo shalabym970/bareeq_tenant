@@ -16,10 +16,12 @@ Map<int, Color> lightTheme = {
 class ColorManager {
   static Color white = const Color(0xffFFFFFF);
   static Color textFieldBg = const Color(0xffF5F7FF);
+
   static Color darkBlue = const Color(0xff00345B);
 
   static Color black = const Color(0xff000000);
   static Color primaryBTNColorBrown = const Color(0xff845D3F);
+
   static Color yellowDark = const Color(0xff7B530D);
   static Color secondPlaceColor = const Color(0xffE8E8E8);
   static Color thirdPlaceColor = const Color(0xffDCA16A);

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:property_pro/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:property_pro/common/color_manager.dart';
 
 import '../../../../common/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
@@ -14,15 +16,12 @@ import '../widgets/recent_work_permits/recent_work_permits_widget.dart';
 class DashboardView extends GetView<DashboardController> {
   const DashboardView({super.key});
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(title: Strings.dashboard),
       body: Padding(
-        padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
+        padding: EdgeInsets.only(top: 20.h, right: 10.w, left: 10.w),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -30,26 +29,26 @@ class DashboardView extends GetView<DashboardController> {
             children: [
               Center(
                 child: RichText(
-                  text: const TextSpan(
+                  text: TextSpan(
                     text: Strings.welcome,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Color(0xff00345B)),
+                        fontSize: 20.sp,
+                        color: ColorManager.darkBlue),
                     children: <TextSpan>[
                       TextSpan(
                         text: 'Shalaby',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
-                            fontSize: 20,
-                            color: Colors.black),
+                            fontSize: 20.sp,
+                            color: ColorManager.black),
                       )
                     ],
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 20.h,
               ),
               const RecentWorkPermitWidget(),
               const RecentCasesWidget(),
@@ -64,6 +63,5 @@ class DashboardView extends GetView<DashboardController> {
       drawer:
           CustomDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
     );
-
   }
 }

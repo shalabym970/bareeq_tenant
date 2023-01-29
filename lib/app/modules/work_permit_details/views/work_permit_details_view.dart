@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:property_pro/app/modules/work_permit_details/widgets/work_permit_comments_list.dart';
@@ -7,118 +8,119 @@ import 'package:property_pro/app/modules/work_permit_details/widgets/work_permit
 import 'package:property_pro/app/modules/work_permit_details/widgets/work_permit_items_list.dart';
 import 'package:property_pro/app/modules/work_permit_details/widgets/work_permit_messages_list.dart';
 import 'package:property_pro/app/modules/work_permit_details/widgets/work_permit_work_status.dart';
+import 'package:property_pro/common/color_manager.dart';
 import 'package:property_pro/common/images_paths.dart';
-
+import '../../../../common/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../controllers/work_permit_details_controller.dart';
 
-
-
 class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
   const WorkPermitDetailsView({super.key});
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(title: 'Work Permit'),
+      appBar: customAppBar(title: Strings.workPermit),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        heroTag: null,
-        backgroundColor: const Color(0xff845D3F),
-        child:  SvgPicture.asset(ImagePaths.save,
-            height: 20, width: 20)
-      ),
+          onPressed: () {},
+          heroTag: null,
+          backgroundColor: ColorManager.primaryBTNColorBrown,
+          child: SvgPicture.asset(ImagePaths.save, height: 20.h, width: 20.w)),
 
       body: Padding(
-        padding: const EdgeInsets.only(right: 10, left: 10),
+        padding: EdgeInsets.only(right: 10.w, left: 10.w),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 20.h,
               ),
               Padding(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(10.h),
                 child: Row(
                   children: [
                     SvgPicture.asset(ImagePaths.officeBag,
-                        height: 24, width: 26),
-                    const SizedBox(
-                      width: 10,
+                        height: 24.h, width: 26.w),
+                    SizedBox(
+                      width: 10.w,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text('subject',
+                      children: [
+                        Text(Strings.subject,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 10,
-                                color: Color(0xff00345B))),
+                                fontSize: 10.sp,
+                                color: ColorManager.darkBlue)),
                         SizedBox(
-                          height: 5,
+                          height: 5.h,
                         ),
                         Text('WP--21--018',
-                            style: TextStyle(fontSize: 18, color: Colors.black))
+                            style:
+                                TextStyle(fontSize: 18.sp, color: ColorManager.black))
                       ],
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               const WorkPermitGeneralDetailsWidget(),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               const WorkPermitWorkStatusWidget(),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               const WorkPermitDescription(),
-              const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+              SizedBox(height: 20.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Text(
-                  'Seef Comments',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  Strings.seefComments,
+                  style:
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
                 ),
               ),
-              const SizedBox(height: 10),
-              const SizedBox(height: 185, child: WorkPermitsCommentsList()),
-              const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+              SizedBox(height: 10.h),
+              SizedBox(height: 185.h, child: const WorkPermitsCommentsList()),
+              SizedBox(height: 20.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Text(
-                  'Work Permit Items',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  Strings.workPermitItems,
+                  style:
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
                 ),
               ),
-              const SizedBox(height: 10),
-              const SizedBox(height: 185, child: WorkPermitsItemsList()),
-              const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+              SizedBox(height: 10.h),
+              SizedBox(height: 185.h, child: const WorkPermitsItemsList()),
+              SizedBox(height: 20.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.h),
                 child: Text(
-                  'Messages',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  Strings.messages,
+                  style:
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
                 ),
               ),
-              const SizedBox(height: 10),
-              const SizedBox(height: 185, child: WorkPermitsMessagesList()),
-              const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+              SizedBox(height: 10.h),
+              SizedBox(height: 185.h, child: const WorkPermitsMessagesList()),
+              SizedBox(height: 20.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.h),
                 child: Text(
-                  'Attachments',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  Strings.attachments,
+                  style:
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               const CustomAttachmentWidget(),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               const CustomAttachmentWidget(),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
             ],
           ),
         ),
