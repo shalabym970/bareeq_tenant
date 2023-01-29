@@ -8,6 +8,7 @@ import '../../../../common/images_paths.dart';
 import '../../../../common/strings.dart';
 import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_text_field.dart';
+import '../../../routes/app_routes.dart';
 import '../controllers/auth_controller.dart';
 
 class LoginView extends GetView<AuthController> {
@@ -27,7 +28,7 @@ class LoginView extends GetView<AuthController> {
             children: [
               SizedBox(height: 60.h),
               Image.asset(
-                ImagePath.logo,
+                ImagePaths.logo,
                 height: 77.h,
                 width: Get.width,
               ),
@@ -72,7 +73,9 @@ class LoginView extends GetView<AuthController> {
                         SizedBox(height: 40.h),
                         PrimaryButton(
                             title: Strings.login,
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.toNamed(Routes.dashboard);
+                            },
                             height: 40.h),
                         SizedBox(height: 40.h),
                         Text(

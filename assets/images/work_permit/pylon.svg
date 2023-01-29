@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="pylon" transform="translate(-5 -1025.358)">
+    <path id="Path_59" data-name="Path 59" d="M6.043,1045.36H27.957a1.092,1.092,0,0,1,0,2.182H6.043a1.092,1.092,0,0,1,0-2.182Z" transform="translate(0 1.816)" fill="#557791"/>
+    <path id="Path_60" data-name="Path 60" d="M25.231,1047.253l-5.776-19.613a4.95,4.95,0,0,0-.218-.647,2.566,2.566,0,0,0-4.793.026,2.206,2.206,0,0,0-.155.521l-5.757,19.708" transform="translate(0.154)" fill="#557791"/>
+    <path id="Path_61" data-name="Path 61" d="M13.6,1029.36l-1.274,4.363H21.3l-1.286-4.363H13.6Zm-2.55,8.726-1.274,4.363h14.1l-1.286-4.363Z" transform="translate(0.208 0.363)" fill="#cbd2d9" fill-rule="evenodd"/>
+  </g>
+</svg>

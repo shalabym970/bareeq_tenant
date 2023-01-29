@@ -10,8 +10,8 @@ class Strings {
   static const String resetPass = "Reset Password";
   static const String passRecover = "Password Recover";
   static const String backLogin = "Back to Login";
-  // static const String home = "Home";
-  // static const String home = "Home";
+  static const String welcome = "Wolcome,";
+   static const String dashboard =  'Dashboard';
   // static const String home = "Home";
   // static const String home = "Home";
   // static const String home = "Home";

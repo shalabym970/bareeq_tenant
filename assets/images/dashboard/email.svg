@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21.819" height="16" viewBox="0 0 21.819 16">
+  <g id="email_1_" data-name="email (1)" transform="translate(-1 -5)">
+    <rect id="Rectangle_26" data-name="Rectangle 26" width="21.818" height="16" rx="3" transform="translate(1 5)" fill="#fff"/>
+    <path id="Path_143" data-name="Path 143" d="M26.909,7.182V18.818A2.182,2.182,0,0,1,24.727,21H16V5h9.265a1.876,1.876,0,0,1,.4.145,2.022,2.022,0,0,1,.342.2l.153.124a2.182,2.182,0,0,1,.749,1.709Z" transform="translate(-4.091 0)" fill="#fff"/>
+    <path id="Path_144" data-name="Path 144" d="M20.71,5H3.255A2.182,2.182,0,0,0,1.27,6.28l10.182,7.273a.953.953,0,0,0,.531.175.917.917,0,0,0,.538-.175L22.7,6.28A2.182,2.182,0,0,0,20.71,5Z" transform="translate(-0.074)" fill="#aabbc8"/>
+    <path id="Path_145" data-name="Path 145" d="M16,13.727a.917.917,0,0,0,.538-.175L26.72,6.28A2.182,2.182,0,0,0,24.727,5H16Z" transform="translate(-4.091)" fill="#aabbc8"/>
+    <line id="Line_2" data-name="Line 2" x2="2.227" y2="2.409" transform="translate(12.273 14.091)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="0.1" opacity="0.7"/>
+    <line id="Line_3" data-name="Line 3" x1="2.409" y2="2.409" transform="translate(9.5 14.091)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="0.1" opacity="0.7"/>
+  </g>
+</svg>
