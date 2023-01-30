@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../common/color_manager.dart';
 import '../../../../common/strings.dart';
 
-class WorkPermitDescription extends StatelessWidget {
-  const WorkPermitDescription({Key? key}) : super(key: key);
+class CaseDescription extends StatelessWidget {
+  const CaseDescription({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

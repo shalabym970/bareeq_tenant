@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:property_pro/app/modules/work_permit_details/widgets/work_permit_comments_list.dart';
-import 'package:property_pro/app/modules/work_permit_details/widgets/work_permit_description.dart';
-import 'package:property_pro/app/modules/work_permit_details/widgets/work_permit_general_details.dart';
-import 'package:property_pro/app/modules/work_permit_details/widgets/work_permit_items_list.dart';
-import 'package:property_pro/app/modules/work_permit_details/widgets/work_permit_messages_list.dart';
-import 'package:property_pro/app/modules/work_permit_details/widgets/work_permit_work_status.dart';
 import 'package:property_pro/common/color_manager.dart';
 import 'package:property_pro/common/images_paths.dart';
 import '../../../../common/strings.dart';
@@ -16,15 +10,19 @@ import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../../../routes/app_routes.dart';
-import '../controllers/work_permit_details_controller.dart';
+import '../controllers/lease_details_controller.dart';
+import '../widgets/lease_dates_widget.dart';
+import '../widgets/lease_general_details.dart';
+import '../widgets/lease_messages_list.dart';
+import '../widgets/lease_unit_details.dart';
 
-class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
-  const WorkPermitDetailsView({super.key});
+class LeaseDetailsView extends GetView<LeaseDetailsController> {
+  const LeaseDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(title: Strings.workPermit),
+      appBar: customAppBar(title: Strings.lease),
       floatingActionButton: FloatingActionButton(
           onPressed: () {},
           heroTag: null,
@@ -45,7 +43,7 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                 padding: EdgeInsets.all(10.h),
                 child: Row(
                   children: [
-                    SvgPicture.asset(ImagePaths.officeBag,
+                    SvgPicture.asset(ImagePaths.group77,
                         height: 24.h, width: 26.w),
                     SizedBox(
                       width: 10.w,
@@ -54,7 +52,7 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(Strings.subject,
+                        Text(Strings.leaseTitle,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
@@ -62,43 +60,21 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('WP--21--018',
-                            style:
-                                TextStyle(fontSize: 18.sp, color: ColorManager.black))
+                        Text('Rent Lease for Unit 10',
+                            style: TextStyle(
+                                fontSize: 18.sp, color: ColorManager.black))
                       ],
                     ),
                   ],
                 ),
               ),
               SizedBox(height: 20.h),
-              const WorkPermitGeneralDetailsWidget(),
+              const LeaseGeneralDetailsWidget(),
               SizedBox(height: 20.h),
-              const WorkPermitWorkStatusWidget(),
+              const LeaseUnitDetailsWidget(),
               SizedBox(height: 20.h),
-              const WorkPermitDescription(),
-              SizedBox(height: 20.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: Text(
-                  Strings.seefComments,
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
-                ),
-              ),
-              SizedBox(height: 10.h),
-              SizedBox(height: 185.h, child: const WorkPermitsCommentsList()),
-              SizedBox(height: 20.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: Text(
-                  Strings.workPermitItems,
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
-                ),
-              ),
-              SizedBox(height: 10.h),
-              SizedBox(height: 185.h, child: const WorkPermitsItemsList()),
-              SizedBox(height: 20.h),
+              const LeaseDatesWidget(),
+              SizedBox(height: 30.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),
                 child: Text(
@@ -108,7 +84,7 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                 ),
               ),
               SizedBox(height: 10.h),
-              SizedBox(height: 185.h, child: const WorkPermitsMessagesList()),
+              SizedBox(height: 185.h, child: const LeaseMessagesList()),
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),
@@ -119,16 +95,20 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                 ),
               ),
               SizedBox(height: 10.h),
-              const CustomAttachmentWidget(svgIcon: ImagePaths.document,),
+              const CustomAttachmentWidget(svgIcon: ImagePaths.document),
               SizedBox(height: 10.h),
               const CustomAttachmentWidget(svgIcon: ImagePaths.image,),
               SizedBox(height: 20.h),
               PrimaryButton(
-                  title: Strings.attachFiles,
-                  onPressed: () {
-                    Get.toNamed(Routes.dashboard);
-                  },
-                  height: 40.h, backgroundColor: ColorManager.white, textAndIconColor: ColorManager.primaryBTNColorBrown,svgIcon: ImagePaths.path68,),
+                title: Strings.attachFiles,
+                onPressed: () {
+                  Get.toNamed(Routes.dashboard);
+                },
+                height: 40.h,
+                backgroundColor: ColorManager.white,
+                textAndIconColor: ColorManager.primaryBTNColorBrown,
+                svgIcon: ImagePaths.path68,
+              ),
               SizedBox(height: 20.h),
             ],
           ),

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24.533" height="24" viewBox="0 0 24.533 24">
+  <g id="delete-calendar" transform="translate(-9 -9)">
+    <path id="Path_80" data-name="Path 80" d="M9,24H33.533V37.867A2.133,2.133,0,0,1,31.4,40H11.133A2.133,2.133,0,0,1,9,37.867Z" transform="translate(0 -7)" fill="#e4e7eb"/>
+    <path id="Path_82" data-name="Path 82" d="M11.133,14H31.4a2.133,2.133,0,0,1,2.133,2.133v3.2H9v-3.2A2.133,2.133,0,0,1,11.133,14Z" transform="translate(0 -2.333)" fill="#aabbc8"/>
+    <rect id="Rectangle_14" data-name="Rectangle 14" width="3.2" height="5.333" rx="1.6" transform="translate(14.867 9)" fill="#557791"/>
+    <rect id="Rectangle_15" data-name="Rectangle 15" width="3.2" height="5.333" rx="1.6" transform="translate(24.467 9)" fill="#557791"/>
+    <rect id="Rectangle_16" data-name="Rectangle 16" width="9.6" height="4.267" rx="2" transform="translate(16.467 22.867)" fill="#557791"/>
+  </g>
+</svg>

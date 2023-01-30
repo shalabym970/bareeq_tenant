@@ -6,8 +6,8 @@ import '../../../../../common/color_manager.dart';
 import '../../../../../common/strings.dart';
 import '../../../../routes/app_routes.dart';
 
-class RecentInvoicesListItem extends StatelessWidget {
-  const RecentInvoicesListItem({Key? key}) : super(key: key);
+class InvoiceItemsListItem extends StatelessWidget {
+  const InvoiceItemsListItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Text(Strings.invoiceNumber,
+                          Text(Strings.productName,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 10.sp,
@@ -50,14 +50,14 @@ class RecentInvoicesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text('WP--21--018',
+                          Text('Paint Rolls',
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
                       ),
                       Column(
                         children: [
-                          Text(Strings.dueDate,
+                          Text(Strings.discount,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 10.sp,
@@ -65,7 +65,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text('12/10/2022',
+                          Text('0%',
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -81,7 +81,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            Strings.regarding,
+                            Strings.pricePerUnit,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
@@ -90,7 +90,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text('Shalaby',
+                          Text('10 BHD',
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -98,7 +98,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            Strings.amount,
+                            Strings.totalAmount,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
@@ -107,7 +107,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text('145 BHD',
+                          Text('40 BHD',
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -120,7 +120,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(Strings.submitDate,
+                      Text(Strings.quantity,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 10.sp,
@@ -128,7 +128,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                       SizedBox(
                         height: 5.h,
                       ),
-                      Text('12/10/2022',
+                      Text('4',
                           style: TextStyle(
                               fontSize: 12.sp, color: ColorManager.black))
                     ],

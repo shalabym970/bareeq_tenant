@@ -49,5 +49,35 @@ class Strings {
   static const String endDate = 'End Date';
   static const String description = 'Description';
   static const String fileName = 'File Name';
-
+  static const String attachFiles = 'Attach Files';
+  static const String case_ = 'Case';
+  static const String caseTitle = 'Case Title';
+  static const String caseNumber = 'Case Number';
+  static const String dateSubmitted = 'Date Submitted';
+  static const String unitDetails = 'Unit Details';
+  static const String property = 'Property';
+  static const String relatedLease = 'Related Lease';
+  static const String invoice = 'Invoice';
+  static const String invoiceTitle = 'Invoice Title';
+  static const String propertyLeaseDetails = 'Property Lease Details';
+  static const String invoiceItems = 'Invoice Items';
+  static const String productName = 'Product Name';
+  static const String pricePerUnit = 'Price Per Unit';
+  static const String quantity = 'Quantity';
+  static const String discount = 'Discount';
+  static const String totalAmount = 'Total Amount';
+  static const String lease = 'Lease';
+  static const String leaseTitle = 'Lease Title';
+  static const String communicationDate = 'Communication Date';
+  static const String contactPeriod = 'Contact Period';
+  static const String brand = 'Brand';
+  static const String dates = 'Dates';
+  static const String terminationDate = 'Termination Date';
+  static const String fitOutProcessTitle = 'Fit Out Process Title';
+  static const String fitOutProcess = 'Fit Out Process';
+  static const String expectedOpeningDate = 'Expected Opening Date';
+  static const String completionDate = 'Completion Date';
+  static const String fitOutSteps = 'Fit Out Steps';
+  static const String gettingStarted = 'Getting Started';
+  static const String designPhase = 'Design Phase';
 }

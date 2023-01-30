@@ -76,7 +76,7 @@ class LoginView extends GetView<AuthController> {
                             onPressed: () {
                               Get.toNamed(Routes.dashboard);
                             },
-                            height: 40.h),
+                            height: 40.h, backgroundColor: ColorManager.primaryBTNColorBrown, textAndIconColor: ColorManager.white),
                         SizedBox(height: 40.h),
                         Text(
                           Strings.noHaveAccount,

@@ -7,7 +7,13 @@ import 'package:property_pro/common/images_paths.dart';
 AppBar customAppBar({required String title}) {
   return AppBar(
     backgroundColor: ColorManager.darkBlue,
-    title: Text(title),
+    title: Text(
+      title,
+      style: TextStyle(
+          fontWeight: FontWeight.w500,
+          fontSize: 20.sp,
+          color: ColorManager.white),
+    ),
     actions: [
       GestureDetector(
         child: Padding(

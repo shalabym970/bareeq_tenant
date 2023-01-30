@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_91" data-name="Path 91" d="M0-47.5H24v24H0Z"/>
+    </clipPath>
+  </defs>
+  <g id="office" transform="translate(0 47.5)" clip-path="url(#clip-path)">
+    <path id="Path_86" data-name="Path 86" d="M-22.263-13.605a1.264,1.264,0,0,1-1.263,1.263H-43.737A1.264,1.264,0,0,1-45-13.605V-26.237A1.264,1.264,0,0,1-43.737-27.5h20.211a1.264,1.264,0,0,1,1.263,1.263Z" transform="translate(45.632 -11.789)" fill="#aabbc8"/>
+    <path id="Path_87" data-name="Path 87" d="M-11.132,0H-21.237A1.264,1.264,0,0,0-22.5,1.263V22.737H-9.868V1.263A1.264,1.264,0,0,0-11.132,0" transform="translate(28.184 -46.868)" fill="#e4e7eb"/>
+    <path id="Path_88" data-name="Path 88" d="M23.855-41.224H13.75V-43.75H23.855Zm0,18.947H13.75V-24.8H23.855Z" transform="translate(-6.803 -1.855)" fill="#557791"/>
+    <path id="Path_90" data-name="Path 90" d="M11.329-33.724H8.8V-36.25h2.526Zm0,3.789H8.8v-2.526h2.526Zm0,3.789H8.8v-2.526h2.526Zm0,3.789H8.8v-2.526h2.526Zm3.789,0H12.592v-2.526h2.526Zm3.789,0H16.382v-2.526h2.526Zm0-3.789H16.382v-2.526h2.526Zm0-3.789H16.382v-2.526h2.526Zm0-3.789H16.382V-36.25h2.526Zm-3.789,7.579H12.592v-2.526h2.526Zm0-3.789H12.592v-2.526h2.526Zm0-3.789H12.592V-36.25h2.526ZM6.276-29.934H3.75v-2.526H6.276Zm0,3.789H3.75v-2.526H6.276Zm0,3.789H3.75v-2.526H6.276Zm17.684,0H21.434v-2.526h2.526Zm0-3.789H21.434v-2.526h2.526Zm0-3.789H21.434v-2.526h2.526Z" transform="translate(-1.855 -5.566)" fill="#557791"/>
+  </g>
+</svg>

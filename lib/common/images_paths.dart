@@ -1,4 +1,4 @@
-class ImagePaths{
+class ImagePaths {
   static const String base = "assets/images/";
   static const String logo = "${base}Logo.png";
   static const String document = "${base}work_permit/document.svg";
@@ -21,4 +21,12 @@ class ImagePaths{
   static const String moneyNotes = "${base}dashboard/money_notes.svg";
   static const String person = "${base}dashboard/person.svg";
   static const String settings = "${base}dashboard/settings.svg";
+  static const String deleteCalendar = "${base}case/delete-calendar.svg";
+  static const String group77 = "${base}case/Group77.svg";
+  static const String group86 = "${base}case/Group86.svg";
+  static const String import = "${base}case/import.svg";
+  static const String office = "${base}case/office.svg";
+  static const String path79 = "${base}case/Path79.svg";
+  static const String invoice = "${base}invoice/invoice.svg";
+  static const String priceTage = "${base}lease/price-tag.svg";
 }

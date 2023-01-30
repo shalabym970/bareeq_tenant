@@ -7,8 +7,8 @@ import '../images_paths.dart';
 import '../strings.dart';
 
 class CustomAttachmentWidget extends StatelessWidget {
-  const CustomAttachmentWidget({Key? key}) : super(key: key);
-
+  const CustomAttachmentWidget({Key? key, required this.svgIcon}) : super(key: key);
+final String svgIcon;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +25,7 @@ class CustomAttachmentWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SvgPicture.asset(ImagePaths.document,
+                  SvgPicture.asset(svgIcon,
                       height: 24.h, width: 21.w),
                   Align(
                     alignment: Alignment.centerLeft,
