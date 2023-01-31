@@ -29,4 +29,5 @@ class ImagePaths {
   static const String path79 = "${base}case/Path79.svg";
   static const String invoice = "${base}invoice/invoice.svg";
   static const String priceTage = "${base}lease/price-tag.svg";
+  static const String emailBrown = "${base}messages/email.svg";
 }

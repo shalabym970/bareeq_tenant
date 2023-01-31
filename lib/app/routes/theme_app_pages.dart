@@ -4,6 +4,8 @@ import 'package:property_pro/app/modules/dashboard/bindings/dashboard_binding.da
 import 'package:property_pro/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:property_pro/app/modules/fit_out_process_details/views/fit_out_process_details_view.dart';
 import 'package:property_pro/app/modules/lease_details/views/lease_details_view.dart';
+import 'package:property_pro/app/modules/messages/bindings/messages_binding.dart';
+import 'package:property_pro/app/modules/messages/views/messages_view.dart';
 import 'package:property_pro/app/modules/work_permit_details/bindings/work_permit_details_binding.dart';
 import 'package:property_pro/app/modules/work_permit_details/views/work_permit_details_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
@@ -49,5 +51,9 @@ class ThemeAppPages {
         name: Routes.fitOutDetails,
         page: () => const FitOutProcessDetailsView(),
         binding: FitOutProcessDetailsBinding()),
+    GetPage(
+        name: Routes.messages,
+        page: () => const MessagesView(),
+        binding: MessagesBinding()),
   ];
 }

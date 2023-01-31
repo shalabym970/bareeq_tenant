@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:property_pro/common/color_manager.dart';
 import 'package:property_pro/common/images_paths.dart';
 
-AppBar customAppBar({required String title}) {
+import '../../app/routes/app_routes.dart';
+
+AppBar customAppBar(
+    {required String title, String? svgEmailIcon, String? svgProfileIcon}) {
   return AppBar(
     backgroundColor: ColorManager.darkBlue,
     title: Text(
@@ -16,16 +20,19 @@ AppBar customAppBar({required String title}) {
     ),
     actions: [
       GestureDetector(
+        onTap: () {
+          Get.toNamed(Routes.messages);
+        },
         child: Padding(
             padding: EdgeInsets.all(8.h),
-            child:
-                SvgPicture.asset(ImagePaths.email, height: 16.h, width: 22.w)),
+            child: SvgPicture.asset(svgEmailIcon ?? ImagePaths.email,
+                height: 16.h, width: 22.w)),
       ),
       GestureDetector(
         child: Padding(
             padding: EdgeInsets.all(8.h),
-            child:
-                SvgPicture.asset(ImagePaths.person, height: 16.h, width: 22.w)),
+            child: SvgPicture.asset(svgProfileIcon ?? ImagePaths.person,
+                height: 16.h, width: 22.w)),
       ),
     ],
   );

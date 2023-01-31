@@ -80,4 +80,9 @@ class Strings {
   static const String fitOutSteps = 'Fit Out Steps';
   static const String gettingStarted = 'Getting Started';
   static const String designPhase = 'Design Phase';
+  static const String sent = 'Sent';
+  static const String inbox = 'Inbox';
+  static const String sendReply = 'Send Reply';
+  static const String reply = 'Reply';
+  static const String replyHint = 'Type your reply...';
 }

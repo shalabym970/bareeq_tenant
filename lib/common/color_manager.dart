@@ -34,4 +34,9 @@ class ColorManager {
   static MaterialColor primarySwatchColors =
       MaterialColor(0xFFFFFFFF, lightTheme);
   static Color red = const Color(0xFFFF0000);
+  static Color yellow = const Color(0xFFFFB319);
+  static Color purple = const Color(0xFFFF5DA2);
+  static Color lightBlue = const Color(0xFF5CB0FF);
+  static Color lightGrey = const Color(0xFFE4E7EB);
+
 }
