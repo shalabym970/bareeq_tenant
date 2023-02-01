@@ -85,4 +85,19 @@ class Strings {
   static const String sendReply = 'Send Reply';
   static const String reply = 'Reply';
   static const String replyHint = 'Type your reply...';
+  static const String profile = 'Profile';
+  static const String fullName = 'Full Name';
+  static const String firstName = 'First Name';
+  static const String lastName = 'Last Name';
+  static const String jobTitle = 'Job Title';
+  static const String businessPhone = 'Business Phone';
+  static const String mobileNumber = 'Mobile Number';
+  static const String accountName = 'Account Name';
+  static const String crNumber = 'CR Number';
+  static const String cprNumber = 'CPR Number';
+  static const String yourProfileData = 'Your Profile Data';
+  static const String changeYourPassword = 'Change Your Password';
+  static const String addNewContact = 'Add a New Contact';
+  static const String saveContact = 'Save Contact';
+  static const String newContact = 'New Contact';
 }

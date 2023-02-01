@@ -26,37 +26,43 @@ class InvoiceGeneralDetailsWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customDetailsItem(
-                      icon: ImagePaths.path79,
-                      title: Strings.invoiceNumber,
-                      value: 'CS--21--001'),
-                   SizedBox(
-                    height: 20.h,
-                  ),
-                  customDetailsItem(
-                      icon: ImagePaths.filingTime,
-                      title: Strings.submitDate,
-                      value: '15-November-2021')
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.path79,
+                        title: Strings.invoiceNumber,
+                        value: 'CS--21--001'),
+                     SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.filingTime,
+                        title: Strings.submitDate,
+                        value: '15-November-2021')
+                  ],
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customDetailsItem(
-                      icon: ImagePaths.deleteCalendar,
-                      title: Strings.amount,
-                      value: '250'),
-                   SizedBox(
-                    height: 20.h,
-                  ),
-                  customDetailsItem(
-                      icon: ImagePaths.filingTime,
-                      title: Strings.endDate,
-                      value: '15-November-2021')
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.deleteCalendar,
+                        title: Strings.amount,
+                        value: '250'),
+                     SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.filingTime,
+                        title: Strings.endDate,
+                        value: '15-November-2021')
+                  ],
+                ),
               )
             ],
           )

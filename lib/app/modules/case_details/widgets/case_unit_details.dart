@@ -25,37 +25,43 @@ class CaseUnitDetailsWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customDetailsItem(
-                      icon: ImagePaths.office,
-                      title: Strings.property,
-                      value: 'Building "B"'),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  customDetailsItem(
-                      icon: ImagePaths.group77,
-                      title: Strings.relatedLease,
-                      value: 'Rent Contract F...')
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.office,
+                        title: Strings.property,
+                        value: 'Building "B"'),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.group77,
+                        title: Strings.relatedLease,
+                        value: 'Rent Contract F...')
+                  ],
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customDetailsItem(
-                      icon: ImagePaths.group42,
-                      title: Strings.unit,
-                      value: '10'),
-                   SizedBox(
-                    height: 20.h,
-                  ),
-                  customDetailsItem(
-                      icon: ImagePaths.pylon,
-                      title: Strings.status,
-                      value: 'New')
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.group42,
+                        title: Strings.unit,
+                        value: '10'),
+                     SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.pylon,
+                        title: Strings.status,
+                        value: 'New')
+                  ],
+                ),
               )
             ],
           )

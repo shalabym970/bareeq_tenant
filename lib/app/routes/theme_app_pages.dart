@@ -16,6 +16,9 @@ import '../modules/fit_out_process_details/bindings/fit_out_process_details_bind
 import '../modules/invoice_details/bindings/invoice_details_binding.dart';
 import '../modules/invoice_details/views/invoice_details_view.dart';
 import '../modules/lease_details/bindings/lease_details_binding.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/add_contact_view.dart';
+import '../modules/profile/views/profile_view.dart';
 import 'app_routes.dart';
 
 class ThemeAppPages {
@@ -55,5 +58,13 @@ class ThemeAppPages {
         name: Routes.messages,
         page: () => const MessagesView(),
         binding: MessagesBinding()),
+    GetPage(
+        name: Routes.profile,
+        page: () => const ProfileView(),
+        binding: ProfileBinding()),
+    GetPage(
+        name: Routes.addNewContact,
+        page: () => const AddContactView(),
+        binding: ProfileBinding()),
   ];
 }

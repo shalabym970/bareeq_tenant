@@ -25,37 +25,43 @@ class WorkPermitWorkStatusWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customDetailsItem(
-                      icon: ImagePaths.filingTime,
-                      title: Strings.startDate,
-                      value: '31-october-2021'),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  customDetailsItem(
-                      icon: ImagePaths.workers,
-                      title: Strings.numberOfWorkers,
-                      value: '5')
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.filingTime,
+                        title: Strings.startDate,
+                        value: '31-october-2021'),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.workers,
+                        title: Strings.numberOfWorkers,
+                        value: '5')
+                  ],
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customDetailsItem(
-                      icon: ImagePaths.filingTime,
-                      title: Strings.endDate,
-                      value: '31-october-2021'),
-                   SizedBox(
-                    height: 20.h,
-                  ),
-                  customDetailsItem(
-                      icon: ImagePaths.pylon,
-                      title: Strings.status,
-                      value: 'Draft')
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.filingTime,
+                        title: Strings.endDate,
+                        value: '31-october-2021'),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.pylon,
+                        title: Strings.status,
+                        value: 'Draft')
+                  ],
+                ),
               )
             ],
           )

@@ -25,28 +25,30 @@ class LeaseUnitDetailsWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customDetailsItem(
-                      icon: ImagePaths.office,
-                      title: Strings.property,
-                      value: 'Building "B"'),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  customDetailsItem(
-                      icon: ImagePaths.priceTage,
-                      title: Strings.brand,
-                      value: 'XYZ Brand')
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.office,
+                        title: Strings.property,
+                        value: 'Building "B"'),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.priceTage,
+                        title: Strings.brand,
+                        value: 'XYZ Brand')
+                  ],
+                ),
               ),
-
-                  customDetailsItem(
-                      icon: ImagePaths.group42,
-                      title: Strings.unit,
-                      value: '10'),
-
+              Expanded(
+                flex: 1,
+                child: customDetailsItem(
+                    icon: ImagePaths.group42, title: Strings.unit, value: '10'),
+              ),
             ],
           )
         ],

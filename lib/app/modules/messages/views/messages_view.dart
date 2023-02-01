@@ -15,22 +15,28 @@ class MessagesView extends GetView<MessagesController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: customAppBar(
-          title: Strings.messages, svgEmailIcon: ImagePaths.emailBrown),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const MessagesSwitcherBTN(),
-          Obx(() => controller.selectInboxMessages.isTrue
-              ? const Expanded(child: InboxMessagesList())
-              : const Expanded(child: SentMessagesList()))
-        ],
-      ),
+    return WillPopScope(
+      onWillPop: () async {
+        Get.offAndToNamed(Routes.dashboard);
+        return true;
+      },
+      child: Scaffold(
+        appBar: customAppBar(
+            title: Strings.messages, svgEmailIcon: ImagePaths.emailBrown),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const MessagesSwitcherBTN(),
+            Obx(() => controller.selectInboxMessages.isTrue
+                ? const Expanded(child: InboxMessagesList())
+                : const Expanded(child: SentMessagesList()))
+          ],
+        ),
 
-      drawer:
-          CustomDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
+        drawer:
+            CustomDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

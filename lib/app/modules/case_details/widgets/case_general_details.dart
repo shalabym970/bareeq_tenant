@@ -26,37 +26,43 @@ class CaseGeneralDetailsWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customDetailsItem(
-                      icon: ImagePaths.path79,
-                      title: Strings.caseNumber,
-                      value: 'CS--21--001'),
-                   SizedBox(
-                    height: 20.h,
-                  ),
-                  customDetailsItem(
-                      icon: ImagePaths.documentLayout,
-                      title: Strings.type,
-                      value: 'problem')
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.path79,
+                        title: Strings.caseNumber,
+                        value: 'CS--21--001'),
+                     SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.documentLayout,
+                        title: Strings.type,
+                        value: 'problem')
+                  ],
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customDetailsItem(
-                      icon: ImagePaths.deleteCalendar,
-                      title: Strings.dateSubmitted,
-                      value: '20-April-2022'),
-                   SizedBox(
-                    height: 20.h,
-                  ),
-                  customDetailsItem(
-                      icon: ImagePaths.import,
-                      title: Strings.priority,
-                      value: 'Normal')
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.deleteCalendar,
+                        title: Strings.dateSubmitted,
+                        value: '20-April-2022'),
+                     SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.import,
+                        title: Strings.priority,
+                        value: 'Normal')
+                  ],
+                ),
               )
             ],
           )

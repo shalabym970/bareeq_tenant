@@ -38,5 +38,5 @@ class ColorManager {
   static Color purple = const Color(0xFFFF5DA2);
   static Color lightBlue = const Color(0xFF5CB0FF);
   static Color lightGrey = const Color(0xFFE4E7EB);
-
+  static Color darkGrey = const Color(0x33FFFFFF);
 }

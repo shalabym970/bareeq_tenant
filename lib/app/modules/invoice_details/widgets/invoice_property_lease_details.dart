@@ -25,18 +25,20 @@ class InvoicePropertyLeaseDetailsWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 10.w,
+              Expanded(
+                flex: 1,
+                child: customDetailsItem(
+                    icon: ImagePaths.group77,
+                    title: Strings.property,
+                    value: 'Rent Contract F...'),
               ),
-              customDetailsItem(
-                  icon: ImagePaths.group77,
-                  title: Strings.property,
-                  value: 'Rent Contract F...'),
-              SizedBox(
-                width: 60.w,
+              Expanded(
+                flex: 1,
+                child: customDetailsItem(
+                    icon: ImagePaths.pylon,
+                    title: Strings.status,
+                    value: 'New'),
               ),
-              customDetailsItem(
-                  icon: ImagePaths.pylon, title: Strings.status, value: 'New'),
             ],
           )
         ],

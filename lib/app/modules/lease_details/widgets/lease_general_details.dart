@@ -34,38 +34,44 @@ class LeaseGeneralDetailsWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customDetailsItem(
-                      icon: ImagePaths.path79,
-                      title: Strings.leaseNumber,
-                      value: 'Lease-25'),
-                  SizedBox(
-                    height: 20.h,
-                  ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.path79,
+                        title: Strings.leaseNumber,
+                        value: 'Lease-25'),
+                    SizedBox(
+                      height: 20.h,
+                    ),
 
-                  customDetailsItem(
-                      icon: ImagePaths.deleteCalendar,
-                      title: Strings.contactPeriod,
-                      value: '24 Months'),
-                ],
+                    customDetailsItem(
+                        icon: ImagePaths.deleteCalendar,
+                        title: Strings.contactPeriod,
+                        value: '24 Months'),
+                  ],
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customDetailsItem(
-                      icon: ImagePaths.documentLayout,
-                      title: Strings.type,
-                      value: 'New Lease'),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  customDetailsItem(
-                      icon: ImagePaths.pylon,
-                      title: Strings.priority,
-                      value: 'Draft')
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.documentLayout,
+                        title: Strings.type,
+                        value: 'New Lease'),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.pylon,
+                        title: Strings.priority,
+                        value: 'Draft')
+                  ],
+                ),
               )
             ],
           )

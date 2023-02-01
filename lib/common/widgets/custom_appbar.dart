@@ -29,6 +29,9 @@ AppBar customAppBar(
                 height: 16.h, width: 22.w)),
       ),
       GestureDetector(
+        onTap: () {
+          Get.toNamed(Routes.profile);
+        },
         child: Padding(
             padding: EdgeInsets.all(8.h),
             child: SvgPicture.asset(svgProfileIcon ?? ImagePaths.person,

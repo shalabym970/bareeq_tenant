@@ -39,7 +39,7 @@ dev_dependencies:
 # flutter_native_splash-development.yaml
 flutter_native_splash:
   color: "#ffffff"
-  image: assets/images/logo.png
+  image: assets/images/logo_splash.png
   android: true
   ios: true
 
@@ -66,6 +66,7 @@ flutter:
     - assets/images/invoice/
     - assets/images/lease/
     - assets/images/messages/
+    - assets/images/profile/
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
