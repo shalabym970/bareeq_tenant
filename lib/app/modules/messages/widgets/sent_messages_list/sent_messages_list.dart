@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:property_pro/app/modules/dashboard/widgets/recent_work_permits/recent_work_permits_list_item.dart';
 
 import '../../../../../common/color_manager.dart';
 import '../../controllers/messages_controller.dart';

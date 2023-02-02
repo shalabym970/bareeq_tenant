@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../color_manager.dart';
 
@@ -11,7 +12,7 @@ class CustomTextField extends StatelessWidget {
     this.validator,
     this.onSaved,
     this.backgroundColor,
-    this.labelWidget,
+    this.labelWidget, this.width, this.height,
   }) : super(key: key);
   final String hint;
   final TextEditingController controller;
@@ -19,6 +20,8 @@ class CustomTextField extends StatelessWidget {
   final void Function(String?)? onSaved;
   final Color? backgroundColor;
   final Widget? labelWidget;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,8 @@ class CustomTextField extends StatelessWidget {
         children: [
           if (labelWidget != null) labelWidget!,
           Container(
-            height: 40.h,
+            width: width ?? Get.width,
+            height: height ?? 40.h,
             decoration: BoxDecoration(
                 color: backgroundColor ?? ColorManager.textFieldBg,
                 borderRadius: BorderRadius.circular(7.h)),

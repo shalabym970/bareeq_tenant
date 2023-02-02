@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:property_pro/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:property_pro/common/color_manager.dart';
-
+import '../../../../common/color_manager.dart';
 import '../../../../common/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_drawer.dart';
+import '../controllers/dashboard_controller.dart';
 import '../widgets/recent_cases/recent_cases_widget.dart';
 import '../widgets/recent_fit_out_processes/recent_fit_out_processes_widget.dart';
 import '../widgets/recent_invoices/recent_invoices_widget.dart';
@@ -21,12 +20,15 @@ class DashboardView extends GetView<DashboardController> {
     return Scaffold(
       appBar: customAppBar(title: Strings.dashboard),
       body: Padding(
-        padding: EdgeInsets.only(top: 20.h, right: 10.w, left: 10.w),
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(
+                height: 20.h,
+              ),
               Center(
                 child: RichText(
                   text: TextSpan(
@@ -61,7 +63,7 @@ class DashboardView extends GetView<DashboardController> {
       ),
 
       drawer:
-          CustomDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
+          customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

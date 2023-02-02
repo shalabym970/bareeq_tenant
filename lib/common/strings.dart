@@ -37,6 +37,7 @@ class Strings {
   static const String status = 'Status';
   static const String startDate = 'Start Date';
   static const String workPermit = 'Work Permit';
+  static const String workPermits = 'Work Permits';
   static const String seefComments = 'Seef Comments';
   static const String workPermitItems = 'Work Permit Items';
   static const String messages = 'Messages';
@@ -58,6 +59,7 @@ class Strings {
   static const String property = 'Property';
   static const String relatedLease = 'Related Lease';
   static const String invoice = 'Invoice';
+  static const String invoices = 'Invoices';
   static const String invoiceTitle = 'Invoice Title';
   static const String propertyLeaseDetails = 'Property Lease Details';
   static const String invoiceItems = 'Invoice Items';
@@ -67,6 +69,8 @@ class Strings {
   static const String discount = 'Discount';
   static const String totalAmount = 'Total Amount';
   static const String lease = 'Lease';
+  static const String leases = 'Leases';
+  static const String logout = 'Logout';
   static const String leaseTitle = 'Lease Title';
   static const String communicationDate = 'Communication Date';
   static const String contactPeriod = 'Contact Period';
@@ -75,6 +79,7 @@ class Strings {
   static const String terminationDate = 'Termination Date';
   static const String fitOutProcessTitle = 'Fit Out Process Title';
   static const String fitOutProcess = 'Fit Out Process';
+  static const String fitOutProcesses = 'Fit Out Processes';
   static const String expectedOpeningDate = 'Expected Opening Date';
   static const String completionDate = 'Completion Date';
   static const String fitOutSteps = 'Fit Out Steps';
@@ -97,7 +102,18 @@ class Strings {
   static const String cprNumber = 'CPR Number';
   static const String yourProfileData = 'Your Profile Data';
   static const String changeYourPassword = 'Change Your Password';
+  static const String changePassword = 'Change Password';
   static const String addNewContact = 'Add a New Contact';
   static const String saveContact = 'Save Contact';
   static const String newContact = 'New Contact';
+  static const String menu = 'Menu';
+  static const String cases = 'Cases';
+  static const String youAreChangePass =
+      'You are about to change your Account\'s Password';
+  static const String currentPassword = 'Current Password';
+  static const String enterCurrentPass = 'Please enter your current password';
+  static const String newPass = 'New Password';
+  static const String enterNewPass = 'Please enter the new password';
+  static const String confirmPassword = 'Confirm New Password';
+  static const String enterNewPassAgain = 'Please enter the new password again';
 }

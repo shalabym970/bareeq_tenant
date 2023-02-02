@@ -1,4 +1,4 @@
-name: property_pro
+name: Seef
 description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -28,6 +28,7 @@ dependencies:
   flutter_native_splash: ^2.2.9
   http: ^0.13.5
   flutter_svg: ^1.1.1+1
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
@@ -44,12 +45,12 @@ flutter_native_splash:
   ios: true
 
 flutter_icons:
-  image_path: "assets/images/logo-with-bg.png"
+  image_path: "assets/images/logo_with_bg.png"
   android: true
   ios: true
   remove_alpha_ios: true
   adaptive_icon_background: "#ffffff"
-  adaptive_icon_foreground: "assets/images/logo-with-bg.png"
+  adaptive_icon_foreground: "assets/images/logo_with_bg.png"
 
 
 flutter:
@@ -67,12 +68,9 @@ flutter:
     - assets/images/lease/
     - assets/images/messages/
     - assets/images/profile/
+    - assets/images/drawer/
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
+
   # fonts:
   #   - family: Schyler
   #     fonts:

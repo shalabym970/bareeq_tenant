@@ -1,6 +1,7 @@
 class ImagePaths {
   static const String base = "assets/images/";
   static const String logo = "${base}Logo.png";
+  static const String drawerBg = "${base}drawer_bg.svg";
   static const String document = "${base}work_permit/document.svg";
   static const String documentLayout = "${base}work_permit/document-layout.svg";
   static const String filingTime = "${base}work_permit/filing-time.svg";
@@ -33,4 +34,10 @@ class ImagePaths {
   static const String bluePerson = "${base}profile/blue_person.svg";
   static const String employee = "${base}profile/employee.svg";
   static const String profileBrown = "${base}profile/profile_brown.svg";
+  static const String whiteBriefcase = "${base}drawer/white_briefcase.svg";
+  static const String whiteBug = "${base}drawer/white_bug.svg";
+  static const String whiteHouse = "${base}drawer/white_house.svg";
+  static const String whiteLogout = "${base}drawer/white_logout.svg";
+  static const String whiteReceipt = "${base}drawer/white_receipt.svg";
+  static const String whiteSettings = "${base}drawer/white_settings.svg";
 }

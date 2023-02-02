@@ -1,10 +1,10 @@
+import 'package:Seef/app/modules/dashboard/widgets/recent_leases/recent_leases_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:property_pro/app/modules/dashboard/widgets/recent_leases/recent_leases_list.dart';
-import 'package:property_pro/common/images_paths.dart';
 
 import '../../../../../common/color_manager.dart';
+import '../../../../../common/images_paths.dart';
 import '../../../../../common/strings.dart';
 
 class RecentLeasesWidget extends StatelessWidget {

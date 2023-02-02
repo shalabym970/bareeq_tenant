@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:property_pro/app/modules/dashboard/widgets/recent_work_permits/recent_work_permits_list_item.dart';
-import 'package:property_pro/app/modules/messages/controllers/messages_controller.dart';
-
 import '../../../../../common/color_manager.dart';
+import '../../controllers/messages_controller.dart';
 import 'inbox_messages_list_item.dart';
 
 class InboxMessagesList extends GetView<MessagesController> {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:property_pro/common/color_manager.dart';
-import 'package:property_pro/common/images_paths.dart';
+import '../../../../common/color_manager.dart';
+import '../../../../common/images_paths.dart';
 import '../../../../common/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_attachment_widget.dart';
@@ -117,7 +117,7 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
       ),
 
       drawer:
-          CustomDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
+          customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

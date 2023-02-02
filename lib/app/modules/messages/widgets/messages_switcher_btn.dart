@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:property_pro/app/modules/messages/controllers/messages_controller.dart';
-
 import '../../../../common/color_manager.dart';
 import '../../../../common/strings.dart';
+import '../controllers/messages_controller.dart';
 
 class MessagesSwitcherBTN extends GetView<MessagesController> {
   const MessagesSwitcherBTN({Key? key}) : super(key: key);

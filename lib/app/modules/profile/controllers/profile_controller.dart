@@ -11,4 +11,8 @@ class ProfileController extends GetxController {
   final crNumberController = TextEditingController();
   final cprNumberController = TextEditingController();
 
+  /// Change password page controllers
+  final currentPassController = TextEditingController();
+  final newPassController = TextEditingController();
+  final confirmPassController = TextEditingController();
 }

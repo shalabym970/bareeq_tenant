@@ -1,6 +1,6 @@
+import 'package:Seef/app/modules/dashboard/widgets/recent_work_permits/recent_work_permits_list_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:property_pro/app/modules/dashboard/widgets/recent_work_permits/recent_work_permits_list_item.dart';
 
 class RecentWorkPermitsList extends StatelessWidget {
   const RecentWorkPermitsList({super.key});

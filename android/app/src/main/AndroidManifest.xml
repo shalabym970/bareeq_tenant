@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.property_pro">
+    package="com.initiumsolution.seef">
    <application
-        android:label="property_pro"
+        android:label="Seef"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

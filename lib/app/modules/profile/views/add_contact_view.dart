@@ -2,23 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:property_pro/app/modules/work_permit_details/widgets/work_permit_messages_list.dart';
-import 'package:property_pro/common/color_manager.dart';
-import 'package:property_pro/common/images_paths.dart';
-import 'package:property_pro/common/widgets/custom_text_field.dart';
+import '../../../../common/color_manager.dart';
+import '../../../../common/images_paths.dart';
 import '../../../../common/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
-import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_drawer.dart';
+import '../../../../common/widgets/custom_text_field.dart';
 import '../../../routes/app_routes.dart';
 import '../controllers/add_contact_controller.dart';
-import '../controllers/profile_controller.dart';
-import '../widgets/case_description.dart';
-import '../widgets/case_general_details.dart';
-import '../widgets/case_messages_list.dart';
-import '../widgets/case_unit_details.dart';
-import '../widgets/contacts/contacts_widget.dart';
+
 
 class AddContactView extends GetView<AddContactController> {
   const AddContactView({super.key});
@@ -133,7 +126,7 @@ class AddContactView extends GetView<AddContactController> {
               PrimaryButton(
                 title: Strings.saveContact,
                 onPressed: () {
-                  Get.toNamed(Routes.dashboard);
+
                 },
                 height: 40.h,
                 backgroundColor: ColorManager.primaryBTNColorBrown,
@@ -146,7 +139,7 @@ class AddContactView extends GetView<AddContactController> {
       ),
 
       drawer:
-          CustomDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
+          customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

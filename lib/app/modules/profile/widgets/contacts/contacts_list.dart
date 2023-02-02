@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:property_pro/app/modules/dashboard/widgets/recent_cases/recent_cases_list_item.dart';
-
 import 'contacts_list_item.dart';
 
 
