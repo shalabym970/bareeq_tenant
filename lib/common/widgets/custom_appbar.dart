@@ -38,5 +38,6 @@ AppBar customAppBar(
                 height: 20.h, width: 22.w)),
       ),
     ],
+    iconTheme: IconThemeData(color: ColorManager.white),
   );
 }

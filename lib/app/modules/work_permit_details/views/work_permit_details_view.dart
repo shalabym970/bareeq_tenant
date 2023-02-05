@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+
 import '../../../../common/color_manager.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings.dart';
@@ -9,7 +10,6 @@ import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_drawer.dart';
-import '../../../routes/app_routes.dart';
 import '../controllers/work_permit_details_controller.dart';
 import '../widgets/work_permit_comments_list.dart';
 import '../widgets/work_permit_description.dart';
@@ -63,8 +63,8 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                           height: 5.h,
                         ),
                         Text('WP--21--018',
-                            style:
-                                TextStyle(fontSize: 18.sp, color: ColorManager.black))
+                            style: TextStyle(
+                                fontSize: 18.sp, color: ColorManager.black))
                       ],
                     ),
                   ],
@@ -119,16 +119,22 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                 ),
               ),
               SizedBox(height: 10.h),
-              const CustomAttachmentWidget(svgIcon: ImagePaths.document,),
+              const CustomAttachmentWidget(
+                svgPrefixIcon: ImagePaths.document,
+              ),
               SizedBox(height: 10.h),
-              const CustomAttachmentWidget(svgIcon: ImagePaths.image,),
+              const CustomAttachmentWidget(
+                svgPrefixIcon: ImagePaths.image,
+              ),
               SizedBox(height: 20.h),
               PrimaryButton(
-                  title: Strings.attachFiles,
-                  onPressed: () {
-                    Get.toNamed(Routes.dashboard);
-                  },
-                  height: 40.h, backgroundColor: ColorManager.white, textAndIconColor: ColorManager.primaryBTNColorBrown,svgIcon: ImagePaths.path68,),
+                title: Strings.attachFiles,
+                onPressed: () {},
+                height: 40.h,
+                backgroundColor: ColorManager.white,
+                textAndIconColor: ColorManager.primaryBTNColorBrown,
+                svgIcon: ImagePaths.path68,
+              ),
               SizedBox(height: 20.h),
             ],
           ),

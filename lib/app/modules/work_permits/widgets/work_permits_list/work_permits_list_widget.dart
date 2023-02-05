@@ -2,11 +2,11 @@ import 'package:Seef/app/modules/work_permits/widgets/work_permits_list/work_per
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
-
+import 'package:get/get.dart';
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
 import '../../../../../common/strings.dart';
+import '../../../../routes/app_routes.dart';
 
 class WorkPermitsListWidget extends StatelessWidget {
   const WorkPermitsListWidget({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class WorkPermitsListWidget extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding:  EdgeInsets.symmetric(vertical: 20.h),
+            padding: EdgeInsets.symmetric(vertical: 20.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -43,7 +43,9 @@ class WorkPermitsListWidget extends StatelessWidget {
                   height: 32.h,
                   width: 32.w,
                   child: FloatingActionButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(Routes.addWorkPermit);
+                    },
                     heroTag: null,
                     backgroundColor: ColorManager.primaryBTNColorBrown,
                     child: Icon(
@@ -56,7 +58,7 @@ class WorkPermitsListWidget extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(child: const WorkPermitsList())
+          const Expanded(child: WorkPermitsList())
         ],
       ),
     );

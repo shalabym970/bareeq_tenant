@@ -74,7 +74,7 @@ class LoginView extends GetView<AuthController> {
                         PrimaryButton(
                             title: Strings.login,
                             onPressed: () {
-                              Get.toNamed(Routes.dashboard);
+                              Get.offAndToNamed(Routes.dashboard);
                             },
                             height: 40.h, backgroundColor: ColorManager.primaryBTNColorBrown, textAndIconColor: ColorManager.white),
                         SizedBox(height: 40.h),

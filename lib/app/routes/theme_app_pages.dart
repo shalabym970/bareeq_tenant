@@ -1,7 +1,11 @@
+import 'package:Seef/app/modules/add_work_permit/views/add_work_permit_view.dart';
 import 'package:Seef/app/modules/cases/views/cases_view.dart';
 import 'package:Seef/app/modules/work_permits/views/work_permits_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import '../modules/activity_details/bindings/activity_details_binding.dart';
+import '../modules/activity_details/views/activity_details_view.dart';
+import '../modules/add_work_permit/bindings/add_work_permit_binding.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/login_view.dart';
 import '../modules/case_details/bindings/case_details_binding.dart';
@@ -101,5 +105,13 @@ class ThemeAppPages {
         name: Routes.leases,
         page: () => const LeasesView(),
         binding: LeasesBinding()),
+    GetPage(
+        name: Routes.activity,
+        page: () => const ActivityDetailsView(),
+        binding: ActivityDetailsBinding()),
+    GetPage(
+        name: Routes.addWorkPermit,
+        page: () => const AddWorkPermitView(),
+        binding: AddWorkPermitBinding()),
   ];
 }

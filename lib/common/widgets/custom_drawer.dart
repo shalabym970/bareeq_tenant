@@ -91,7 +91,7 @@ Drawer customDrawer() {
                       text: Strings.logout,
                       svgIconPath: ImagePaths.whiteLogout,
                       onTap: () {
-                        Get.offAndToNamed(Routes.dashboard);
+                        Get.offAndToNamed(Routes.login);
                       },
                     ),
                   ],

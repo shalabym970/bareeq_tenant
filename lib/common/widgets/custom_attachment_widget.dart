@@ -7,8 +7,12 @@ import '../images_paths.dart';
 import '../strings.dart';
 
 class CustomAttachmentWidget extends StatelessWidget {
-  const CustomAttachmentWidget({Key? key, required this.svgIcon}) : super(key: key);
-final String svgIcon;
+  const CustomAttachmentWidget(
+      {Key? key, required this.svgPrefixIcon, this.svgSuffixIcon})
+      : super(key: key);
+  final String svgPrefixIcon;
+  final String? svgSuffixIcon;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,8 +29,7 @@ final String svgIcon;
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SvgPicture.asset(svgIcon,
-                      height: 24.h, width: 21.w),
+                  SvgPicture.asset(svgPrefixIcon, height: 24.h, width: 21.w),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Column(
@@ -57,8 +60,10 @@ final String svgIcon;
                         onPressed: () {},
                         heroTag: null,
                         backgroundColor: ColorManager.primaryBTNColorBrown,
-                        child: SvgPicture.asset(ImagePaths.path66,
-                            height: 12.h, width: 12.w)),
+                        child: SvgPicture.asset(
+                            svgSuffixIcon ?? ImagePaths.download,
+                            height: 12.h,
+                            width: 12.w)),
                   ),
                 ],
               ),

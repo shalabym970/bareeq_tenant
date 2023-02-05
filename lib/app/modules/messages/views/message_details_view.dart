@@ -83,10 +83,10 @@ class MessageDetailsView extends GetView<MessagesController> {
                           fontSize: 14.sp, fontWeight: FontWeight.w400),
                     ),
                     SizedBox(height: 10.h),
-                    const CustomAttachmentWidget(svgIcon: ImagePaths.document),
+                    const CustomAttachmentWidget(svgPrefixIcon: ImagePaths.document),
                     SizedBox(height: 10.h),
                     const CustomAttachmentWidget(
-                      svgIcon: ImagePaths.image,
+                      svgPrefixIcon: ImagePaths.image,
                     ),
                     SizedBox(height: 30.h),
                     Divider(
@@ -136,10 +136,10 @@ class MessageDetailsView extends GetView<MessagesController> {
                           fontSize: 14.sp, fontWeight: FontWeight.w400),
                     ),
                     SizedBox(height: 10.h),
-                    const CustomAttachmentWidget(svgIcon: ImagePaths.document),
+                    const CustomAttachmentWidget(svgPrefixIcon: ImagePaths.document),
                     SizedBox(height: 10.h),
                     const CustomAttachmentWidget(
-                      svgIcon: ImagePaths.image,
+                      svgPrefixIcon: ImagePaths.image,
                     ),
                     SizedBox(height: 30.h),
                     PrimaryButton(

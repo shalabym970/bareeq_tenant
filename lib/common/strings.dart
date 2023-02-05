@@ -116,4 +116,16 @@ class Strings {
   static const String enterNewPass = 'Please enter the new password';
   static const String confirmPassword = 'Confirm New Password';
   static const String enterNewPassAgain = 'Please enter the new password again';
+  static const String activity = 'Activity';
+  static const String activityTitle = 'Activity Title';
+  static const String remarks = 'Remarks';
+  static const String relatedUnit = 'Related Unit';
+  static const String ddMMYY = 'DD/MM/YY';
+  static const String newContractor = 'New Contractor';
+  static const String standardWorkPermit = 'Standard Work Permit';
+  static const String workPermitSubject = 'Work Permit Subject';
+  static const String urgentWorkPermit = 'Urgent Work Permit';
+  static const String addWorkPermit = 'Add Work Permit';
+  static const String newWorkPermit = 'New Work Permit';
+  static const String requestDetails = 'Request Details';
 }

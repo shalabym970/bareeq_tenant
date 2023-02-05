@@ -95,14 +95,14 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                 ),
               ),
               SizedBox(height: 10.h),
-              const CustomAttachmentWidget(svgIcon: ImagePaths.document),
+              const CustomAttachmentWidget(svgPrefixIcon: ImagePaths.document),
               SizedBox(height: 10.h),
-              const CustomAttachmentWidget(svgIcon: ImagePaths.image,),
+              const CustomAttachmentWidget(svgPrefixIcon: ImagePaths.image,),
               SizedBox(height: 20.h),
               PrimaryButton(
                 title: Strings.attachFiles,
                 onPressed: () {
-                  Get.toNamed(Routes.dashboard);
+
                 },
                 height: 40.h,
                 backgroundColor: ColorManager.white,

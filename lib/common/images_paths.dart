@@ -9,7 +9,7 @@ class ImagePaths {
   static const String image = "${base}work_permit/image.svg";
   static const String manager = "${base}work_permit/manager.svg";
   static const String officeBag = "${base}work_permit/office-bag.svg";
-  static const String path66 = "${base}work_permit/Path66.svg";
+  static const String download = "${base}work_permit/Path66.svg";
   static const String path68 = "${base}work_permit/Path68.svg";
   static const String pylon = "${base}work_permit/pylon.svg";
   static const String save = "${base}work_permit/save.svg";
@@ -40,4 +40,6 @@ class ImagePaths {
   static const String whiteLogout = "${base}drawer/white_logout.svg";
   static const String whiteReceipt = "${base}drawer/white_receipt.svg";
   static const String whiteSettings = "${base}drawer/white_settings.svg";
+  static const String drill = "${base}drill.svg";
+  static const String upload = "${base}upload.svg";
 }

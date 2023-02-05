@@ -2,11 +2,13 @@ import 'package:Seef/app/modules/dashboard/widgets/recent_work_permits/recent_wo
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
 import '../../../../../common/strings.dart';
+import '../../../../routes/app_routes.dart';
 
 class RecentWorkPermitWidget extends StatelessWidget {
   const RecentWorkPermitWidget({Key? key}) : super(key: key);
@@ -41,7 +43,9 @@ class RecentWorkPermitWidget extends StatelessWidget {
                 height: 32.h,
                 width: 32.w,
                 child: FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(Routes.addWorkPermit);
+                  },
                   heroTag: null,
                   backgroundColor: ColorManager.primaryBTNColorBrown,
                   child: Icon(

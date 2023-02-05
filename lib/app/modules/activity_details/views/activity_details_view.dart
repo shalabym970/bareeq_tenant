@@ -9,20 +9,18 @@ import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_drawer.dart';
-import '../../../routes/app_routes.dart';
-import '../controllers/case_details_controller.dart';
-import '../widgets/case_description.dart';
-import '../widgets/case_general_details.dart';
-import '../widgets/case_messages_list.dart';
-import '../widgets/case_unit_details.dart';
+import '../controllers/activity_details_controller.dart';
+import '../widgets/activity_general_details.dart';
+import '../widgets/activity_messages_list.dart';
+import '../widgets/activity_remarks.dart';
 
-class CaseDetailsView extends GetView<CaseDetailsController> {
-  const CaseDetailsView({super.key});
+class ActivityDetailsView extends GetView<ActivityDetailsController> {
+  const ActivityDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(title: Strings.case_),
+      appBar: customAppBar(title: Strings.activity),
       floatingActionButton: FloatingActionButton(
           onPressed: () {},
           heroTag: null,
@@ -43,7 +41,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                 padding: EdgeInsets.all(10.h),
                 child: Row(
                   children: [
-                    SvgPicture.asset(ImagePaths.group86,
+                    SvgPicture.asset(ImagePaths.drill,
                         height: 24.h, width: 26.w),
                     SizedBox(
                       width: 10.w,
@@ -52,7 +50,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(Strings.caseTitle,
+                        Text(Strings.activityTitle,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
@@ -60,7 +58,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('Insufficient Cementing Material',
+                        Text('Organize Fit-out Meeting Kick off',
                             style: TextStyle(
                                 fontSize: 18.sp, color: ColorManager.black))
                       ],
@@ -69,11 +67,9 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                 ),
               ),
               SizedBox(height: 20.h),
-              const CaseGeneralDetailsWidget(),
+              const ActivityGeneralDetailsWidget(),
               SizedBox(height: 20.h),
-              const CaseUnitDetailsWidget(),
-              SizedBox(height: 20.h),
-              const CaseDescription(),
+              const ActivityRemarks(),
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),
@@ -84,7 +80,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                 ),
               ),
               SizedBox(height: 10.h),
-              SizedBox(height: 185.h, child: const CaseMessagesList()),
+              SizedBox(height: 185.h, child: const ActivityMessagesList()),
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),
