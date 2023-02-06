@@ -128,4 +128,17 @@ class Strings {
   static const String addWorkPermit = 'Add Work Permit';
   static const String newWorkPermit = 'New Work Permit';
   static const String requestDetails = 'Request Details';
+  static const String readAcceptResponse = "I've Read and Accepted ";
+  static const String acceptanceResponse = "The Acceptance of Responsibility.";
+  static const String companyName = "Company Name";
+  static const String addContractor = "Add a New Contractor";
+  static const String phoneNumber = "Phone Number";
+  static const String newCase = "New Case";
+  static const String addCase = "Add Case";
+  static const String caseType = "Case Type";
+  static const String natureOfCase = "Nature of Case";
+  static const String recoverAccountTitle =
+      "You are about to Recover your Account's Password";
+  static const String resetPassword = "Reset Password";
+  static const String recoverPassword = "Recover Password";
 }

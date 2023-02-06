@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
 import '../../../../../common/strings.dart';
+import '../../../../routes/app_routes.dart';
 import 'cases_list.dart';
 
 class CasesListWidget extends StatelessWidget {
@@ -41,7 +43,9 @@ class CasesListWidget extends StatelessWidget {
                   height: 32.h,
                   width: 32.w,
                   child: FloatingActionButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(Routes.addCase);
+                    },
                     heroTag: null,
                     backgroundColor: ColorManager.primaryBTNColorBrown,
                     child: Icon(

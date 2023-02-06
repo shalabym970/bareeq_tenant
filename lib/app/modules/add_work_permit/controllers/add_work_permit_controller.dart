@@ -12,6 +12,7 @@ class AddWorkPermitController extends GetxController {
   final endDateController = TextEditingController();
   final standardCheck = false.obs;
   final urgentCheck = false.obs;
+  final acceptResponsibilityCheck = false.obs;
   final startDate = Rxn<DateTime>();
   final selectedStartDate = Strings.ddMMYY.obs;
   final endDate = Rxn<DateTime>();

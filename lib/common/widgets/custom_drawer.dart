@@ -21,83 +21,95 @@ Drawer customDrawer() {
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 30.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  BackButton(
-                    color: ColorManager.white,
-                  ),
-                  SizedBox(width: 5.w),
-                  Text(
-                    Strings.menu,
-                    style: TextStyle(
-                        color: ColorManager.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 23.sp),
-                  )
-                ],
-              ),
-              SizedBox(height: 50.w),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Row(
                   children: [
-                    DrawerItemWidget(
-                      text: Strings.workPermits,
-                      svgIconPath: ImagePaths.whiteBriefcase,
-                      onTap: () {
-                        Get.toNamed(Routes.workPermits);
-                      },
+                    BackButton(
+                      color: ColorManager.white,
                     ),
-                    SizedBox(height: 40.h),
-                    DrawerItemWidget(
-                      text: Strings.cases,
-                      svgIconPath: ImagePaths.whiteBug,
-                      onTap: () {
-                        Get.toNamed(Routes.cases);
-                      },
-                    ),
-                    SizedBox(height: 40.h),
-                    DrawerItemWidget(
-                      text: Strings.fitOutProcesses,
-                      svgIconPath: ImagePaths.whiteSettings,
-                      onTap: () {
-                        Get.toNamed(Routes.fitOuts);
-                      },
-                    ),
-                    SizedBox(height: 40.h),
-                    DrawerItemWidget(
-                      text: Strings.invoices,
-                      svgIconPath: ImagePaths.whiteReceipt,
-                      onTap: () {
-                        Get.toNamed(Routes.invoices);
-                      },
-                    ),
-                    SizedBox(height: 40.h),
-                    DrawerItemWidget(
-                      text: Strings.leases,
-                      svgIconPath: ImagePaths.whiteHouse,
-                      onTap: () {
-                        Get.toNamed(Routes.leases);
-                      },
-                    ),
-                    SizedBox(height: 80.h),
-                    DrawerItemWidget(
-                      text: Strings.logout,
-                      svgIconPath: ImagePaths.whiteLogout,
-                      onTap: () {
-                        Get.offAndToNamed(Routes.login);
-                      },
-                    ),
+                    SizedBox(width: 5.w),
+                    Text(
+                      Strings.menu,
+                      style: TextStyle(
+                          color: ColorManager.white,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 23.sp),
+                    )
                   ],
                 ),
-              )
-            ],
+                SizedBox(height: 50.w),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      DrawerItemWidget(
+                        text: Strings.workPermits,
+                        svgIconPath: ImagePaths.whiteBriefcase,
+                        onTap: () {
+                          Get.toNamed(Routes.workPermits);
+                        },
+                      ),
+                      SizedBox(height: 40.h),
+                      DrawerItemWidget(
+                        text: Strings.cases,
+                        svgIconPath: ImagePaths.whiteBug,
+                        onTap: () {
+                          Get.toNamed(Routes.cases);
+                        },
+                      ),
+                      SizedBox(height: 40.h),
+                      DrawerItemWidget(
+                        text: Strings.fitOutProcesses,
+                        svgIconPath: ImagePaths.whiteSettings,
+                        onTap: () {
+                          Get.toNamed(Routes.fitOuts);
+                        },
+                      ),
+                      SizedBox(height: 40.h),
+                      DrawerItemWidget(
+                        text: Strings.invoices,
+                        svgIconPath: ImagePaths.whiteReceipt,
+                        onTap: () {
+                          Get.toNamed(Routes.invoices);
+                        },
+                      ),
+                      SizedBox(height: 40.h),
+                      DrawerItemWidget(
+                        text: Strings.leases,
+                        svgIconPath: ImagePaths.whiteHouse,
+                        onTap: () {
+                          Get.toNamed(Routes.leases);
+                        },
+                      ),
+                      SizedBox(height: 80.h),
+                      DrawerItemWidget(
+                        text: Strings.logout,
+                        svgIconPath: ImagePaths.whiteLogout,
+                        onTap: () {
+                          Get.offAndToNamed(Routes.login);
+                        },
+                      ),
+                      SizedBox(height: 150.h),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15.w),
+                            child: SvgPicture.asset(ImagePaths.logoWhite,
+                                height: 75.h, width: 70.w)),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ],

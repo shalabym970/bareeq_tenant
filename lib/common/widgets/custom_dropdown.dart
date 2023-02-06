@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../common/color_manager.dart';
-import '../../../../common/strings.dart';
+import '../color_manager.dart';
 
-class WorkPermitDropDown extends StatelessWidget {
-  const WorkPermitDropDown(
+class CustomDropDown extends StatelessWidget {
+  const CustomDropDown(
       {Key? key,
       required this.value,
       required this.onChange,

@@ -2,11 +2,11 @@ import 'package:Seef/app/modules/dashboard/widgets/recent_cases/recent_cases_lis
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
-
+import 'package:get/get.dart';
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
 import '../../../../../common/strings.dart';
+import '../../../../routes/app_routes.dart';
 
 class RecentCasesWidget extends StatelessWidget {
   const RecentCasesWidget({Key? key}) : super(key: key);
@@ -41,7 +41,9 @@ class RecentCasesWidget extends StatelessWidget {
                 height: 32.h,
                 width: 32.w,
                 child: FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(Routes.addCase);
+                  },
                   heroTag: null,
                   backgroundColor: ColorManager.primaryBTNColorBrown,
                   child:  Icon(

@@ -59,15 +59,20 @@ class LoginView extends GetView<AuthController> {
                           controller: controller.emailController,
                         ),
                         SizedBox(height: 22.h),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            Strings.forgotPass,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12.sp,
-                                color: ColorManager.darkBlue,
-                                decoration: TextDecoration.underline),
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed(Routes.passwordRecovering);
+                          },
+                          child: Align(
+                            alignment: Alignment.bottomRight,
+                            child: Text(
+                              Strings.forgotPass,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12.sp,
+                                  color: ColorManager.darkBlue,
+                                  decoration: TextDecoration.underline),
+                            ),
                           ),
                         ),
                         SizedBox(height: 40.h),
@@ -76,7 +81,9 @@ class LoginView extends GetView<AuthController> {
                             onPressed: () {
                               Get.offAndToNamed(Routes.dashboard);
                             },
-                            height: 40.h, backgroundColor: ColorManager.primaryBTNColorBrown, textAndIconColor: ColorManager.white),
+                            height: 40.h,
+                            backgroundColor: ColorManager.primaryBTNColorBrown,
+                            textAndIconColor: ColorManager.white),
                         SizedBox(height: 40.h),
                         Text(
                           Strings.noHaveAccount,

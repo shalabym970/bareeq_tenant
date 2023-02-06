@@ -42,4 +42,5 @@ class ImagePaths {
   static const String whiteSettings = "${base}drawer/white_settings.svg";
   static const String drill = "${base}drill.svg";
   static const String upload = "${base}upload.svg";
+  static const String logoWhite = "${base}Logo-white.svg";
 }

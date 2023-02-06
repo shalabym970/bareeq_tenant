@@ -1,10 +1,15 @@
 import 'package:Seef/app/modules/add_work_permit/views/add_work_permit_view.dart';
+import 'package:Seef/app/modules/auth/views/recover_account_view.dart';
 import 'package:Seef/app/modules/cases/views/cases_view.dart';
 import 'package:Seef/app/modules/work_permits/views/work_permits_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import '../modules/activity_details/bindings/activity_details_binding.dart';
 import '../modules/activity_details/views/activity_details_view.dart';
+import '../modules/add_case/bindings/add_case_binding.dart';
+import '../modules/add_case/views/add_case_view.dart';
+import '../modules/add_contractor/bindings/add_contractor_binding.dart';
+import '../modules/add_contractor/views/add_contractor_view.dart';
 import '../modules/add_work_permit/bindings/add_work_permit_binding.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/login_view.dart';
@@ -113,5 +118,17 @@ class ThemeAppPages {
         name: Routes.addWorkPermit,
         page: () => const AddWorkPermitView(),
         binding: AddWorkPermitBinding()),
+    GetPage(
+        name: Routes.addContractor,
+        page: () => const AddContractorView(),
+        binding: AddContractorBinding()),
+    GetPage(
+        name: Routes.addCase,
+        page: () => const AddCaseView(),
+        binding: AddCaseBinding()),
+    GetPage(
+        name: Routes.passwordRecovering,
+        page: () => const RecoverAccountView(),
+        binding: AuthBinding()),
   ];
 }
