@@ -30,7 +30,7 @@ class ContactsWidget extends StatelessWidget {
                    Padding(
                     padding: EdgeInsets.all(6.h),
                     child: Text(
-                      Strings.recentCases,
+                      Strings.contacts,
                       style: TextStyle(
                           fontSize: 14.sp, fontWeight: FontWeight.bold),
                     ),

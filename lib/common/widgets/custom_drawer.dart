@@ -94,10 +94,10 @@ Drawer customDrawer() {
                         text: Strings.logout,
                         svgIconPath: ImagePaths.whiteLogout,
                         onTap: () {
-                          Get.offAndToNamed(Routes.login);
+                          Get.offAllNamed(Routes.login);
                         },
                       ),
-                      SizedBox(height: 150.h),
+                      SizedBox(height: 170.h),
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: Padding(

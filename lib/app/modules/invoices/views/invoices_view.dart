@@ -16,7 +16,7 @@ class InvoicesView extends GetView<InvoicesController> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Get.offAndToNamed(Routes.dashboard);
+        Get.offAllNamed(Routes.dashboard);
         return true;
       },
       child: Scaffold(

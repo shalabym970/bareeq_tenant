@@ -141,4 +141,6 @@ class Strings {
       "You are about to Recover your Account's Password";
   static const String resetPassword = "Reset Password";
   static const String recoverPassword = "Recover Password";
+  static const String search = 'Search';
+  static const String contacts = 'Contacts';
 }

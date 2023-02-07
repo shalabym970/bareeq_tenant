@@ -190,23 +190,25 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                                   !controller.acceptResponsibilityCheck.value;
                             },
                           )),
-                      RichText(
-                        text: TextSpan(
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: Strings.readAcceptResponse,
-                                style: TextStyle(
-                                    fontSize: 14.sp,
-                                    color: ColorManager.black,
-                                    fontWeight: FontWeight.w500)),
-                            TextSpan(
-                                text: Strings.acceptanceResponse,
-                                style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    fontSize: 14.sp,
-                                    color: ColorManager.darkBlue,
-                                    fontWeight: FontWeight.w500))
-                          ],
+                      Expanded(
+                        child: RichText(
+                          text: TextSpan(
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: Strings.readAcceptResponse,
+                                  style: TextStyle(
+                                      fontSize: 14.sp,
+                                      color: ColorManager.black,
+                                      fontWeight: FontWeight.w500)),
+                              TextSpan(
+                                  text: Strings.acceptanceResponse,
+                                  style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      fontSize: 14.sp,
+                                      color: ColorManager.darkBlue,
+                                      fontWeight: FontWeight.w500))
+                            ],
+                          ),
                         ),
                       )
                     ],

@@ -17,8 +17,8 @@ class MessagesView extends GetView<MessagesController> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Get.offAndToNamed(Routes.dashboard);
-        return true;
+        Get.offAllNamed(Routes.dashboard);
+        return false;
       },
       child: Scaffold(
         appBar: customAppBar(

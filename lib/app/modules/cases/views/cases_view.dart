@@ -21,7 +21,7 @@ class CasesView extends GetView<CasesController> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Get.offAndToNamed(Routes.dashboard);
+        Get.offAllNamed(Routes.dashboard);
         return true;
       },
       child: Scaffold(

@@ -1,8 +1,11 @@
 import 'package:Seef/common/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import '../../../../common/color_manager.dart';
+import '../../../../common/images_paths.dart';
+import '../../../../common/strings.dart';
 import '../controllers/invoices_controller.dart';
 
 class InvoicesSearchWidget extends GetView<InvoicesController> {
@@ -16,7 +19,7 @@ class InvoicesSearchWidget extends GetView<InvoicesController> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomTextField(
-            hint: 'Search',
+            hint: Strings.search,
             controller: controller.searchController,
             height: 55.h,
             width: 252.w,
@@ -28,11 +31,8 @@ class InvoicesSearchWidget extends GetView<InvoicesController> {
               onPressed: () {},
               heroTag: null,
               backgroundColor: ColorManager.primaryBTNColorBrown,
-              child: Icon(
-                Icons.filter_tilt_shift,
-                color: Colors.white,
-                size: 20.sp,
-              ),
+              child: SvgPicture.asset( ImagePaths.filter,
+                  height: 15.h, width: 15.w)
             ),
           ),
         ],
