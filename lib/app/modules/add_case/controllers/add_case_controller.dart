@@ -20,4 +20,11 @@ class AddCaseController extends GetxController {
     'Test',
     'Test'
   ];
+  final relatedLeaseValue = 'Unit 10 - Building 8';
+  final relatedLeaseList = <String>[
+    'Unit 10 - Building 8',
+    'Test',
+    'Test',
+    'Test'
+  ];
 }

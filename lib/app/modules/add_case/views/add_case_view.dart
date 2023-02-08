@@ -25,7 +25,7 @@ class AddCaseView extends GetView<AddCaseController> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                   SizedBox(
-                    height: 50.h,
+                    height: 40.h,
                   ),
                   CustomTextField(
                       hint: Strings.caseTitle,
@@ -35,7 +35,7 @@ class AddCaseView extends GetView<AddCaseController> {
                               fontSize: 10.sp,
                               fontWeight: FontWeight.w500,
                               color: ColorManager.darkBlue))),
-                  SizedBox(height: 30.h),
+                  SizedBox(height: 20.h),
                   CustomDropDown(
                     value: controller.caseTypeValue,
                     onChange: (String? newValue) async {},
@@ -47,7 +47,7 @@ class AddCaseView extends GetView<AddCaseController> {
                     }).toList(),
                     label: Strings.caseType,
                   ),
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 20.h),
                   CustomDropDown(
                     value: controller.natureOfCaseValue,
                     onChange: (String? newValue) async {},
@@ -59,7 +59,7 @@ class AddCaseView extends GetView<AddCaseController> {
                     }).toList(),
                     label: Strings.natureOfCase,
                   ),
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 20.h),
                   CustomDropDown(
                     value: controller.relatedUnitValue,
                     onChange: (String? newValue) async {},
@@ -71,9 +71,21 @@ class AddCaseView extends GetView<AddCaseController> {
                     }).toList(),
                     label: Strings.relatedUnit,
                   ),
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 20.h),
+                      CustomDropDown(
+                        value: controller.relatedLeaseValue,
+                        onChange: (String? newValue) async {},
+                        items: controller.relatedLeaseList.map((items) {
+                          return DropdownMenuItem<String>(
+                            value: items,
+                            child: Text(items),
+                          );
+                        }).toList(),
+                        label: Strings.relatedLease,
+                      ),
+                      SizedBox(height: 20.h),
                   CustomTextField(
-                    height: 105,
+                    height: 105.h,
                     hint: Strings.requestDetails,
                     controller: controller.requestDetailsController,
                     labelWidget: Text(Strings.requestDetails,
@@ -83,7 +95,8 @@ class AddCaseView extends GetView<AddCaseController> {
                             color: ColorManager.darkBlue)),
                     maxLines: 6,
                   ),
-                  SizedBox(height: 40.h),
+
+                  SizedBox(height: 20.h),
                   PrimaryButton(
                       title: Strings.addCase,
                       onPressed: () {},

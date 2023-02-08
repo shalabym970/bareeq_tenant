@@ -150,7 +150,7 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                               color: ColorManager.darkBlue))),
                   SizedBox(height: 20.h),
                   CustomTextField(
-                    height: 105,
+                    height: 105.h,
                     hint: Strings.requestDetails,
                     controller: controller.subjectController,
                     labelWidget: Text(Strings.requestDetails,

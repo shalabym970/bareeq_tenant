@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../common/widgets/custom_details_page_card.dart';
+import '../../../../common/widgets/custom_message_card.dart';
+
 
 
 class ActivityMessagesList extends StatelessWidget {
@@ -19,7 +20,7 @@ class ActivityMessagesList extends StatelessWidget {
       itemBuilder: ((_, index) {
         // var playerStanding =
         // controller.playerStandingList.elementAt(index);
-        return const CustomDetailsPageCard();
+        return const CustomMessageCard();
       }),
 
     );

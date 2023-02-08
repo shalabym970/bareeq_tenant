@@ -8,6 +8,7 @@ class Routes {
   static const String leaseDetails = "/lease_details";
   static const String fitOutDetails = "/fitOut_details";
   static const String messages = "/messages";
+  static const String messagesDetails = "/message_details";
   static const String profile = "/profile";
   static const String addNewContact = "/add_new_contact";
   static const String changePassword = "/change_password";
@@ -21,4 +22,7 @@ class Routes {
   static const String addCase = "/add_case";
   static const String otp = "/otp";
   static const String activity = "/activity";
+  static const String createInquiry = "/create_inquiry";
+  static const String createMessage = "/create_message";
+  static const String createWorkPermitItem = "/create_work_permit_item";
 }

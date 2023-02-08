@@ -41,6 +41,7 @@ class Strings {
   static const String seefComments = 'Seef Comments';
   static const String workPermitItems = 'Work Permit Items';
   static const String messages = 'Messages';
+  static const String message = 'Message';
   static const String attachments = 'Attachments';
   static const String generalDetails = 'General Details';
   static const String unit = 'Unit';
@@ -73,7 +74,7 @@ class Strings {
   static const String logout = 'Logout';
   static const String leaseTitle = 'Lease Title';
   static const String communicationDate = 'Communication Date';
-  static const String contactPeriod = 'Contact Period';
+  static const String contractPeriod = 'Contract Period';
   static const String brand = 'Brand';
   static const String dates = 'Dates';
   static const String terminationDate = 'Termination Date';
@@ -143,4 +144,36 @@ class Strings {
   static const String recoverPassword = "Recover Password";
   static const String search = 'Search';
   static const String contacts = 'Contacts';
+  static const String categories = 'Categories';
+  static const String next = 'Next';
+  static const String recipient = 'Recipient';
+  static const String inquiryTo = 'Inquiry To';
+  static const String lead = 'Lead';
+  static const String chooseLead = 'Choose Lead';
+  static const String contact = 'Contact';
+  static const String chooseContact = 'Choose Contact';
+  static const String inquiryFirstString =
+      'You need to create an inquiry by filling the following form in order to manage your units using our app';
+  static const String areYouUnitManager = 'Are you a unit manager ?';
+  static const String sendInquiry = 'Send Inquiry';
+  static const String project = 'Project';
+  static const String chooseProject = 'Choose Project';
+  static const String chooseUnit = 'Choose Unit';
+  static const String enterYourMessageHere = 'Enter your Message here';
+  static const String goBack = 'Go Back';
+  static const String defineYourUnit = 'Define Your Unit';
+  static const String inquirySecondString =
+      "Please choose your unit's info accurately, if there's an issue or a note please type it in the message section below.";
+  static const String inquirySentString =
+      "Once your inquiry is accepted you'll be contacted with your username and password. we hope this is done as soon as possible.";
+  static const String inquirySentSuccessfully = 'Inquiry Sent Successfully';
+  static const String newMessage = 'New Message';
+  static const String relatedCategory = 'Related Category';
+  static const String messageTitle = 'Message Title';
+  static const String sendMessage = 'Send Message';
+  static const String newItem = 'New Item';
+  static const String relatedWorkPermit = 'Related Work Permit';
+  static const String itemType = 'Item Type';
+  static const String enterDescriptionHere = 'Enter Description Here.';
+  static const String createItem = 'Create Item';
 }

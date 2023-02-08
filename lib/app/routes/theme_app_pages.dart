@@ -1,6 +1,8 @@
 import 'package:Seef/app/modules/add_work_permit/views/add_work_permit_view.dart';
 import 'package:Seef/app/modules/auth/views/recover_account_view.dart';
 import 'package:Seef/app/modules/cases/views/cases_view.dart';
+import 'package:Seef/app/modules/create_message/views/create_message_view.dart';
+import 'package:Seef/app/modules/create_work_permit_item/views/create_work_permit_item_view.dart';
 import 'package:Seef/app/modules/work_permits/views/work_permits_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
@@ -16,6 +18,10 @@ import '../modules/auth/views/login_view.dart';
 import '../modules/case_details/bindings/case_details_binding.dart';
 import '../modules/case_details/views/case_details_view.dart';
 import '../modules/cases/bindings/cases_binding.dart';
+import '../modules/create_inquiry/bindings/inquiry_binding.dart';
+import '../modules/create_inquiry/views/create_inquiry_first_view.dart';
+import '../modules/create_message/bindings/create_message_binding.dart';
+import '../modules/create_work_permit_item/bindings/create_work_permit_item_binding.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/fit_out_process_details/bindings/fit_out_process_details_binding.dart';
@@ -30,7 +36,9 @@ import '../modules/lease_details/bindings/lease_details_binding.dart';
 import '../modules/lease_details/views/lease_details_view.dart';
 import '../modules/leases/bindings/leases_binding.dart';
 import '../modules/leases/views/leases_view.dart';
+import '../modules/messages/bindings/message_details_binding.dart';
 import '../modules/messages/bindings/messages_binding.dart';
+import '../modules/messages/views/message_details_view.dart';
 import '../modules/messages/views/messages_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/add_contact_view.dart';
@@ -130,5 +138,21 @@ class ThemeAppPages {
         name: Routes.passwordRecovering,
         page: () => const RecoverAccountView(),
         binding: AuthBinding()),
+    GetPage(
+        name: Routes.messagesDetails,
+        page: () => const MessageDetailsView(),
+        binding: MessageDetailsBinding()),
+    GetPage(
+        name: Routes.createInquiry,
+        page: () => const CreateInquiryFirstView(),
+        binding: InquiryBinding()),
+    GetPage(
+        name: Routes.createMessage,
+        page: () => const CreateMessageView(),
+        binding: CreateMessageBinding()),
+    GetPage(
+        name: Routes.createWorkPermitItem,
+        page: () => const CreateWorkPermitItemView(),
+        binding: CreateWorkPermitItemBinding()),
   ];
 }

@@ -24,7 +24,9 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
     return Scaffold(
       appBar: customAppBar(title: Strings.invoice),
       floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.offAllNamed(Routes.dashboard);
+          },
           heroTag: null,
           backgroundColor: ColorManager.primaryBTNColorBrown,
           child: SvgPicture.asset(ImagePaths.save, height: 20.h, width: 20.w)),
@@ -78,10 +80,31 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),
-                child: Text(
-                  Strings.messages,
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      Strings.messages,
+                      style:
+                          TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
+                    ),
+                    SizedBox(
+                      height: 32.h,
+                      width: 32.w,
+                      child: FloatingActionButton(
+                        onPressed: () {
+                          Get.toNamed(Routes.createMessage);
+                        },
+                        heroTag: null,
+                        backgroundColor: ColorManager.primaryBTNColorBrown,
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 20.sp,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
               SizedBox(height: 10.h),

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../common/color_manager.dart';
+import '../../../../../common/constants.dart';
 import '../../../../routes/app_routes.dart';
 import '../../views/message_details_view.dart';
 
@@ -15,10 +16,7 @@ class InboxMessagesListItem extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 5.h),
       child: GestureDetector(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const MessageDetailsView()),
-            );
+           Get.toNamed(Routes.messagesDetails,arguments: Constants.inboxMessage);
           },
           child: Container(
             decoration: BoxDecoration(

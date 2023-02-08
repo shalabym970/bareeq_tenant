@@ -22,22 +22,50 @@ class ActivityGeneralDetailsWidget extends StatelessWidget {
           SizedBox(
             height: 20.h,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              customDetailsItem(
-                  icon: ImagePaths.deleteCalendar,
-                  title: Strings.date,
-                  value: '23-November-2022'),
-              SizedBox(
-                height: 20.h,
+              Expanded(
+                flex: 1,
+                child:  Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.deleteCalendar,
+                        title: Strings.date,
+                        value: '23-November-2022'),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.pylon,
+                        title: Strings.status,
+                        value: 'Pending')
+                  ],
+                ),
               ),
-              customDetailsItem(
-                  icon: ImagePaths.pylon,
-                  title: Strings.status,
-                  value: 'Pending')
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.documentLayout,
+                        title: Strings.type,
+                        value: 'Standard'),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.group42,
+                        title: Strings.categories,
+                        value: 'categories')
+                  ],
+                ),
+              )
             ],
-          ),
+          )
+
         ],
       ),
     );

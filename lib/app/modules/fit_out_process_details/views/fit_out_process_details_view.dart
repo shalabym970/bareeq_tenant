@@ -7,11 +7,12 @@ import '../../../../common/images_paths.dart';
 import '../../../../common/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_drawer.dart';
+import '../../../routes/app_routes.dart';
 import '../controllers/fit_out_process_details_controller.dart';
 import '../widgets/Fit_out_process_dates_widget.dart';
 import '../widgets/Fit_out_process_general_details.dart';
 import '../widgets/Fit_out_process_messages_list.dart';
-import '../widgets/Fit_out_process_steps_list.dart';
+import '../widgets/fit_out_steps/Fit_out_process_steps_list.dart';
 
 class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
   const FitOutProcessDetailsView({super.key});
@@ -21,7 +22,9 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
     return Scaffold(
       appBar: customAppBar(title: Strings.fitOutProcess),
       floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.offAllNamed(Routes.dashboard);
+          },
           heroTag: null,
           backgroundColor: ColorManager.primaryBTNColorBrown,
           child: SvgPicture.asset(ImagePaths.save, height: 20.h, width: 20.w)),
@@ -83,10 +86,31 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),
-                child: Text(
-                  Strings.messages,
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      Strings.messages,
+                      style:
+                          TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
+                    ),
+                    SizedBox(
+                      height: 32.h,
+                      width: 32.w,
+                      child: FloatingActionButton(
+                        onPressed: () {
+                          Get.toNamed(Routes.createMessage);
+                        },
+                        heroTag: null,
+                        backgroundColor: ColorManager.primaryBTNColorBrown,
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 20.sp,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
 

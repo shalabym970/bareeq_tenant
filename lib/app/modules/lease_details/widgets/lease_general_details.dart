@@ -40,7 +40,7 @@ class LeaseGeneralDetailsWidget extends StatelessWidget {
 
                     customDetailsItem(
                         icon: ImagePaths.deleteCalendar,
-                        title: Strings.contactPeriod,
+                        title: Strings.contractPeriod,
                         value: '24 Months'),
                   ],
                 ),

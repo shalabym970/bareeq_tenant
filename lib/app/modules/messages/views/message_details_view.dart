@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import '../../../../common/color_manager.dart';
+import '../../../../common/constants.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings.dart';
 import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_details_item.dart';
-import '../controllers/messages_controller.dart';
+import '../controllers/message_details_controller.dart';
 
-class MessageDetailsView extends GetView<MessagesController> {
+class MessageDetailsView extends GetView<MessageDetailsController> {
   const MessageDetailsView({Key? key}) : super(key: key);
 
   @override
@@ -83,82 +84,91 @@ class MessageDetailsView extends GetView<MessagesController> {
                           fontSize: 14.sp, fontWeight: FontWeight.w400),
                     ),
                     SizedBox(height: 10.h),
-                    const CustomAttachmentWidget(svgPrefixIcon: ImagePaths.document),
+                    const CustomAttachmentWidget(
+                        svgPrefixIcon: ImagePaths.document),
                     SizedBox(height: 10.h),
                     const CustomAttachmentWidget(
                       svgPrefixIcon: ImagePaths.image,
                     ),
-                    SizedBox(height: 30.h),
-                    Divider(
-                      color: ColorManager.darkBlue,
-                      height: 3,
-                    ),
                     SizedBox(height: 20.h),
-                    Text(
-                      Strings.reply,
-                      style: TextStyle(
-                          fontSize: 14.sp, fontWeight: FontWeight.w400),
-                    ),
-                    SizedBox(height: 20.h),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: ColorManager.lightGrey,
-                        borderRadius: BorderRadius.circular(10.h),
-                      ),
-                      height: 142.h,
-                      child: Padding(
-                        padding: EdgeInsets.all(8.h),
-                        child: TextFormField(
-                          maxLines: 7,
-                          style: TextStyle(
-                              color: ColorManager.black, fontSize: 13.sp),
-                          cursorColor: ColorManager.black,
-                          decoration: InputDecoration(
-                            hintText: Strings.replyHint,
-                            hintStyle: TextStyle(
-                                color: Colors.black.withOpacity(0.7),
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 5.h, horizontal: 5.w),
-                            border: InputBorder.none,
+                    if (controller.rout == Constants.inboxMessage)
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Divider(
+                            color: ColorManager.darkBlue,
+                            height: 3,
                           ),
-                          // controller: controller.detailsEditController,
-                          //  validator: (input) =>
-                          //  input!.isEmpty ? Strings.insertDetails : null,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 30.h),
-                    Text(
-                      Strings.attachments,
-                      style: TextStyle(
-                          fontSize: 14.sp, fontWeight: FontWeight.w400),
-                    ),
-                    SizedBox(height: 10.h),
-                    const CustomAttachmentWidget(svgPrefixIcon: ImagePaths.document),
-                    SizedBox(height: 10.h),
-                    const CustomAttachmentWidget(
-                      svgPrefixIcon: ImagePaths.image,
-                    ),
-                    SizedBox(height: 30.h),
-                    PrimaryButton(
-                      title: Strings.attachFiles,
-                      onPressed: () {},
-                      height: 40.h,
-                      backgroundColor: ColorManager.white,
-                      textAndIconColor: ColorManager.primaryBTNColorBrown,
-                      svgIcon: ImagePaths.path68,
-                    ),
-                    SizedBox(height: 30.h),
-                    PrimaryButton(
-                      title: Strings.sendReply,
-                      onPressed: () {},
-                      height: 40.h,
-                      backgroundColor: ColorManager.primaryBTNColorBrown,
-                      textAndIconColor: ColorManager.white,
-                    ),
-                    SizedBox(height: 20.h),
+                          SizedBox(height: 20.h),
+                          Text(
+                            Strings.reply,
+                            style: TextStyle(
+                                fontSize: 14.sp, fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(height: 20.h),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: ColorManager.lightGrey,
+                              borderRadius: BorderRadius.circular(10.h),
+                            ),
+                            height: 142.h,
+                            child: Padding(
+                              padding: EdgeInsets.all(8.h),
+                              child: TextFormField(
+                                maxLines: 7,
+                                style: TextStyle(
+                                    color: ColorManager.black, fontSize: 13.sp),
+                                cursorColor: ColorManager.black,
+                                decoration: InputDecoration(
+                                  hintText: Strings.replyHint,
+                                  hintStyle: TextStyle(
+                                      color: Colors.black.withOpacity(0.7),
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 5.h, horizontal: 5.w),
+                                  border: InputBorder.none,
+                                ),
+                                // controller: controller.detailsEditController,
+                                //  validator: (input) =>
+                                //  input!.isEmpty ? Strings.insertDetails : null,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 30.h),
+                          Text(
+                            Strings.attachments,
+                            style: TextStyle(
+                                fontSize: 14.sp, fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(height: 10.h),
+                          const CustomAttachmentWidget(
+                              svgPrefixIcon: ImagePaths.document),
+                          SizedBox(height: 10.h),
+                          const CustomAttachmentWidget(
+                            svgPrefixIcon: ImagePaths.image,
+                          ),
+                          SizedBox(height: 30.h),
+                          PrimaryButton(
+                            title: Strings.attachFiles,
+                            onPressed: () {},
+                            height: 40.h,
+                            backgroundColor: ColorManager.white,
+                            textAndIconColor: ColorManager.primaryBTNColorBrown,
+                            svgIcon: ImagePaths.path68,
+                          ),
+                          SizedBox(height: 30.h),
+                          PrimaryButton(
+                            title: Strings.sendReply,
+                            onPressed: () {},
+                            height: 40.h,
+                            backgroundColor: ColorManager.primaryBTNColorBrown,
+                            textAndIconColor: ColorManager.white,
+                          ),
+                          SizedBox(height: 20.h),
+                        ],
+                      )
                   ],
                 ),
               ),

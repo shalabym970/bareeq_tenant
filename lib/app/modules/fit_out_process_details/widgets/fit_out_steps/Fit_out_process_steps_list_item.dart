@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../app/routes/app_routes.dart';
-import '../color_manager.dart';
-import '../strings.dart';
+import '../../../../../common/color_manager.dart';
+import '../../../../../common/strings.dart';
+import '../../../../routes/app_routes.dart';
 
-class CustomDetailsPageCard extends StatelessWidget {
-  const CustomDetailsPageCard({Key? key}) : super(key: key);
+
+class FitOutStepCard extends StatelessWidget {
+  const FitOutStepCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,22 +37,22 @@ class CustomDetailsPageCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                 Text(Strings.subject,
+                Text('Getting Started',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 10.sp,
                         color: ColorManager.darkBlue)),
-                 SizedBox(
+                SizedBox(
                   height: 5.h,
                 ),
-                Text('Carpentry',
+                Text('Pending',
                     style: TextStyle(
-                        fontSize: 12.sp, color: Colors.black.withOpacity(0.7))),
-                 SizedBox(
+                        fontSize: 12.sp, color: ColorManager.primaryBTNColorBrown)),
+                SizedBox(
                   height: 10.h,
                 ),
-                 Text(
-                  'Overall tweaks and finalizations within the entire carpentry area.Overall tweaks and finalizations within the entire carpentry area',
+                Text(
+                  'Once the documentation and lease agreement have been finalized, the tenant to • Appoint their fitout team. (Form 2) • Attend formal meeting with SEEF Fit-Out Team to agree on the procedures for Fit-Out • Understand the design criteria and deliverables • Submit fit-out program milestone prior to the submission of conceptual design. (Form 3) • Artwork for hoarding to be submitted for approval.',
                   style: TextStyle(
                       height: 2.h,
                       fontSize: 12.sp, color: ColorManager.black),maxLines: 4,overflow: TextOverflow.visible,),

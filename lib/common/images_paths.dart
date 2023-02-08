@@ -44,4 +44,5 @@ class ImagePaths {
   static const String upload = "${base}upload.svg";
   static const String logoWhite = "${base}Logo-white.svg";
   static const String filter = "${base}filter.svg";
+  static const String magazin = "${base}inquiry/magazin.svg";
 }

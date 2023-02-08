@@ -94,14 +94,19 @@ class LoginView extends GetView<AuthController> {
                           ),
                         ),
                         SizedBox(height: 20.h),
-                        Text(
-                          Strings.createInquiry,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 14.sp,
-                              color: ColorManager.darkBlue,
-                              decoration: TextDecoration.underline,
-                              decorationStyle: TextDecorationStyle.solid),
+                        GestureDetector(
+                          onTap: (){
+                            Get.toNamed(Routes.createInquiry);
+                          },
+                          child: Text(
+                            Strings.createInquiry,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14.sp,
+                                color: ColorManager.darkBlue,
+                                decoration: TextDecoration.underline,
+                                decorationStyle: TextDecorationStyle.solid),
+                          ),
                         ),
                       ],
                     ),

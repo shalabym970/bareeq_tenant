@@ -32,14 +32,14 @@ class FitOutProcessGeneralDetailsWidget extends StatelessWidget {
                   children: [
                     customDetailsItem(
                         icon: ImagePaths.office,
-                        title: Strings.leaseNumber,
+                        title: Strings.property,
                         value: 'Seef Area (SMS)'),
                     SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.group77,
-                        title: Strings.contactPeriod,
+                        title: Strings.relatedLease,
                         value: 'Rent Contract F...'),
                   ],
                 ),
@@ -51,14 +51,14 @@ class FitOutProcessGeneralDetailsWidget extends StatelessWidget {
                   children: [
                     customDetailsItem(
                         icon: ImagePaths.group42,
-                        title: Strings.type,
+                        title: Strings.unit,
                         value: '10'),
                     SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.pylon,
-                        title: Strings.priority,
+                        title: Strings.status,
                         value: 'Not Yet Started')
                   ],
                 ),

@@ -28,7 +28,9 @@ class ProfileView extends GetView<ProfileController> {
         appBar: customAppBar(
             title: Strings.profile, svgProfileIcon: ImagePaths.profileBrown),
         floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.offAllNamed(Routes.dashboard);
+            },
             heroTag: null,
             backgroundColor: ColorManager.primaryBTNColorBrown,
             child:
@@ -71,63 +73,100 @@ class ProfileView extends GetView<ProfileController> {
                       hint: 'Aml',
                       controller: controller.firstNameController,
                       backgroundColor: Colors.grey[400],
-                      labelWidget:  Text(Strings.firstName,style: TextStyle(fontSize: 10.sp,fontWeight: FontWeight.w500),),
+                      labelWidget: Text(
+                        Strings.firstName,
+                        style: TextStyle(
+                            fontSize: 10.sp, fontWeight: FontWeight.w500),
+                      ),
                     )),
                     SizedBox(width: 20.w),
                     Expanded(
                         child: CustomTextField(
-                          hint: 'Shalaby',
-                          controller: controller.lastNameController,
-                          backgroundColor: Colors.grey[400],
-                          labelWidget:  Text(Strings.lastName,style: TextStyle(fontSize: 10.sp,fontWeight: FontWeight.w500),),
-                        ))
+                      hint: 'Shalaby',
+                      controller: controller.lastNameController,
+                      backgroundColor: Colors.grey[400],
+                      labelWidget: Text(
+                        Strings.lastName,
+                        style: TextStyle(
+                            fontSize: 10.sp, fontWeight: FontWeight.w500),
+                      ),
+                    ))
                   ],
                 ),
                 SizedBox(height: 20.h),
                 CustomTextField(
                   hint: 'Engineer',
                   controller: controller.jobTitleController,
-
-                  labelWidget:  Text(Strings.jobTitle,style: TextStyle(fontSize: 10.sp,fontWeight: FontWeight.w500,color: ColorManager.darkBlue),),
+                  labelWidget: Text(
+                    Strings.jobTitle,
+                    style: TextStyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w500,
+                        color: ColorManager.darkBlue),
+                  ),
                 ),
                 SizedBox(height: 20.h),
                 CustomTextField(
                   hint: '01212121212',
                   controller: controller.mobileNumberController,
-
-                  labelWidget:  Text(Strings.mobileNumber,style: TextStyle(fontSize: 10.sp,fontWeight: FontWeight.w500,color: ColorManager.darkBlue),),
+                  labelWidget: Text(
+                    Strings.mobileNumber,
+                    style: TextStyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w500,
+                        color: ColorManager.darkBlue),
+                  ),
                 ),
-
                 SizedBox(height: 20.h),
                 CustomTextField(
                   hint: 'aml@aml.com',
                   controller: controller.emailController,
                   backgroundColor: Colors.grey[400],
-                  labelWidget:  Text(Strings.email,style: TextStyle(fontSize: 10.sp,fontWeight: FontWeight.w500),),
+                  labelWidget: Text(
+                    Strings.email,
+                    style:
+                        TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w500),
+                  ),
                 ),
                 SizedBox(height: 20.h),
                 CustomTextField(
                   hint: 'Aml Corporate',
                   controller: controller.accountNameController,
                   backgroundColor: Colors.grey[400],
-                  labelWidget:  Text(Strings.accountName,style: TextStyle(fontSize: 10.sp,fontWeight: FontWeight.w500),),
+                  labelWidget: Text(
+                    Strings.accountName,
+                    style:
+                        TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w500),
+                  ),
                 ),
                 SizedBox(height: 20.h),
                 Row(
                   children: [
                     Expanded(
                         child: CustomTextField(
-                          hint: '10',
-                          controller: controller.crNumberController,
-                          labelWidget:  Text(Strings.crNumber,style: TextStyle(fontSize: 10.sp,fontWeight: FontWeight.w500,color: ColorManager.darkBlue),),
-                        )),
+                      hint: '10',
+                      controller: controller.crNumberController,
+                      labelWidget: Text(
+                        Strings.crNumber,
+                        style: TextStyle(
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.w500,
+                            color: ColorManager.darkBlue),
+                      ),
+                    )),
                     SizedBox(width: 20.w),
                     Expanded(
                         child: CustomTextField(
-                          hint: '10',
-                          controller: controller.cprNumberController,
-                          labelWidget:  Text(Strings.cprNumber,style: TextStyle(fontSize: 10.sp,fontWeight: FontWeight.w500,color: ColorManager.darkBlue),),
-                        ))
+                      hint: '10',
+                      controller: controller.cprNumberController,
+                      labelWidget: Text(
+                        Strings.cprNumber,
+                        style: TextStyle(
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.w500,
+                            color: ColorManager.darkBlue),
+                      ),
+                    ))
                   ],
                 ),
                 SizedBox(height: 40.h),

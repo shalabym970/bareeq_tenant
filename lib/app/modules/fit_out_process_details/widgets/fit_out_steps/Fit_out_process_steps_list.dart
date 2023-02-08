@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../common/widgets/custom_details_page_card.dart';
+import '../../../../../common/widgets/custom_message_card.dart';
+import 'Fit_out_process_steps_list_item.dart';
+
 
 
 class FitOutProcessStepsList extends StatelessWidget {
@@ -19,7 +21,7 @@ class FitOutProcessStepsList extends StatelessWidget {
       itemBuilder: ((_, index) {
         // var playerStanding =
         // controller.playerStandingList.elementAt(index);
-        return const CustomDetailsPageCard();
+        return const FitOutStepCard();
       }),
 
     );
