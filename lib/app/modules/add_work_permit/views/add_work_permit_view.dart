@@ -77,7 +77,7 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                             controller.selectDate(dateTypeIsStart: true);
                           },
                           child: Obx(() => CustomTextField(
-                              suffixIcon: ImagePaths.deleteCalendar,
+                              stringSuffixIcon: ImagePaths.deleteCalendar,
                               enabled: false,
                               hint: controller.selectedStartDate.value,
                               controller: controller.startDateController,
@@ -95,7 +95,7 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                             controller.selectDate(dateTypeIsStart: false);
                           },
                           child: Obx(() => CustomTextField(
-                              suffixIcon: ImagePaths.deleteCalendar,
+                              stringSuffixIcon: ImagePaths.deleteCalendar,
                               enabled: false,
                               hint: controller.selectedEndDate.value,
                               controller: controller.endDateController,

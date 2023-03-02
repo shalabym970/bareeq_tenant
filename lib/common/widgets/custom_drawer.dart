@@ -51,6 +51,14 @@ Drawer customDrawer() {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       DrawerItemWidget(
+                        text: Strings.dashboard,
+                        svgIconPath: ImagePaths.whiteBriefcase,
+                        onTap: () {
+                          Get.offAllNamed(Routes.dashboard);
+                        },
+                      ),
+                      SizedBox(height: 40.h),
+                      DrawerItemWidget(
                         text: Strings.workPermits,
                         svgIconPath: ImagePaths.whiteBriefcase,
                         onTap: () {
@@ -89,7 +97,7 @@ Drawer customDrawer() {
                           Get.toNamed(Routes.leases);
                         },
                       ),
-                      SizedBox(height: 80.h),
+                      SizedBox(height: 60.h),
                       DrawerItemWidget(
                         text: Strings.logout,
                         svgIconPath: ImagePaths.whiteLogout,

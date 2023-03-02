@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-
-import '../../app/routes/app_routes.dart';
 import '../color_manager.dart';
 import '../strings.dart';
 
@@ -50,11 +47,13 @@ class CustomMessageCard extends StatelessWidget {
                  SizedBox(
                   height: 10.h,
                 ),
-                 Text(
-                  'Overall tweaks and finalizations within the entire carpentry area.Overall tweaks and finalizations within the entire carpentry area',
-                  style: TextStyle(
-                      height: 2.h,
-                      fontSize: 12.sp, color: ColorManager.black),maxLines: 4,overflow: TextOverflow.visible,),
+                 Expanded(
+                   child: Text(
+                    'Overall tweaks and finalizations within the entire carpentry area.Overall tweaks and finalizations within the entire carpentry area',
+                    style: TextStyle(
+                        height: 2.h,
+                        fontSize: 12.sp, color: ColorManager.black),maxLines: 4,overflow: TextOverflow.visible,),
+                 ),
               ],
             ),
           ),

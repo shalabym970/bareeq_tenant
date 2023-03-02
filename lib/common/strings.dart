@@ -1,3 +1,5 @@
+import 'dart:core';
+
 class Strings {
   static const String login = "Login";
   static const String email = "Email";

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get.dart';
 import '../../../../common/color_manager.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings.dart';
@@ -28,8 +26,8 @@ class LoginView extends GetView<AuthController> {
             children: [
               SizedBox(height: 60.h),
               Image.asset(
-                ImagePaths.logo,
-                height: 77.h,
+                ImagePaths.logoWithoutBg,
+                height: 50.h,
                 width: Get.width,
               ),
               SizedBox(height: 75.h),
@@ -52,12 +50,32 @@ class LoginView extends GetView<AuthController> {
                         CustomTextField(
                           hint: Strings.email,
                           controller: controller.emailController,
+                          validator:(value) => value!.isEmpty
+                              ? 'Please enter some text'
+                              : null,
                         ),
                         SizedBox(height: 45.h),
-                        CustomTextField(
-                          hint: Strings.password,
-                          controller: controller.emailController,
-                        ),
+                        Obx(() => CustomTextField(
+                              hint: Strings.password,
+                              controller: controller.passwordController,
+                              obscureText: controller.passwordVisible.value,
+                              validator: (value) => value!.isEmpty
+                                  ? 'Please enter some text'
+                                  : null,
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  controller.passwordVisible.value
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  color: ColorManager.darkBlue,
+                                  size: 20.sp,
+                                ),
+                                onPressed: () {
+                                  controller.passwordVisible.value =
+                                      !controller.passwordVisible.value;
+                                },
+                              ),
+                            )),
                         SizedBox(height: 22.h),
                         GestureDetector(
                           onTap: () {
@@ -79,6 +97,7 @@ class LoginView extends GetView<AuthController> {
                         PrimaryButton(
                             title: Strings.login,
                             onPressed: () {
+                             // controller.login();
                               Get.offAllNamed(Routes.dashboard);
                             },
                             height: 40.h,
@@ -95,7 +114,7 @@ class LoginView extends GetView<AuthController> {
                         ),
                         SizedBox(height: 20.h),
                         GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             Get.toNamed(Routes.createInquiry);
                           },
                           child: Text(

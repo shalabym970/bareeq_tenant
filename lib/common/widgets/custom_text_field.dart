@@ -18,8 +18,10 @@ class CustomTextField extends StatelessWidget {
     this.width,
     this.height,
     this.enabled,
-    this.suffixIcon,
+    this.stringSuffixIcon,
     this.maxLines,
+    this.obscureText = false,
+    this.suffixIcon,
   }) : super(key: key);
   final String hint;
   final TextEditingController controller;
@@ -30,8 +32,10 @@ class CustomTextField extends StatelessWidget {
   final double? width;
   final double? height;
   final bool? enabled;
-  final String? suffixIcon;
+  final String? stringSuffixIcon;
   final int? maxLines;
+  final bool obscureText;
+  final Widget? suffixIcon;
 
   get svgProfileIcon => null;
 
@@ -44,16 +48,15 @@ class CustomTextField extends StatelessWidget {
           if (labelWidget != null) labelWidget!,
           Container(
             width: width ?? Get.width,
-            height: height ?? 40.h,
+            height: height ?? 50.h,
             decoration: BoxDecoration(
                 color: backgroundColor ?? ColorManager.textFieldBg,
                 borderRadius: BorderRadius.circular(7.h)),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+              padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 0.h),
               child: TextFormField(
                 enabled: enabled ?? true,
                 controller: controller,
-                autovalidateMode: AutovalidateMode.always,
                 cursorColor: ColorManager.darkBlue,
                 decoration: InputDecoration(
                     border: InputBorder.none,
@@ -62,12 +65,14 @@ class CustomTextField extends StatelessWidget {
                         fontSize: 14.sp,
                         color: ColorManager.darkBlue,
                         fontWeight: FontWeight.w400),
-                    suffixIcon: suffixIcon != null
-                        ? SvgPicture.asset(suffixIcon!, height: 5.h, width: 5.w)
-                        : null),
+                    suffixIcon: suffixIcon ?? (stringSuffixIcon != null
+                            ? SvgPicture.asset(stringSuffixIcon!,
+                                height: 5.h, width: 5.w)
+                            : null)),
                 onSaved: onSaved,
                 validator: validator,
-                maxLines: maxLines,
+                maxLines: obscureText == true ? 1 : maxLines,
+                obscureText: obscureText,
               ),
             ),
           ),

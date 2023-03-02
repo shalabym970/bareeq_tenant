@@ -1,6 +1,5 @@
 class ImagePaths {
   static const String base = "assets/images/";
-  static const String logo = "${base}Logo.png";
   static const String drawerBg = "${base}drawer_bg.svg";
   static const String document = "${base}work_permit/document.svg";
   static const String documentLayout = "${base}work_permit/document-layout.svg";
@@ -43,6 +42,8 @@ class ImagePaths {
   static const String drill = "${base}drill.svg";
   static const String upload = "${base}upload.svg";
   static const String logoWhite = "${base}Logo-white.svg";
+  static const String logoWithBg = "${base}logo_with_bg.png";
+  static const String logoWithoutBg = "${base}logo_no_bg.png";
   static const String filter = "${base}filter.svg";
   static const String magazin = "${base}inquiry/magazin.svg";
 }
