@@ -23,13 +23,6 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(title: Strings.lease),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.offAllNamed(Routes.dashboard);
-          },
-          heroTag: null,
-          backgroundColor: ColorManager.primaryBTNColorBrown,
-          child: SvgPicture.asset(ImagePaths.save, height: 20.h, width: 20.w)),
 
       body: Padding(
         padding: EdgeInsets.only(right: 10.w, left: 10.w),
@@ -84,8 +77,8 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                   children: [
                     Text(
                       Strings.messages,
-                      style:
-                          TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                          fontSize: 14.sp, fontWeight: FontWeight.w400),
                     ),
                     SizedBox(
                       height: 32.h,
@@ -120,17 +113,8 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
               SizedBox(height: 10.h),
               const CustomAttachmentWidget(svgPrefixIcon: ImagePaths.document),
               SizedBox(height: 10.h),
-              const CustomAttachmentWidget(svgPrefixIcon: ImagePaths.image,),
-              SizedBox(height: 20.h),
-              PrimaryButton(
-                title: Strings.attachFiles,
-                onPressed: () {
-
-                },
-                height: 40.h,
-                backgroundColor: ColorManager.white,
-                textAndIconColor: ColorManager.primaryBTNColorBrown,
-                svgIcon: ImagePaths.path68,
+              const CustomAttachmentWidget(
+                svgPrefixIcon: ImagePaths.image,
               ),
               SizedBox(height: 20.h),
             ],

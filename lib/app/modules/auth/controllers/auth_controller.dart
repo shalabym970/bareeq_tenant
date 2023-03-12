@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:ntlm/ntlm.dart';
+import '../../../models/contact_model.dart';
+import '../../../repositories/login_repo.dart';
+import '../../../routes/app_routes.dart';
 
 class AuthController extends GetxController {
   final loginFormKey = GlobalKey<FormState>();
@@ -10,19 +11,35 @@ class AuthController extends GetxController {
   final recoverEmailController = TextEditingController();
   final passwordController = TextEditingController();
   final passwordVisible = true.obs;
+  final loading = false.obs;
+  final currentContact = const Contact().obs;
+  LoginRepository loginRepository = LoginRepository();
 
-  login() async{
-    if (loginFormKey.currentState!.validate()) {
-      loginFormKey.currentState?.save();
-      var client = NTLMClient(
-        domain: 'blive',
-        workstation: "LAPTOP",
-        username: emailController.text,
-       password: passwordController.text,
-      );
+  // @override
+  // void onInit() async {
+  //   Get.put<SettingServices>(SettingServices());
+  //   super.onInit();
+  // }
 
-     var response = await client.get(Uri.parse('http://d365.blive.me/bar/api/data/v9.1/leads')) ;
-     print(response.body);
+  login() async {
+    try {
+      if (loginFormKey.currentState!.validate()) {
+        loading.value = true;
+        loginFormKey.currentState?.save();
+
+        final isPotentialUser = await loginRepository.getAllContacts(
+            email: emailController.text, password: passwordController.text);
+        if (isPotentialUser == true) {
+          Get.log('=================  authorized =================');
+          Get.offAllNamed(Routes.dashboard);
+        } else {
+          Get.log('================= not authorized =================');
+        }
+      }
+    } catch (e) {
+      Get.log(' ========== error : $e ==========');
+    } finally {
+      loading.value = false;
     }
   }
 }

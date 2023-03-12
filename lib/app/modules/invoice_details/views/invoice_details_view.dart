@@ -23,14 +23,6 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(title: Strings.invoice),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.offAllNamed(Routes.dashboard);
-          },
-          heroTag: null,
-          backgroundColor: ColorManager.primaryBTNColorBrown,
-          child: SvgPicture.asset(ImagePaths.save, height: 20.h, width: 20.w)),
-
       body: Padding(
         padding: EdgeInsets.only(right: 10.w, left: 10.w),
         child: SingleChildScrollView(
@@ -122,16 +114,6 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
               const CustomAttachmentWidget(svgPrefixIcon: ImagePaths.document),
               SizedBox(height: 10.h),
               const CustomAttachmentWidget(svgPrefixIcon: ImagePaths.image,),
-              SizedBox(height: 20.h),
-              PrimaryButton(
-                title: Strings.attachFiles,
-                onPressed: () {
-                },
-                height: 40.h,
-                backgroundColor: ColorManager.white,
-                textAndIconColor: ColorManager.primaryBTNColorBrown,
-                svgIcon: ImagePaths.path68,
-              ),
               SizedBox(height: 20.h),
             ],
           ),
