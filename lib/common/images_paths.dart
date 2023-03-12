@@ -46,4 +46,5 @@ class ImagePaths {
   static const String logoWithoutBg = "${base}logo_no_bg.png";
   static const String filter = "${base}filter.svg";
   static const String magazin = "${base}inquiry/magazin.svg";
+  static const String firstLoading = "${base}animations/first_loading.json";
 }

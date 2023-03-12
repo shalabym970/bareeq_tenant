@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../common/images_paths.dart';
-import '../../../../../common/strings.dart';
+import '../../../../../common/strings/strings.dart';
 import 'fit_outs_list.dart';
 
 class FitOutsListWidget extends StatelessWidget {

@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
-import '../../../../../common/strings.dart';
+import '../../../../../common/strings/strings.dart';
 import 'invoices_list.dart';
 
 class InvoicesListWidget extends StatelessWidget {

@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import '../../../../common/color_manager.dart';
 import '../../../../common/images_paths.dart';
-import '../../../../common/strings.dart';
+import '../../../../common/strings/strings.dart';
 import '../controllers/work_permits_controller.dart';
 
 class WorkPermitsSearchWidget extends GetView<WorkPermitsController> {

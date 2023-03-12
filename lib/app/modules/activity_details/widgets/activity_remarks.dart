@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/color_manager.dart';
-import '../../../../common/strings.dart';
+import '../../../../common/strings/strings.dart';
 
 class ActivityRemarks extends StatelessWidget {
   const ActivityRemarks({Key? key}) : super(key: key);

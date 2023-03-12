@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../color_manager.dart';
 import '../images_paths.dart';
-import '../strings.dart';
+import '../strings/strings.dart';
 
 class CustomAttachmentWidget extends StatelessWidget {
   const CustomAttachmentWidget(

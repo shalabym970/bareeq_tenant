@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
-import '../../../../../common/strings.dart';
+import '../../../../../common/strings/strings.dart';
 import '../../../../routes/app_routes.dart';
 import 'cases_list.dart';
 

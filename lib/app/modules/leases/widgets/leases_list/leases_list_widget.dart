@@ -6,7 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
-import '../../../../../common/strings.dart';
+import '../../../../../common/strings/strings.dart';
 import '../../../../routes/app_routes.dart';
 import 'leases_list.dart';
 

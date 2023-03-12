@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:intl/intl.dart';
 
-import '../../../../common/strings.dart';
+import '../../../../common/strings/strings.dart';
 
 class AddWorkPermitController extends GetxController {
   final subjectController = TextEditingController();

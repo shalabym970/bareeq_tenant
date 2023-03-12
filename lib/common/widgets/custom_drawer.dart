@@ -1,3 +1,4 @@
+import 'package:Seef/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -5,7 +6,7 @@ import 'package:get/get.dart';
 import '../../app/routes/app_routes.dart';
 import '../color_manager.dart';
 import '../images_paths.dart';
-import '../strings.dart';
+import '../strings/strings.dart';
 import 'drawer_item_widget.dart';
 
 Drawer customDrawer() {
@@ -102,6 +103,7 @@ Drawer customDrawer() {
                         text: Strings.logout,
                         svgIconPath: ImagePaths.whiteLogout,
                         onTap: () {
+                          sharedPref!.clear();
                           Get.offAllNamed(Routes.login);
                         },
                       ),

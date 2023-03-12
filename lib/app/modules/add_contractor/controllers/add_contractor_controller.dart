@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../common/strings.dart';
+import '../../../../common/strings/strings.dart';
 
 class AddContractorController extends GetxController {
   final companyNameController = TextEditingController();

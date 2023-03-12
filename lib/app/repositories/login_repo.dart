@@ -1,9 +1,7 @@
-import 'package:Seef/app/services/setting_services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../models/contact_model.dart';
 import '../providers/api_client_provider.dart';
+import '../services/session_services.dart';
 
 class LoginRepository {
   Future<bool> getAllContacts(
@@ -18,7 +16,7 @@ class LoginRepository {
     for (var contact in allContacts) {
       if (contact == user) {
         Get.log('====================  true =======================');
-        Get.find<SettingServices>().setSessionData(user:contact);
+        Get.find<SessionServices>().setSessionData(user: contact);
         return true;
       }
     }

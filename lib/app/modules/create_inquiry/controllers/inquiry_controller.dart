@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
-import '../../../../common/strings.dart';
+import '../../../../common/strings/strings.dart';
 
 class InquiryController extends GetxController {
   final inquiryFirstFormKey = GlobalKey<FormState>();

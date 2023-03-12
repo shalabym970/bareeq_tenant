@@ -6,6 +6,7 @@ import 'package:Seef/app/modules/create_work_permit_item/views/create_work_permi
 import 'package:Seef/app/modules/work_permits/views/work_permits_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import '../middleware/auth_middleware.dart';
 import '../modules/activity_details/bindings/activity_details_binding.dart';
 import '../modules/activity_details/views/activity_details_view.dart';
 import '../modules/add_case/bindings/add_case_binding.dart';
@@ -57,6 +58,7 @@ class ThemeAppPages {
         name: Routes.login,
         page: () => const LoginView(),
         binding: AuthBinding(),
+        middlewares: [AuthMiddleware()],
         transition: Transition.zoom),
     GetPage(
         name: Routes.dashboard,

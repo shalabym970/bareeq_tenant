@@ -32,6 +32,8 @@ dependencies:
   ntlm: ^2.0.1
   dio: ^5.0.1
   equatable: ^2.0.5
+  lottie: ^2.2.0
+  fluttertoast: ^8.2.1
 
 dev_dependencies:
   flutter_test:
@@ -73,4 +75,5 @@ flutter:
     - assets/images/profile/
     - assets/images/drawer/
     - assets/images/inquiry/
+    - assets/images/animations/
 

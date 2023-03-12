@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/images_paths.dart';
-import '../../../../common/strings.dart';
+import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
 
 class ActivityGeneralDetailsWidget extends StatelessWidget {

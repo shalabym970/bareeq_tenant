@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../common/color_manager.dart';
-import '../../../../../common/strings.dart';
+import '../../../../../common/strings/strings.dart';
 import '../../../../routes/app_routes.dart';
 
 class RecentCasesListItem extends StatelessWidget {

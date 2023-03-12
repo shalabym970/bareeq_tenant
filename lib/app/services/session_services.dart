@@ -4,12 +4,12 @@ import 'package:get/get.dart';
 
 import '../../main.dart';
 
-class SettingServices extends GetxService {
+class SessionServices extends GetxService {
   final currentUser = const Contact().obs;
 
-  // bool hasSession() {
-  //  // return sharedPref!.containsKey('player_name') ? true : false;
-  // }
+  bool hasSession() {
+    return sharedPref!.containsKey('user_id') ? true : false;
+  }
 
   void setSessionData({required Contact user}) async {
     sharedPref!.setString('user_fullName', user.fullName ?? '');
@@ -51,14 +51,16 @@ class SettingServices extends GetxService {
 
     Get.log(
         '======================== user data is saved Successfully ========================');
+
   }
 
   void getSessionUser() async {
     currentUser.value = Contact(
       fullName: sharedPref!.getString('user_fullName'),
       emailAddress: sharedPref!.getString('user_email'),
-      customerSizeCode:
-          int.parse(sharedPref!.getString('user_customerSizeCode') ?? ''),
+      customerSizeCode: sharedPref!.getString('user_customerSizeCode') != null
+          ? int.parse(sharedPref!.getString('user_customerSizeCode')!)
+          : 0,
       callback: sharedPref!.getString('user_callback'),
       parentCustomerId: sharedPref!.getString('user_parentCustomerId'),
       transactionCurrencyId:
@@ -70,21 +72,29 @@ class SettingServices extends GetxService {
       lastName: sharedPref!.getString('user_lastName'),
       firstName: sharedPref!.getString('user_firstName'),
       password: sharedPref!.getString('user_password'),
-      crNumber: int.parse(sharedPref!.getString('user_crNumber') ?? ''),
-      cprNumber: int.parse(sharedPref!.getString('user_cprNumber') ?? ''),
+      crNumber: sharedPref!.getString('user_crNumber') != null
+          ? int.parse(sharedPref!.getString('user_crNumber')!)
+          : 0,
+      cprNumber: sharedPref!.getString('user_cprNumber') != null
+          ? int.parse(sharedPref!.getString('user_cprNumber')!)
+          : 0,
       businessPhone: sharedPref!.getString('user_businessPhone'),
       mobilePhone: sharedPref!.getString('user_mobilePhone'),
       account: Account(
         name: sharedPref!.getString('user_accountName'),
         id: sharedPref!.getString('user_accountId'),
         primaryContactId: sharedPref!.getString('user_accountPrimaryContactId'),
-        accountStatus:
-            int.parse(sharedPref!.getString('user_accountStatus') ?? ''),
+        accountStatus: sharedPref!.getString('user_accountStatus') != 'null'
+            ? int.parse(sharedPref!.getString('user_accountStatus')!)
+            : 0,
         ownerId: sharedPref!.getString('user_ownerId'),
         emailAddress: sharedPref!.getString('user_emailAddress1'),
-        crNumber:
-            int.parse(sharedPref!.getString('user_accountCrNumber') ?? ''),
-        accountType: int.parse(sharedPref!.getString('user_accountType') ?? ''),
+        crNumber: sharedPref!.getString('user_accountCrNumber') != 'null'
+            ? int.parse(sharedPref!.getString('user_accountCrNumber')!)
+            : 0,
+        accountType: sharedPref!.getString('user_accountType') != 'null'
+            ? int.parse(sharedPref!.getString('user_accountType')!)
+            : 0,
         cbrNumber: sharedPref!.getString('user_accountCbrNumber'),
         transactionCurrencyId:
             sharedPref!.getString('user_accountTransactionCurrencyId'),

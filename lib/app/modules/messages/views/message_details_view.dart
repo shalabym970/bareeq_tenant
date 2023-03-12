@@ -4,7 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import '../../../../common/color_manager.dart';
 import '../../../../common/constants.dart';
 import '../../../../common/images_paths.dart';
-import '../../../../common/strings.dart';
+import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_details_item.dart';

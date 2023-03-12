@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
-import '../../../../../common/strings.dart';
+import '../../../../../common/strings/strings.dart';
 
 class RecentLeasesWidget extends StatelessWidget {
   const RecentLeasesWidget({Key? key}) : super(key: key);
