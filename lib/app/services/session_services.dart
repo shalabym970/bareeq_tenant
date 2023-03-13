@@ -11,7 +11,7 @@ class SessionServices extends GetxService {
     return sharedPref!.containsKey('user_id') ? true : false;
   }
 
-  void setSessionData({required Contact user}) async {
+   setSessionData({required Contact user}) async {
     sharedPref!.setString('user_fullName', user.fullName ?? '');
     sharedPref!.setString('user_email', user.emailAddress!);
     sharedPref!
@@ -54,8 +54,8 @@ class SessionServices extends GetxService {
 
   }
 
-  void getSessionUser() async {
-    currentUser.value = Contact(
+   getSessionUser() async {
+    currentUser.value =  Contact(
       fullName: sharedPref!.getString('user_fullName'),
       emailAddress: sharedPref!.getString('user_email'),
       customerSizeCode: sharedPref!.getString('user_customerSizeCode') != null
@@ -100,5 +100,6 @@ class SessionServices extends GetxService {
             sharedPref!.getString('user_accountTransactionCurrencyId'),
       ),
     );
+    Get.log('=========== Current user : ${currentUser.value.id} ==========');
   }
 }

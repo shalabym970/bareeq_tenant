@@ -34,7 +34,7 @@ class AddCaseView extends GetView<AddCaseController> {
                           style: TextStyle(
                               fontSize: 10.sp,
                               fontWeight: FontWeight.w500,
-                              color: ColorManager.darkBlue))),
+                              color: ColorManager.green))),
                   SizedBox(height: 20.h),
                   CustomDropDown(
                     value: controller.caseTypeValue,
@@ -92,7 +92,7 @@ class AddCaseView extends GetView<AddCaseController> {
                         style: TextStyle(
                             fontSize: 10.sp,
                             fontWeight: FontWeight.w500,
-                            color: ColorManager.darkBlue)),
+                            color: ColorManager.green)),
                     maxLines: 6,
                   ),
 
@@ -101,7 +101,7 @@ class AddCaseView extends GetView<AddCaseController> {
                       title: Strings.addCase,
                       onPressed: () {},
                       height: 40.h,
-                      backgroundColor: ColorManager.primaryBTNColorBrown,
+                      backgroundColor: ColorManager.darkGreen,
                       textAndIconColor: ColorManager.white),
                   SizedBox(height: 20.h)
                 ]))),

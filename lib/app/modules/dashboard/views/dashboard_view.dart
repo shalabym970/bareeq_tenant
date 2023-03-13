@@ -36,10 +36,10 @@ class DashboardView extends GetView<DashboardController> {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20.sp,
-                        color: ColorManager.darkBlue),
+                        color: ColorManager.green),
                     children: <TextSpan>[
                       TextSpan(
-                        text: 'Shalaby',
+                        text: controller.currentUser.firstName,
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 20.sp,

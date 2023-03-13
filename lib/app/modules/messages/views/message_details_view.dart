@@ -22,7 +22,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
         children: [
           SizedBox(height: 60.h),
           BackButton(
-            color: ColorManager.darkBlue,
+            color: ColorManager.green,
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -41,7 +41,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
-                                color: ColorManager.darkBlue)),
+                                color: ColorManager.green)),
                         SizedBox(height: 5.h),
                         Text('Insufficient Cementing Material',
                             style: TextStyle(
@@ -97,7 +97,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Divider(
-                            color: ColorManager.darkBlue,
+                            color: ColorManager.green,
                             height: 3,
                           ),
                           SizedBox(height: 20.h),
@@ -155,7 +155,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                             onPressed: () {},
                             height: 40.h,
                             backgroundColor: ColorManager.white,
-                            textAndIconColor: ColorManager.primaryBTNColorBrown,
+                            textAndIconColor: ColorManager.darkGreen,
                             svgIcon: ImagePaths.path68,
                           ),
                           SizedBox(height: 30.h),
@@ -163,7 +163,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                             title: Strings.sendReply,
                             onPressed: () {},
                             height: 40.h,
-                            backgroundColor: ColorManager.primaryBTNColorBrown,
+                            backgroundColor: ColorManager.darkGreen,
                             textAndIconColor: ColorManager.white,
                           ),
                           SizedBox(height: 20.h),

@@ -12,7 +12,7 @@ class Strings {
   static const String resetPass = "Reset Password";
   static const String passRecover = "Password Recover";
   static const String backLogin = "Back to Login";
-  static const String welcome = "Welcome,";
+  static const String welcome = "Welcome, ";
   static const String dashboard = 'Dashboard';
   static const String recentWorkPermits = 'Recent Work Permits';
   static const String recentCases = 'Recent Cases';

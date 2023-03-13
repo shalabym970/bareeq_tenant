@@ -10,7 +10,7 @@ import '../images_paths.dart';
 AppBar customAppBar(
     {required String title, String? svgEmailIcon, String? svgProfileIcon}) {
   return AppBar(
-    backgroundColor: ColorManager.darkBlue,
+    backgroundColor: ColorManager.darkGreen,
     title: Text(
       title,
       style: TextStyle(

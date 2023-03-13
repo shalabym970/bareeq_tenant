@@ -30,7 +30,7 @@ class WorkPermitsSearchWidget extends GetView<WorkPermitsController> {
             child: FloatingActionButton(
                 onPressed: () {},
                 heroTag: null,
-                backgroundColor: ColorManager.primaryBTNColorBrown,
+                backgroundColor: ColorManager.darkGreen,
                 child: SvgPicture.asset(ImagePaths.filter,
                     height: 15.h, width: 15.w)),
           ),

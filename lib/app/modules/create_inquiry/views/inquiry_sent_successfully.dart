@@ -67,7 +67,7 @@ class InquirySentSuccessView extends GetView<InquiryController> {
                   Get.offAllNamed(Routes.login);
                 },
                 height: 40.h,
-                backgroundColor: ColorManager.primaryBTNColorBrown,
+                backgroundColor: ColorManager.darkGreen,
                 textAndIconColor: ColorManager.white),
             SizedBox(height: 35.h),
           ],

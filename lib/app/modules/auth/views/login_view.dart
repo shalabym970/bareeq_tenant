@@ -40,7 +40,7 @@ class LoginView extends GetView<AuthController> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 25.sp,
-                      color: ColorManager.darkBlue),
+                      color: ColorManager.darkGreen),
                 ),
               ),
               SizedBox(height: 32.h),
@@ -60,6 +60,7 @@ class LoginView extends GetView<AuthController> {
                                 validator: (value) => value!.isEmpty
                                     ? 'Please enter some text'
                                     : null,
+                                maxLines: 1,
                               ),
                               SizedBox(height: 45.h),
                               Obx(() => CustomTextField(
@@ -75,7 +76,7 @@ class LoginView extends GetView<AuthController> {
                                         controller.passwordVisible.value
                                             ? Icons.visibility_off
                                             : Icons.visibility,
-                                        color: ColorManager.darkBlue,
+                                        color: ColorManager.lightGreen,
                                         size: 20.sp,
                                       ),
                                       onPressed: () {
@@ -83,6 +84,7 @@ class LoginView extends GetView<AuthController> {
                                             !controller.passwordVisible.value;
                                       },
                                     ),
+                                    maxLines: 1,
                                   )),
                               SizedBox(height: 22.h),
                               GestureDetector(
@@ -96,7 +98,7 @@ class LoginView extends GetView<AuthController> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 12.sp,
-                                        color: ColorManager.darkBlue,
+                                        color: ColorManager.lightGreen,
                                         decoration: TextDecoration.underline),
                                   ),
                                 ),
@@ -108,8 +110,7 @@ class LoginView extends GetView<AuthController> {
                                     controller.login();
                                   },
                                   height: 40.h,
-                                  backgroundColor:
-                                      ColorManager.primaryBTNColorBrown,
+                                  backgroundColor: ColorManager.darkGreen,
                                   textAndIconColor: ColorManager.white),
                               SizedBox(height: 40.h),
                               Text(
@@ -130,7 +131,7 @@ class LoginView extends GetView<AuthController> {
                                   style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 14.sp,
-                                      color: ColorManager.darkBlue,
+                                      color: ColorManager.lightGreen,
                                       decoration: TextDecoration.underline,
                                       decorationStyle:
                                           TextDecorationStyle.solid),

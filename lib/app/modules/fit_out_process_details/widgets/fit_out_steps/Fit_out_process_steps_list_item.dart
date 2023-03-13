@@ -38,14 +38,14 @@ class FitOutStepCard extends StatelessWidget {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 10.sp,
-                        color: ColorManager.darkBlue)),
+                        color: ColorManager.green)),
                 SizedBox(
                   height: 5.h,
                 ),
                 Text('Pending',
                     style: TextStyle(
                         fontSize: 12.sp,
-                        color: ColorManager.primaryBTNColorBrown)),
+                        color: ColorManager.darkGreen)),
                 SizedBox(
                   height: 10.h,
                 ),

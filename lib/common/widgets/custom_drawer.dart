@@ -11,7 +11,7 @@ import 'drawer_item_widget.dart';
 
 Drawer customDrawer() {
   return Drawer(
-    backgroundColor: ColorManager.darkBlue,
+    backgroundColor: ColorManager.green,
     child: Stack(
       children: <Widget>[
         SvgPicture.asset(

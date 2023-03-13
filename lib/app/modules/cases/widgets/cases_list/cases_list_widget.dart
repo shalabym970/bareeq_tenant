@@ -47,7 +47,7 @@ class CasesListWidget extends StatelessWidget {
                       Get.toNamed(Routes.addCase);
                     },
                     heroTag: null,
-                    backgroundColor: ColorManager.primaryBTNColorBrown,
+                    backgroundColor: ColorManager.darkGreen,
                     child: Icon(
                       Icons.add,
                       color: Colors.white,

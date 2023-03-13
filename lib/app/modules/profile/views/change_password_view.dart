@@ -46,7 +46,7 @@ class ChangePasswordView extends GetView<ProfileController> {
                   style: TextStyle(
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w500,
-                      color: ColorManager.darkBlue),
+                      color: ColorManager.green),
                 ),
               ),
               SizedBox(height: 20.h),
@@ -58,7 +58,7 @@ class ChangePasswordView extends GetView<ProfileController> {
                   style: TextStyle(
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w500,
-                      color: ColorManager.darkBlue),
+                      color: ColorManager.green),
                 ),
               ),
               SizedBox(height: 20.h),
@@ -70,7 +70,7 @@ class ChangePasswordView extends GetView<ProfileController> {
                   style: TextStyle(
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w500,
-                      color: ColorManager.darkBlue),
+                      color: ColorManager.green),
                 ),
               ),
               SizedBox(height: 20.h),
@@ -79,7 +79,7 @@ class ChangePasswordView extends GetView<ProfileController> {
                 title: Strings.changePassword,
                 onPressed: () {},
                 height: 40.h,
-                backgroundColor: ColorManager.primaryBTNColorBrown,
+                backgroundColor: ColorManager.darkGreen,
                 textAndIconColor: ColorManager.white,
               ),
               SizedBox(height: 40.h),

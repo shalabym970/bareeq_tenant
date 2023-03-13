@@ -48,24 +48,25 @@ class CustomTextField extends StatelessWidget {
           if (labelWidget != null) labelWidget!,
           Container(
             width: width ?? Get.width,
-            height: height ?? 50.h,
+            height: height,
             decoration: BoxDecoration(
                 color: backgroundColor ?? ColorManager.textFieldBg,
                 borderRadius: BorderRadius.circular(7.h)),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 0.h),
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
               child: TextFormField(
                 enabled: enabled ?? true,
                 controller: controller,
-                cursorColor: ColorManager.darkBlue,
+                cursorColor: Colors.black,
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: hint,
                     hintStyle: TextStyle(
                         fontSize: 14.sp,
-                        color: ColorManager.darkBlue,
+                        color: ColorManager.green,
                         fontWeight: FontWeight.w400),
-                    suffixIcon: suffixIcon ?? (stringSuffixIcon != null
+                    suffixIcon: suffixIcon ??
+                        (stringSuffixIcon != null
                             ? SvgPicture.asset(stringSuffixIcon!,
                                 height: 5.h, width: 5.w)
                             : null)),

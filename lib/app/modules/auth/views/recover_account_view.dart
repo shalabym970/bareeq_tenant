@@ -15,7 +15,7 @@ class RecoverAccountView extends GetView<AuthController> {
     return Scaffold(
       backgroundColor: ColorManager.white,
       appBar: AppBar(
-        backgroundColor: ColorManager.darkBlue,
+        backgroundColor: ColorManager.green,
         title: Text(
           Strings.recoverPassword,
           style: TextStyle(
@@ -56,7 +56,7 @@ class RecoverAccountView extends GetView<AuthController> {
                               style: TextStyle(
                                   fontSize: 10.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: ColorManager.darkBlue))),
+                                  color: ColorManager.green))),
                       SizedBox(height: 50.h),
                       PrimaryButton(
                           title: Strings.resetPassword,
@@ -64,7 +64,7 @@ class RecoverAccountView extends GetView<AuthController> {
                             Get.back();
                           },
                           height: 40.h,
-                          backgroundColor: ColorManager.primaryBTNColorBrown,
+                          backgroundColor: ColorManager.darkGreen,
                           textAndIconColor: ColorManager.white),
                       SizedBox(height: 50.h),
                       GestureDetector(
@@ -76,7 +76,7 @@ class RecoverAccountView extends GetView<AuthController> {
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
-                              color: ColorManager.darkBlue,
+                              color: ColorManager.green,
                               decoration: TextDecoration.underline,
                               decorationStyle: TextDecorationStyle.solid),
                         ),

@@ -43,7 +43,7 @@ class AddContractorView extends GetView<AddContractorController> {
                             style: TextStyle(
                                 fontSize: 10.sp,
                                 fontWeight: FontWeight.w500,
-                                color: ColorManager.darkBlue))),
+                                color: ColorManager.green))),
                     SizedBox(height: 30.h),
                     Row(
                       children: [
@@ -56,7 +56,7 @@ class AddContractorView extends GetView<AddContractorController> {
                             style: TextStyle(
                                 fontSize: 10.sp,
                                 fontWeight: FontWeight.w500,
-                                color: ColorManager.darkBlue),
+                                color: ColorManager.green),
                           ),
                         )),
                         SizedBox(width: 20.w),
@@ -69,7 +69,7 @@ class AddContractorView extends GetView<AddContractorController> {
                             style: TextStyle(
                                 fontSize: 10.sp,
                                 fontWeight: FontWeight.w500,
-                                color: ColorManager.darkBlue),
+                                color: ColorManager.green),
                           ),
                         ))
                       ],
@@ -82,7 +82,7 @@ class AddContractorView extends GetView<AddContractorController> {
                             style: TextStyle(
                                 fontSize: 10.sp,
                                 fontWeight: FontWeight.w500,
-                                color: ColorManager.darkBlue))),
+                                color: ColorManager.green))),
                     SizedBox(height: 30.h),
                     CustomTextField(
                         hint: Strings.phoneNumber,
@@ -91,13 +91,13 @@ class AddContractorView extends GetView<AddContractorController> {
                             style: TextStyle(
                                 fontSize: 10.sp,
                                 fontWeight: FontWeight.w500,
-                                color: ColorManager.darkBlue))),
+                                color: ColorManager.green))),
                     SizedBox(height: 30.h),
                     PrimaryButton(
                         title: Strings.addContractor,
                         onPressed: () {},
                         height: 40.h,
-                        backgroundColor: ColorManager.primaryBTNColorBrown,
+                        backgroundColor: ColorManager.darkGreen,
                         textAndIconColor: ColorManager.white),
                     SizedBox(height: 20.h)
                   ]))),

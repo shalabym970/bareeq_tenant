@@ -26,7 +26,7 @@ class PrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       elevation: 0.0,
-      color: ColorManager.primaryBTNColorBrown,
+
       borderRadius: BorderRadius.circular(5.h),
       child: SizedBox(
         height: height,
@@ -35,11 +35,7 @@ class PrimaryButton extends StatelessWidget {
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
               primary: backgroundColor,
-              side: BorderSide(
-                  width: 2.w, // the thickness
-                  color: ColorManager
-                      .primaryBTNColorBrown // the color of the border
-                  )),
+              ),
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

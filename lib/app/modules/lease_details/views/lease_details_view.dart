@@ -51,7 +51,7 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
-                                color: ColorManager.darkBlue)),
+                                color: ColorManager.green)),
                         SizedBox(
                           height: 5.h,
                         ),
@@ -88,7 +88,7 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                           Get.toNamed(Routes.createMessage);
                         },
                         heroTag: null,
-                        backgroundColor: ColorManager.primaryBTNColorBrown,
+                        backgroundColor: ColorManager.darkGreen,
                         child: Icon(
                           Icons.add,
                           color: Colors.white,

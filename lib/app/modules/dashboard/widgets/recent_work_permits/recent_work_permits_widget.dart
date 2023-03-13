@@ -47,7 +47,7 @@ class RecentWorkPermitWidget extends StatelessWidget {
                     Get.toNamed(Routes.addWorkPermit);
                   },
                   heroTag: null,
-                  backgroundColor: ColorManager.primaryBTNColorBrown,
+                  backgroundColor: ColorManager.darkGreen,
                   child: Icon(
                     Icons.add,
                     color: Colors.white,

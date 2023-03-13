@@ -51,7 +51,7 @@ class SentMessagesListItem extends StatelessWidget {
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 10.sp,
-                                    color: ColorManager.darkBlue)),
+                                    color: ColorManager.green)),
                             SizedBox(
                               height: 5.h,
                             ),

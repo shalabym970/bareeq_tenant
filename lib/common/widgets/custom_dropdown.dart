@@ -25,7 +25,7 @@ class CustomDropDown extends StatelessWidget {
             style: TextStyle(
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w500,
-                color: ColorManager.darkBlue)),
+                color: ColorManager.green)),
         Container(
           color: ColorManager.textFieldBg,
           height: 45.h,
@@ -39,13 +39,13 @@ class CustomDropDown extends StatelessWidget {
                 child: DropdownButton<String>(
                   value: value,
                   style: TextStyle(
-                      color: ColorManager.darkBlue,
+                      color: ColorManager.green,
                       //<-- SEE HERE
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w400),
                   dropdownColor: ColorManager.white,
                   icon: Icon(Icons.keyboard_arrow_down,
-                      color: ColorManager.darkBlue),
+                      color: ColorManager.green),
                   items: items,
                   onChanged: onChange,
                 ),

@@ -47,7 +47,7 @@ class Contact extends Equatable {
 
   factory Contact.fromJson(Map<String, dynamic> json) => Contact(
         emailAddress: json["emailaddress1"],
-        fullName: json["yomifullname"],
+        fullName: json["fullname"],
         customerSizeCode: json["customersizecode"],
         createdOn: DateTime.parse(json["createdon"]),
         callback: json["callback"],
@@ -57,8 +57,8 @@ class Contact extends Equatable {
         company: json["company"],
         country: json["blser_country"],
         department: json["department"],
-        lastName: json["yomilastname"],
-        firstName: json["yomifirstname"],
+        lastName: json["lastname"],
+        firstName: json["firstname"],
         password: json['blser_password'],
         cprNumber: json["bls_cprnumber"],
         crNumber: json["bls_crnumber"],

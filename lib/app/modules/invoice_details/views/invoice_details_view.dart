@@ -50,7 +50,7 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
-                                color: ColorManager.darkBlue)),
+                                color: ColorManager.green)),
                         SizedBox(
                           height: 5.h,
                         ),
@@ -88,7 +88,7 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
                           Get.toNamed(Routes.createMessage);
                         },
                         heroTag: null,
-                        backgroundColor: ColorManager.primaryBTNColorBrown,
+                        backgroundColor: ColorManager.darkGreen,
                         child: Icon(
                           Icons.add,
                           color: Colors.white,

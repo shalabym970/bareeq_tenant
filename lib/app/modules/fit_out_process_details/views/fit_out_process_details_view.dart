@@ -26,7 +26,7 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
             Get.offAllNamed(Routes.dashboard);
           },
           heroTag: null,
-          backgroundColor: ColorManager.primaryBTNColorBrown,
+          backgroundColor: ColorManager.darkGreen,
           child: SvgPicture.asset(ImagePaths.save, height: 20.h, width: 20.w)),
 
       body: Padding(
@@ -56,7 +56,7 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
-                                color: ColorManager.darkBlue)),
+                                color: ColorManager.green)),
                         SizedBox(
                           height: 5.h,
                         ),
@@ -102,7 +102,7 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
                           Get.toNamed(Routes.createMessage);
                         },
                         heroTag: null,
-                        backgroundColor: ColorManager.primaryBTNColorBrown,
+                        backgroundColor: ColorManager.darkGreen,
                         child: Icon(
                           Icons.add,
                           color: Colors.white,

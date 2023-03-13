@@ -16,7 +16,8 @@ class LoginRepository {
     for (var contact in allContacts) {
       if (contact == user) {
         Get.log('====================  true =======================');
-        Get.find<SessionServices>().setSessionData(user: contact);
+        await Get.find<SessionServices>().setSessionData(user: contact);
+        await Get.find<SessionServices>().getSessionUser();
         return true;
       }
     }

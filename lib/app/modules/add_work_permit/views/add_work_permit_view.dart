@@ -38,7 +38,7 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                           style: TextStyle(
                               fontSize: 10.sp,
                               fontWeight: FontWeight.w500,
-                              color: ColorManager.darkBlue))),
+                              color: ColorManager.green))),
                   SizedBox(height: 20.h),
                   Obx(() => CustomCheckBox(
                       value: controller.standardCheck.value,
@@ -85,7 +85,7 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                                   style: TextStyle(
                                       fontSize: 10.sp,
                                       fontWeight: FontWeight.w500,
-                                      color: ColorManager.darkBlue)))),
+                                      color: ColorManager.green)))),
                         )),
                     SizedBox(width: 15.w),
                     Expanded(
@@ -103,7 +103,7 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                                   style: TextStyle(
                                       fontSize: 10.sp,
                                       fontWeight: FontWeight.w500,
-                                      color: ColorManager.darkBlue)))),
+                                      color: ColorManager.green)))),
                         ))
                   ]),
                   SizedBox(height: 30.h),
@@ -138,7 +138,7 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                       },
                       height: 40.h,
                       backgroundColor: ColorManager.white,
-                      textAndIconColor: ColorManager.primaryBTNColorBrown),
+                      textAndIconColor: ColorManager.darkGreen),
                   SizedBox(height: 30.h),
                   CustomTextField(
                       hint: Strings.numberOfWorkers,
@@ -147,7 +147,7 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                           style: TextStyle(
                               fontSize: 10.sp,
                               fontWeight: FontWeight.w500,
-                              color: ColorManager.darkBlue))),
+                              color: ColorManager.green))),
                   SizedBox(height: 20.h),
                   CustomTextField(
                     height: 105.h,
@@ -157,7 +157,7 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                         style: TextStyle(
                             fontSize: 10.sp,
                             fontWeight: FontWeight.w500,
-                            color: ColorManager.darkBlue)),
+                            color: ColorManager.green)),
                     maxLines: 6,
                   ),
                   SizedBox(height: 20.h),
@@ -205,7 +205,7 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                                   style: TextStyle(
                                       decoration: TextDecoration.underline,
                                       fontSize: 14.sp,
-                                      color: ColorManager.darkBlue,
+                                      color: ColorManager.green,
                                       fontWeight: FontWeight.w500))
                             ],
                           ),
@@ -218,7 +218,7 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                       title: Strings.addWorkPermit,
                       onPressed: () {},
                       height: 40.h,
-                      backgroundColor: ColorManager.primaryBTNColorBrown,
+                      backgroundColor: ColorManager.darkGreen,
                       textAndIconColor: ColorManager.white),
                   SizedBox(height: 20.h)
                 ]))),

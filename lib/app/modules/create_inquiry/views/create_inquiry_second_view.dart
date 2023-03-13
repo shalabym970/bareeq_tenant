@@ -93,7 +93,7 @@ class CreateInquirySecondView extends GetView<InquiryController> {
                               style: TextStyle(
                                   fontSize: 10.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: ColorManager.darkBlue)),
+                                  color: ColorManager.green)),
                           maxLines: 6,
                         ),
                         SizedBox(height: 35.h),
@@ -103,7 +103,7 @@ class CreateInquirySecondView extends GetView<InquiryController> {
                               Get.to(const InquirySentSuccessView());
                             },
                             height: 40.h,
-                            backgroundColor: ColorManager.primaryBTNColorBrown,
+                            backgroundColor: ColorManager.darkGreen,
                             textAndIconColor: ColorManager.white),
                         SizedBox(height: 35.h),
                         GestureDetector(
@@ -115,7 +115,7 @@ class CreateInquirySecondView extends GetView<InquiryController> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14.sp,
-                                color: ColorManager.darkBlue,
+                                color: ColorManager.green,
                                 decoration: TextDecoration.underline,
                                 decorationStyle: TextDecorationStyle.solid),
                           ),
