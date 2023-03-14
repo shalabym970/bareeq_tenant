@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../common/widgets/custom_message_card.dart';
 
 
-
 class InvoiceMessagesList extends StatelessWidget {
   const InvoiceMessagesList({super.key});
 

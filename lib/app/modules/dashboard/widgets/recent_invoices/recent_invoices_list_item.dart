@@ -135,12 +135,9 @@ class RecentInvoicesListItem extends StatelessWidget {
                         height: 5.h,
                       ),
                       Text(
-                          invoice.deliveredDate != null
-                              ? intl.DateFormat('EEE d MMM y')
-                                  .format(
-                                      DateTime.parse(invoice.deliveredDate!))
-                                  .toString()
-                              : invoice.deliveredDate!,
+                          intl.DateFormat('EEE d MMM y')
+                              .format(invoice.createdOn!)
+                              .toString(),
                           style: TextStyle(
                               fontSize: 12.sp, color: ColorManager.black))
                     ],

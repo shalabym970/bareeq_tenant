@@ -82,8 +82,8 @@ class Invoice {
         priorityCode: json["prioritycode"],
         createdOn: DateTime.parse(json["createdon"] ?? DateTime(0000, 00, 00)),
         deliveredDate:
-            json["datedelivered"] ,
-        ownerId: json["_ownerid_value"],
+            json["datedelivered"]  ,
+        ownerId: json["_ownerid_value"] ?? 'null',
         amountDueRemaining: json["blser_amountdueremaining"],
         customerIdValue: json["_customerid_value"],
         paymentTermsCode: json["paymenttermscode"],
@@ -101,4 +101,5 @@ class Invoice {
         invoiceDetails: List<InvoiceDetails>.from(
             json["invoice_details"].map((x) => InvoiceDetails.fromJson(x))),
       );
+
 }

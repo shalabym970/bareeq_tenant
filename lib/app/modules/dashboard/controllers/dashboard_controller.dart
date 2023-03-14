@@ -35,10 +35,13 @@ class DashboardController extends GetxController {
     try {
       loadingInvoices.value = true;
       invoices.assignAll(await invoicesRepository.getInvoices());
-      Get.log('=========== invoices list : ${invoices.toString()} ==========');
+
+      Get.log(
+          '=========== invoices list : ${invoices.first.invoiceId} ==========');
     } catch (e) {
       errorInvoices.value = true;
-      Get.showSnackbar(Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
       Get.log('========== Error when get invoices : $e ==========');
     } finally {
       loadingInvoices.value = false;

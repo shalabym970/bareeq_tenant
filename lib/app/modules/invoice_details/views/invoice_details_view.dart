@@ -7,7 +7,6 @@ import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_attachment_widget.dart';
-import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../../../routes/app_routes.dart';
 import '../controllers/invoice_details_controller.dart';
@@ -54,7 +53,7 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('Central Court Painting Materials',
+                        Text(controller.invoice.description!,
                             style: TextStyle(
                                 fontSize: 18.sp, color: ColorManager.black))
                       ],
@@ -100,7 +99,7 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
                 ),
               ),
               SizedBox(height: 10.h),
-              SizedBox(height: 185.h, child: const InvoiceMessagesList()),
+              SizedBox(height: 200.h, child: const InvoiceMessagesList()),
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),

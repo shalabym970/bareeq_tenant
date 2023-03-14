@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../controllers/invoice_details_controller.dart';
 
-class InvoicePropertyLeaseDetailsWidget extends StatelessWidget {
+class InvoicePropertyLeaseDetailsWidget extends GetView<InvoiceDetailsController> {
   const InvoicePropertyLeaseDetailsWidget({Key? key}) : super(key: key);
 
   @override
@@ -30,14 +32,14 @@ class InvoicePropertyLeaseDetailsWidget extends StatelessWidget {
                 child: customDetailsItem(
                     icon: ImagePaths.group77,
                     title: Strings.property,
-                    value: 'Rent Contract F...'),
+                    value: controller.invoice.advancedPropertyContractId.toString()),
               ),
               Expanded(
                 flex: 1,
                 child: customDetailsItem(
                     icon: ImagePaths.pylon,
                     title: Strings.status,
-                    value: 'New'),
+                    value: controller.invoice.statusCode.toString()),
               ),
             ],
           )

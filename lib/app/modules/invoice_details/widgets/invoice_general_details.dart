@@ -1,25 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../controllers/invoice_details_controller.dart';
+import 'package:intl/intl.dart' as intl;
 
-
-class InvoiceGeneralDetailsWidget extends StatelessWidget {
+class InvoiceGeneralDetailsWidget extends GetView<InvoiceDetailsController> {
   const InvoiceGeneralDetailsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.all(10.h),
+      padding: EdgeInsets.all(10.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(
+          Text(
             Strings.generalDetails,
             style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
           ),
-           SizedBox(
+          SizedBox(
             height: 20.h,
           ),
           Row(
@@ -33,14 +35,16 @@ class InvoiceGeneralDetailsWidget extends StatelessWidget {
                     customDetailsItem(
                         icon: ImagePaths.path79,
                         title: Strings.invoiceNumber,
-                        value: 'CS--21--001'),
-                     SizedBox(
+                        value: controller.invoice.invoiceNumber!),
+                    SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.filingTime,
                         title: Strings.submitDate,
-                        value: '15-November-2021')
+                        value: intl.DateFormat('EEE d MMM y')
+                            .format(controller.invoice.createdOn!)
+                            .toString())
                   ],
                 ),
               ),
@@ -52,14 +56,20 @@ class InvoiceGeneralDetailsWidget extends StatelessWidget {
                     customDetailsItem(
                         icon: ImagePaths.deleteCalendar,
                         title: Strings.amount,
-                        value: '250'),
-                     SizedBox(
+                        value:
+                            controller.invoice.amountDueRemaining.toString()),
+                    SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.filingTime,
                         title: Strings.endDate,
-                        value: '15-November-2021')
+                        value: controller.invoice.deliveredDate != null
+                            ? intl.DateFormat('EEE d MMM y')
+                            .format(DateTime.parse(
+                            controller.invoice.deliveredDate!))
+                            .toString()
+                            : controller.invoice.deliveredDate!)
                   ],
                 ),
               )
