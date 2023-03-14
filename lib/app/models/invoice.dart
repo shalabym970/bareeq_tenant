@@ -23,7 +23,6 @@ class Invoice {
       this.paymentTermsCode,
       this.stateCode,
       this.totalDiscountAmount,
-      this.modifiedOn,
       this.totalTax,
       this.statusCode,
       this.paymentMethod,
@@ -35,35 +34,34 @@ class Invoice {
       this.advancedPropertyContractId,
       this.invoiceDetails});
 
-  int? totalAmountLessFreight;
+  double? totalAmountLessFreight;
   String? transactionCurrencyId;
   int? paymentType;
-  int? freightAmount;
+  double? freightAmount;
   String? erpId;
   String? emailAddress;
   String? name;
-  int? totalAmount;
-  int? amountPaid;
-  int? totalLineItemAmount;
+  double? totalAmount;
+  double? amountPaid;
+  double? totalLineItemAmount;
   String? invoiceId;
   String? invoiceNumber;
   int? priorityCode;
   DateTime? createdOn;
-  DateTime? deliveredDate;
+  String? deliveredDate;
   String? ownerId;
   dynamic amountDueRemaining;
   String? customerIdValue;
   dynamic paymentTermsCode;
   int? stateCode;
-  int? totalDiscountAmount;
-  DateTime? modifiedOn;
-  int? totalTax;
+  double? totalDiscountAmount;
+  double? totalTax;
   int? statusCode;
   dynamic paymentMethod;
   dynamic erpInvoiceType;
   String? description;
-  int? discountAmount;
-  int? discountPercentage;
+  double? discountAmount;
+  double? discountPercentage;
   DateTime? dueDate;
   String? advancedPropertyContractId;
   List<InvoiceDetails>? invoiceDetails;
@@ -82,15 +80,15 @@ class Invoice {
         invoiceId: json["invoiceid"],
         invoiceNumber: json["invoicenumber"],
         priorityCode: json["prioritycode"],
-        createdOn: DateTime.parse(json["createdon"]),
-        deliveredDate: json["datedelivered"],
+        createdOn: DateTime.parse(json["createdon"] ?? DateTime(0000, 00, 00)),
+        deliveredDate:
+            json["datedelivered"] ,
         ownerId: json["_ownerid_value"],
         amountDueRemaining: json["blser_amountdueremaining"],
         customerIdValue: json["_customerid_value"],
         paymentTermsCode: json["paymenttermscode"],
         stateCode: json["statecode"],
         totalDiscountAmount: json["totaldiscountamount"],
-        modifiedOn: DateTime.parse(json["modifiedon"]),
         totalTax: json["totaltax"],
         statusCode: json["statuscode"],
         paymentMethod: json["blser_paymentmethod"],
@@ -98,7 +96,7 @@ class Invoice {
         description: json["description"],
         discountAmount: json["discountamount"],
         discountPercentage: json["discountpercentage"],
-        dueDate: json["duedate"],
+        dueDate: DateTime.parse(json["duedate"] ?? DateTime(0000, 00, 00)),
         advancedPropertyContractId: json["_advanced_propertycontractid_value"],
         invoiceDetails: List<InvoiceDetails>.from(
             json["invoice_details"].map((x) => InvoiceDetails.fromJson(x))),

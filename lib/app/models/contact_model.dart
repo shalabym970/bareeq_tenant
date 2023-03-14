@@ -9,7 +9,7 @@ class Contact extends Equatable {
     this.customerSizeCode,
     this.createdOn,
     this.callback,
-    this.parentCustomerId,
+    this.accountCustomerId,
     this.transactionCurrencyId,
     this.id,
     this.company,
@@ -30,7 +30,7 @@ class Contact extends Equatable {
   final int? customerSizeCode;
   final DateTime? createdOn;
   final String? callback;
-  final String? parentCustomerId;
+  final String? accountCustomerId;
   final String? transactionCurrencyId;
   final String? id;
   final String? company;
@@ -51,7 +51,7 @@ class Contact extends Equatable {
         customerSizeCode: json["customersizecode"],
         createdOn: DateTime.parse(json["createdon"]),
         callback: json["callback"],
-        parentCustomerId: json["_parentcustomerid_value"],
+        accountCustomerId: json["_parentcustomerid_value"],
         transactionCurrencyId: json["_transactioncurrencyid_value"],
         id: json["contactid"],
         company: json["company"],
@@ -73,7 +73,7 @@ class Contact extends Equatable {
         "customersizecode": customerSizeCode,
         "createdon": createdOn!.toIso8601String(),
         "callback": callback,
-        "_parentcustomerid_value": parentCustomerId,
+        "_parentcustomerid_value": accountCustomerId,
         "_transactioncurrencyid_value": transactionCurrencyId,
         "contactid": id,
         "company": company,

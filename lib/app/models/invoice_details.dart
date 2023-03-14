@@ -11,10 +11,10 @@ class InvoiceDetails {
   });
 
 
-  int? pricePerUnit;
+  double? pricePerUnit;
   String? invoiceId;
-  int? baseAmount;
-  int? quantity;
+  double? baseAmount;
+  double? quantity;
   String? productName;
   String? transactionCurrencyId;
   String? invoiceDetailsId;

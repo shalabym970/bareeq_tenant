@@ -1,19 +1,22 @@
+import 'package:Seef/app/models/invoice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
+import 'package:intl/intl.dart' as intl;
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/strings/strings.dart';
 import '../../../../routes/app_routes.dart';
 
 class RecentInvoicesListItem extends StatelessWidget {
-  const RecentInvoicesListItem({Key? key}) : super(key: key);
+  const RecentInvoicesListItem({Key? key, required this.invoice})
+      : super(key: key);
+  final Invoice invoice;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Get.toNamed( Routes.invoiceDetails);
+      onTap: () {
+        Get.toNamed(Routes.invoiceDetails,arguments: invoice);
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 5.h),
@@ -50,7 +53,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text('WP--21--018',
+                          Text(invoice.invoiceNumber ?? "null",
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -65,7 +68,10 @@ class RecentInvoicesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text('12/10/2022',
+                          Text(
+                              intl.DateFormat('EEE d MMM y')
+                                  .format(invoice.dueDate!)
+                                  .toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -90,7 +96,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text('Shalaby',
+                          Text(invoice.name ?? "null",
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -107,7 +113,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text('145 BHD',
+                          Text(invoice.amountDueRemaining.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -128,7 +134,13 @@ class RecentInvoicesListItem extends StatelessWidget {
                       SizedBox(
                         height: 5.h,
                       ),
-                      Text('12/10/2022',
+                      Text(
+                          invoice.deliveredDate != null
+                              ? intl.DateFormat('EEE d MMM y')
+                                  .format(
+                                      DateTime.parse(invoice.deliveredDate!))
+                                  .toString()
+                              : invoice.deliveredDate!,
                           style: TextStyle(
                               fontSize: 12.sp, color: ColorManager.black))
                     ],

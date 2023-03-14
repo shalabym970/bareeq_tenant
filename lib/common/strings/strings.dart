@@ -178,4 +178,5 @@ class Strings {
   static const String itemType = 'Item Type';
   static const String enterDescriptionHere = 'Enter Description Here.';
   static const String createItem = 'Create Item';
+  static const String invoicesEmpty = 'Invoices List is Empty';
 }

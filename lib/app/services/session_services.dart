@@ -17,7 +17,7 @@ class SessionServices extends GetxService {
     sharedPref!
         .setString('user_customerSizeCode', user.customerSizeCode.toString());
     sharedPref!.setString('user_callback', user.callback ?? '');
-    sharedPref!.setString('user_parentCustomerId', user.parentCustomerId ?? '');
+    sharedPref!.setString('user_parentCustomerId', user.accountCustomerId ?? '');
     sharedPref!.setString(
         'user_transactionCurrencyId', user.transactionCurrencyId ?? '');
     sharedPref!.setString('user_id', user.id!);
@@ -62,7 +62,7 @@ class SessionServices extends GetxService {
           ? int.parse(sharedPref!.getString('user_customerSizeCode')!)
           : 0,
       callback: sharedPref!.getString('user_callback'),
-      parentCustomerId: sharedPref!.getString('user_parentCustomerId'),
+      accountCustomerId: sharedPref!.getString('user_parentCustomerId'),
       transactionCurrencyId:
           sharedPref!.getString('user_transactionCurrencyId'),
       id: sharedPref!.getString('user_id'),
