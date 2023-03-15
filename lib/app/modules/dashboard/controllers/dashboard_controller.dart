@@ -3,8 +3,10 @@ import 'package:Seef/common/strings/error_strings.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/widgets/ui.dart';
+import '../../../models/case_model.dart';
 import '../../../models/contact_model.dart';
 import '../../../models/invoice.dart';
+import '../../../repositories/cases_repo.dart';
 import '../../../repositories/invoices_repo.dart';
 
 class DashboardController extends GetxController {
@@ -19,7 +21,9 @@ class DashboardController extends GetxController {
   final errorLeases = false.obs;
   final errorOutProcess = false.obs;
   final invoices = <Invoice>[].obs;
+  final cases = <Case>[].obs;
   InvoicesRepository invoicesRepository = InvoicesRepository();
+  CasesRepository casesRepository = CasesRepository();
 
   Contact get currentUser {
     return Get.find<SessionServices>().currentUser.value;
@@ -28,6 +32,7 @@ class DashboardController extends GetxController {
   @override
   void onInit() {
     getInvoices();
+    getCases();
     super.onInit();
   }
 
@@ -45,6 +50,22 @@ class DashboardController extends GetxController {
       Get.log('========== Error when get invoices : $e ==========');
     } finally {
       loadingInvoices.value = false;
+    }
+  }
+
+  void getCases() async {
+    try {
+      loadingCases.value = true;
+      cases.assignAll(await casesRepository.getCases());
+
+      Get.log('=========== Cases list : ${cases.first.id} ==========');
+    } catch (e) {
+      errorInvoices.value = true;
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when get Cases : $e ==========');
+    } finally {
+      loadingCases.value = false;
     }
   }
 }

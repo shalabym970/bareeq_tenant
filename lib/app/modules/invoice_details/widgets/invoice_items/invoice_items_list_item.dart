@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/strings/strings.dart';
 import '../../../../models/invoice_details.dart';
