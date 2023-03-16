@@ -38,7 +38,7 @@ class RecentCasesList extends GetView<DashboardController> {
                           itemBuilder: ((_, index) {
                             Case cases = controller.cases.elementAt(index);
 
-                            return RecentCasesListItem(oneCases: cases);
+                            return RecentCasesListItem(recentCases: cases);
                           }),
                         ),
         ));

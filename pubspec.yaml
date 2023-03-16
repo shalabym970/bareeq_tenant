@@ -36,6 +36,7 @@ dependencies:
   fluttertoast: ^8.2.1
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -51,12 +52,12 @@ flutter_native_splash:
   ios: true
 
 flutter_icons:
-  image_path: "assets/images/logo_with_bg.png"
+  image_path: "assets/images/app_icon2.png"
   android: true
   ios: true
   remove_alpha_ios: true
   adaptive_icon_background: "#ffffff"
-  adaptive_icon_foreground: "assets/images/logo_with_bg.png"
+  adaptive_icon_foreground: "assets/images/app_icon2.png"
 
 
 flutter:

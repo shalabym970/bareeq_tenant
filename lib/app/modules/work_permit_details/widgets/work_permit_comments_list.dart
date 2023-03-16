@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/widgets/custom_message_card.dart';
+import '../../../models/message.dart';
 
 class WorkPermitsCommentsList extends StatelessWidget {
   const WorkPermitsCommentsList({super.key});
@@ -17,8 +18,7 @@ class WorkPermitsCommentsList extends StatelessWidget {
         itemBuilder: ((_, index) {
           // var playerStanding =
           // controller.playerStandingList.elementAt(index);
-          return const CustomMessageCard();
-        }),
+          return  CustomMessageCard(message: MessageModel());        }),
 
     );
   }

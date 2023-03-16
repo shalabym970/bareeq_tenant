@@ -1,6 +1,6 @@
 # property_pro
 
-A new Flutter project.
+
 
 ## Getting Started
 

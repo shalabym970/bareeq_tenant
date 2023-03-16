@@ -36,7 +36,7 @@ class Case {
   String? id;
   String? description;
   String? accountId;
-  List<Message>? messages;
+  List<MessageModel>? messages;
 
   Unit? unit;
   Project? relatedProject;
@@ -55,8 +55,8 @@ class Case {
         id: json["blser_caseid"],
         description: json["blser_description"],
         accountId: json["_blser_account_value"],
-        messages: List<Message>.from(json["blser_case_blser_portalmessageses"]
-            .map((x) => Message.fromJson(x))),
+        messages: List<MessageModel>.from(json["blser_case_blser_portalmessageses"]
+            .map((x) => MessageModel.fromJson(x))),
         unit: Unit.fromJson(json["blser_LeaseUnit"]),
         relatedProject: Project.fromJson(json["blser_RelatedProject"]),
       );

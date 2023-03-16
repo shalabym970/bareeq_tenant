@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../controllers/case_details_controller.dart';
 
-class CaseUnitDetailsWidget extends StatelessWidget {
+class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
   const CaseUnitDetailsWidget({Key? key}) : super(key: key);
 
   @override
@@ -33,14 +35,17 @@ class CaseUnitDetailsWidget extends StatelessWidget {
                     customDetailsItem(
                         icon: ImagePaths.office,
                         title: Strings.property,
-                        value: 'Building "B"'),
+                        value: controller.recentCases.relatedProject!.name
+                            .toString()),
                     SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.group77,
                         title: Strings.relatedLease,
-                        value: 'Rent Contract F...')
+                        // TODO: must get the lease name by this id whene back at project any more
+                        value:
+                            controller.recentCases.propertyLeaseId.toString())
                   ],
                 ),
               ),
@@ -52,14 +57,15 @@ class CaseUnitDetailsWidget extends StatelessWidget {
                     customDetailsItem(
                         icon: ImagePaths.group42,
                         title: Strings.unit,
-                        value: '10'),
-                     SizedBox(
+                        value: controller.recentCases.unit!.name.toString()),
+                    SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.pylon,
                         title: Strings.status,
-                        value: 'New')
+                        // TODO: must be to convert this status to string to show him here in the future
+                        value: controller.recentCases.status.toString())
                   ],
                 ),
               )

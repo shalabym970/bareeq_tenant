@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:intl/intl.dart' as intl;
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../controllers/case_details_controller.dart';
 
 
-class CaseGeneralDetailsWidget extends StatelessWidget {
+class CaseGeneralDetailsWidget extends GetView<CaseDetailsController> {
   const CaseGeneralDetailsWidget({Key? key}) : super(key: key);
 
   @override
@@ -34,14 +36,14 @@ class CaseGeneralDetailsWidget extends StatelessWidget {
                     customDetailsItem(
                         icon: ImagePaths.path79,
                         title: Strings.caseNumber,
-                        value: 'CS--21--001'),
+                        value: controller.recentCases.caseNumber.toString()),
                      SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.documentLayout,
                         title: Strings.type,
-                        value: 'problem')
+                        value: controller.recentCases.type.toString())
                   ],
                 ),
               ),
@@ -53,14 +55,16 @@ class CaseGeneralDetailsWidget extends StatelessWidget {
                     customDetailsItem(
                         icon: ImagePaths.deleteCalendar,
                         title: Strings.dateSubmitted,
-                        value: '20-April-2022'),
+                        value: intl.DateFormat('EEE d MMM y')
+                            .format(controller.recentCases.submittedOn!)
+                            .toString()),
                      SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.import,
                         title: Strings.priority,
-                        value: 'Normal')
+                        value: controller.recentCases.priority.toString())
                   ],
                 ),
               )

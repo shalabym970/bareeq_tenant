@@ -1,13 +1,14 @@
 import 'package:Seef/app/models/invoice_details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../app/models/message.dart';
 import '../color_manager.dart';
 import '../strings/strings.dart';
 
 class CustomMessageCard extends StatelessWidget {
-  const CustomMessageCard({Key? key})
-      : super(key: key);
-
+  const CustomMessageCard({Key? key,  required this.message}) : super(key: key);
+  final MessageModel? message;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class CustomMessageCard extends StatelessWidget {
         //Get.toNamed(Routes.messagesDetails);
       },
       child: Container(
-      height: 100.h,
+        height: 100.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10.h)),
           boxShadow: [
@@ -28,7 +29,7 @@ class CustomMessageCard extends StatelessWidget {
             ),
           ],
         ),
-        width: 157.h,
+        width: 155.w,
         child: Card(
           color: ColorManager.textFieldBg,
           child: Padding(
@@ -45,7 +46,7 @@ class CustomMessageCard extends StatelessWidget {
                 SizedBox(
                   height: 5.h,
                 ),
-                Text('Carpentry',
+                Text(message!.subject.toString(),
                     style: TextStyle(
                         fontSize: 12.sp, color: Colors.black.withOpacity(0.7))),
                 SizedBox(
@@ -53,7 +54,7 @@ class CustomMessageCard extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    'Overall tweaks and finalizations within the entire carpentry area.Overall tweaks and finalizations within the entire carpentry area',
+                    message!.message.toString(),
                     style: TextStyle(
                         height: 2.h,
                         fontSize: 12.sp,

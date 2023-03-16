@@ -1,5 +1,5 @@
-class Message {
-  Message({
+class MessageModel {
+  MessageModel({
     this.subject,
     this.message,
     this.activityId,
@@ -13,7 +13,7 @@ class Message {
   DateTime? createdOn;
   String? regardingId;
 
-  factory Message.fromJson(Map<String, dynamic> json) => Message(
+  factory MessageModel.fromJson(Map<String, dynamic> json) => MessageModel(
     subject: json["subject"],
     message: json["blser_messagetext"],
     activityId: json["activityid"],

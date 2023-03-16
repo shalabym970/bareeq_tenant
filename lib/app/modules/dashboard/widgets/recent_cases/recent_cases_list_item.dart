@@ -8,14 +8,14 @@ import '../../../../../common/strings/strings.dart';
 import '../../../../routes/app_routes.dart';
 
 class RecentCasesListItem extends StatelessWidget {
-  const RecentCasesListItem({Key? key, required this.oneCases}) : super(key: key);
-  final Case oneCases;
+  const RecentCasesListItem({Key? key, required this.recentCases}) : super(key: key);
+  final Case recentCases;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.caseDetails);
+        Get.toNamed(Routes.caseDetails,arguments:recentCases );
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 5.h),
@@ -52,7 +52,7 @@ class RecentCasesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(oneCases.caseNumber.toString(),
+                          Text(recentCases.caseNumber.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -67,7 +67,7 @@ class RecentCasesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(oneCases.type.toString(),
+                          Text(recentCases.type.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -92,7 +92,7 @@ class RecentCasesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(oneCases.title.toString(),
+                          Text(recentCases.title.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -109,7 +109,7 @@ class RecentCasesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(oneCases.priority.toString(),
+                          Text(recentCases.priority.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -131,7 +131,7 @@ class RecentCasesListItem extends StatelessWidget {
                         height: 5.h,
                       ),
                       Text( intl.DateFormat('EEE d MMM y')
-                          .format(oneCases.submittedOn!)
+                          .format(recentCases.submittedOn!)
                           .toString(),
                           style: TextStyle(
                               fontSize: 12.sp, color: ColorManager.black))

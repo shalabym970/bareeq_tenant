@@ -62,7 +62,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('Insufficient Cementing Material',
+                        Text(controller.recentCases.title.toString(),
                             style: TextStyle(
                                 fontSize: 18.sp, color: ColorManager.black))
                       ],
@@ -107,7 +107,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                 ),
               ),
               SizedBox(height: 10.h),
-              SizedBox(height: 185.h, child: const CaseMessagesList()),
+              SizedBox(height:controller.messages.isNotEmpty? 185.h: null, child: const CaseMessagesList()),
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),

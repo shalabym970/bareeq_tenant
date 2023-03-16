@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../../../common/color_manager.dart';
 import '../../../../common/strings/strings.dart';
+import '../controllers/case_details_controller.dart';
 
-class CaseDescription extends StatelessWidget {
+class CaseDescription extends GetView<CaseDetailsController> {
   const CaseDescription({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.all(10.h),
+      padding: EdgeInsets.all(10.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children:  [
+        children: [
           Text(Strings.description,
               style: TextStyle(
                   fontSize: 14.sp,
@@ -21,7 +23,7 @@ class CaseDescription extends StatelessWidget {
                   fontWeight: FontWeight.w400)),
           SizedBox(height: 20.h),
           Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            controller.recentCases.description.toString(),
             style: TextStyle(
                 fontSize: 12.sp,
                 color: ColorManager.black,

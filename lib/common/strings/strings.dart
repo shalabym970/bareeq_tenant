@@ -180,4 +180,5 @@ class Strings {
   static const String createItem = 'Create Item';
   static const String invoicesEmpty = 'Invoices List is Empty';
   static const String casesEmpty = 'Cases List is Empty';
+  static const String nothingMessages = 'Nothing Messages';
 }
