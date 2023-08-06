@@ -1,3 +1,5 @@
+import 'package:Seef/app/models/work_permit.dart';
+import 'package:Seef/app/repositories/work_permit_repo.dart';
 import 'package:Seef/app/services/session_services.dart';
 import 'package:Seef/common/strings/error_strings.dart';
 import 'package:get/get.dart';
@@ -20,9 +22,11 @@ class DashboardController extends GetxController {
   final errorInvoices = false.obs;
   final errorLeases = false.obs;
   final errorOutProcess = false.obs;
+  final workPermits = <WorkPermit>[].obs;
   final invoices = <Invoice>[].obs;
   final cases = <Case>[].obs;
   InvoicesRepository invoicesRepository = InvoicesRepository();
+  WorkPermitRepo workPermitRepo = WorkPermitRepo();
   CasesRepository casesRepository = CasesRepository();
 
   Contact get currentUser {
@@ -33,6 +37,7 @@ class DashboardController extends GetxController {
   void onInit() {
     getInvoices();
     getCases();
+    getWorkPermits();
     super.onInit();
   }
 
@@ -57,6 +62,22 @@ class DashboardController extends GetxController {
     try {
       loadingCases.value = true;
       cases.assignAll(await casesRepository.getCases());
+
+      Get.log('=========== Cases list : ${cases.first.id} ==========');
+    } catch (e) {
+      errorInvoices.value = true;
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when get Cases : $e ==========');
+    } finally {
+      loadingCases.value = false;
+    }
+  }
+
+  void getWorkPermits() async {
+    try {
+      loadingCases.value = true;
+      workPermits.assignAll(await workPermitRepo.getWorkPermits());
 
       Get.log('=========== Cases list : ${cases.first.id} ==========');
     } catch (e) {

@@ -112,31 +112,6 @@ class LoginView extends GetView<AuthController> {
                                   height: 40.h,
                                   backgroundColor: ColorManager.darkGreen,
                                   textAndIconColor: ColorManager.white),
-                              SizedBox(height: 40.h),
-                              Text(
-                                Strings.noHaveAccount,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14.sp,
-                                  color: ColorManager.black,
-                                ),
-                              ),
-                              SizedBox(height: 20.h),
-                              GestureDetector(
-                                onTap: () {
-                                  Get.toNamed(Routes.createInquiry);
-                                },
-                                child: Text(
-                                  Strings.createInquiry,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14.sp,
-                                      color: ColorManager.lightGreen,
-                                      decoration: TextDecoration.underline,
-                                      decorationStyle:
-                                          TextDecorationStyle.solid),
-                                ),
-                              ),
                             ],
                           ),
                         ],

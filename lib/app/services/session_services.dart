@@ -20,7 +20,7 @@ class SessionServices extends GetxService {
     sharedPref!.setString('user_parentCustomerId', user.accountCustomerId ?? '');
     sharedPref!.setString(
         'user_transactionCurrencyId', user.transactionCurrencyId ?? '');
-    sharedPref!.setString('user_id', user.id!);
+    sharedPref!.setString('user_id', user.contactId!);
     sharedPref!.setString('user_company', user.company ?? '');
     sharedPref!.setString('user_country', user.country ?? '');
     sharedPref!.setString('user_department', user.department ?? '');
@@ -65,7 +65,7 @@ class SessionServices extends GetxService {
       accountCustomerId: sharedPref!.getString('user_parentCustomerId'),
       transactionCurrencyId:
           sharedPref!.getString('user_transactionCurrencyId'),
-      id: sharedPref!.getString('user_id'),
+      contactId: sharedPref!.getString('user_id'),
       company: sharedPref!.getString('user_company'),
       country: sharedPref!.getString('user_country'),
       department: sharedPref!.getString('user_department'),
@@ -100,6 +100,8 @@ class SessionServices extends GetxService {
             sharedPref!.getString('user_accountTransactionCurrencyId'),
       ),
     );
-    Get.log('=========== Current user : ${currentUser.value.id} ==========');
+    Get.log('=========== Current user : ${currentUser.value.contactId} ==========');
+    Get.log('=========== account user : ${currentUser.value.accountCustomerId} ==========');
   }
 }
+//gvDPPl5e

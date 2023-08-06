@@ -11,7 +11,7 @@ class Contact extends Equatable {
     this.callback,
     this.accountCustomerId,
     this.transactionCurrencyId,
-    this.id,
+    this.contactId,
     this.company,
     this.country,
     this.department,
@@ -32,7 +32,7 @@ class Contact extends Equatable {
   final String? callback;
   final String? accountCustomerId;
   final String? transactionCurrencyId;
-  final String? id;
+  final String? contactId;
   final String? company;
   final String? country;
   final String? department;
@@ -53,7 +53,7 @@ class Contact extends Equatable {
         callback: json["callback"],
         accountCustomerId: json["_parentcustomerid_value"],
         transactionCurrencyId: json["_transactioncurrencyid_value"],
-        id: json["contactid"],
+        contactId: json["contactid"],
         company: json["company"],
         country: json["blser_country"],
         department: json["department"],
@@ -75,7 +75,7 @@ class Contact extends Equatable {
         "callback": callback,
         "_parentcustomerid_value": accountCustomerId,
         "_transactioncurrencyid_value": transactionCurrencyId,
-        "contactid": id,
+        "contactid": contactId,
         "company": company,
         "blser_country": country,
         "department": department,

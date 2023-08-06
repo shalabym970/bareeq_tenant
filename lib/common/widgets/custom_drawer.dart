@@ -19,6 +19,7 @@ Drawer customDrawer() {
           alignment: Alignment.center,
           width: Get.width,
           height: 637.h,
+          color: Colors.green[900],
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 30.h),

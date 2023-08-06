@@ -1,8 +1,10 @@
+import 'package:Seef/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:Seef/app/modules/dashboard/widgets/recent_work_permits/recent_work_permits_list_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 
-class RecentWorkPermitsList extends StatelessWidget {
+class RecentWorkPermitsList extends GetView<DashboardController> {
   const RecentWorkPermitsList({super.key});
 
   @override
