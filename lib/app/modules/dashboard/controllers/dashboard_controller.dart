@@ -76,17 +76,17 @@ class DashboardController extends GetxController {
 
   void getWorkPermits() async {
     try {
-      loadingCases.value = true;
+      loadingWorkPermits.value = true;
       workPermits.assignAll(await workPermitRepo.getWorkPermits());
 
       Get.log('=========== Cases list : ${cases.first.id} ==========');
     } catch (e) {
-      errorInvoices.value = true;
+      errorWorkPermits.value = true;
       Get.showSnackbar(
           Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
       Get.log('========== Error when get Cases : $e ==========');
     } finally {
-      loadingCases.value = false;
+      loadingWorkPermits.value = false;
     }
   }
 }
