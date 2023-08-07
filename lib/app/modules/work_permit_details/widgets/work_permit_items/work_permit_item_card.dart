@@ -1,27 +1,24 @@
-import 'package:Seef/app/models/invoice_details.dart';
 import 'package:Seef/app/models/work_permit_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../app/models/message.dart';
-import '../color_manager.dart';
-import '../strings/strings.dart';
+import '../../../../../common/color_manager.dart';
+import '../../../../../common/strings/strings.dart';
 
-class CustomMessageItemCard extends StatelessWidget {
-  const CustomMessageItemCard({Key? key, required this.item}) : super(key: key);
-  final WorkPermitItem item;
+class WorkPermitItemCard extends StatelessWidget {
+  const WorkPermitItemCard({Key? key, required this.workPermitItem}) : super(key: key);
+  final WorkPermitItem workPermitItem;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(padding: EdgeInsets.symmetric(horizontal: 2.w),child:  Container(
       height: 100.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10.h)),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
-            spreadRadius: 1.h,
-            blurRadius: 3.h,
+            spreadRadius: 0.4,
+            blurRadius: 1,
             offset: Offset(0, 3.h), // changes position of shadow
           ),
         ],
@@ -43,7 +40,7 @@ class CustomMessageItemCard extends StatelessWidget {
               SizedBox(
                 height: 5.h,
               ),
-              Text(item!.id.toString(),
+              Text(workPermitItem.id.toString(),
                   style: TextStyle(
                       fontSize: 12.sp, color: Colors.black.withOpacity(0.7))),
               SizedBox(
@@ -51,7 +48,7 @@ class CustomMessageItemCard extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  item!.description.toString(),
+                  workPermitItem.description.toString(),
                   style: TextStyle(
                       height: 2.h, fontSize: 12.sp, color: ColorManager.black),
                   maxLines: 4,
@@ -62,6 +59,6 @@ class CustomMessageItemCard extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ));
   }
 }

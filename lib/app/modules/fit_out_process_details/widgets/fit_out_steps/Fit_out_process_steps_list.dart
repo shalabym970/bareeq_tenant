@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../common/widgets/custom_message_card.dart';
+import '../../../work_permit_details/widgets/work_permit_items/work_permit_item_card.dart';
 import 'Fit_out_process_steps_list_item.dart';
 
 

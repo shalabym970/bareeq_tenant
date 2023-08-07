@@ -14,8 +14,8 @@ import '../../../routes/app_routes.dart';
 import '../controllers/work_permit_details_controller.dart';
 import '../../../../common/widgets/paragraph_widget.dart';
 import '../widgets/work_permit_general_details.dart';
-import '../widgets/work_permit_items_list.dart';
-import '../widgets/work_permit_messages_list.dart';
+import '../widgets/work_permit_items/work_permit_items_list.dart';
+import '../widgets/messages/messages_list.dart';
 import '../widgets/work_permit_work_status.dart';
 
 class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
@@ -23,7 +23,12 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return RefreshIndicator(
+        color: ColorManager.green,
+        onRefresh: () async {
+      controller.onInit();
+    },
+    child: Scaffold(
       appBar: customAppBar(title: Strings.workPermit),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -146,7 +151,7 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                 ),
               ),
               SizedBox(height: 10.h),
-              SizedBox(height: 185.h, child: const WorkPermitsMessagesList()),
+              SizedBox(height: 185.h, child: const MessagesList()),
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),
@@ -181,6 +186,6 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
 
       drawer:
           customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    ));
   }
 }

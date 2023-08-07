@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 import '../../../../common/strings/strings.dart';
-import '../../../../common/widgets/custom_message_card.dart';
+import '../../work_permit_details/widgets/work_permit_items/work_permit_item_card.dart';
 import '../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../../common/widgets/error_widget.dart';
@@ -40,7 +40,7 @@ class CaseMessagesList extends GetView<CaseDetailsController> {
                     itemCount: controller.messages.length,
                     itemBuilder: ((_, index) {
                       MessageModel message = controller.messages.elementAt(index);
-                      return   CustomMessageItemCard( item: WorkPermitItem());
+                      return   WorkPermitItemCard( workPermitItem: WorkPermitItem());
                     }),
                   ));
   }
