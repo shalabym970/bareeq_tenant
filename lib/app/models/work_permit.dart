@@ -1,6 +1,8 @@
 import 'package:Seef/app/models/unit.dart';
 import 'package:Seef/app/models/work_permit_item.dart';
 
+import 'account_model.dart';
+
 class WorkPermit {
   String? subject;
   bool? type;
@@ -17,6 +19,7 @@ class WorkPermit {
   String? comment;
   List<WorkPermitItem>? workPermitItems;
   Unit? relatedUnit;
+  Account? contractor;
 
   WorkPermit(
       {this.subject,
@@ -33,7 +36,8 @@ class WorkPermit {
       this.ownerId,
       this.workPermitItems,
       this.relatedUnit,
-      this.comment});
+      this.comment,
+      this.contractor});
 
   factory WorkPermit.fromJson(Map<String, dynamic> json) => WorkPermit(
         subject: json["blser_subject"],
@@ -63,6 +67,7 @@ class WorkPermit {
         relatedUnit: json["blser_RelatedUnit"] == null
             ? null
             : Unit.fromJson(json["blser_RelatedUnit"]),
+      contractor: json["blser_Contractor"] == null ? null : Account.fromJson(json["blser_Contractor"]),
       );
 
   Map<String, dynamic> toJson() => {

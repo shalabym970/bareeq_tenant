@@ -40,7 +40,7 @@ class Strings {
   static const String startDate = 'Start Date';
   static const String workPermit = 'Work Permit';
   static const String workPermits = 'Work Permits';
-  static const String seefComments = 'Seef Comments';
+  static const String comment = 'Comment';
   static const String workPermitItems = 'Work Permit Items';
   static const String messages = 'Messages';
   static const String message = 'Message';

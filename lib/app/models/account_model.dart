@@ -38,3 +38,4 @@ class Account {
       accountType: json["blser_accounttype"],
       cbrNumber: json['new_cbrnumber']);
 }
+

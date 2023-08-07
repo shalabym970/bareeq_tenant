@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../controllers/work_permit_details_controller.dart';
 
-class WorkPermitWorkStatusWidget extends StatelessWidget {
+class WorkPermitWorkStatusWidget extends GetView<WorkPermitDetailsController>  {
   const WorkPermitWorkStatusWidget({Key? key}) : super(key: key);
 
   @override

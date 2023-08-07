@@ -13,7 +13,7 @@ import '../../../../common/widgets/custom_drawer.dart';
 import '../../../routes/app_routes.dart';
 import '../controllers/work_permit_details_controller.dart';
 import '../widgets/work_permit_comments_list.dart';
-import '../widgets/work_permit_description.dart';
+import '../../../../common/widgets/paragraph_widget.dart';
 import '../widgets/work_permit_general_details.dart';
 import '../widgets/work_permit_items_list.dart';
 import '../widgets/work_permit_messages_list.dart';
@@ -65,7 +65,7 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('WP--21--018',
+                        Text(controller.workPermit.subject.toString(),
                             style: TextStyle(
                                 fontSize: 18.sp, color: ColorManager.black))
                       ],
@@ -78,19 +78,13 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
               SizedBox(height: 20.h),
               const WorkPermitWorkStatusWidget(),
               SizedBox(height: 20.h),
-              const WorkPermitDescription(),
-              SizedBox(height: 20.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: Text(
-                  Strings.seefComments,
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
-                ),
-              ),
-              SizedBox(height: 10.h),
-              SizedBox(height: 185.h, child: const WorkPermitsCommentsList()),
-              SizedBox(height: 20.h),
+              ParagraphWidget(
+                  title: Strings.description,
+                  description:
+                      "- ${controller.workPermit.description.toString()}"),
+              ParagraphWidget(
+                  title: Strings.comment,
+                  description: "- ${controller.workPermit.comment.toString()}"),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(

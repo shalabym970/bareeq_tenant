@@ -1,3 +1,4 @@
+import 'package:Seef/common/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ class RecentWorkPermitListItem extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 5.h),
       child: GestureDetector(
           onTap: () {
-            Get.toNamed(Routes.workPermitDetails);
+            Get.toNamed(Routes.workPermitDetails, arguments: workPermit);
           },
           child: Container(
             decoration: BoxDecoration(
@@ -50,7 +51,7 @@ class RecentWorkPermitListItem extends StatelessWidget {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('WP--21--018',
+                        Text(workPermit.subject.toString(),
                             style: TextStyle(
                                 fontSize: 12.sp, color: ColorManager.black))
                       ],
@@ -71,7 +72,10 @@ class RecentWorkPermitListItem extends StatelessWidget {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('standard',
+                        Text(
+                            workPermit.type == true
+                                ? Constants.emergency
+                                : Constants.standard,
                             style: TextStyle(
                                 fontSize: 12.sp, color: ColorManager.black))
                       ],
@@ -90,7 +94,7 @@ class RecentWorkPermitListItem extends StatelessWidget {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('shalaby',
+                        Text(workPermit.contractor!.name.toString(),
                             style: TextStyle(
                                 fontSize: 12.sp, color: ColorManager.black))
                       ],

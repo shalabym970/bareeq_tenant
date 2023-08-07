@@ -1,10 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import '../../../../common/constants.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../../dashboard/controllers/dashboard_controller.dart';
+import '../controllers/work_permit_details_controller.dart';
 
-class WorkPermitGeneralDetailsWidget extends StatelessWidget {
+class WorkPermitGeneralDetailsWidget
+    extends GetView<WorkPermitDetailsController> {
   const WorkPermitGeneralDetailsWidget({Key? key}) : super(key: key);
 
   @override
@@ -32,14 +39,17 @@ class WorkPermitGeneralDetailsWidget extends StatelessWidget {
                     customDetailsItem(
                         icon: ImagePaths.group42,
                         title: Strings.unit,
-                        value: '10'),
+                        value:
+                            controller.workPermit.relatedUnit!.name.toString()),
                     SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.documentLayout,
                         title: Strings.type,
-                        value: 'standard')
+                        value: controller.workPermit.type == true
+                            ? Constants.emergency
+                            : Constants.standard)
                   ],
                 ),
               ),
@@ -51,14 +61,14 @@ class WorkPermitGeneralDetailsWidget extends StatelessWidget {
                     customDetailsItem(
                         icon: ImagePaths.manager,
                         title: Strings.contractor,
-                        value: 'Ahmed Ahmed'),
+                        value:  controller.workPermit.contractor!.name.toString()),
                     SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.shirt,
                         title: Strings.customer,
-                        value: 'Aml Corporate')
+                        value: Get.find<DashboardController>().currentUser.account!.name.toString())
                   ],
                 ),
               )
