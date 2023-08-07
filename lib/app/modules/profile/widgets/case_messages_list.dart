@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/widgets/custom_message_card.dart';
 import '../../../models/message.dart';
+import '../../../models/work_permit_item.dart';
 
 class CaseMessagesList extends StatelessWidget {
   const CaseMessagesList({super.key});
@@ -18,7 +19,7 @@ class CaseMessagesList extends StatelessWidget {
       itemBuilder: ((_, index) {
         // var playerStanding =
         // controller.playerStandingList.elementAt(index);
-        return  CustomMessageCard(message: MessageModel());
+        return   CustomMessageItemCard( item: WorkPermitItem(),);
       }),
     );
   }

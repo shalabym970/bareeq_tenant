@@ -9,6 +9,7 @@ import '../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../../common/widgets/error_widget.dart';
 import '../../../models/message.dart';
+import '../../../models/work_permit_item.dart';
 import '../controllers/case_details_controller.dart';
 
 class CaseMessagesList extends GetView<CaseDetailsController> {
@@ -39,7 +40,7 @@ class CaseMessagesList extends GetView<CaseDetailsController> {
                     itemCount: controller.messages.length,
                     itemBuilder: ((_, index) {
                       MessageModel message = controller.messages.elementAt(index);
-                      return CustomMessageCard(message: message);
+                      return   CustomMessageItemCard( item: WorkPermitItem());
                     }),
                   ));
   }

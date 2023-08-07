@@ -43,6 +43,7 @@ class DashboardController extends GetxController {
 
   void getInvoices() async {
     try {
+      errorInvoices.value = false;
       loadingInvoices.value = true;
       invoices.assignAll(await invoicesRepository.getInvoices());
 
@@ -60,12 +61,13 @@ class DashboardController extends GetxController {
 
   void getCases() async {
     try {
+      errorCases.value = false;
       loadingCases.value = true;
       cases.assignAll(await casesRepository.getCases());
 
       Get.log('=========== Cases list : ${cases.first.id} ==========');
     } catch (e) {
-      errorInvoices.value = true;
+      errorCases.value = true;
       Get.showSnackbar(
           Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
       Get.log('========== Error when get Cases : $e ==========');
@@ -76,7 +78,9 @@ class DashboardController extends GetxController {
 
   void getWorkPermits() async {
     try {
+      errorWorkPermits.value = false;
       loadingWorkPermits.value = true;
+
       workPermits.assignAll(await workPermitRepo.getWorkPermits());
 
       Get.log('=========== Cases list : ${cases.first.id} ==========');

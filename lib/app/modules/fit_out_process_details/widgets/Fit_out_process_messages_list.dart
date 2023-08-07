@@ -1,3 +1,4 @@
+import 'package:Seef/app/models/work_permit_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +20,7 @@ class FitOutProcessMessagesList extends StatelessWidget {
       itemBuilder: ((_, index) {
         // var playerStanding =
         // controller.playerStandingList.elementAt(index);
-        return  CustomMessageCard(message: MessageModel());
+        return   CustomMessageItemCard( item: WorkPermitItem(),);
       }),
 
     );

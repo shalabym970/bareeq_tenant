@@ -10,7 +10,7 @@ class WorkPermit {
   String? customerId;
   DateTime? startDate;
   DateTime? endDate;
-  int? stateCode;
+  int? statusCode;
   String? description;
   String? workPermitId;
   int? numberOfWorkers;
@@ -28,7 +28,7 @@ class WorkPermit {
       this.customerId,
       this.startDate,
       this.endDate,
-      this.stateCode,
+      this.statusCode,
       this.description,
       this.workPermitId,
       this.numberOfWorkers,
@@ -50,7 +50,7 @@ class WorkPermit {
         endDate: json["blser_enddate"] == null
             ? null
             : DateTime.parse(json["blser_enddate"]),
-        stateCode: json["statecode"],
+        statusCode: json["statuscode"],
         description: json["blser_descriptionofwork"],
         workPermitId: json["blser_workpermitid"],
         numberOfWorkers: json["blser_numberofworkers"],
@@ -78,7 +78,7 @@ class WorkPermit {
         "_blser_customer_value": customerId,
         "blser_startdate": startDate?.toIso8601String(),
         "blser_enddate": endDate?.toIso8601String(),
-        "statecode": stateCode,
+        "statuscode": statusCode,
         "blser_descriptionofwork": description,
         "blser_workpermitid": workPermitId,
         "blser_numberofworkers": numberOfWorkers,

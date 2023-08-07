@@ -17,53 +17,58 @@ class DashboardView extends GetView<DashboardController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: customAppBar(title: Strings.dashboard),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 20.h,
-              ),
-              Center(
-                child: RichText(
-                  text: TextSpan(
-                    text: Strings.welcome,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.sp,
-                        color: ColorManager.green),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: controller.currentUser.firstName,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 20.sp,
-                            color: ColorManager.black),
-                      )
-                    ],
+    return RefreshIndicator(
+        color: ColorManager.green,
+        onRefresh: () async {
+          controller.onInit();
+        },
+        child: Scaffold(
+          appBar: customAppBar(title: Strings.dashboard),
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 20.h,
                   ),
-                ),
+                  Center(
+                    child: RichText(
+                      text: TextSpan(
+                        text: Strings.welcome,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.sp,
+                            color: ColorManager.green),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: controller.currentUser.firstName,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 20.sp,
+                                color: ColorManager.black),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  const RecentWorkPermitWidget(),
+                  const RecentCasesWidget(),
+                  const RecentInvoicesWidget(),
+                  const RecentLeasesWidget(),
+                  const RecentFitOutProcessesWidget()
+                ],
               ),
-              SizedBox(
-                height: 20.h,
-              ),
-              const RecentWorkPermitWidget(),
-              const RecentCasesWidget(),
-              const RecentInvoicesWidget(),
-              const RecentLeasesWidget(),
-              const RecentFitOutProcessesWidget()
-            ],
+            ),
           ),
-        ),
-      ),
 
-      drawer:
-          customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+          drawer:
+              customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
+        ));
   }
 }

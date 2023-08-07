@@ -12,7 +12,6 @@ import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../../../routes/app_routes.dart';
 import '../controllers/work_permit_details_controller.dart';
-import '../widgets/work_permit_comments_list.dart';
 import '../../../../common/widgets/paragraph_widget.dart';
 import '../widgets/work_permit_general_details.dart';
 import '../widgets/work_permit_items_list.dart';

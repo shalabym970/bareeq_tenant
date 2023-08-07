@@ -24,7 +24,10 @@ class RecentInvoicesList extends GetView<DashboardController> {
                   fontSize: 15.sp,
                 )
               : controller.loadingInvoices.isTrue
-                  ? ShimmerWidget.rectangular(height: 100.h)
+                  ? Padding(
+            padding: EdgeInsets.symmetric(vertical: 5.h),
+            child: ShimmerWidget.rectangular(height: 100.h),
+          )
                   : controller.invoices.isEmpty
                       ? EmptyListWidget(
                           fontSize: 15.sp, message: Strings.invoicesEmpty)

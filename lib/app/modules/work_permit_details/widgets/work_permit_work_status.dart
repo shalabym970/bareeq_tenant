@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
 import '../controllers/work_permit_details_controller.dart';
 
-class WorkPermitWorkStatusWidget extends GetView<WorkPermitDetailsController>  {
+class WorkPermitWorkStatusWidget extends GetView<WorkPermitDetailsController> {
   const WorkPermitWorkStatusWidget({Key? key}) : super(key: key);
 
   @override
@@ -33,16 +34,20 @@ class WorkPermitWorkStatusWidget extends GetView<WorkPermitDetailsController>  {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     customDetailsItem(
-                        icon: ImagePaths.filingTime,
-                        title: Strings.startDate,
-                        value: '31-october-2021'),
+                      icon: ImagePaths.filingTime,
+                      title: Strings.startDate,
+                      value:  controller.workPermit.startDate == null
+                          ? Strings.na
+                          : DateFormat("yyyy-MM-dd")
+                          .format(controller.workPermit.startDate!),
+                    ),
                     SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.workers,
                         title: Strings.numberOfWorkers,
-                        value: '5')
+                        value: controller.workPermit.numberOfWorkers.toString())
                   ],
                 ),
               ),
@@ -54,14 +59,17 @@ class WorkPermitWorkStatusWidget extends GetView<WorkPermitDetailsController>  {
                     customDetailsItem(
                         icon: ImagePaths.filingTime,
                         title: Strings.endDate,
-                        value: '31-october-2021'),
+                        value: controller.workPermit.endDate == null
+                            ?  Strings.na
+                            : DateFormat("yyyy-MM-dd")
+                                .format(controller.workPermit.endDate!)),
                     SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.pylon,
                         title: Strings.status,
-                        value: 'Draft')
+                        value:  controller.workPermit.statusCode.toString())
                   ],
                 ),
               )

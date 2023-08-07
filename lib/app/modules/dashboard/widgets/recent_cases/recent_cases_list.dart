@@ -24,7 +24,10 @@ class RecentCasesList extends GetView<DashboardController> {
                   fontSize: 15.sp,
                 )
               : controller.loadingCases.isTrue
-                  ? ShimmerWidget.rectangular(height: 100.h)
+                  ? Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5.h),
+                      child: ShimmerWidget.rectangular(height: 100.h),
+                    )
                   : controller.cases.isEmpty
                       ? EmptyListWidget(
                           fontSize: 15.sp, message: Strings.casesEmpty)

@@ -25,7 +25,10 @@ class RecentWorkPermitsList extends GetView<DashboardController> {
                   fontSize: 15.sp,
                 )
               : controller.loadingWorkPermits.isTrue
-                  ? ShimmerWidget.rectangular(height: 50.h)
+                  ? Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5.h),
+                      child: ShimmerWidget.rectangular(height: 50.h),
+                    )
                   : controller.workPermits.isEmpty
                       ? EmptyListWidget(
                           fontSize: 15.sp, message: Strings.workPermitsEmpty)
