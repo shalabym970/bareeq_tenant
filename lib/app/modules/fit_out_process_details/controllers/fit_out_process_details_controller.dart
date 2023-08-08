@@ -1,7 +1,10 @@
 import 'package:Seef/app/models/fit_out_model.dart';
 import 'package:Seef/app/models/fit_out_step_model.dart';
 import 'package:Seef/app/repositories/fit_out_repo.dart';
+import 'package:Seef/common/strings/strings.dart';
 import 'package:get/get.dart';
+import '../../../../common/status_no.dart';
+import '../../../../common/status_string.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/message.dart';
@@ -54,6 +57,22 @@ class FitOutProcessDetailsController extends GetxController {
       Get.log('========== Error when get fit Out steps : $e ==========');
     } finally {
       loadingFitOutSteps.value = false;
+    }
+  }
+
+  String getFitOutStepStatus({required int statusNo}) {
+    if (statusNo == StatusNo.fitOutStepCompleted) {
+      return StatusString.fitOutStepCompleted;
+    } else if (statusNo == StatusNo.fitOutStepFurtherRequirementSubmitted) {
+      return StatusString.fitOutStepFurtherRequirementSubmitted;
+    } else if (statusNo == StatusNo.fitOutStepPending) {
+      return StatusString.fitOutStepPending;
+    } else if (statusNo == StatusNo.fitOutStepVerified) {
+      return StatusString.fitOutStepVerified;
+    } else if (statusNo == StatusNo.fitOutStepSkipped) {
+      return StatusString.fitOutStepSkipped;
+    } else {
+      return Strings.na;
     }
   }
 }
