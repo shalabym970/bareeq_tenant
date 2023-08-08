@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../common/color_manager.dart';
-import '../../../../../common/strings/strings.dart';
-import '../../../../models/message.dart';
+import '../color_manager.dart';
+import '../strings/strings.dart';
+import '../../app/models/message.dart';
 
 class MessageCard extends StatelessWidget {
   const MessageCard({Key? key, required this.message}) : super(key: key);

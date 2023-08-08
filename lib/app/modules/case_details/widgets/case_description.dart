@@ -23,7 +23,7 @@ class CaseDescription extends GetView<CaseDetailsController> {
                   fontWeight: FontWeight.w400)),
           SizedBox(height: 20.h),
           Text(
-            controller.recentCases.description.toString(),
+            controller.cases.description.toString(),
             style: TextStyle(
                 fontSize: 12.sp,
                 color: ColorManager.black,

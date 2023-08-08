@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:intl/intl.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../controllers/fit_out_process_details_controller.dart';
 
-class FitOutProcessDatesWidget extends StatelessWidget {
+class FitOutProcessDatesWidget extends GetView<FitOutProcessDetailsController> {
   const FitOutProcessDatesWidget({Key? key}) : super(key: key);
 
   @override
@@ -25,22 +27,30 @@ class FitOutProcessDatesWidget extends StatelessWidget {
           customDetailsItem(
               icon: ImagePaths.filingTime,
               title: Strings.startDate,
-              value: '10-November-2022'),
+              value: controller.fitOut.startDate == null
+                  ? Strings.na
+                  : DateFormat("yyyy-MM-dd")
+                      .format(controller.fitOut.startDate!)),
           SizedBox(
             height: 20.h,
           ),
           customDetailsItem(
               icon: ImagePaths.filingTime,
               title: Strings.completionDate,
-              value: '10-November-2022'),
+              value: controller.fitOut.completedDate == null
+                  ? Strings.na
+                  : DateFormat("yyyy-MM-dd")
+                      .format(controller.fitOut.completedDate!)),
           SizedBox(
             height: 20.h,
           ),
           customDetailsItem(
               icon: ImagePaths.filingTime,
               title: Strings.expectedOpeningDate,
-              value: '10-November-2022'),
-
+              value: controller.fitOut.expectedOpeningDate == null
+                  ? Strings.na
+                  : DateFormat("yyyy-MM-dd")
+                      .format(controller.fitOut.expectedOpeningDate!)),
         ],
       ),
     );

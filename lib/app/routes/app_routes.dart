@@ -22,7 +22,6 @@ class Routes {
   static const String addCase = "/add_case";
   static const String otp = "/otp";
   static const String activity = "/activity";
-  static const String createInquiry = "/create_inquiry";
   static const String createMessage = "/create_message";
   static const String createWorkPermitItem = "/create_work_permit_item";
 }

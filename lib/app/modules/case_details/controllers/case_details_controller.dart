@@ -4,12 +4,14 @@ import 'package:get/get.dart';
 
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
+import '../../../repositories/messages_repo.dart';
 
 class CaseDetailsController extends GetxController {
   final errorMessages = false.obs;
   final loadingMessages = false.obs;
   final messages = <MessageModel>[].obs;
-  final Case recentCases = Get.arguments;
+  Case cases = Get.arguments;
+  MessagesRepo messagesRepo = MessagesRepo();
 
   @override
   void onInit() async {
@@ -19,8 +21,10 @@ class CaseDetailsController extends GetxController {
 
   getMessages() async {
     try {
+      errorMessages.value = false;
       loadingMessages.value = true;
-      messages.value = recentCases.messages!;
+      messages
+          .assignAll(await messagesRepo.getMessages(regardingId: cases.id!));
     } catch (e) {
       errorMessages.value = true;
       Get.showSnackbar(

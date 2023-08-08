@@ -24,10 +24,10 @@ class FitOutsView extends GetView<FitOutsController> {
 
         body: Padding(
           padding: EdgeInsets.only(right: 10.w, left: 10.w),
-          child: Column(
+          child: const Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 FitOutsSearchWidget(),
                 Expanded(child: FitOutsListWidget())
               ]),

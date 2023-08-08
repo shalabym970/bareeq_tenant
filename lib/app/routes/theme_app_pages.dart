@@ -19,8 +19,6 @@ import '../modules/auth/views/login_view.dart';
 import '../modules/case_details/bindings/case_details_binding.dart';
 import '../modules/case_details/views/case_details_view.dart';
 import '../modules/cases/bindings/cases_binding.dart';
-import '../modules/create_inquiry/bindings/inquiry_binding.dart';
-import '../modules/create_inquiry/views/create_inquiry_first_view.dart';
 import '../modules/create_message/bindings/create_message_binding.dart';
 import '../modules/create_work_permit_item/bindings/create_work_permit_item_binding.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
@@ -144,10 +142,6 @@ class ThemeAppPages {
         name: Routes.messagesDetails,
         page: () => const MessageDetailsView(),
         binding: MessageDetailsBinding()),
-    GetPage(
-        name: Routes.createInquiry,
-        page: () => const CreateInquiryFirstView(),
-        binding: InquiryBinding()),
     GetPage(
         name: Routes.createMessage,
         page: () => const CreateMessageView(),

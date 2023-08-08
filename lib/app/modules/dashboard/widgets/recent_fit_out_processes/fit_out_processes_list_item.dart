@@ -1,18 +1,23 @@
+import 'package:Seef/app/models/fit_out_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/strings/strings.dart';
 import '../../../../routes/app_routes.dart';
+import 'package:intl/intl.dart';
+import '../../controllers/dashboard_controller.dart';
 
-class RecentFitOutProcessesListItem extends StatelessWidget {
-  const RecentFitOutProcessesListItem({Key? key}) : super(key: key);
+class FitOutProcessesListItem extends GetView<DashboardController> {
+  const FitOutProcessesListItem({Key? key, required this.fitOut})
+      : super(key: key);
+  final FitOutModel fitOut;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Get.toNamed(Routes.fitOutDetails);
+      onTap: () {
+        Get.toNamed(Routes.fitOutDetails, arguments: fitOut);
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 5.h),
@@ -49,7 +54,7 @@ class RecentFitOutProcessesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text('WP--21--018',
+                          Text(fitOut.name.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -64,7 +69,11 @@ class RecentFitOutProcessesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text('20/2/2000',
+                          Text(
+                              fitOut.completedDate == null
+                                  ? Strings.na
+                                  : DateFormat("yyyy-MM-dd")
+                                      .format(fitOut.completedDate!),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -89,7 +98,11 @@ class RecentFitOutProcessesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text('04/3/2033',
+                          Text(
+                              fitOut.expectedOpeningDate == null
+                                  ? Strings.na
+                                  : DateFormat("yyyy-MM-dd")
+                                      .format(fitOut.expectedOpeningDate!),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -106,7 +119,9 @@ class RecentFitOutProcessesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text('not yet started',
+                          Text(
+                              controller.getFitOutStatus(
+                                  statusNo: fitOut.status!),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -127,7 +142,11 @@ class RecentFitOutProcessesListItem extends StatelessWidget {
                       SizedBox(
                         height: 5.h,
                       ),
-                      Text('12/10/2022',
+                      Text(
+                          fitOut.startDate == null
+                              ? Strings.na
+                              : DateFormat("yyyy-MM-dd")
+                                  .format(fitOut.startDate!),
                           style: TextStyle(
                               fontSize: 12.sp, color: ColorManager.black))
                     ],

@@ -27,7 +27,7 @@ class WorkPermitItemCard extends StatelessWidget {
       child: Card(
         color: ColorManager.textFieldBg,
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
+          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,

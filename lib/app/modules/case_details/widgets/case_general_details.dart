@@ -36,14 +36,14 @@ class CaseGeneralDetailsWidget extends GetView<CaseDetailsController> {
                     customDetailsItem(
                         icon: ImagePaths.path79,
                         title: Strings.caseNumber,
-                        value: controller.recentCases.caseNumber.toString()),
+                        value: controller.cases.caseNumber.toString()),
                      SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.documentLayout,
                         title: Strings.type,
-                        value: controller.recentCases.type.toString())
+                        value: controller.cases.type.toString())
                   ],
                 ),
               ),
@@ -56,7 +56,7 @@ class CaseGeneralDetailsWidget extends GetView<CaseDetailsController> {
                         icon: ImagePaths.deleteCalendar,
                         title: Strings.dateSubmitted,
                         value: intl.DateFormat('EEE d MMM y')
-                            .format(controller.recentCases.submittedOn!)
+                            .format(controller.cases.submittedOn!)
                             .toString()),
                      SizedBox(
                       height: 20.h,
@@ -64,7 +64,7 @@ class CaseGeneralDetailsWidget extends GetView<CaseDetailsController> {
                     customDetailsItem(
                         icon: ImagePaths.import,
                         title: Strings.priority,
-                        value: controller.recentCases.priority.toString())
+                        value: controller.cases.priority.toString())
                   ],
                 ),
               )

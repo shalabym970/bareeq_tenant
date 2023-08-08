@@ -181,6 +181,8 @@ class Strings {
   static const String workPermitsEmpty = 'Work Permits List is Empty';
   static const String invoicesEmpty = 'Invoices List is Empty';
   static const String casesEmpty = 'Cases List is Empty';
+  static const String fitOutsEmpty = 'Fit Outs List is Empty';
   static const String nothingMessages = 'Nothing Messages';
+  static const String nothingFitOutSteps = 'Nothing Fit Out Steps';
   static const String na = "N/A";
 }

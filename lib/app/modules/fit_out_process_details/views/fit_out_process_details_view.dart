@@ -11,7 +11,7 @@ import '../../../routes/app_routes.dart';
 import '../controllers/fit_out_process_details_controller.dart';
 import '../widgets/Fit_out_process_dates_widget.dart';
 import '../widgets/Fit_out_process_general_details.dart';
-import '../widgets/Fit_out_process_messages_list.dart';
+import '../widgets/fit_out_messages_list.dart';
 import '../widgets/fit_out_steps/Fit_out_process_steps_list.dart';
 
 class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
@@ -19,16 +19,13 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  RefreshIndicator(
+        color: ColorManager.green,
+        onRefresh: () async {
+      controller.onInit();
+    },
+    child: Scaffold(
       appBar: customAppBar(title: Strings.fitOutProcess),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.offAllNamed(Routes.dashboard);
-          },
-          heroTag: null,
-          backgroundColor: ColorManager.darkGreen,
-          child: SvgPicture.asset(ImagePaths.save, height: 20.h, width: 20.w)),
-
       body: Padding(
         padding: EdgeInsets.only(right: 10.w, left: 10.w),
         child: SingleChildScrollView(
@@ -37,7 +34,7 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 20.h,
+                height: 10.h,
               ),
               Padding(
                 padding: EdgeInsets.all(10.h),
@@ -60,7 +57,7 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('FOP-34860-20-001',
+                        Text(controller.fitOut.name.toString(),
                             style: TextStyle(
                                 fontSize: 18.sp, color: ColorManager.black))
                       ],
@@ -68,22 +65,18 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
                   ],
                 ),
               ),
-              SizedBox(height: 20.h),
               const FitOutProcessGeneralDetailsWidget(),
-              SizedBox(height: 20.h),
               const FitOutProcessDatesWidget(),
-              SizedBox(height: 30.h),
+              SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),
                 child: Text(
                   Strings.fitOutSteps,
                   style:
-                  TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
                 ),
               ),
-              SizedBox(height: 10.h),
-              SizedBox(height: 185.h, child:const FitOutProcessStepsList()),
-              SizedBox(height: 20.h),
+              SizedBox(height: 185.h, child: const FitOutProcessStepsList()),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),
                 child: Row(
@@ -91,8 +84,8 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
                   children: [
                     Text(
                       Strings.messages,
-                      style:
-                          TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                          fontSize: 14.sp, fontWeight: FontWeight.w400),
                     ),
                     SizedBox(
                       height: 32.h,
@@ -113,17 +106,14 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
                   ],
                 ),
               ),
-
-              SizedBox(height: 10.h),
-              SizedBox(height: 185.h, child: const FitOutProcessMessagesList()),
+              SizedBox(height: 185.h, child: const FitOutMessagesList()),
               SizedBox(height: 20.h),
             ],
           ),
         ),
       ),
-
       drawer:
           customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    ));
   }
 }

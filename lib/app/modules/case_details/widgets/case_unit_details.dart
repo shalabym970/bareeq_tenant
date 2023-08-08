@@ -35,7 +35,7 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                     customDetailsItem(
                         icon: ImagePaths.office,
                         title: Strings.property,
-                        value: controller.recentCases.relatedProject!.name
+                        value: controller.cases.relatedProject!.name
                             .toString()),
                     SizedBox(
                       height: 20.h,
@@ -45,7 +45,7 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                         title: Strings.relatedLease,
                         // TODO: must get the lease name by this id whene back at project any more
                         value:
-                            controller.recentCases.propertyLeaseId.toString())
+                            controller.cases.propertyLeaseId.toString())
                   ],
                 ),
               ),
@@ -57,7 +57,7 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                     customDetailsItem(
                         icon: ImagePaths.group42,
                         title: Strings.unit,
-                        value: controller.recentCases.unit!.name.toString()),
+                        value: controller.cases.unit!.name.toString()),
                     SizedBox(
                       height: 20.h,
                     ),
@@ -65,7 +65,7 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                         icon: ImagePaths.pylon,
                         title: Strings.status,
                         // TODO: must be to convert this status to string to show him here in the future
-                        value: controller.recentCases.status.toString())
+                        value: controller.cases.status.toString())
                   ],
                 ),
               )

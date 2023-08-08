@@ -1,7 +1,6 @@
 import 'package:Seef/app/models/work_permit_item.dart';
 import 'package:Seef/app/repositories/messages_repo.dart';
 import 'package:get/get.dart';
-
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/message.dart';
@@ -25,6 +24,7 @@ class WorkPermitDetailsController extends GetxController {
   onInit() {
     getWorkPermitItems();
     getMessages();
+    Get.log('=========== workPermit id :  ${workPermit.workPermitId} ===========');
     super.onInit();
   }
 
@@ -34,9 +34,6 @@ class WorkPermitDetailsController extends GetxController {
       loadingMessages.value = true;
       messages.assignAll(await messagesRepo.getMessages(
           regardingId: workPermit.workPermitId!));
-
-      Get.log(
-          '=========== messages list : ${workPermitItems.first.id} ==========');
     } catch (e) {
       errorMessages.value = true;
       Get.showSnackbar(

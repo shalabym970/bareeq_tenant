@@ -1,11 +1,14 @@
+import 'package:Seef/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../controllers/fit_out_process_details_controller.dart';
 
-class FitOutProcessGeneralDetailsWidget extends StatelessWidget {
+class FitOutProcessGeneralDetailsWidget
+    extends GetView<FitOutProcessDetailsController> {
   const FitOutProcessGeneralDetailsWidget({Key? key}) : super(key: key);
 
   @override
@@ -27,22 +30,10 @@ class FitOutProcessGeneralDetailsWidget extends StatelessWidget {
             children: [
               Expanded(
                 flex: 1,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    customDetailsItem(
-                        icon: ImagePaths.office,
-                        title: Strings.property,
-                        value: 'Seef Area (SMS)'),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    customDetailsItem(
-                        icon: ImagePaths.group77,
-                        title: Strings.relatedLease,
-                        value: 'Rent Contract F...'),
-                  ],
-                ),
+                child: customDetailsItem(
+                    icon: ImagePaths.office,
+                    title: Strings.property,
+                    value: controller.fitOut.property!.name.toString()),
               ),
               Expanded(
                 flex: 1,
@@ -52,14 +43,16 @@ class FitOutProcessGeneralDetailsWidget extends StatelessWidget {
                     customDetailsItem(
                         icon: ImagePaths.group42,
                         title: Strings.unit,
-                        value: '10'),
+                        value: controller.fitOut.unit!.name.toString()),
                     SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
-                        icon: ImagePaths.pylon,
-                        title: Strings.status,
-                        value: 'Not Yet Started')
+                      icon: ImagePaths.pylon,
+                      title: Strings.status,
+                      value: Get.find<DashboardController>()
+                          .getFitOutStatus(statusNo: controller.fitOut.status!),
+                    )
                   ],
                 ),
               )

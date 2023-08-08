@@ -1,11 +1,13 @@
+import 'package:Seef/app/models/fit_out_step_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../common/color_manager.dart';
 import '../../../../routes/app_routes.dart';
 
-class FitOutStepCard extends StatelessWidget {
-  const FitOutStepCard({Key? key}) : super(key: key);
+class FitOutStepItem extends StatelessWidget {
+  const FitOutStepItem({Key? key, required this.fitOutStep}) : super(key: key);
+  final FitOutStepModel fitOutStep;
 
   @override
   Widget build(BuildContext context) {
@@ -29,29 +31,30 @@ class FitOutStepCard extends StatelessWidget {
         child: Card(
           color: ColorManager.textFieldBg,
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
+            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text('Getting Started',
+                Text(fitOutStep.name.toString(),
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 10.sp,
-                        color: ColorManager.green)),
+                        color: ColorManager.green),
+                  maxLines: 1,
+                ),
                 SizedBox(
                   height: 5.h,
                 ),
-                Text('Pending',
+                Text(fitOutStep.status.toString(),
                     style: TextStyle(
-                        fontSize: 12.sp,
-                        color: ColorManager.darkGreen)),
+                        fontSize: 12.sp, color: ColorManager.darkGreen)),
                 SizedBox(
                   height: 10.h,
                 ),
                 Expanded(
                     child: Text(
-                  'Once the documentation and lease agreement have been finalized, the tenant to • Appoint their fitout team. (Form 2) • Attend formal meeting with SEEF Fit-Out Team to agree on the procedures for Fit-Out • Understand the design criteria and deliverables • Submit fit-out program milestone prior to the submission of conceptual design. (Form 3) • Artwork for hoarding to be submitted for approval.',
+                  fitOutStep.description.toString(),
                   style: TextStyle(
                       height: 2.h, fontSize: 12.sp, color: ColorManager.black),
                   maxLines: 4,
