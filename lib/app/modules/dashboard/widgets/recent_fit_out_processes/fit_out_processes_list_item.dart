@@ -121,7 +121,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                           ),
                           Text(
                               controller.getFitOutStatus(
-                                  statusNo: fitOut.status!),
+                                  statusNo: fitOut.status ?? 0),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],

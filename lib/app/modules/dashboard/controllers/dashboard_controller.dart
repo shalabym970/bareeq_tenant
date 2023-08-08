@@ -6,6 +6,7 @@ import 'package:Seef/app/services/session_services.dart';
 import 'package:Seef/common/status_no.dart';
 import 'package:Seef/common/status_string.dart';
 import 'package:Seef/common/strings/error_strings.dart';
+import 'package:Seef/common/strings/strings.dart';
 import 'package:get/get.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/case_model.dart';
@@ -118,8 +119,10 @@ class DashboardController extends GetxController {
       return StatusString.fitOutFurtherRequirementSubmitted;
     } else if (statusNo == StatusNo.fitOutCompleted) {
       return StatusString.fitOutCompleted;
-    } else {
+    } else if (statusNo == StatusNo.fitOutApproved) {
       return StatusString.fitOutApproved;
+    } else {
+      return Strings.na;
     }
   }
 }
