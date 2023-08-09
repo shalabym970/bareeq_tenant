@@ -30,10 +30,10 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
           heroTag: null,
           backgroundColor: ColorManager.darkGreen,
           child: SvgPicture.asset(ImagePaths.save, height: 20.h, width: 20.w)),
-
       body: Padding(
         padding: EdgeInsets.only(right: 10.w, left: 10.w),
         child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +107,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                 ),
               ),
               SizedBox(height: 10.h),
-              SizedBox(height:controller.messages.isNotEmpty? 185.h: null, child: const CaseMessagesList()),
+              SizedBox(height: 185.h, child: const CaseMessagesList()),
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),

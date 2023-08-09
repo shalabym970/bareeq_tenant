@@ -27,6 +27,7 @@ class DashboardView extends GetView<DashboardController> {
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,

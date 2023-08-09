@@ -17,48 +17,45 @@ class WorkPermitsListWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 8.h),
       child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 20.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(6.h),
-                      child: SvgPicture.asset(ImagePaths.briefcase,
-                          height: 20.h, width: 20.w),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(6.h),
-                      child: Text(
-                        Strings.workPermits,
-                        style: TextStyle(
-                            fontSize: 14.sp, fontWeight: FontWeight.bold),
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 32.h,
-                  width: 32.w,
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      Get.toNamed(Routes.addWorkPermit);
-                    },
-                    heroTag: null,
-                    backgroundColor: ColorManager.darkGreen,
-                    child: Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 20.sp,
-                    ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(6.h),
+                    child: SvgPicture.asset(ImagePaths.briefcase,
+                        height: 20.h, width: 20.w),
                   ),
-                )
-              ],
-            ),
+                  Padding(
+                    padding: EdgeInsets.all(6.h),
+                    child: Text(
+                      Strings.workPermits,
+                      style: TextStyle(
+                          fontSize: 14.sp, fontWeight: FontWeight.bold),
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 32.h,
+                width: 32.w,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Get.toNamed(Routes.addWorkPermit);
+                  },
+                  heroTag: null,
+                  backgroundColor: ColorManager.darkGreen,
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                    size: 20.sp,
+                  ),
+                ),
+              )
+            ],
           ),
-          const Expanded(child: WorkPermitsList())
+          const WorkPermitsList()
         ],
       ),
     );

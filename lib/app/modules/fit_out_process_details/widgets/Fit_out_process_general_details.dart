@@ -51,7 +51,7 @@ class FitOutProcessGeneralDetailsWidget
                       icon: ImagePaths.pylon,
                       title: Strings.status,
                       value: Get.find<DashboardController>()
-                          .getFitOutStatus(statusNo: controller.fitOut.status!),
+                          .fitOutStatus(statusNo: controller.fitOut.status!),
                     )
                   ],
                 ),

@@ -1,5 +1,5 @@
 import 'package:Seef/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:Seef/app/modules/dashboard/widgets/recent_work_permits/recent_work_permits_list_item.dart';
+import 'package:Seef/app/modules/dashboard/widgets/recent_work_permits/recent_work_permits_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -18,16 +18,16 @@ class RecentWorkPermitsList extends GetView<DashboardController> {
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 8.h),
         child: Obx(
-          () => controller.errorWorkPermits.isTrue
-              ? CustomErrorWidget(
-                  iconWidth: 20.w,
-                  iconHeight: 20.h,
-                  fontSize: 15.sp,
+          () => controller.loadingWorkPermits.isTrue
+              ? Padding(
+                  padding: EdgeInsets.symmetric(vertical: 5.h),
+                  child: ShimmerWidget.rectangular(height: 50.h),
                 )
-              : controller.loadingWorkPermits.isTrue
-                  ? Padding(
-                      padding: EdgeInsets.symmetric(vertical: 5.h),
-                      child: ShimmerWidget.rectangular(height: 50.h),
+              : controller.errorWorkPermits.isTrue
+                  ? CustomErrorWidget(
+                      iconWidth: 20.w,
+                      iconHeight: 20.h,
+                      fontSize: 15.sp,
                     )
                   : controller.workPermits.isEmpty
                       ? EmptyListWidget(
@@ -43,7 +43,7 @@ class RecentWorkPermitsList extends GetView<DashboardController> {
                             WorkPermit workPermit =
                                 controller.workPermits.elementAt(index);
 
-                            return RecentWorkPermitListItem(
+                            return RecentWorkPermitItem(
                                 workPermit: workPermit);
                           }),
                         ),

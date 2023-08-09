@@ -6,16 +6,17 @@ import 'package:intl/intl.dart' as intl;
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/strings/strings.dart';
 import '../../../../routes/app_routes.dart';
+import '../../controllers/dashboard_controller.dart';
 
-class RecentCasesListItem extends StatelessWidget {
-  const RecentCasesListItem({Key? key, required this.recentCases}) : super(key: key);
-  final Case recentCases;
+class RecentCasesListItem extends  GetView<DashboardController> {
+  const RecentCasesListItem({Key? key, required this.cases}) : super(key: key);
+  final Case cases;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.caseDetails,arguments:recentCases );
+        Get.toNamed(Routes.caseDetails,arguments:cases );
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 5.h),
@@ -52,7 +53,7 @@ class RecentCasesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(recentCases.caseNumber.toString(),
+                          Text(cases.caseNumber.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -67,7 +68,8 @@ class RecentCasesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(recentCases.type.toString(),
+                          Text( controller.caseType(
+                              statusNo: cases.status ?? 0),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -92,7 +94,7 @@ class RecentCasesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(recentCases.title.toString(),
+                          Text(cases.title.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -109,7 +111,8 @@ class RecentCasesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(recentCases.priority.toString(),
+                          Text(controller.casePriority(
+                              statusNo: cases.priority ?? 0),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -131,7 +134,7 @@ class RecentCasesListItem extends StatelessWidget {
                         height: 5.h,
                       ),
                       Text( intl.DateFormat('EEE d MMM y')
-                          .format(recentCases.submittedOn!)
+                          .format(cases.submittedOn!)
                           .toString(),
                           style: TextStyle(
                               fontSize: 12.sp, color: ColorManager.black))

@@ -35,7 +35,7 @@ class FitOutsListWidget extends StatelessWidget {
               ],
             ),
           ),
-          const Expanded(child: FitOutsList())
+          const FitOutsList()
         ],
       ),
     );

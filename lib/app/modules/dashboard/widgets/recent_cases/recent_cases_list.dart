@@ -1,4 +1,4 @@
-import 'package:Seef/app/modules/dashboard/widgets/recent_cases/recent_cases_list_item.dart';
+import 'package:Seef/app/modules/dashboard/widgets/recent_cases/recent_cases_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -17,16 +17,16 @@ class RecentCasesList extends GetView<DashboardController> {
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 8.h),
         child: Obx(
-          () => controller.errorCases.isTrue
-              ? CustomErrorWidget(
-                  iconWidth: 20.w,
-                  iconHeight: 20.h,
-                  fontSize: 15.sp,
+          () => controller.loadingCases.isTrue
+              ? Padding(
+                  padding: EdgeInsets.symmetric(vertical: 5.h),
+                  child: ShimmerWidget.rectangular(height: 100.h),
                 )
-              : controller.loadingCases.isTrue
-                  ? Padding(
-                      padding: EdgeInsets.symmetric(vertical: 5.h),
-                      child: ShimmerWidget.rectangular(height: 100.h),
+              : controller.errorCases.isTrue
+                  ? CustomErrorWidget(
+                      iconWidth: 20.w,
+                      iconHeight: 20.h,
+                      fontSize: 15.sp,
                     )
                   : controller.cases.isEmpty
                       ? EmptyListWidget(
@@ -40,8 +40,7 @@ class RecentCasesList extends GetView<DashboardController> {
                               : controller.cases.length,
                           itemBuilder: ((_, index) {
                             Case cases = controller.cases.elementAt(index);
-
-                            return RecentCasesListItem(recentCases: cases);
+                            return RecentCasesListItem(cases: cases);
                           }),
                         ),
         ));

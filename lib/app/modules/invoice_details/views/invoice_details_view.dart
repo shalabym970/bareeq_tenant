@@ -25,6 +25,7 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
       body: Padding(
         padding: EdgeInsets.only(right: 10.w, left: 10.w),
         child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

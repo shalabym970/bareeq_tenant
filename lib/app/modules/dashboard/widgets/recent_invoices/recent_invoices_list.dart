@@ -17,17 +17,17 @@ class RecentInvoicesList extends GetView<DashboardController> {
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 8.h),
         child: Obx(
-          () => controller.errorInvoices.isTrue
-              ? CustomErrorWidget(
-                  iconWidth: 20.w,
-                  iconHeight: 20.h,
-                  fontSize: 15.sp,
+          () => controller.loadingInvoices.isTrue
+              ? Padding(
+                  padding: EdgeInsets.symmetric(vertical: 5.h),
+                  child: ShimmerWidget.rectangular(height: 100.h),
                 )
-              : controller.loadingInvoices.isTrue
-                  ? Padding(
-            padding: EdgeInsets.symmetric(vertical: 5.h),
-            child: ShimmerWidget.rectangular(height: 100.h),
-          )
+              : controller.errorInvoices.isTrue
+                  ? CustomErrorWidget(
+                      iconWidth: 20.w,
+                      iconHeight: 20.h,
+                      fontSize: 15.sp,
+                    )
                   : controller.invoices.isEmpty
                       ? EmptyListWidget(
                           fontSize: 15.sp, message: Strings.invoicesEmpty)

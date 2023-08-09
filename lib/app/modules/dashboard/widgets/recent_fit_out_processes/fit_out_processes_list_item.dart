@@ -72,7 +72,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                           Text(
                               fitOut.completedDate == null
                                   ? Strings.na
-                                  : DateFormat("yyyy-MM-dd")
+                                  : DateFormat("EEE d MMM y")
                                       .format(fitOut.completedDate!),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
@@ -101,7 +101,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                           Text(
                               fitOut.expectedOpeningDate == null
                                   ? Strings.na
-                                  : DateFormat("yyyy-MM-dd")
+                                  : DateFormat("EEE d MMM y")
                                       .format(fitOut.expectedOpeningDate!),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
@@ -120,7 +120,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                             height: 5.h,
                           ),
                           Text(
-                              controller.getFitOutStatus(
+                              controller.fitOutStatus(
                                   statusNo: fitOut.status ?? 0),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
@@ -145,7 +145,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                       Text(
                           fitOut.startDate == null
                               ? Strings.na
-                              : DateFormat("yyyy-MM-dd")
+                              : DateFormat("EEE d MMM y")
                                   .format(fitOut.startDate!),
                           style: TextStyle(
                               fontSize: 12.sp, color: ColorManager.black))

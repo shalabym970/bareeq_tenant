@@ -37,23 +37,21 @@ class FitOutApi extends GetxService {
         '${Constants.baseUrl}blser_fitoutsteps?\$select=blser_description,blser_stepstatus,statuscode,_blser_relatedprocess_value,createdon,blser_name&\$filter=(_blser_relatedprocess_value%20eq $fitOutId)';
 
     var response = await NLTMAuthServices.client.get(Uri.parse(url));
-
-    var decodeResponse =
-        await NLTMAuthServices.decodeResponse(response: response);
     Get.log('===============  fit out steps url :  $url ==========');
     Get.log(
         '=============== fit out steps response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
+      var decodeResponse =
+          await NLTMAuthServices.decodeResponse(response: response);
       return decodeResponse['value']
           .map<FitOutStepModel>((obj) => FitOutStepModel.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(Ui.errorSnackBar(message: decodeResponse['message']));
-      throw Exception(decodeResponse['message']);
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
+      throw Exception(response.reasonPhrase.toString());
     }
   }
-
-
 }

@@ -29,7 +29,7 @@ class FitOutProcessDatesWidget extends GetView<FitOutProcessDetailsController> {
               title: Strings.startDate,
               value: controller.fitOut.startDate == null
                   ? Strings.na
-                  : DateFormat("yyyy-MM-dd")
+                  : DateFormat("EEE d MMM y")
                       .format(controller.fitOut.startDate!)),
           SizedBox(
             height: 20.h,
@@ -39,7 +39,7 @@ class FitOutProcessDatesWidget extends GetView<FitOutProcessDetailsController> {
               title: Strings.completionDate,
               value: controller.fitOut.completedDate == null
                   ? Strings.na
-                  : DateFormat("yyyy-MM-dd")
+                  : DateFormat("EEE d MMM y")
                       .format(controller.fitOut.completedDate!)),
           SizedBox(
             height: 20.h,
@@ -49,7 +49,7 @@ class FitOutProcessDatesWidget extends GetView<FitOutProcessDetailsController> {
               title: Strings.expectedOpeningDate,
               value: controller.fitOut.expectedOpeningDate == null
                   ? Strings.na
-                  : DateFormat("yyyy-MM-dd")
+                  : DateFormat("EEE d MMM y")
                       .format(controller.fitOut.expectedOpeningDate!)),
         ],
       ),

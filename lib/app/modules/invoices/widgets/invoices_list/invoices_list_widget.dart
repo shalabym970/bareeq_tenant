@@ -34,7 +34,7 @@ class InvoicesListWidget extends StatelessWidget {
               )
             ],
           ),
-          const Expanded(child: InvoicesList())
+          const InvoicesList()
         ],
       ),
     );

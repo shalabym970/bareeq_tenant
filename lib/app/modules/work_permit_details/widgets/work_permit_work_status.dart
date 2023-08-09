@@ -37,7 +37,7 @@ class WorkPermitWorkStatusWidget extends GetView<WorkPermitDetailsController> {
                       title: Strings.startDate,
                       value:  controller.workPermit.startDate == null
                           ? Strings.na
-                          : DateFormat("yyyy-MM-dd")
+                          : DateFormat("EEE d MMM y")
                           .format(controller.workPermit.startDate!),
                     ),
                     SizedBox(
@@ -60,7 +60,7 @@ class WorkPermitWorkStatusWidget extends GetView<WorkPermitDetailsController> {
                         title: Strings.endDate,
                         value: controller.workPermit.endDate == null
                             ?  Strings.na
-                            : DateFormat("yyyy-MM-dd")
+                            : DateFormat("EEE d MMM y")
                                 .format(controller.workPermit.endDate!)),
                     SizedBox(
                       height: 20.h,

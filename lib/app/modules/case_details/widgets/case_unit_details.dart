@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../../dashboard/controllers/dashboard_controller.dart';
 import '../controllers/case_details_controller.dart';
 
 class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
@@ -43,7 +46,7 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                     customDetailsItem(
                         icon: ImagePaths.group77,
                         title: Strings.relatedLease,
-                        // TODO: must get the lease name by this id whene back at project any more
+                        // TODO: must get the lease name by this id when back at project any more
                         value:
                             controller.cases.propertyLeaseId.toString())
                   ],
@@ -64,8 +67,8 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                     customDetailsItem(
                         icon: ImagePaths.pylon,
                         title: Strings.status,
-                        // TODO: must be to convert this status to string to show him here in the future
-                        value: controller.cases.status.toString())
+                        value: Get.find<DashboardController>().state(
+                            statusNo: controller.cases.state ?? 2))
                   ],
                 ),
               )

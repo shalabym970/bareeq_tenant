@@ -8,8 +8,8 @@ import '../../../../../common/strings/strings.dart';
 import '../../../../models/work_permit.dart';
 import '../../../../routes/app_routes.dart';
 
-class RecentWorkPermitListItem extends StatelessWidget {
-  const RecentWorkPermitListItem({Key? key, required this.workPermit})
+class RecentWorkPermitItem extends StatelessWidget {
+  const RecentWorkPermitItem({Key? key, required this.workPermit})
       : super(key: key);
   final WorkPermit workPermit;
 

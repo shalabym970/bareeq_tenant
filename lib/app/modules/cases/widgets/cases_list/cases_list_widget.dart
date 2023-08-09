@@ -58,7 +58,7 @@ class CasesListWidget extends StatelessWidget {
               ],
             ),
           ),
-          const Expanded(child: CasesList())
+          const CasesList()
         ],
       ),
     );
