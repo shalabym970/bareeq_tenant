@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../../../services/state_handler.dart';
 import '../controllers/fit_out_process_details_controller.dart';
 
 class FitOutProcessGeneralDetailsWidget
@@ -50,7 +51,7 @@ class FitOutProcessGeneralDetailsWidget
                     customDetailsItem(
                       icon: ImagePaths.pylon,
                       title: Strings.status,
-                      value: Get.find<DashboardController>()
+                      value: StateHandler
                           .fitOutStatus(statusNo: controller.fitOut.status!),
                     )
                   ],

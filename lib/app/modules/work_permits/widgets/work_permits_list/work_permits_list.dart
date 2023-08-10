@@ -1,10 +1,9 @@
-import 'package:Seef/app/modules/dashboard/widgets/recent_work_permits/recent_work_permits_item.dart';
+import 'package:Seef/app/modules/dashboard/widgets/recent_work_permits/work_permits_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../common/strings/strings.dart';
-import '../../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../../common/widgets/empty_list_widget.dart';
 import '../../../../../common/widgets/error_widget.dart';
 import '../../../../../common/widgets/vertical_list_loading.dart';
@@ -40,7 +39,7 @@ class WorkPermitsList extends GetView<DashboardController> {
                           itemBuilder: ((_, index) {
                             WorkPermit workPermit =
                                 controller.workPermits.elementAt(index);
-                            return RecentWorkPermitItem(workPermit: workPermit);
+                            return WorkPermitItem(workPermit: workPermit);
                           }),
                         ),
         ));

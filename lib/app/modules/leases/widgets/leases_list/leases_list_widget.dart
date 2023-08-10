@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
-import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
 import '../../../../../common/strings/strings.dart';
-import '../../../../routes/app_routes.dart';
 import 'leases_list.dart';
 
 class LeasesListWidget extends StatelessWidget {
@@ -36,7 +31,7 @@ class LeasesListWidget extends StatelessWidget {
               )
             ],
           ),
-          const Expanded(child: LeasesList())
+          const LeasesList()
         ],
       ),
     );

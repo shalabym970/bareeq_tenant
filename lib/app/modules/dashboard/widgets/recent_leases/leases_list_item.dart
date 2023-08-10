@@ -1,4 +1,4 @@
-import 'package:Seef/app/models/invoice.dart';
+import 'package:Seef/app/models/lease_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -6,17 +6,17 @@ import 'package:intl/intl.dart' as intl;
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/strings/strings.dart';
 import '../../../../routes/app_routes.dart';
+import '../../controllers/dashboard_controller.dart';
 
-class RecentInvoicesListItem extends StatelessWidget {
-  const RecentInvoicesListItem({Key? key, required this.invoice})
-      : super(key: key);
-  final Invoice invoice;
+class LeasesListItem extends GetView<DashboardController> {
+  const LeasesListItem({Key? key, required this.lease}) : super(key: key);
+  final LeaseModel lease;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.invoiceDetails,arguments: invoice);
+        Get.toNamed(Routes.leaseDetails, arguments: lease);
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 5.h),
@@ -45,7 +45,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Text(Strings.invoiceNumber,
+                          Text(Strings.leaseCRMNumber,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 10.sp,
@@ -53,7 +53,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(invoice.invoiceNumber ?? "null",
+                          Text(lease.name.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -69,9 +69,11 @@ class RecentInvoicesListItem extends StatelessWidget {
                             height: 5.h,
                           ),
                           Text(
-                              intl.DateFormat('EEE d MMM y')
-                                  .format(invoice.dueDate!)
-                                  .toString(),
+                              lease.endDate == null
+                                  ? Strings.na
+                                  : intl.DateFormat('EEE d MMM y')
+                                      .format(lease.endDate!)
+                                      .toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -87,7 +89,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            Strings.regarding,
+                            Strings.leaseName,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
@@ -96,7 +98,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(invoice.name ?? "null",
+                          Text(controller.currentUser.account!.name.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -113,7 +115,7 @@ class RecentInvoicesListItem extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(invoice.amountDueRemaining.toString(),
+                          Text(lease.amount.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -135,9 +137,11 @@ class RecentInvoicesListItem extends StatelessWidget {
                         height: 5.h,
                       ),
                       Text(
-                          intl.DateFormat('EEE d MMM y')
-                              .format(invoice.createdOn!)
-                              .toString(),
+                          lease.startDate == null
+                              ? Strings.na
+                              : intl.DateFormat('EEE d MMM y')
+                                  .format(lease.startDate!)
+                                  .toString(),
                           style: TextStyle(
                               fontSize: 12.sp, color: ColorManager.black))
                     ],

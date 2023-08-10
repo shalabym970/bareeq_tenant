@@ -6,6 +6,7 @@ import '../../../../../common/color_manager.dart';
 import '../../../../../common/strings/strings.dart';
 import '../../../../routes/app_routes.dart';
 import 'package:intl/intl.dart';
+import '../../../../services/state_handler.dart';
 import '../../controllers/dashboard_controller.dart';
 
 class FitOutProcessesListItem extends GetView<DashboardController> {
@@ -120,7 +121,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                             height: 5.h,
                           ),
                           Text(
-                              controller.fitOutStatus(
+                              StateHandler.fitOutStatus(
                                   statusNo: fitOut.status ?? 0),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))

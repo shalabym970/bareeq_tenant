@@ -1,5 +1,5 @@
 import 'package:Seef/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:Seef/app/modules/dashboard/widgets/recent_invoices/recent_invoices_list_item.dart';
+import 'package:Seef/app/modules/dashboard/widgets/recent_invoices/invoices_list_item.dart';
 import 'package:Seef/common/strings/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,7 +42,7 @@ class RecentInvoicesList extends GetView<DashboardController> {
                             Invoice invoice =
                                 controller.invoices.elementAt(index);
 
-                            return RecentInvoicesListItem(invoice: invoice);
+                            return InvoicesListItem(invoice: invoice);
                           }),
                         ),
         ));

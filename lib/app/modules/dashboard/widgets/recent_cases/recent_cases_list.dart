@@ -1,4 +1,4 @@
-import 'package:Seef/app/modules/dashboard/widgets/recent_cases/recent_cases_item.dart';
+import 'package:Seef/app/modules/dashboard/widgets/recent_cases/cases_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -40,7 +40,7 @@ class RecentCasesList extends GetView<DashboardController> {
                               : controller.cases.length,
                           itemBuilder: ((_, index) {
                             Case cases = controller.cases.elementAt(index);
-                            return RecentCasesListItem(cases: cases);
+                            return CasesListItem(cases: cases);
                           }),
                         ),
         ));

@@ -7,7 +7,6 @@ import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_attachment_widget.dart';
-import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../../../routes/app_routes.dart';
 import '../controllers/lease_details_controller.dart';
@@ -55,7 +54,7 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('Rent Lease for Unit 10',
+                        Text(controller.lease.name.toString(),
                             style: TextStyle(
                                 fontSize: 18.sp, color: ColorManager.black))
                       ],

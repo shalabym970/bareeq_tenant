@@ -69,22 +69,4 @@ class FitOutModel {
             ? null
             : Unit.fromJson(json["blser_RelatedUnit"]),
       );
-
-  Map<String, dynamic> toJson() => {
-        "blser_startdate": startDate?.toIso8601String(),
-        "blser_approved": approved,
-        "createdon": createdOn?.toIso8601String(),
-        "blser_approvedon": approvedOn,
-        "blser_completeddate": completedDate?.toIso8601String(),
-        "blser_name": name,
-        "blser_fitoutprocessid": id,
-        "blser_reviewedon": reviewedOn,
-        "_blser_relatedtenant_value": accountId,
-        "blser_expectedopeningdate": expectedOpeningDate?.toIso8601String(),
-        "blser_reviewed": reviewed,
-        "_blser_relatedcontract_value": relatedContractId,
-        "blser_processstatus": status,
-        "blser_RelatedProperty": property?.toJson(),
-        "blser_RelatedUnit": unit?.toJson(),
-      };
 }

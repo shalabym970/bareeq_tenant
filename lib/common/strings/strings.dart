@@ -30,7 +30,8 @@ class Strings {
   static const String amount = 'Amount';
   static const String submitDate = 'Submit Date';
   static const String recentLeases = 'Recent Leases';
-  static const String leaseNumber = 'Lease Number';
+  static const String leaseCRMNumber = 'Lease CRM Number';
+  static const String leaseERPNumber = 'Lease ERP Number';
   static const String leaseName = 'Lease Name';
   static const String recentFitOutProcesses = 'Recent Fit Out Processes';
   static const String name = 'Name';
@@ -180,10 +181,10 @@ class Strings {
   static const String createItem = 'Create Item';
   static const String workPermitsEmpty = 'Work Permits List is Empty';
   static const String invoicesEmpty = 'Invoices List is Empty';
+  static const String leasesEmpty = 'Leases List is Empty';
   static const String casesEmpty = 'Cases List is Empty';
   static const String fitOutsEmpty = 'Fit Outs List is Empty';
   static const String nothingMessages = 'Nothing Messages';
   static const String nothingFitOutSteps = 'Nothing Fit Out Steps';
   static const String na = "N/A";
-
 }

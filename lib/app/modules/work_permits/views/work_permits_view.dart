@@ -6,10 +6,10 @@ import '../../../../common/color_manager.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_drawer.dart';
+import '../../../../common/widgets/custom_text_field.dart';
 import '../../../routes/app_routes.dart';
 import '../controllers/work_permits_controller.dart';
 import '../widgets/work_permits_list/work_permits_list_widget.dart';
-import '../widgets/work_permits_search_widget.dart';
 
 class WorkPermitsView extends GetView<WorkPermitsController> {
   const WorkPermitsView({super.key});
@@ -29,16 +29,22 @@ class WorkPermitsView extends GetView<WorkPermitsController> {
           child: Scaffold(
             appBar: customAppBar(title: Strings.workPermits),
             body: Padding(
-              padding: EdgeInsets.only(right: 10.w, left: 10.w),
-              child: const SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+              child: SingleChildScrollView(
                 primary: false,
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      WorkPermitsSearchWidget(),
-                      WorkPermitsListWidget()
+                      CustomTextField(
+                        hint: Strings.search,
+                        controller: controller.searchController,
+                        height: 55.h,
+                        width: 1.sw,
+                      ),
+                      SizedBox(height: 10.h),
+                      const WorkPermitsListWidget()
                     ]),
               ),
             ),

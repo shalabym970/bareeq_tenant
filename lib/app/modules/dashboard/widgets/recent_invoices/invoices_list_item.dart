@@ -1,4 +1,4 @@
-import 'package:Seef/app/models/case_model.dart';
+import 'package:Seef/app/models/invoice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -6,17 +6,16 @@ import 'package:intl/intl.dart' as intl;
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/strings/strings.dart';
 import '../../../../routes/app_routes.dart';
-import '../../controllers/dashboard_controller.dart';
 
-class RecentCasesListItem extends  GetView<DashboardController> {
-  const RecentCasesListItem({Key? key, required this.cases}) : super(key: key);
-  final Case cases;
+class InvoicesListItem extends StatelessWidget {
+  const InvoicesListItem({Key? key, required this.invoice}) : super(key: key);
+  final Invoice invoice;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.caseDetails,arguments:cases );
+        Get.toNamed(Routes.invoiceDetails, arguments: invoice);
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 5.h),
@@ -45,7 +44,7 @@ class RecentCasesListItem extends  GetView<DashboardController> {
                     children: [
                       Column(
                         children: [
-                          Text(Strings.requestNumber,
+                          Text(Strings.invoiceNumber,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 10.sp,
@@ -53,14 +52,14 @@ class RecentCasesListItem extends  GetView<DashboardController> {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(cases.caseNumber.toString(),
+                          Text(invoice.invoiceNumber ?? "null",
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
                       ),
                       Column(
                         children: [
-                          Text(Strings.type,
+                          Text(Strings.dueDate,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 10.sp,
@@ -68,8 +67,12 @@ class RecentCasesListItem extends  GetView<DashboardController> {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text( controller.caseType(
-                              statusNo: cases.status ?? 0),
+                          Text(
+                              invoice.dueDate == null
+                                  ? Strings.na
+                                  : intl.DateFormat('EEE d MMM y')
+                                      .format(invoice.dueDate!)
+                                      .toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -85,7 +88,7 @@ class RecentCasesListItem extends  GetView<DashboardController> {
                       Column(
                         children: [
                           Text(
-                            Strings.title,
+                            Strings.regarding,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
@@ -94,7 +97,7 @@ class RecentCasesListItem extends  GetView<DashboardController> {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(cases.title.toString(),
+                          Text(invoice.name.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -102,7 +105,7 @@ class RecentCasesListItem extends  GetView<DashboardController> {
                       Column(
                         children: [
                           Text(
-                            Strings.priority,
+                            Strings.amount,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
@@ -111,8 +114,7 @@ class RecentCasesListItem extends  GetView<DashboardController> {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(controller.casePriority(
-                              statusNo: cases.priority ?? 0),
+                          Text(invoice.amountDueRemaining.toString(),
                               style: TextStyle(
                                   fontSize: 12.sp, color: ColorManager.black))
                         ],
@@ -125,7 +127,7 @@ class RecentCasesListItem extends  GetView<DashboardController> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(Strings.date,
+                      Text(Strings.submitDate,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 10.sp,
@@ -133,9 +135,12 @@ class RecentCasesListItem extends  GetView<DashboardController> {
                       SizedBox(
                         height: 5.h,
                       ),
-                      Text( intl.DateFormat('EEE d MMM y')
-                          .format(cases.submittedOn!)
-                          .toString(),
+                      Text(
+                          invoice.createdOn == null
+                              ? Strings.na
+                              : intl.DateFormat('EEE d MMM y')
+                                  .format(invoice.createdOn!)
+                                  .toString(),
                           style: TextStyle(
                               fontSize: 12.sp, color: ColorManager.black))
                     ],

@@ -1,12 +1,11 @@
 import 'package:Seef/app/models/fit_out_model.dart';
+import 'package:Seef/app/models/lease_model.dart';
 import 'package:Seef/app/models/work_permit.dart';
 import 'package:Seef/app/repositories/fit_out_repo.dart';
+import 'package:Seef/app/repositories/lease_repo.dart';
 import 'package:Seef/app/repositories/work_permit_repo.dart';
 import 'package:Seef/app/services/session_services.dart';
-import 'package:Seef/common/status_no.dart';
-import 'package:Seef/common/status_string.dart';
 import 'package:Seef/common/strings/error_strings.dart';
-import 'package:Seef/common/strings/strings.dart';
 import 'package:get/get.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/case_model.dart';
@@ -30,10 +29,12 @@ class DashboardController extends GetxController {
   final fitOuts = <FitOutModel>[].obs;
   final invoices = <Invoice>[].obs;
   final cases = <Case>[].obs;
-  InvoicesRepository invoicesRepository = InvoicesRepository();
+  final leases = <LeaseModel>[].obs;
+  InvoicesRepo invoicesRepo = InvoicesRepo();
   WorkPermitRepo workPermitRepo = WorkPermitRepo();
-  CasesRepository casesRepository = CasesRepository();
+  CasesRepo casesRepo = CasesRepo();
   FitOutRepo fitOutRepo = FitOutRepo();
+  LeasesRepo leasesRepo = LeasesRepo();
 
   Contact get currentUser {
     return Get.find<SessionServices>().currentUser.value;
@@ -45,6 +46,7 @@ class DashboardController extends GetxController {
     getInvoices();
     getCases();
     getFitOuts();
+    getLeases();
     super.onInit();
   }
 
@@ -52,7 +54,7 @@ class DashboardController extends GetxController {
     try {
       errorInvoices.value = false;
       loadingInvoices.value = true;
-      invoices.assignAll(await invoicesRepository.getInvoices());
+      invoices.assignAll(await invoicesRepo.getInvoices());
     } catch (e) {
       errorInvoices.value = true;
       Get.showSnackbar(
@@ -67,7 +69,7 @@ class DashboardController extends GetxController {
     try {
       errorCases.value = false;
       loadingCases.value = true;
-      cases.assignAll(await casesRepository.getCases());
+      cases.assignAll(await casesRepo.getCases());
     } catch (e) {
       errorCases.value = true;
       Get.showSnackbar(
@@ -102,66 +104,24 @@ class DashboardController extends GetxController {
       errorOutProcess.value = true;
       Get.showSnackbar(
           Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
-      Get.log('========== Error when get fit outs process : $e ==========');
+      Get.log('========== Error when get fit out process : $e ==========');
     } finally {
       loadingOutProcess.value = false;
     }
   }
 
-  String fitOutStatus({required int statusNo}) {
-    if (statusNo == StatusNo.fitOutNotStarted) {
-      return StatusString.fitOutNotStarted;
-    } else if (statusNo == StatusNo.fitOutRejected) {
-      return StatusString.fitOutRejected;
-    } else if (statusNo == StatusNo.fitOutInProgress) {
-      return StatusString.fitOutInProgress;
-    } else if (statusNo == StatusNo.fitOutFurtherRequirementSubmitted) {
-      return StatusString.fitOutFurtherRequirementSubmitted;
-    } else if (statusNo == StatusNo.fitOutCompleted) {
-      return StatusString.fitOutCompleted;
-    } else if (statusNo == StatusNo.fitOutApproved) {
-      return StatusString.fitOutApproved;
-    } else {
-      return Strings.na;
-    }
-  }
-
-  String caseType({required int statusNo}) {
-    if (statusNo == StatusNo.caseTypeHandover) {
-      return StatusString.caseTypeHandover;
-    } else if (statusNo == StatusNo.caseTypeProblem) {
-      return StatusString.caseTypeProblem;
-    } else if (statusNo == StatusNo.caseTypeQuestion) {
-      return StatusString.caseTypeQuestion;
-    } else if (statusNo == StatusNo.caseTypeRequest) {
-      return StatusString.caseTypeRequest;
-    } else if (statusNo == StatusNo.caseTypeWarranty) {
-      return StatusString.caseTypeWarranty;
-    } else {
-      return Strings.na;
-    }
-  }
-
-  String casePriority({required int statusNo}) {
-    if (statusNo == StatusNo.casePriorityNormal) {
-      return StatusString.casePriorityNormal;
-    } else if (statusNo == StatusNo.casePriorityLow) {
-      return StatusString.casePriorityLow;
-    } else if (statusNo == StatusNo.casePriorityHigh) {
-      return StatusString.casePriorityLow;
-    } else {
-      return Strings.na;
-    }
-  }
-
-  String state({required int statusNo}) {
-    if (statusNo == StatusNo.stateActive) {
-      return StatusString.stateActive;
-    } else if (statusNo == StatusNo.stateInActive) {
-      return StatusString.stateInActive;
-    }
-    {
-      return Strings.na;
+  void getLeases() async {
+    try {
+      errorLeases.value = false;
+      loadingLeases.value = true;
+      leases.assignAll(await leasesRepo.getLeases());
+    } catch (e) {
+      errorLeases.value = true;
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when get Leases : $e ==========');
+    } finally {
+      loadingLeases.value = false;
     }
   }
 }

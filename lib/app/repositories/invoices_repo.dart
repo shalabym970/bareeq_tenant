@@ -1,8 +1,8 @@
 import '../models/invoice.dart';
-import '../providers/api_client_provider.dart';
+import '../providers/api_client/invoice_api.dart';
 
-class InvoicesRepository {
+class InvoicesRepo {
   Future<List<Invoice>> getInvoices() async {
-    return ApiClientProvider.getInvoices();
+    return InvoiceApi.getInvoices();
   }
 }

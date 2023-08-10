@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../controllers/lease_details_controller.dart';
 
-class LeaseUnitDetailsWidget extends StatelessWidget {
+class LeaseUnitDetailsWidget extends GetView<LeaseDetailsController> {
   const LeaseUnitDetailsWidget({Key? key}) : super(key: key);
 
   @override
@@ -33,21 +34,35 @@ class LeaseUnitDetailsWidget extends StatelessWidget {
                     customDetailsItem(
                         icon: ImagePaths.office,
                         title: Strings.property,
-                        value: 'Building "B"'),
+                        value: controller.lease.property!.name.toString()),
                     SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.priceTage,
                         title: Strings.brand,
-                        value: 'XYZ Brand')
+                        value: controller.lease.brand!.name.toString())
                   ],
                 ),
               ),
               Expanded(
                 flex: 1,
-                child: customDetailsItem(
-                    icon: ImagePaths.group42, title: Strings.unit, value: '10'),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customDetailsItem(
+                        icon: ImagePaths.group42,
+                        title: Strings.unit,
+                        value: controller.lease.unit!.name.toString()),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    customDetailsItem(
+                        icon: ImagePaths.path79,
+                        title: Strings.leaseERPNumber,
+                        value: controller.lease.erpLeaseNumber.toString()),
+                  ],
+                ),
               ),
             ],
           )

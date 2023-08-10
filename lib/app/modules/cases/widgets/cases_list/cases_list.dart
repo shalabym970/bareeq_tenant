@@ -7,7 +7,7 @@ import '../../../../../common/widgets/error_widget.dart';
 import '../../../../../common/widgets/vertical_list_loading.dart';
 import '../../../../models/case_model.dart';
 import '../../../dashboard/controllers/dashboard_controller.dart';
-import '../../../dashboard/widgets/recent_cases/recent_cases_item.dart';
+import '../../../dashboard/widgets/recent_cases/cases_item.dart';
 
 class CasesList extends GetView<DashboardController> {
   const CasesList({super.key});
@@ -35,7 +35,7 @@ class CasesList extends GetView<DashboardController> {
                           itemCount: controller.cases.length,
                           itemBuilder: ((_, index) {
                             Case cases = controller.cases.elementAt(index);
-                            return RecentCasesListItem(cases: cases);
+                            return CasesListItem(cases: cases);
                           }),
                         ),
         ));

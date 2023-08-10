@@ -1,4 +1,3 @@
-import 'package:Seef/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -6,6 +5,7 @@ import 'package:intl/intl.dart' as intl;
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../../../services/state_handler.dart';
 import '../controllers/case_details_controller.dart';
 
 class CaseGeneralDetailsWidget extends GetView<CaseDetailsController> {
@@ -43,7 +43,7 @@ class CaseGeneralDetailsWidget extends GetView<CaseDetailsController> {
                     customDetailsItem(
                       icon: ImagePaths.documentLayout,
                       title: Strings.type,
-                      value: Get.find<DashboardController>()
+                      value: StateHandler
                           .caseType(statusNo: controller.cases.status ?? 0),
                     )
                   ],
@@ -66,7 +66,7 @@ class CaseGeneralDetailsWidget extends GetView<CaseDetailsController> {
                     customDetailsItem(
                         icon: ImagePaths.import,
                         title: Strings.priority,
-                        value: Get.find<DashboardController>().casePriority(
+                        value: StateHandler.casePriority(
                             statusNo: controller.cases.priority ?? 0))
                   ],
                 ),

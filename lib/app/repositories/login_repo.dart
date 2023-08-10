@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import '../models/contact_model.dart';
-import '../providers/api_client_provider.dart';
+import '../providers/api_client/contact_api.dart';
 import '../services/session_services.dart';
 
 class LoginRepository {
@@ -12,7 +12,7 @@ class LoginRepository {
   }
 
   Future<bool> checkUser({required Contact user}) async {
-    List<Contact> allContacts = await ApiClientProvider.getAllContacts();
+    List<Contact> allContacts = await ContactApi.getAllContacts();
     for (var contact in allContacts) {
       if (contact == user) {
         Get.log('====================  true =======================');

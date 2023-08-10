@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
-import '../../dashboard/controllers/dashboard_controller.dart';
+import '../../../services/state_handler.dart';
 import '../controllers/case_details_controller.dart';
 
 class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
@@ -67,7 +65,7 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                     customDetailsItem(
                         icon: ImagePaths.pylon,
                         title: Strings.status,
-                        value: Get.find<DashboardController>().state(
+                        value: StateHandler.state(
                             statusNo: controller.cases.state ?? 2))
                   ],
                 ),

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:intl/intl.dart' as intl;
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../controllers/lease_details_controller.dart';
 
-class LeaseDatesWidget extends StatelessWidget {
+class LeaseDatesWidget extends GetView<LeaseDetailsController> {
   const LeaseDatesWidget({Key? key}) : super(key: key);
 
   @override
@@ -23,30 +25,50 @@ class LeaseDatesWidget extends StatelessWidget {
             ),
           ),
           customDetailsItem(
-              icon: ImagePaths.filingTime,
-              title: Strings.communicationDate,
-              value: '10-November-2022'),
+            icon: ImagePaths.filingTime,
+            title: Strings.communicationDate,
+            value: controller.lease.commencementDate == null
+                ? Strings.na
+                : intl.DateFormat('EEE d MMM y')
+                    .format(controller.lease.commencementDate!)
+                    .toString(),
+          ),
           SizedBox(
             height: 20.h,
           ),
           customDetailsItem(
-              icon: ImagePaths.filingTime,
-              title: Strings.startDate,
-              value: '10-November-2022'),
+            icon: ImagePaths.filingTime,
+            title: Strings.startDate,
+            value: controller.lease.startDate == null
+                ? Strings.na
+                : intl.DateFormat('EEE d MMM y')
+                    .format(controller.lease.commencementDate!)
+                    .toString(),
+          ),
           SizedBox(
             height: 20.h,
           ),
           customDetailsItem(
-              icon: ImagePaths.filingTime,
-              title: Strings.terminationDate,
-              value: '10-November-2022'),
+            icon: ImagePaths.filingTime,
+            title: Strings.terminationDate,
+            value: controller.lease.terminationDate == null
+                ? Strings.na
+                : intl.DateFormat('EEE d MMM y')
+                    .format(controller.lease.terminationDate!)
+                    .toString(),
+          ),
           SizedBox(
             height: 20.h,
           ),
           customDetailsItem(
-              icon: ImagePaths.filingTime,
-              title: Strings.endDate,
-              value: '10-November-2022'),
+            icon: ImagePaths.filingTime,
+            title: Strings.endDate,
+            value: controller.lease.endDate == null
+                ? Strings.na
+                : intl.DateFormat('EEE d MMM y')
+                    .format(controller.lease.endDate!)
+                    .toString(),
+          ),
         ],
       ),
     );
