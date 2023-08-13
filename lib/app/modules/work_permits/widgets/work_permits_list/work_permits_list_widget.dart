@@ -45,7 +45,7 @@ class WorkPermitsListWidget extends StatelessWidget {
                     Get.toNamed(Routes.addWorkPermit);
                   },
                   heroTag: null,
-                  backgroundColor: ColorManager.darkGreen,
+                  backgroundColor: ColorManager.mainColor,
                   child: Icon(
                     Icons.add,
                     color: Colors.white,

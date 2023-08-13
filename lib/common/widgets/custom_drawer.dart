@@ -11,7 +11,7 @@ import 'drawer_item_widget.dart';
 
 Drawer customDrawer() {
   return Drawer(
-    backgroundColor: ColorManager.green,
+    backgroundColor: ColorManager.mainColor,
     child: Stack(
       children: <Widget>[
         SvgPicture.asset(
@@ -19,7 +19,7 @@ Drawer customDrawer() {
           alignment: Alignment.center,
           width: Get.width,
           height: 637.h,
-          color: Colors.green[900],
+          color: ColorManager.white,
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 30.h),
@@ -32,13 +32,13 @@ Drawer customDrawer() {
                 Row(
                   children: [
                     BackButton(
-                      color: ColorManager.white,
+                      color: ColorManager.mainColor,
                     ),
                     SizedBox(width: 5.w),
                     Text(
                       Strings.menu,
                       style: TextStyle(
-                          color: ColorManager.white,
+                          color: ColorManager.mainColor,
                           fontWeight: FontWeight.w500,
                           fontSize: 23.sp),
                     )
@@ -54,7 +54,7 @@ Drawer customDrawer() {
                     children: [
                       DrawerItemWidget(
                         text: Strings.dashboard,
-                        svgIconPath: ImagePaths.whiteBriefcase,
+                        svgIconPath: ImagePaths.dashboard,
                         onTap: () {
                           Get.offAllNamed(Routes.dashboard);
                         },

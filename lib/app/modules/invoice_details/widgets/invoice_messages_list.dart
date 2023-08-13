@@ -20,7 +20,7 @@ class InvoiceMessagesList extends StatelessWidget {
         // var playerStanding =
         // controller.playerStandingList.elementAt(index);
         return  WorkPermitItemCard(
-          workPermitItem: WorkPermitItem(),
+          workPermitItem: WorkPermit(),
         );
       }),
     );

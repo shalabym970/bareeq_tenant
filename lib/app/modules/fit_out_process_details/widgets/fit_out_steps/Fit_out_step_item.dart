@@ -42,7 +42,7 @@ class FitOutStepItem extends GetView<FitOutProcessDetailsController> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 10.sp,
-                      color: ColorManager.green),
+                      color: ColorManager.mainColor),
                   maxLines: 1,
                 ),
                 SizedBox(
@@ -52,7 +52,7 @@ class FitOutStepItem extends GetView<FitOutProcessDetailsController> {
                     controller.getFitOutStepStatus(
                         statusNo: fitOutStep.status ?? 0),
                     style: TextStyle(
-                        fontSize: 12.sp, color: ColorManager.darkGreen)),
+                        fontSize: 12.sp, color: ColorManager.mainColor)),
                 SizedBox(
                   height: 10.h,
                 ),

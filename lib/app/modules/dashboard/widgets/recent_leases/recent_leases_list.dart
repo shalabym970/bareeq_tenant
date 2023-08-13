@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../common/strings/strings.dart';
+import '../../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../../common/widgets/empty_list_widget.dart';
 import '../../../../../common/widgets/error_widget.dart';
 import '../../controllers/dashboard_controller.dart';
@@ -18,7 +19,10 @@ class RecentLeasesList extends GetView<DashboardController> {
         padding: EdgeInsets.symmetric(vertical: 8.h),
         child: Obx(
           () => controller.loadingLeases.isTrue
-              ? VerticalListLoading(height: 100.h)
+              ? Padding(
+            padding: EdgeInsets.symmetric(vertical: 5.h),
+            child: ShimmerWidget.rectangular(height: 100.h),
+          )
               : controller.errorLeases.isTrue
                   ? CustomErrorWidget(
                       iconWidth: 20.w,

@@ -1,4 +1,4 @@
-class WorkPermitItem {
+class WorkPermit {
   String? workPermitItemId;
   String? id;
   DateTime? createdOn;
@@ -10,7 +10,7 @@ class WorkPermitItem {
   int? statusCode;
   int? type;
 
-  WorkPermitItem({
+  WorkPermit({
     this.workPermitItemId,
     this.id,
     this.createdOn,
@@ -23,9 +23,9 @@ class WorkPermitItem {
     this.type,
   });
 
-  factory WorkPermitItem.fromJson(
+  factory WorkPermit.fromJson(
       Map<String, dynamic> json) =>
-      WorkPermitItem(
+      WorkPermit(
         workPermitItemId: json["blser_workpermititemid"],
         id: json["blser_id"],
         createdOn: json["createdon"] == null ? null : DateTime.parse(

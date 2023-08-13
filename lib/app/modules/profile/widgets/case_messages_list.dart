@@ -19,7 +19,7 @@ class CaseMessagesList extends StatelessWidget {
       itemBuilder: ((_, index) {
         // var playerStanding =
         // controller.playerStandingList.elementAt(index);
-        return   WorkPermitItemCard( workPermitItem: WorkPermitItem(),);
+        return   WorkPermitItemCard( workPermitItem: WorkPermit(),);
       }),
     );
   }

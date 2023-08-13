@@ -27,20 +27,20 @@ class LoginView extends GetView<AuthController> {
                 ? MainAxisAlignment.center
                 : MainAxisAlignment.start,
             children: [
-              SizedBox(height: 60.h),
+              SizedBox(height: 20.h),
               Image.asset(
                 ImagePaths.logoWithoutBg,
-                height: 50.h,
+                height: 150.h,
                 width: Get.width,
               ),
-              SizedBox(height: 75.h),
+              SizedBox(height: 50.h),
               Center(
                 child: Text(
                   Strings.login,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 25.sp,
-                      color: ColorManager.darkGreen),
+                      color: ColorManager.mainColor),
                 ),
               ),
               SizedBox(height: 32.h),
@@ -76,7 +76,7 @@ class LoginView extends GetView<AuthController> {
                                         controller.passwordVisible.value
                                             ? Icons.visibility_off
                                             : Icons.visibility,
-                                        color: ColorManager.lightGreen,
+                                        color: ColorManager.mainColor,
                                         size: 20.sp,
                                       ),
                                       onPressed: () {
@@ -98,7 +98,7 @@ class LoginView extends GetView<AuthController> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 12.sp,
-                                        color: ColorManager.lightGreen,
+                                        color: ColorManager.mainColor,
                                         decoration: TextDecoration.underline),
                                   ),
                                 ),
@@ -110,7 +110,7 @@ class LoginView extends GetView<AuthController> {
                                     controller.login();
                                   },
                                   height: 40.h,
-                                  backgroundColor: ColorManager.darkGreen,
+                                  backgroundColor: ColorManager.mainColor,
                                   textAndIconColor: ColorManager.white),
                             ],
                           ),

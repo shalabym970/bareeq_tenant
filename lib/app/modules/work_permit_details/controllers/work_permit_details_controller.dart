@@ -16,11 +16,11 @@ class WorkPermitDetailsController extends GetxController {
   final errorWorkPermitItems = false.obs;
   final errorMessages = false.obs;
   final errorAttachments = false.obs;
-  final workPermitItems = <WorkPermitItem>[].obs;
+  final workPermitItems = <WorkPermit>[].obs;
   final messages = <MessageModel>[].obs;
   WorkPermitRepo workPermitRepo = WorkPermitRepo();
   MessagesRepo messagesRepo = MessagesRepo();
-  WorkPermit workPermit = Get.arguments;
+  WorkPermitModel workPermit = Get.arguments;
 
   @override
   onInit() {

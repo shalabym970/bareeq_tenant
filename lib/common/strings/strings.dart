@@ -187,4 +187,5 @@ class Strings {
   static const String nothingMessages = 'Nothing Messages';
   static const String nothingFitOutSteps = 'Nothing Fit Out Steps';
   static const String na = "N/A";
+  static const String noSearchResult = "No search results found";
 }

@@ -53,7 +53,7 @@ class CreateMessageView extends GetView<CreateMessageController> {
                               style: TextStyle(
                                   fontSize: 10.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: ColorManager.green))),
+                                  color: ColorManager.mainColor))),
                       SizedBox(height: 20.h),
                       CustomTextField(
                         height: 105.h,
@@ -63,7 +63,7 @@ class CreateMessageView extends GetView<CreateMessageController> {
                             style: TextStyle(
                                 fontSize: 10.sp,
                                 fontWeight: FontWeight.w500,
-                                color: ColorManager.green)),
+                                color: ColorManager.mainColor)),
                         maxLines: 6,
                       ),
                       SizedBox(height: 50.h),
@@ -73,7 +73,7 @@ class CreateMessageView extends GetView<CreateMessageController> {
                             Get.back();
                           },
                           height: 40.h,
-                          backgroundColor: ColorManager.darkGreen,
+                          backgroundColor: ColorManager.mainColor,
                           textAndIconColor: ColorManager.white),
                       SizedBox(height: 50.h),
                     ],

@@ -11,7 +11,7 @@ import '../../../../routes/app_routes.dart';
 class WorkPermitItem extends StatelessWidget {
   const WorkPermitItem({Key? key, required this.workPermit})
       : super(key: key);
-  final WorkPermit workPermit;
+  final WorkPermitModel workPermit;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class WorkPermitItem extends StatelessWidget {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
-                                color: ColorManager.green)),
+                                color: ColorManager.mainColor)),
                         SizedBox(
                           height: 5.h,
                         ),
@@ -67,7 +67,7 @@ class WorkPermitItem extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 10.sp,
-                              color: ColorManager.green),
+                              color: ColorManager.mainColor),
                         ),
                         SizedBox(
                           height: 5.h,
@@ -90,7 +90,7 @@ class WorkPermitItem extends StatelessWidget {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
-                                color: ColorManager.green)),
+                                color: ColorManager.mainColor)),
                         SizedBox(
                           height: 5.h,
                         ),

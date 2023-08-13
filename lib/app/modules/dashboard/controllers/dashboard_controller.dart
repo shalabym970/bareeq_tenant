@@ -25,11 +25,12 @@ class DashboardController extends GetxController {
   final errorInvoices = false.obs;
   final errorLeases = false.obs;
   final errorOutProcess = false.obs;
-  final workPermits = <WorkPermit>[].obs;
+  final workPermits = <WorkPermitModel>[].obs;
   final fitOuts = <FitOutModel>[].obs;
   final invoices = <Invoice>[].obs;
   final cases = <Case>[].obs;
   final leases = <LeaseModel>[].obs;
+
   InvoicesRepo invoicesRepo = InvoicesRepo();
   WorkPermitRepo workPermitRepo = WorkPermitRepo();
   CasesRepo casesRepo = CasesRepo();

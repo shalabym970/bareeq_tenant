@@ -16,9 +16,8 @@ Map<int, Color> lightTheme = {
 class ColorManager {
   static Color white = const Color(0xffFFFFFF);
   static Color textFieldBg = const Color(0xffF5F7FF);
-  static Color green = const Color(0xff3e8a61);
   static Color black = const Color(0xff000000);
-  static Color darkGreen = const Color(0xff0c6d39);
+  static Color mainColor = const Color(0xff112838);
   static Color chatColorMe = const Color(0xffFCE4BA);
   static Color severityColor = const Color(0xffFAD28C);
   static MaterialColor primarySwatchColors =
@@ -29,5 +28,4 @@ class ColorManager {
   static Color lightBlue = const Color(0xFF5CB0FF);
   static Color lightGrey = const Color(0xFFE4E7EB);
   static Color darkGrey = const Color(0x33FFFFFF);
-  static Color lightGreen = const Color(0xff7db294);
 }

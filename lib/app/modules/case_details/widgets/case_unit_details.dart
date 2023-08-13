@@ -36,7 +36,7 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                     customDetailsItem(
                         icon: ImagePaths.office,
                         title: Strings.property,
-                        value: controller.cases.relatedProject!.name
+                        value: controller.cases.property!.name
                             .toString()),
                     SizedBox(
                       height: 20.h,

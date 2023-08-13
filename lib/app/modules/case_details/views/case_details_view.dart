@@ -28,7 +28,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
             Get.offAllNamed(Routes.dashboard);
           },
           heroTag: null,
-          backgroundColor: ColorManager.darkGreen,
+          backgroundColor: ColorManager.mainColor,
           child: SvgPicture.asset(ImagePaths.save, height: 20.h, width: 20.w)),
       body: Padding(
         padding: EdgeInsets.only(right: 10.w, left: 10.w),
@@ -58,7 +58,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
-                                color: ColorManager.green)),
+                                color: ColorManager.mainColor)),
                         SizedBox(
                           height: 5.h,
                         ),
@@ -95,7 +95,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                           Get.toNamed(Routes.createMessage);
                         },
                         heroTag: null,
-                        backgroundColor: ColorManager.darkGreen,
+                        backgroundColor: ColorManager.mainColor,
                         child: Icon(
                           Icons.add,
                           color: Colors.white,
@@ -129,7 +129,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                 onPressed: () {},
                 height: 40.h,
                 backgroundColor: ColorManager.white,
-                textAndIconColor: ColorManager.darkGreen,
+                textAndIconColor: ColorManager.mainColor,
                 svgIcon: ImagePaths.path68,
               ),
               SizedBox(height: 20.h),

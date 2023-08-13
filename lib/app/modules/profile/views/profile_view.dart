@@ -32,7 +32,7 @@ class ProfileView extends GetView<ProfileController> {
               Get.offAllNamed(Routes.dashboard);
             },
             heroTag: null,
-            backgroundColor: ColorManager.darkGreen,
+            backgroundColor: ColorManager.mainColor,
             child:
                 SvgPicture.asset(ImagePaths.save, height: 20.h, width: 20.w)),
 
@@ -102,7 +102,7 @@ class ProfileView extends GetView<ProfileController> {
                     style: TextStyle(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w500,
-                        color: ColorManager.green),
+                        color: ColorManager.mainColor),
                   ),
                 ),
                 SizedBox(height: 20.h),
@@ -114,7 +114,7 @@ class ProfileView extends GetView<ProfileController> {
                     style: TextStyle(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w500,
-                        color: ColorManager.green),
+                        color: ColorManager.mainColor),
                   ),
                 ),
                 SizedBox(height: 20.h),
@@ -151,7 +151,7 @@ class ProfileView extends GetView<ProfileController> {
                         style: TextStyle(
                             fontSize: 10.sp,
                             fontWeight: FontWeight.w500,
-                            color: ColorManager.green),
+                            color: ColorManager.mainColor),
                       ),
                     )),
                     SizedBox(width: 20.w),
@@ -164,7 +164,7 @@ class ProfileView extends GetView<ProfileController> {
                         style: TextStyle(
                             fontSize: 10.sp,
                             fontWeight: FontWeight.w500,
-                            color: ColorManager.green),
+                            color: ColorManager.mainColor),
                       ),
                     ))
                   ],
@@ -177,7 +177,7 @@ class ProfileView extends GetView<ProfileController> {
                   },
                   height: 40.h,
                   backgroundColor: ColorManager.white,
-                  textAndIconColor: ColorManager.darkGreen,
+                  textAndIconColor: ColorManager.mainColor,
                 ),
                 SizedBox(height: 40.h),
               ],

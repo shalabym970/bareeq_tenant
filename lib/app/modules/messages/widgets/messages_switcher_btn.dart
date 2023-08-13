@@ -14,7 +14,7 @@ class MessagesSwitcherBTN extends GetView<MessagesController> {
         height: 48.h,
         width: Get.width,
         decoration: BoxDecoration(
-          color: ColorManager.green,
+          color: ColorManager.mainColor,
         ),
         child: Row(children: [
           Expanded(
@@ -26,13 +26,13 @@ class MessagesSwitcherBTN extends GetView<MessagesController> {
                   child: Container(
                       color: controller.selectInboxMessages.isTrue
                           ? ColorManager.white
-                          : ColorManager.green,
+                          : ColorManager.mainColor,
                       height: 43.h,
                       child: Center(
                           child: Text(Strings.inbox,
                               style: TextStyle(
                                   color: controller.selectInboxMessages.isTrue
-                                      ? ColorManager.green
+                                      ? ColorManager.mainColor
                                       : ColorManager.white,
                                   fontSize: 14.sp,fontWeight: FontWeight.w600)))))),
           Expanded(
@@ -43,7 +43,7 @@ class MessagesSwitcherBTN extends GetView<MessagesController> {
                   },
                   child: Container(
                       color: controller.selectInboxMessages.isTrue
-                          ? ColorManager.green
+                          ? ColorManager.mainColor
                           : ColorManager.white,
                       height: 43.h,
                       child: Center(
@@ -51,7 +51,7 @@ class MessagesSwitcherBTN extends GetView<MessagesController> {
                               style: TextStyle(
                                   color: controller.selectInboxMessages.isTrue
                                       ? ColorManager.white
-                                      : ColorManager.green,
+                                      : ColorManager.mainColor,
                                   fontSize: 14.sp,fontWeight: FontWeight.w600))))))
         ])));
   }

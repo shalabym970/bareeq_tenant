@@ -26,12 +26,13 @@ class DrawerItemWidget extends StatelessWidget {
             alignment: Alignment.center,
             width: 20.w,
             height: 20.h,
+            color: ColorManager.mainColor,
           ),
           SizedBox(width: 20.w),
           Text(
             text,
             style: TextStyle(
-                color: ColorManager.white,
+                color: ColorManager.mainColor,
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp),
           )

@@ -31,8 +31,8 @@ class AddWorkPermitController extends GetxController {
         builder: (BuildContext context, Widget? child) {
           return Theme(
             data: ThemeData.light().copyWith(
-              primaryColor: ColorManager.green,
-              colorScheme: ColorScheme.light(primary: ColorManager.green),
+              primaryColor: ColorManager.mainColor,
+              colorScheme: ColorScheme.light(primary: ColorManager.mainColor),
               buttonTheme:
                   const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             ),
@@ -55,8 +55,8 @@ class AddWorkPermitController extends GetxController {
         builder: (BuildContext context, Widget? child) {
           return Theme(
             data: ThemeData.light().copyWith(
-              primaryColor: ColorManager.green,
-              colorScheme: ColorScheme.light(primary: ColorManager.green),
+              primaryColor: ColorManager.mainColor,
+              colorScheme: ColorScheme.light(primary: ColorManager.mainColor),
               buttonTheme:
                   const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             ),

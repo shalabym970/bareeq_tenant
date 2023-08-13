@@ -41,7 +41,7 @@ class CustomAttachmentWidget extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 10.sp,
-                              color: ColorManager.green),
+                              color: ColorManager.mainColor),
                         ),
                         SizedBox(
                           height: 5.h,
@@ -59,7 +59,7 @@ class CustomAttachmentWidget extends StatelessWidget {
                     child: FloatingActionButton(
                         onPressed: () {},
                         heroTag: null,
-                        backgroundColor: ColorManager.darkGreen,
+                        backgroundColor: ColorManager.mainColor,
                         child: SvgPicture.asset(
                             svgSuffixIcon ?? ImagePaths.download,
                             height: 12.h,

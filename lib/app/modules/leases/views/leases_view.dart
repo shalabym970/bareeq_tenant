@@ -6,8 +6,11 @@ import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../../../../common/widgets/custom_text_field.dart';
+import '../../../../common/widgets/empty_list_widget.dart';
+import '../../../models/lease_model.dart';
 import '../../../routes/app_routes.dart';
 import '../../dashboard/controllers/dashboard_controller.dart';
+import '../../dashboard/widgets/recent_leases/leases_list_item.dart';
 import '../controllers/leases_controller.dart';
 import '../widgets/leases_list/leases_list_widget.dart';
 
@@ -22,36 +25,78 @@ class LeasesView extends GetView<LeasesController> {
           return true;
         },
         child: RefreshIndicator(
-          color: ColorManager.green,
-          onRefresh: () async {
-            Get.find<DashboardController>().getLeases();
-          },
-          child: Scaffold(
-            appBar: customAppBar(title: Strings.leases),
-
-            body: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
-              child: SingleChildScrollView(
-                  primary: false,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomTextField(
-                          hint: Strings.search,
-                          controller: controller.searchController,
-                          height: 55.h,
-                          width: 10.sw,
-                        ),
-                        SizedBox(height: 10.h),
-                        const LeasesListWidget()
-                      ])),
-            ),
-
-            drawer:
-                customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
-          ),
-        ));
+            color: ColorManager.mainColor,
+            onRefresh: () async {
+              Get.find<DashboardController>().getLeases();
+            },
+            child: GestureDetector(
+                onTap: () {
+                  controller.focusNode.unfocus();
+                },
+                child: Scaffold(
+                    appBar: customAppBar(title: Strings.leases),
+                    body: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.w, vertical: 20.h),
+                      child: SingleChildScrollView(
+                          primary: false,
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          child: Obx(() => Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomTextField(
+                                      hint: Strings.search,
+                                      controller: controller.searchController,
+                                      height: 50.h,
+                                      width: 10.sw,
+                                      focusNode: controller.focusNode,
+                                      onChanged: (value) {
+                                        controller.onChangeSearching(
+                                            searchString: value);
+                                      },
+                                      suffixIcon: controller.isSearching.isTrue
+                                          ? GestureDetector(
+                                              onTap: () {
+                                                controller.stopSearch();
+                                              },
+                                              child: Icon(
+                                                Icons.clear,
+                                                color: ColorManager.black,
+                                                size: 25.sp,
+                                              ),
+                                            )
+                                          : null,
+                                    ),
+                                    SizedBox(height: 10.h),
+                                    controller.isSearching.isTrue
+                                        ? controller.searchingList.isEmpty
+                                            ? Padding(
+                                                padding: EdgeInsets.only(
+                                                    top: 0.3.sh),
+                                                child: EmptyListWidget(
+                                                    fontSize: 17.sp,
+                                                    message:
+                                                        Strings.noSearchResult))
+                                            : ListView.builder(
+                                                padding: EdgeInsets.only(
+                                                    bottom: 10.h, top: 10.h),
+                                                primary: false,
+                                                shrinkWrap: true,
+                                                itemCount: controller
+                                                    .searchingList.length,
+                                                itemBuilder: ((_, index) {
+                                                  LeaseModel lease = controller
+                                                      .searchingList
+                                                      .elementAt(index);
+                                                  return LeasesListItem(
+                                                      lease: lease);
+                                                }))
+                                        : const LeasesListWidget()
+                                  ]))),
+                    ),
+                    drawer:
+                        customDrawer() // This trailing comma makes auto-formatting nicer for build methods.
+                    ))));
   }
 }

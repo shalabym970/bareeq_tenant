@@ -48,4 +48,5 @@ class ImagePaths {
   static const String magazin = "${base}inquiry/magazin.svg";
   static const String firstLoading = "${base}animations/first_loading.json";
   static const String error = "${base}error.svg";
+  static const String dashboard = "${base}drawer/dashboard.svg";
 }

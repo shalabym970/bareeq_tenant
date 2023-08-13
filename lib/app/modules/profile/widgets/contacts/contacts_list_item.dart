@@ -42,7 +42,7 @@ class ContactsListItem extends StatelessWidget {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
-                                color: ColorManager.green)),
+                                color: ColorManager.mainColor)),
                         SizedBox(
                           height: 5.h,
                         ),
@@ -57,7 +57,7 @@ class ContactsListItem extends StatelessWidget {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
-                                color: ColorManager.green)),
+                                color: ColorManager.mainColor)),
                         SizedBox(
                           height: 5.h,
                         ),
@@ -78,7 +78,7 @@ class ContactsListItem extends StatelessWidget {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 10.sp,
-                            color: ColorManager.green)),
+                            color: ColorManager.mainColor)),
                     SizedBox(
                       height: 5.h,
                     ),
@@ -100,7 +100,7 @@ class ContactsListItem extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 10.sp,
-                              color: ColorManager.green),
+                              color: ColorManager.mainColor),
                         ),
                         SizedBox(
                           height: 5.h,
@@ -117,7 +117,7 @@ class ContactsListItem extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 10.sp,
-                              color: ColorManager.green),
+                              color: ColorManager.mainColor),
                         ),
                         SizedBox(
                           height: 5.h,

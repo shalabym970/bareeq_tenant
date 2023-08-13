@@ -23,7 +23,7 @@ class SentMessagesList extends GetView<MessagesController> {
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                          color: ColorManager.darkGreen, width: 2.w),
+                          color: ColorManager.mainColor, width: 2.w),
                     ),
                     border: const OutlineInputBorder(),
                     contentPadding:
@@ -33,13 +33,13 @@ class SentMessagesList extends GetView<MessagesController> {
                     child: DropdownButton<String>(
                       value: controller.value,
                       style: TextStyle(
-                          color: ColorManager.darkGreen,
+                          color: ColorManager.mainColor,
                           //<-- SEE HERE
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400),
                       dropdownColor: ColorManager.white,
                       icon: Icon(Icons.keyboard_arrow_down,
-                          color: ColorManager.darkGreen),
+                          color: ColorManager.mainColor),
                       items: controller.dropList.map((items) {
                         return DropdownMenuItem<String>(
                           value: items,

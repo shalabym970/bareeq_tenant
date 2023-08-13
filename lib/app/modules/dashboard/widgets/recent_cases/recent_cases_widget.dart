@@ -45,7 +45,7 @@ class RecentCasesWidget extends StatelessWidget {
                     Get.toNamed(Routes.addCase);
                   },
                   heroTag: null,
-                  backgroundColor: ColorManager.darkGreen,
+                  backgroundColor: ColorManager.mainColor,
                   child:  Icon(
                     Icons.add,
                     color: ColorManager.white,

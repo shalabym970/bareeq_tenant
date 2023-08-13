@@ -1,86 +1,66 @@
+import 'package:Seef/app/models/unit.dart';
+
 class Project {
-  dynamic newContracttypes;
-  String? transactioncurrencyidValue;
-  String? blserCountryValue;
-  int? blserNumberofunits;
-  String? blsLocationdescription;
-  String? advancedLocation;
-  int? blsProjectstatus;
-  String? blserCityValue;
-  int? statuscode;
-  DateTime? createdon;
-  String? blserEnglishtitle;
+  int? type;
+  String? transactionCurrencyId;
+  String? country;
+  int? numberOfUnits;
+  String? locationDescription;
+  String? location;
+  int? projectStatus;
+  String? city;
+  int? status;
+  DateTime? createdOn;
+  String? englishTitle;
   String? name;
-  dynamic blserFitoutprocessguide;
-  String? blserArabictitle;
-  dynamic advancedUnit;
-  String? advancedDescription;
-  String? newGovernmentid;
-  String? advancedProjectid;
+  String? fitOutProcessId;
+  String? arabicTitle;
+  Unit? unit;
+  String? description;
+  String? governmentId;
+  String? id;
 
   Project({
-    this.newContracttypes,
-    this.transactioncurrencyidValue,
-    this.blserCountryValue,
-    this.blserNumberofunits,
-    this.blsLocationdescription,
-    this.advancedLocation,
-    this.blsProjectstatus,
-    this.blserCityValue,
-    this.statuscode,
-    this.createdon,
-    this.blserEnglishtitle,
+    this.type,
+    this.transactionCurrencyId,
+    this.country,
+    this.numberOfUnits,
+    this.locationDescription,
+    this.location,
+    this.projectStatus,
+    this.city,
+    this.status,
+    this.createdOn,
+    this.englishTitle,
     this.name,
-    this.blserFitoutprocessguide,
-    this.blserArabictitle,
-    this.advancedUnit,
-    this.advancedDescription,
-    this.newGovernmentid,
-    this.advancedProjectid,
+    this.fitOutProcessId,
+    this.arabicTitle,
+    this.unit,
+    this.description,
+    this.governmentId,
+    this.id,
   });
 
-  factory Project.fromJson(Map<String, dynamic> json) =>
-      Project(
-        newContracttypes: json["new_contracttypes"],
-        transactioncurrencyidValue: json["_transactioncurrencyid_value"],
-        blserCountryValue: json["_blser_country_value"],
-        blserNumberofunits: json["blser_numberofunits"],
-        blsLocationdescription: json["bls_locationdescription"],
-        advancedLocation: json["advanced_location"],
-        blsProjectstatus: json["bls_projectstatus"],
-        blserCityValue: json["_blser_city_value"],
-        statuscode: json["statuscode"],
-        createdon: json["createdon"] == null
+  factory Project.fromJson(Map<String, dynamic> json) => Project(
+        type: json["new_contracttypes"],
+        transactionCurrencyId: json["_transactioncurrencyid_value"],
+        country: json["_blser_country_value"],
+        numberOfUnits: json["blser_numberofunits"],
+        locationDescription: json["bls_locationdescription"],
+        location: json["advanced_location"],
+        projectStatus: json["bls_projectstatus"],
+        city: json["_blser_city_value"],
+        status: json["statuscode"],
+        createdOn: json["createdon"] == null
             ? null
             : DateTime.parse(json["createdon"]),
-        blserEnglishtitle: json["blser_englishtitle"],
+        englishTitle: json["blser_englishtitle"],
         name: json["advanced_name"],
-        blserFitoutprocessguide: json["blser_fitoutprocessguide"],
-        blserArabictitle: json["blser_arabictitle"],
-        advancedUnit: json["advanced_unit"],
-        advancedDescription: json["advanced_description"],
-        newGovernmentid: json["new_governmentid"],
-        advancedProjectid: json["advanced_projectid"],
+        fitOutProcessId: json["blser_fitoutprocessguide"],
+        arabicTitle: json["blser_arabictitle"],
+        unit: json["advanced_unit"],
+        description: json["advanced_description"],
+        governmentId: json["new_governmentid"],
+        id: json["advanced_projectid"],
       );
-
-  Map<String, dynamic> toJson() => {
-    "new_contracttypes": newContracttypes,
-    "_transactioncurrencyid_value": transactioncurrencyidValue,
-    "_blser_country_value": blserCountryValue,
-    "blser_numberofunits": blserNumberofunits,
-    "bls_locationdescription": blsLocationdescription,
-    "advanced_location": advancedLocation,
-    "bls_projectstatus": blsProjectstatus,
-    "_blser_city_value": blserCityValue,
-    "statuscode": statuscode,
-    "createdon": createdon?.toIso8601String(),
-    "blser_englishtitle": blserEnglishtitle,
-    "advanced_name": name,
-    "blser_fitoutprocessguide": blserFitoutprocessguide,
-    "blser_arabictitle": blserArabictitle,
-    "advanced_unit": advancedUnit,
-    "advanced_description": advancedDescription,
-    "new_governmentid": newGovernmentid,
-    "advanced_projectid": advancedProjectid,
-  };
 }

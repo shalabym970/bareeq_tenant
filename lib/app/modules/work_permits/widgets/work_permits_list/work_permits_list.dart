@@ -37,7 +37,7 @@ class WorkPermitsList extends GetView<DashboardController> {
                           shrinkWrap: true,
                           itemCount: controller.workPermits.length,
                           itemBuilder: ((_, index) {
-                            WorkPermit workPermit =
+                            WorkPermitModel workPermit =
                                 controller.workPermits.elementAt(index);
                             return WorkPermitItem(workPermit: workPermit);
                           }),

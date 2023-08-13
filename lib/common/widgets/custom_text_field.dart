@@ -21,7 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.stringSuffixIcon,
     this.maxLines,
     this.obscureText = false,
-    this.suffixIcon,
+    this.suffixIcon, this.onChanged, this.focusNode,
   }) : super(key: key);
   final String hint;
   final TextEditingController controller;
@@ -36,12 +36,16 @@ class CustomTextField extends StatelessWidget {
   final int? maxLines;
   final bool obscureText;
   final Widget? suffixIcon;
+  final void Function(String)? onChanged;
+  final FocusNode? focusNode;
 
   get svgProfileIcon => null;
 
   @override
   Widget build(BuildContext context) {
     return Center(
+        child: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -63,7 +67,7 @@ class CustomTextField extends StatelessWidget {
                     hintText: hint,
                     hintStyle: TextStyle(
                         fontSize: 14.sp,
-                        color: ColorManager.green,
+                        color: ColorManager.mainColor,
                         fontWeight: FontWeight.w400),
                     suffixIcon: suffixIcon ??
                         (stringSuffixIcon != null
@@ -74,11 +78,13 @@ class CustomTextField extends StatelessWidget {
                 validator: validator,
                 maxLines: obscureText == true ? 1 : maxLines,
                 obscureText: obscureText,
+                onChanged: onChanged,
+                focusNode: focusNode,
               ),
             ),
           ),
         ],
       ),
-    );
+    ));
   }
 }

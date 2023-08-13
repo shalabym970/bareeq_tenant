@@ -18,7 +18,7 @@ class DashboardView extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-        color: ColorManager.green,
+        color: ColorManager.mainColor,
         onRefresh: () async {
           controller.onInit();
         },
@@ -42,7 +42,7 @@ class DashboardView extends GetView<DashboardController> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20.sp,
-                            color: ColorManager.green),
+                            color: ColorManager.mainColor),
                         children: <TextSpan>[
                           TextSpan(
                             text: controller.currentUser.firstName,

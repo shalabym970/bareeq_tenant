@@ -20,7 +20,7 @@ class Case {
     this.accountId,
     this.messages,
     this.unit,
-    this.relatedProject,
+    this.property,
   });
 
   int? priority;
@@ -39,7 +39,7 @@ class Case {
   List<MessageModel>? messages;
 
   Unit? unit;
-  Project? relatedProject;
+  Project? property;
 
   factory Case.fromJson(Map<String, dynamic> json) => Case(
         priority: json["new_prioritycode"],
@@ -58,7 +58,7 @@ class Case {
         messages: List<MessageModel>.from(json["blser_case_blser_portalmessageses"]
             .map((x) => MessageModel.fromJson(x))),
         unit: Unit.fromJson(json["blser_LeaseUnit"]),
-        relatedProject: Project.fromJson(json["blser_RelatedProject"]),
+        property: Project.fromJson(json["blser_RelatedProject"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -76,6 +76,6 @@ class Case {
         "blser_description": description,
         "_blser_account_value": accountId,
         "blser_LeaseUnit": unit?.toJson(),
-        "blser_RelatedProject": relatedProject?.toJson(),
+      //  "blser_RelatedProject": relatedProject?.toJson(),
       };
 }
