@@ -47,4 +47,10 @@ class StatusString {
   /// LEASES TYPE
   static const String leasesNewType = "New Lease";
   static const String leasesRenewalType = "Renewal Lease";
+
+  /// MESSAGES PRIORITY
+  static const String messagePriorityNormal = "Normal";
+  static const String messagePriorityLow = "Low";
+  static const String messagePriorityHeight = "Height";
+
 }

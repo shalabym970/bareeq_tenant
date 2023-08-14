@@ -44,4 +44,9 @@ class StatusNo {
   /// LEASES TYPE
   static const int leasesNewType = 153160000;
   static const int leasesRenewalType = 153160001;
+
+  /// MESSAGES PRIORITY
+  static const int messagePriorityNormal = 1;
+  static const int messagePriorityLow = 0;
+  static const int messagePriorityHeight = 2;
 }

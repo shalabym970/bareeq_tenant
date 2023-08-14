@@ -9,7 +9,7 @@ class MessagesApi extends GetxService {
   static Future<List<MessageModel>> getMessages(
       {required String regardingId}) async {
     String url =
-        '${Constants.baseUrl}blser_portalmessageses?\$select=blser_readstatus,_blser_account_value,statuscode,subject,blser_messagetext,_blser_contact_value,blser_direction,createdon,_regardingobjectid_value,_createdby_value&\$filter=(_regardingobjectid_value eq $regardingId)';
+        '${Constants.baseUrl}blser_portalmessageses?\$select=blser_readstatus,_blser_account_value,statuscode,subject,blser_messagetext,_blser_contact_value,blser_direction,createdon,_regardingobjectid_value,_createdby_value,prioritycode&\$filter=(_regardingobjectid_value eq $regardingId)';
     var response = await NLTMAuthServices.client.get(Uri.parse(url));
     Get.log('===============  Messages url :  $url ==========');
     Get.log('=============== Messages response :  ${response.body} ==========');

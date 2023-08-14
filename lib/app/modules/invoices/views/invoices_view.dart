@@ -97,7 +97,7 @@ class InvoicesView extends GetView<InvoicesController> {
                                           : const InvoicesListWidget()
                                     ])))),
                     drawer:
-                        customDrawer() // Thistrailing comma makes auto-formatting nicer for build methods.
+                        customDrawer() // This trailing comma makes auto-formatting nicer for build methods.
                     ))));
   }
 }

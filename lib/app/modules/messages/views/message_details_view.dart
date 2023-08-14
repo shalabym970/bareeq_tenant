@@ -1,6 +1,7 @@
+import 'package:Seef/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get.dart';
 import '../../../../common/color_manager.dart';
 import '../../../../common/constants.dart';
 import '../../../../common/images_paths.dart';
@@ -8,7 +9,9 @@ import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_details_item.dart';
+import '../../../services/state_handler.dart';
 import '../controllers/message_details_controller.dart';
+import 'package:intl/intl.dart';
 
 class MessageDetailsView extends GetView<MessageDetailsController> {
   const MessageDetailsView({Key? key}) : super(key: key);
@@ -37,13 +40,13 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(Strings.caseTitle,
+                        Text(Strings.subject,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10.sp,
                                 color: ColorManager.mainColor)),
                         SizedBox(height: 5.h),
-                        Text('Insufficient Cementing Material',
+                        Text(controller.message.subject.toString(),
                             style: TextStyle(
                                 fontSize: 12.sp, color: ColorManager.black)),
                       ],
@@ -55,22 +58,60 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                         Expanded(
                           flex: 1,
                           child: customDetailsItem(
-                              icon: ImagePaths.documentLayout,
-                              title: Strings.workPermit,
-                              value: 'Aml Corporate'),
+                              icon: ImagePaths.arrowTop,
+                              title: Strings.from,
+                              color: ColorManager.lightBlue,
+                              value: controller.rout == Constants.sentMessage
+                                  ? Get.find<DashboardController>()
+                                      .currentUser
+                                      .account!
+                                      .name
+                                      .toString()
+                                  : Constants.environmentName.toString()),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: customDetailsItem(
+                              icon: ImagePaths.arrowDown,
+                              title: Strings.to,
+                              color: ColorManager.lightBlue,
+                              value: controller.rout == Constants.sentMessage
+                                  ? Constants.environmentName.toString()
+                                  : Get.find<DashboardController>()
+                                      .currentUser
+                                      .account!
+                                      .name
+                                      .toString()),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: customDetailsItem(
+                              icon: ImagePaths.priority,
+                              title: Strings.priority,
+                              value: StateHandler.messagePriority(
+                                  statusNo: controller.message.priorityCode!)),
                         ),
                         Expanded(
                           flex: 1,
                           child: customDetailsItem(
                               icon: ImagePaths.deleteCalendar,
-                              title: Strings.priority,
-                              value: '20-April-2022'),
+                              title: Strings.sent,
+                              value: controller.message.createdOn == null
+                                  ? Strings.na
+                                  : DateFormat("EEE d MMM y")
+                                      .format(controller.message.createdOn!)),
                         ),
                       ],
                     ),
                     SizedBox(height: 20.h),
                     Text(
-                      'Once the documentation and lease agreement have been finalized, the tenant to • Appoint their fitout team. (Form 2) • Attend formal meeting with SEEF Fit-Out Team to agree on the procedures for Fit-Out • Understand the design criteria and deliverables • Submit fit-out program milestone prior to the submission of conceptual design. (Form 3) • Artwork for hoarding to be submitted for approval.',
+                      controller.message.messageBody.toString(),
                       style: TextStyle(
                           fontSize: 12.sp,
                           color: ColorManager.black,
@@ -83,9 +124,6 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                       style: TextStyle(
                           fontSize: 14.sp, fontWeight: FontWeight.w400),
                     ),
-                    SizedBox(height: 10.h),
-                    const CustomAttachmentWidget(
-                        svgPrefixIcon: ImagePaths.document),
                     SizedBox(height: 10.h),
                     const CustomAttachmentWidget(
                       svgPrefixIcon: ImagePaths.image,
@@ -145,10 +183,6 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                           SizedBox(height: 10.h),
                           const CustomAttachmentWidget(
                               svgPrefixIcon: ImagePaths.document),
-                          SizedBox(height: 10.h),
-                          const CustomAttachmentWidget(
-                            svgPrefixIcon: ImagePaths.image,
-                          ),
                           SizedBox(height: 30.h),
                           PrimaryButton(
                             title: Strings.attachFiles,

@@ -1,7 +1,6 @@
 import 'package:Seef/app/modules/add_work_permit/views/add_work_permit_view.dart';
 import 'package:Seef/app/modules/auth/views/recover_account_view.dart';
 import 'package:Seef/app/modules/cases/views/cases_view.dart';
-import 'package:Seef/app/modules/create_message/views/create_message_view.dart';
 import 'package:Seef/app/modules/create_work_permit_item/views/create_work_permit_item_view.dart';
 import 'package:Seef/app/modules/work_permits/views/work_permits_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -19,7 +18,6 @@ import '../modules/auth/views/login_view.dart';
 import '../modules/case_details/bindings/case_details_binding.dart';
 import '../modules/case_details/views/case_details_view.dart';
 import '../modules/cases/bindings/cases_binding.dart';
-import '../modules/create_message/bindings/create_message_binding.dart';
 import '../modules/create_work_permit_item/bindings/create_work_permit_item_binding.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
@@ -142,10 +140,6 @@ class ThemeAppPages {
         name: Routes.messagesDetails,
         page: () => const MessageDetailsView(),
         binding: MessageDetailsBinding()),
-    GetPage(
-        name: Routes.createMessage,
-        page: () => const CreateMessageView(),
-        binding: CreateMessageBinding()),
     GetPage(
         name: Routes.createWorkPermitItem,
         page: () => const CreateWorkPermitItemView(),

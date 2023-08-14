@@ -188,4 +188,6 @@ class Strings {
   static const String nothingFitOutSteps = 'Nothing Fit Out Steps';
   static const String na = "N/A";
   static const String noSearchResult = "No search results found";
+  static const String from = "From";
+  static const String to = "to";
 }

@@ -93,4 +93,16 @@ class StateHandler {
       return Strings.na;
     }
   }
+
+  static String messagePriority({required int statusNo}) {
+    if (statusNo == StatusNo.messagePriorityHeight) {
+      return StatusString.messagePriorityHeight;
+    } else if (statusNo == StatusNo.messagePriorityLow) {
+      return StatusString.messagePriorityLow;
+    } else if (statusNo == StatusNo.messagePriorityNormal) {
+      return StatusString.messagePriorityNormal;
+    } else {
+      return Strings.na;
+    }
+  }
 }

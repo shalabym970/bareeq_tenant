@@ -30,6 +30,9 @@ class ImagePaths {
   static const String invoice = "${base}invoice/invoice.svg";
   static const String priceTage = "${base}lease/price-tag.svg";
   static const String emailBrown = "${base}messages/email.svg";
+  static const String priority = "${base}messages/priority.svg";
+  static const String arrowTop = "${base}messages/arrow_top.svg";
+  static const String arrowDown = "${base}messages/arrow_bottom.svg";
   static const String bluePerson = "${base}profile/blue_person.svg";
   static const String employee = "${base}profile/employee.svg";
   static const String profileBrown = "${base}profile/profile_brown.svg";

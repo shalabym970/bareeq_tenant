@@ -7,4 +7,5 @@ class Constants {
   static const String standard = 'Standard';
   static const String emergency = 'Emergency';
   static const String baseUrl = 'http://d365.blive.me/bar/api/data/v9.1/';
+  static const String environmentName = "Bareeq";
 }

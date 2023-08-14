@@ -11,6 +11,13 @@ class LeaseDetailsController extends GetxController {
   final loadingMessages = false.obs;
   MessagesRepo messagesRepo = MessagesRepo();
   LeaseModel lease = Get.arguments;
+
+  @override
+  onInit() {
+    super.onInit();
+    getMessages();
+  }
+
   getMessages() async {
     try {
       errorMessages.value = false;
@@ -26,5 +33,4 @@ class LeaseDetailsController extends GetxController {
       loadingMessages.value = false;
     }
   }
-
 }

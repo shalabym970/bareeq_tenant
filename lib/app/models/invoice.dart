@@ -12,7 +12,7 @@ class Invoice {
       this.totalAmount,
       this.amountPaid,
       this.totalLineItemAmount,
-      this.invoiceId,
+      this.id,
       this.invoiceNumber,
       this.priorityCode,
       this.createdOn,
@@ -44,7 +44,7 @@ class Invoice {
   double? totalAmount;
   double? amountPaid;
   double? totalLineItemAmount;
-  String? invoiceId;
+  String? id;
   String? invoiceNumber;
   int? priorityCode;
   DateTime? createdOn;
@@ -77,7 +77,7 @@ class Invoice {
         totalAmount: json["totalamount"],
         amountPaid: json["blser_amountpaid"],
         totalLineItemAmount: json["totallineitemamount"],
-        invoiceId: json["invoiceid"],
+        id: json["invoiceid"],
         invoiceNumber: json["invoicenumber"],
         priorityCode: json["prioritycode"],
         createdOn: DateTime.parse(json["createdon"] ?? DateTime(0000, 00, 00)),

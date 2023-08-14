@@ -79,31 +79,10 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      Strings.messages,
-                      style: TextStyle(
-                          fontSize: 14.sp, fontWeight: FontWeight.w400),
-                    ),
-                    SizedBox(
-                      height: 32.h,
-                      width: 32.w,
-                      child: FloatingActionButton(
-                        onPressed: () {
-                          Get.toNamed(Routes.createMessage);
-                        },
-                        heroTag: null,
-                        backgroundColor: ColorManager.mainColor,
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 20.sp,
-                        ),
-                      ),
-                    )
-                  ],
+                child: Text(
+                  Strings.messages,
+                  style: TextStyle(
+                      fontSize: 14.sp, fontWeight: FontWeight.w400),
                 ),
               ),
               SizedBox(height: 10.h),
