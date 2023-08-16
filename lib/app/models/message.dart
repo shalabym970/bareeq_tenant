@@ -10,12 +10,13 @@ class MessageModel {
       this.statusCode,
       this.direction,
       this.createdBy,
-      this.priorityCode});
+      this.priorityCode,
+      this.regardingName});
 
   String? subject;
   String? messageBody;
   String? activityId;
-  DateTime? createdOn;
+  String? createdOn;
   String? regardingId;
   bool? readStatus;
   String? accountId;
@@ -23,19 +24,22 @@ class MessageModel {
   bool? direction;
   String? createdBy;
   int? priorityCode;
+  String? regardingName;
 
   factory MessageModel.fromJson(Map<String, dynamic> json) => MessageModel(
       subject: json["subject"],
       messageBody: json["blser_messagetext"],
       activityId: json["activityid"],
-      createdOn: DateTime.parse(json["createdon"]),
+      createdOn: json["createdon@OData.Community.Display.V1.FormattedValue"],
       regardingId: json["_regardingobjectid_value"],
       readStatus: json["blser_readstatus"],
       accountId: json["_blser_account_value"],
       statusCode: json["statuscode"],
       direction: json["blser_direction"],
       createdBy: json["_createdby_value"],
-      priorityCode: json["prioritycode"]);
+      priorityCode: json["prioritycode"],
+      regardingName: json[
+          "_regardingobjectid_value@Microsoft.Dynamics.CRM.lookuplogicalname"]);
 
   Map<String, dynamic> toJson() => {
         "subject": subject,
@@ -47,6 +51,8 @@ class MessageModel {
         "statuscode": statusCode,
         "blser_direction": direction,
         "_createdby_value": createdBy,
-        "prioritycode": priorityCode
+        "prioritycode": priorityCode,
+        "_regardingobjectid_value@Microsoft.Dynamics.CRM.lookuplogicalname":
+            regardingName
       };
 }

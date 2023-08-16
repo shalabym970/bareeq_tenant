@@ -1,14 +1,17 @@
+import 'package:Seef/app/services/session_services.dart';
+import 'package:Seef/common/strings/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/constants.dart';
+import '../../../../models/message.dart';
 import '../../../../routes/app_routes.dart';
-import '../../views/message_details_view.dart';
 
 class InboxMessagesListItem extends StatelessWidget {
-  const InboxMessagesListItem({Key? key}) : super(key: key);
+  const InboxMessagesListItem({Key? key, required this.message})
+      : super(key: key);
+  final MessageModel message;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,12 @@ class InboxMessagesListItem extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 5.h),
       child: GestureDetector(
           onTap: () {
-           Get.toNamed(Routes.messagesDetails,arguments: Constants.inboxMessage);
+            Get.toNamed(Routes.messagesDetails, arguments: [
+              message.direction == true
+                  ? Constants.sentMessage
+                  : Constants.inboxMessage,
+              message
+            ]);
           },
           child: Container(
             decoration: BoxDecoration(
@@ -30,7 +38,7 @@ class InboxMessagesListItem extends StatelessWidget {
                 ),
               ],
             ),
-            height: 142.h,
+            height: 150.h,
             child: Card(
               color: ColorManager.textFieldBg,
               child: Padding(
@@ -46,15 +54,34 @@ class InboxMessagesListItem extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Amal Ragab Gad',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10.sp,
-                                    color: ColorManager.mainColor)),
+                            Row(
+                              children: [
+                                Text(
+                                    message.direction == true
+                                        ? Get.find<SessionServices>()
+                                            .currentUser
+                                            .value
+                                            .fullName
+                                            .toString()
+                                        : Constants.environmentName,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12.sp,
+                                        color: ColorManager.mainColor)),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                Text(
+                                  message.createdOn.toString(),
+                                  style: TextStyle(
+                                      color: Colors.grey[800], fontSize: 10.sp),
+                                ),
+                              ],
+                            ),
                             SizedBox(
                               height: 5.h,
                             ),
-                            Text('Welcome to Tenant Protal',
+                            Text(message.subject.toString(),
                                 style: TextStyle(
                                   fontSize: 12.sp,
                                   color: ColorManager.black.withOpacity(0.7),
@@ -69,23 +96,68 @@ class InboxMessagesListItem extends StatelessWidget {
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(10.h),
                                   ),
-                                  color: ColorManager.yellow),
+                                  color: message.regardingName.toString() ==
+                                          Constants.caseKey
+                                      ? ColorManager.yellow
+                                      : message.regardingName.toString() ==
+                                              Constants.workPermitKey
+                                          ? ColorManager.mainColor
+                                          : message.regardingName.toString() ==
+                                                  Constants.leaseKey
+                                              ? ColorManager.purple
+                                              : message.regardingName
+                                                          .toString() ==
+                                                      Constants.invoiceKey
+                                                  ? ColorManager.lightBlue
+                                                  : ColorManager.severityColor),
                               height: 8.h,
                               width: 8.w,
                             ),
-                            SizedBox(width: 5.w,),
-                            Text('Case',
+                            SizedBox(
+                              width: 5.w,
+                            ),
+                            Text(
+                                message.regardingName.toString() ==
+                                        Constants.caseKey
+                                    ? Strings.case_
+                                    : message.regardingName.toString() ==
+                                            Constants.workPermitKey
+                                        ? Strings.workPermit
+                                        : message.regardingName.toString() ==
+                                                Constants.leaseKey
+                                            ? Strings.lease
+                                            : message.regardingName
+                                                        .toString() ==
+                                                    Constants.invoiceKey
+                                                ? Strings.invoice
+                                                : Strings.fitOutProcess,
                                 style: TextStyle(
                                   fontSize: 12.sp,
-                                  color: ColorManager.yellow,
+                                  color: message.regardingName.toString() ==
+                                          Constants.caseKey
+                                      ? ColorManager.yellow
+                                      : message.regardingName.toString() ==
+                                              Constants.workPermitKey
+                                          ? ColorManager.mainColor
+                                          : message.regardingName.toString() ==
+                                                  Constants.leaseKey
+                                              ? ColorManager.purple
+                                              : message.regardingName
+                                                          .toString() ==
+                                                      Constants.invoiceKey
+                                                  ? ColorManager.lightBlue
+                                                  : ColorManager.severityColor,
                                   fontWeight: FontWeight.w500,
                                 ))
                           ],
                         )
                       ],
                     ),
+                    SizedBox(
+                      height: 5.h,
+                    ),
                     Text(
-                      'Once the documentation and lease agreement have been finalized, the tenant to • Appoint their fitout team. (Form 2) • Attend formal meeting with SEEF Fit-Out Team to agree on the procedures for Fit-Out • Understand the design criteria and deliverables • Submit fit-out program milestone prior to the submission of conceptual design. (Form 3) • Artwork for hoarding to be submitted for approval.',
+                      message.messageBody.toString(),
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 12.sp,
@@ -93,6 +165,17 @@ class InboxMessagesListItem extends StatelessWidget {
                           height: 2.h),
                       maxLines: 2,
                     ),
+                    if (message.direction == true)
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Icon(
+                          Icons.done_all,
+                          size: 20.sp,
+                          color: message.readStatus == true
+                              ? Colors.green
+                              : Colors.grey[800],
+                        ),
+                      )
                   ],
                 ),
               ),

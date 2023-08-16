@@ -6,9 +6,9 @@ import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../../common/widgets/error_widget.dart';
 import '../../../../common/widgets/horizontal_list_loading.dart';
-import '../../messages/widgets/message_card.dart';
 import '../../../models/message.dart';
 import '../../../routes/app_routes.dart';
+import '../../messages/widgets/message_card/message_card.dart';
 import '../controllers/lease_details_controller.dart';
 
 class LeaseMessagesList extends GetView<LeaseDetailsController> {
@@ -41,16 +41,9 @@ class LeaseMessagesList extends GetView<LeaseDetailsController> {
                           itemBuilder: ((_, index) {
                             MessageModel message =
                                 controller.messages.elementAt(index);
-                            return GestureDetector(
-                                onTap: () {
-                                  Get.toNamed(Routes.messagesDetails,
-                                      arguments: message.direction == true
-                                          ? Constants.sentMessage
-                                          : Constants.inboxMessage);
-                                },
-                                child: MessageCard(
-                                  message: message,
-                                ));
+                            return MessageCard(
+                              message: message,
+                            );
                           }),
                         ),
         ));

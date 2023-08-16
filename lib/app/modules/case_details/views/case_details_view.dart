@@ -21,7 +21,12 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return RefreshIndicator(
+        color: ColorManager.mainColor,
+        onRefresh: () async {
+      controller.onInit();
+    },
+    child:Scaffold(
       appBar: customAppBar(title: Strings.case_),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -119,6 +124,6 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
 
       drawer:
           customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    ));
   }
 }

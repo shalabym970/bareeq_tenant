@@ -8,4 +8,10 @@ class Constants {
   static const String emergency = 'Emergency';
   static const String baseUrl = 'http://d365.blive.me/bar/api/data/v9.1/';
   static const String environmentName = "Bareeq";
+  static const String workPermitKey = "blser_workpermit";
+  static const String caseKey = "blser_case";
+  static const String invoiceKey = "blser_invoice";
+  static const String leaseKey = "advanced_propertycontract";
+  static const String fitOutKey = "blser_fitoutprocess";
+  static const String allKey = "all";
 }

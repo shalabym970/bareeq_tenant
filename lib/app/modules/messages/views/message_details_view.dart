@@ -11,7 +11,6 @@ import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_details_item.dart';
 import '../../../services/state_handler.dart';
 import '../controllers/message_details_controller.dart';
-import 'package:intl/intl.dart';
 
 class MessageDetailsView extends GetView<MessageDetailsController> {
   const MessageDetailsView({Key? key}) : super(key: key);
@@ -23,10 +22,43 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 60.h),
-          BackButton(
-            color: ColorManager.mainColor,
-          ),
+          SizedBox(height: 40.h),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            BackButton(
+              color: ColorManager.mainColor,
+            ),
+            if (controller.message.direction == true)
+              Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10.h),
+                        ),
+                        color:  controller.message.readStatus == true
+                            ? ColorManager.green
+                            : ColorManager.red),
+                    height: 10.h,
+                    width: 10.w,
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20.h, horizontal: 10.w),
+                    child: Text(
+                        controller.message.readStatus == true
+                            ? Strings.read
+                            : Strings.unread,
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          color: controller.message.readStatus == true
+                              ? ColorManager.green
+                              : ColorManager.red,
+                          fontWeight: FontWeight.w500,
+                        )),
+                  ),
+                ],
+              )
+          ]),
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
@@ -60,7 +92,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                           child: customDetailsItem(
                               icon: ImagePaths.arrowTop,
                               title: Strings.from,
-                              color: ColorManager.lightBlue,
+                              color: ColorManager.mainColor,
                               value: controller.rout == Constants.sentMessage
                                   ? Get.find<DashboardController>()
                                       .currentUser
@@ -74,7 +106,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                           child: customDetailsItem(
                               icon: ImagePaths.arrowDown,
                               title: Strings.to,
-                              color: ColorManager.lightBlue,
+                              color: ColorManager.mainColor,
                               value: controller.rout == Constants.sentMessage
                                   ? Constants.environmentName.toString()
                                   : Get.find<DashboardController>()
@@ -102,10 +134,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                           child: customDetailsItem(
                               icon: ImagePaths.deleteCalendar,
                               title: Strings.sent,
-                              value: controller.message.createdOn == null
-                                  ? Strings.na
-                                  : DateFormat("EEE d MMM y")
-                                      .format(controller.message.createdOn!)),
+                              value: controller.message.createdOn.toString()),
                         ),
                       ],
                     ),
@@ -157,7 +186,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                                 maxLines: 7,
                                 style: TextStyle(
                                     color: ColorManager.black, fontSize: 13.sp),
-                                cursorColor: ColorManager.black,
+                                cursorColor: ColorManager.mainColor,
                                 decoration: InputDecoration(
                                   hintText: Strings.replyHint,
                                   hintStyle: TextStyle(

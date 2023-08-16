@@ -8,8 +8,8 @@ import '../../../models/message.dart';
 import '../../../../common/widgets/error_widget.dart';
 import '../../../../common/widgets/horizontal_list_loading.dart';
 import '../../../routes/app_routes.dart';
+import '../../messages/widgets/message_card/message_card.dart';
 import '../controllers/work_permit_details_controller.dart';
-import '../../messages/widgets/message_card.dart';
 
 class WorkPermitMessagesList extends GetView<WorkPermitDetailsController> {
   const WorkPermitMessagesList({super.key});
@@ -41,19 +41,9 @@ class WorkPermitMessagesList extends GetView<WorkPermitDetailsController> {
                           itemBuilder: ((_, index) {
                             MessageModel message =
                                 controller.messages.elementAt(index);
-                            return GestureDetector(
-                                onTap: () {
-                                  Get.toNamed(Routes.messagesDetails,
-                                      arguments: [
-                                        message.direction == true
-                                            ? Constants.sentMessage
-                                            : Constants.inboxMessage,
-                                        message
-                                      ]);
-                                },
-                                child: MessageCard(
-                                  message: message,
-                                ));
+                            return MessageCard(
+                              message: message,
+                            );
                           }),
                         ),
         ));

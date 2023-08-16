@@ -1,8 +1,6 @@
 import 'package:Seef/app/models/work_permit_item.dart';
 import 'package:Seef/app/repositories/messages_repo.dart';
 import 'package:get/get.dart';
-import '../../../../common/status_no.dart';
-import '../../../../common/status_string.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/message.dart';

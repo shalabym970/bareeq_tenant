@@ -1,15 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../common/constants.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../models/message.dart';
 import '../../../../common/widgets/error_widget.dart';
 import '../../../../common/widgets/horizontal_list_loading.dart';
-import '../../../routes/app_routes.dart';
+import '../../messages/widgets/message_card/message_card.dart';
 import '../controllers/fit_out_process_details_controller.dart';
-import '../../messages/widgets/message_card.dart';
 
 class FitOutMessagesList extends GetView<FitOutProcessDetailsController> {
   const FitOutMessagesList({super.key});
@@ -41,16 +39,9 @@ class FitOutMessagesList extends GetView<FitOutProcessDetailsController> {
                           itemBuilder: ((_, index) {
                             MessageModel message =
                                 controller.messages.elementAt(index);
-                            return GestureDetector(
-                                onTap: () {
-                                  Get.toNamed(Routes.messagesDetails,
-                                      arguments: message.direction == true
-                                          ? Constants.sentMessage
-                                          : Constants.inboxMessage);
-                                },
-                                child: MessageCard(
-                                  message: message,
-                                ));
+                            return MessageCard(
+                              message: message,
+                            );
                           }),
                         ),
         ));

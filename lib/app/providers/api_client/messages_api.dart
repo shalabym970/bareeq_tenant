@@ -1,4 +1,5 @@
 import 'package:Seef/app/models/message.dart';
+import 'package:Seef/app/services/session_services.dart';
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
 import '../../../common/widgets/ui.dart';
@@ -6,11 +7,12 @@ import '../../services/nltm_auhtorization_service.dart';
 
 class MessagesApi extends GetxService {
   /// Get messages
-  static Future<List<MessageModel>> getMessages(
-      {required String regardingId}) async {
-    String url =
-        '${Constants.baseUrl}blser_portalmessageses?\$select=blser_readstatus,_blser_account_value,statuscode,subject,blser_messagetext,_blser_contact_value,blser_direction,createdon,_regardingobjectid_value,_createdby_value,prioritycode&\$filter=(_regardingobjectid_value eq $regardingId)';
-    var response = await NLTMAuthServices.client.get(Uri.parse(url));
+  static Future<List<MessageModel>> getMessages({String? regardingId}) async {
+    String url = regardingId != null
+        ? '${Constants.baseUrl}blser_portalmessageses?\$select=blser_readstatus,_blser_account_value,statuscode,subject,blser_messagetext,_blser_contact_value,blser_direction,createdon,_regardingobjectid_value,_createdby_value,prioritycode&\$filter=(_regardingobjectid_value eq $regardingId)&\$orderby=createdon desc'
+        : '${Constants.baseUrl}blser_portalmessageses?\$select=blser_readstatus,_blser_account_value,statuscode,subject,blser_messagetext,_blser_contact_value,blser_direction,createdon,_regardingobjectid_value,_createdby_value,prioritycode&\$filter=(_blser_account_value eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId})&\$orderby=createdon desc';
+    var response = await NLTMAuthServices.client.get(Uri.parse(url),
+        headers: {"Prefer": "odata.include-annotations=*"});
     Get.log('===============  Messages url :  $url ==========');
     Get.log('=============== Messages response :  ${response.body} ==========');
     if (response.statusCode == 200 ||

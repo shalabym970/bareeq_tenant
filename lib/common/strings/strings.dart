@@ -190,4 +190,6 @@ class Strings {
   static const String noSearchResult = "No search results found";
   static const String from = "From";
   static const String to = "to";
+  static const String read = "Read";
+  static const String unread = "Unread";
 }

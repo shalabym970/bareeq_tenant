@@ -1,16 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-
 import '../../../../common/constants.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../../common/widgets/error_widget.dart';
 import '../../../../common/widgets/horizontal_list_loading.dart';
-import '../../messages/widgets/message_card.dart';
 import '../../../models/message.dart';
 import '../../../routes/app_routes.dart';
+import '../../messages/widgets/message_card/message_card.dart';
 import '../controllers/invoice_details_controller.dart';
 
 class InvoiceMessagesList extends GetView<InvoiceDetailsController> {
