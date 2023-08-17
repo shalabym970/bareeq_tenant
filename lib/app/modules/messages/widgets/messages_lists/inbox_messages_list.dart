@@ -8,7 +8,7 @@ import '../../../../../common/widgets/vertical_list_loading.dart';
 import '../../../../models/message.dart';
 import '../../controllers/messages_controller.dart';
 import '../message_drop_down_List.dart';
-import 'inbox_messages_list_item.dart';
+import '../inbox_messages_list_item.dart';
 
 class InboxMessagesList extends GetView<MessagesController> {
   const InboxMessagesList({super.key});

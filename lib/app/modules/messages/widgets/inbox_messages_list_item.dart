@@ -3,10 +3,10 @@ import 'package:Seef/common/strings/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../common/color_manager.dart';
-import '../../../../../common/constants.dart';
-import '../../../../models/message.dart';
-import '../../../../routes/app_routes.dart';
+import '../../../../common/color_manager.dart';
+import '../../../../common/constants.dart';
+import '../../../models/message.dart';
+import '../../../routes/app_routes.dart';
 
 class InboxMessagesListItem extends StatelessWidget {
   const InboxMessagesListItem({Key? key, required this.message})

@@ -7,10 +7,10 @@ import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../../../routes/app_routes.dart';
 import '../controllers/messages_controller.dart';
-import '../widgets/inbox_messages_list/inbox_messages_list.dart';
 import '../widgets/message_drop_down_List.dart';
+import '../widgets/messages_lists/inbox_messages_list.dart';
 import '../widgets/messages_switcher_btn.dart';
-import '../widgets/sent_messages_list/sent_messages_list.dart';
+import '../widgets/messages_lists/sent_messages_list.dart';
 
 class MessagesView extends GetView<MessagesController> {
   const MessagesView({super.key});

@@ -24,7 +24,7 @@ class CaseDetailsController extends GetxController {
       errorMessages.value = false;
       loadingMessages.value = true;
       messages
-          .assignAll(await messagesRepo.getMessages(regardingId: cases.id!));
+          .assignAll(await messagesRepo.getMessagesForRecord(regardingId: cases.id!));
     } catch (e) {
       errorMessages.value = true;
       Get.showSnackbar(

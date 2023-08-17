@@ -24,106 +24,104 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
     return RefreshIndicator(
         color: ColorManager.mainColor,
         onRefresh: () async {
-      controller.onInit();
-    },
-    child:Scaffold(
-      appBar: customAppBar(title: Strings.case_),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.offAllNamed(Routes.dashboard);
-          },
-          heroTag: null,
-          backgroundColor: ColorManager.mainColor,
-          child: SvgPicture.asset(ImagePaths.save, height: 20.h, width: 20.w)),
-      body: Padding(
-        padding: EdgeInsets.only(right: 10.w, left: 10.w),
-        child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 20.h,
-              ),
-              Padding(
-                padding: EdgeInsets.all(10.h),
-                child: Row(
-                  children: [
-                    SvgPicture.asset(ImagePaths.group86,
-                        height: 24.h, width: 26.w),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+          controller.onInit();
+        },
+        child: Scaffold(
+          appBar: customAppBar(title: Strings.case_),
+          floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                Get.offAllNamed(Routes.dashboard);
+              },
+              heroTag: null,
+              backgroundColor: ColorManager.mainColor,
+              child:
+                  SvgPicture.asset(ImagePaths.save, height: 20.h, width: 20.w)),
+          body: Padding(
+            padding: EdgeInsets.only(right: 10.w, left: 10.w),
+            child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10.h),
+                    child: Row(
                       children: [
-                        Text(Strings.caseTitle,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10.sp,
-                                color: ColorManager.mainColor)),
+                        SvgPicture.asset(ImagePaths.group86,
+                            height: 24.h, width: 26.w),
                         SizedBox(
-                          height: 5.h,
+                          width: 10.w,
                         ),
-                        Text(controller.cases.title.toString(),
-                            style: TextStyle(
-                                fontSize: 18.sp, color: ColorManager.black))
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(Strings.caseTitle,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10.sp,
+                                    color: ColorManager.mainColor)),
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            Text(controller.cases.title.toString(),
+                                style: TextStyle(
+                                    fontSize: 18.sp, color: ColorManager.black))
+                          ],
+                        ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 20.h),
+                  const CaseGeneralDetailsWidget(),
+                  SizedBox(height: 20.h),
+                  const CaseUnitDetailsWidget(),
+                  SizedBox(height: 20.h),
+                  const CaseDescription(),
+                  SizedBox(height: 20.h),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.h),
+                    child: Text(
+                      Strings.messages,
+                      style: TextStyle(
+                          fontSize: 14.sp, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  SizedBox(height: 185.h, child: const CaseMessagesList()),
+                  SizedBox(height: 20.h),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.h),
+                    child: Text(
+                      Strings.attachments,
+                      style: TextStyle(
+                          fontSize: 14.sp, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  const CustomAttachmentWidget(),
+                  SizedBox(height: 10.h),
+                  const CustomAttachmentWidget(),
+                  SizedBox(height: 20.h),
+                  PrimaryButton(
+                    title: Strings.attachFiles,
+                    onPressed: () {},
+                    height: 40.h,
+                    backgroundColor: ColorManager.white,
+                    textAndIconColor: ColorManager.mainColor,
+                    svgIcon: ImagePaths.path68,
+                  ),
+                  SizedBox(height: 20.h),
+                ],
               ),
-              SizedBox(height: 20.h),
-              const CaseGeneralDetailsWidget(),
-              SizedBox(height: 20.h),
-              const CaseUnitDetailsWidget(),
-              SizedBox(height: 20.h),
-              const CaseDescription(),
-              SizedBox(height: 20.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.h),
-                child: Text(
-                  Strings.messages,
-                  style: TextStyle(
-                      fontSize: 14.sp, fontWeight: FontWeight.w400),
-                ),
-              ),
-              SizedBox(height: 10.h),
-              SizedBox(height: 185.h, child: const CaseMessagesList()),
-              SizedBox(height: 20.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.h),
-                child: Text(
-                  Strings.attachments,
-                  style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
-                ),
-              ),
-              SizedBox(height: 10.h),
-              const CustomAttachmentWidget(svgPrefixIcon: ImagePaths.document),
-              SizedBox(height: 10.h),
-              const CustomAttachmentWidget(
-                svgPrefixIcon: ImagePaths.image,
-              ),
-              SizedBox(height: 20.h),
-              PrimaryButton(
-                title: Strings.attachFiles,
-                onPressed: () {},
-                height: 40.h,
-                backgroundColor: ColorManager.white,
-                textAndIconColor: ColorManager.mainColor,
-                svgIcon: ImagePaths.path68,
-              ),
-              SizedBox(height: 20.h),
-            ],
+            ),
           ),
-        ),
-      ),
-
-      drawer:
-          customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
-    ));
+          drawer:
+              customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
+        ));
   }
 }

@@ -7,7 +7,7 @@ import '../../../../../common/widgets/error_widget.dart';
 import '../../../../../common/widgets/vertical_list_loading.dart';
 import '../../../../models/message.dart';
 import '../../controllers/messages_controller.dart';
-import '../inbox_messages_list/inbox_messages_list_item.dart';
+import '../inbox_messages_list_item.dart';
 
 class SentMessagesList extends GetView<MessagesController> {
   const SentMessagesList({super.key});

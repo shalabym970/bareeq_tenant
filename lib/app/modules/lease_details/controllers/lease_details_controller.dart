@@ -23,7 +23,7 @@ class LeaseDetailsController extends GetxController {
       errorMessages.value = false;
       loadingMessages.value = true;
       messages
-          .assignAll(await messagesRepo.getMessages(regardingId: lease.id!));
+          .assignAll(await messagesRepo.getMessagesForRecord(regardingId: lease.id!));
     } catch (e) {
       errorMessages.value = true;
       Get.showSnackbar(

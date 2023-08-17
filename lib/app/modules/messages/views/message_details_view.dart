@@ -35,7 +35,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                         borderRadius: BorderRadius.all(
                           Radius.circular(10.h),
                         ),
-                        color:  controller.message.readStatus == true
+                        color: controller.message.readStatus == true
                             ? ColorManager.green
                             : ColorManager.red),
                     height: 10.h,
@@ -154,9 +154,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                           fontSize: 14.sp, fontWeight: FontWeight.w400),
                     ),
                     SizedBox(height: 10.h),
-                    const CustomAttachmentWidget(
-                      svgPrefixIcon: ImagePaths.image,
-                    ),
+                    const CustomAttachmentWidget(),
                     SizedBox(height: 20.h),
                     if (controller.rout == Constants.inboxMessage)
                       Column(
@@ -210,8 +208,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                                 fontSize: 14.sp, fontWeight: FontWeight.w400),
                           ),
                           SizedBox(height: 10.h),
-                          const CustomAttachmentWidget(
-                              svgPrefixIcon: ImagePaths.document),
+                          const CustomAttachmentWidget(),
                           SizedBox(height: 30.h),
                           PrimaryButton(
                             title: Strings.attachFiles,

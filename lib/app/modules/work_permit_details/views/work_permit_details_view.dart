@@ -12,6 +12,7 @@ import '../../../../common/widgets/custom_drawer.dart';
 import '../../../routes/app_routes.dart';
 import '../controllers/work_permit_details_controller.dart';
 import '../../../../common/widgets/paragraph_widget.dart';
+import '../widgets/work_permit_attachments_widget.dart';
 import '../widgets/work_permit_general_details.dart';
 import '../widgets/work_permit_items/work_permit_items_list.dart';
 import '../widgets/work_permit_messages_list.dart';
@@ -135,32 +136,8 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                   SizedBox(
                       height: 185.h, child: const WorkPermitMessagesList()),
                   SizedBox(height: 20.h),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.h),
-                    child: Text(
-                      Strings.attachments,
-                      style: TextStyle(
-                          fontSize: 14.sp, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                  SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(
-                    svgPrefixIcon: ImagePaths.document,
-                  ),
-                  SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(
-                    svgPrefixIcon: ImagePaths.image,
-                  ),
-                  SizedBox(height: 20.h),
-                  PrimaryButton(
-                    title: Strings.attachFiles,
-                    onPressed: () {},
-                    height: 40.h,
-                    backgroundColor: ColorManager.white,
-                    textAndIconColor: ColorManager.mainColor,
-                    svgIcon: ImagePaths.path68,
-                  ),
-                  SizedBox(height: 20.h),
+                  const WorkPermitAttachmentsWidget(),
+                  SizedBox(height: 100.h),
                 ],
               ),
             ),

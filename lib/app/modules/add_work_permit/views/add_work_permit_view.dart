@@ -162,21 +162,13 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                   ),
                   SizedBox(height: 20.h),
                   SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(
-                      svgPrefixIcon: ImagePaths.document,
-                      svgSuffixIcon: ImagePaths.upload),
+                  const CustomAttachmentWidget(),
                   SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(
-                      svgPrefixIcon: ImagePaths.document,
-                      svgSuffixIcon: ImagePaths.upload),
+                  const CustomAttachmentWidget(),
                   SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(
-                      svgPrefixIcon: ImagePaths.document,
-                      svgSuffixIcon: ImagePaths.upload),
+                  const CustomAttachmentWidget(),
                   SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(
-                      svgPrefixIcon: ImagePaths.document,
-                      svgSuffixIcon: ImagePaths.upload),
+                  const CustomAttachmentWidget(),
                   SizedBox(height: 20.h),
                   Row(
                     children: [

@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../common/constants.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../models/message.dart';
 import '../../../../common/widgets/error_widget.dart';
 import '../../../../common/widgets/horizontal_list_loading.dart';
-import '../../../routes/app_routes.dart';
-import '../../messages/widgets/message_card/message_card.dart';
+import '../../messages/widgets/message_cards/message_card.dart';
 import '../controllers/work_permit_details_controller.dart';
 
 class WorkPermitMessagesList extends GetView<WorkPermitDetailsController> {

@@ -2,7 +2,6 @@ import 'package:Seef/app/models/message.dart';
 import 'package:Seef/app/repositories/messages_repo.dart';
 import 'package:Seef/common/constants.dart';
 import 'package:get/get.dart';
-
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
 
@@ -27,27 +26,24 @@ class MessagesController extends GetxController {
 
   @override
   void onInit() {
-    getMessages();
+    getAllMessages();
     super.onInit();
   }
 
-  void getMessages() async {
+  void getAllMessages() async {
     try {
       error.value = false;
       loading.value = true;
-      allMessages.assignAll(await messagesRepo.getMessages());
-      if (allMessages.isNotEmpty) {
-        for (var element in allMessages) {
-          if (element.direction == true) {
-            sentMessages.add(element);
-            sentMessages.sort((a, b) => b.createdOn!.compareTo(a.createdOn!));
-          } else {
-            inboxMessages.add(element);
-            inboxMessages.sort((a, b) => b.createdOn!.compareTo(a.createdOn!));
-          }
-        }
-
-
+      inboxMessages.clear();
+      sentMessages.clear();
+      if (selectInboxMessages.value == true) {
+        inboxMessages.assignAll(await messagesRepo.getAllMessages(
+            isInbox: selectInboxMessages.value, type: selectedValue.value));
+        filterMessages();
+      } else {
+        sentMessages.assignAll(await messagesRepo.getAllMessages(
+            isInbox: selectInboxMessages.value, type: selectedValue.value));
+        filterMessages();
       }
     } catch (e) {
       error.value = true;
@@ -56,6 +52,49 @@ class MessagesController extends GetxController {
       Get.log('========== Error when get Messages : $e ==========');
     } finally {
       loading.value = false;
+    }
+  }
+
+  filterMessages() {
+    if (selectedValue.value != Constants.allKey) {
+      if (selectedValue.value == Constants.workPermitKey) {
+        inboxMessages.value = inboxMessages
+            .where(
+                (message) => message.regardingName == Constants.workPermitKey)
+            .toList();
+        sentMessages.value = sentMessages
+            .where(
+                (message) => message.regardingName == Constants.workPermitKey)
+            .toList();
+      } else if (selectedValue.value == Constants.caseKey) {
+        inboxMessages.value = inboxMessages
+            .where((message) => message.regardingName == Constants.caseKey)
+            .toList();
+        sentMessages.value = sentMessages
+            .where((message) => message.regardingName == Constants.caseKey)
+            .toList();
+      } else if (selectedValue.value == Constants.invoiceKey) {
+        inboxMessages.value = inboxMessages
+            .where((message) => message.regardingName == Constants.invoiceKey)
+            .toList();
+        sentMessages.value = sentMessages
+            .where((message) => message.regardingName == Constants.invoiceKey)
+            .toList();
+      } else if (selectedValue.value == Constants.leaseKey) {
+        inboxMessages.value = inboxMessages
+            .where((message) => message.regardingName == Constants.leaseKey)
+            .toList();
+        sentMessages.value = sentMessages
+            .where((message) => message.regardingName == Constants.leaseKey)
+            .toList();
+      } else {
+        inboxMessages.value = inboxMessages
+            .where((message) => message.regardingName == Constants.fitOutKey)
+            .toList();
+        sentMessages.value = sentMessages
+            .where((message) => message.regardingName == Constants.fitOutKey)
+            .toList();
+      }
     }
   }
 }

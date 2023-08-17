@@ -8,7 +8,7 @@ import '../../../../common/widgets/error_widget.dart';
 import '../../../../common/widgets/horizontal_list_loading.dart';
 import '../../../models/message.dart';
 import '../../../routes/app_routes.dart';
-import '../../messages/widgets/message_card/message_card.dart';
+import '../../messages/widgets/message_cards/message_card.dart';
 import '../controllers/invoice_details_controller.dart';
 
 class InvoiceMessagesList extends GetView<InvoiceDetailsController> {

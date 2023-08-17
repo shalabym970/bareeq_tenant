@@ -14,4 +14,10 @@ class Constants {
   static const String leaseKey = "advanced_propertycontract";
   static const String fitOutKey = "blser_fitoutprocess";
   static const String allKey = "all";
+  static const String workPermitInsuranceAttachment = "Insurance Attachment";
+  static const String workPermitCprCardsAttachment = "CPR Cards Attachment";
+  static const String workPermitMethodStatementAttachment =
+      "Method Statement Attachment";
+  static const String workPermitRiskAssessmentAttachment =
+      "Risk Assessment Attachment";
 }

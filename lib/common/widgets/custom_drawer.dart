@@ -108,13 +108,15 @@ Drawer customDrawer() {
                           Get.offAllNamed(Routes.login);
                         },
                       ),
-                      SizedBox(height: 170.h),
+                      SizedBox(height: 130.h),
                       Align(
                         alignment: Alignment.bottomCenter,
-                        child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            child: SvgPicture.asset(ImagePaths.logoWhite,
-                                height: 75.h, width: 70.w)),
+                        child: Image.asset(
+                          ImagePaths.logoWithoutBg,
+                          height: 100.h,
+                          width: 100.h,
+                          color: ColorManager.white,
+                        ),
                       ),
                     ],
                   ),

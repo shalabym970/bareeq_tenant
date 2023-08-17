@@ -93,12 +93,9 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
                     ),
                   ),
                   SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(
-                      svgPrefixIcon: ImagePaths.document),
+                  const CustomAttachmentWidget(),
                   SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(
-                    svgPrefixIcon: ImagePaths.image,
-                  ),
+                  const CustomAttachmentWidget(),
                   SizedBox(height: 20.h),
                 ],
               ),

@@ -33,7 +33,7 @@ class FitOutProcessDetailsController extends GetxController {
       errorMessages.value = false;
       loadingMessages.value = true;
       messages
-          .assignAll(await messagesRepo.getMessages(regardingId: fitOut.id!));
+          .assignAll(await messagesRepo.getMessagesForRecord(regardingId: fitOut.id!));
     } catch (e) {
       errorMessages.value = true;
       Get.showSnackbar(

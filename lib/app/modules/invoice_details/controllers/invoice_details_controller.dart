@@ -29,7 +29,7 @@ class InvoiceDetailsController extends GetxController {
       errorMessages.value = false;
       loadingMessages.value = true;
       messages
-          .assignAll(await messagesRepo.getMessages(regardingId: invoice.id!));
+          .assignAll(await messagesRepo.getMessagesForRecord(regardingId: invoice.id!));
     } catch (e) {
       errorMessages.value = true;
       Get.showSnackbar(

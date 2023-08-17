@@ -6,7 +6,7 @@ import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../../common/widgets/horizontal_list_loading.dart';
 import '../../../../common/widgets/error_widget.dart';
 import '../../../models/message.dart';
-import '../../messages/widgets/message_card/message_card.dart';
+import '../../messages/widgets/message_cards/message_card.dart';
 import '../controllers/case_details_controller.dart';
 
 class CaseMessagesList extends GetView<CaseDetailsController> {

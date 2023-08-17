@@ -1,8 +1,8 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import '../../../../common/color_manager.dart';
 import '../controllers/messages_controller.dart';
 
@@ -42,9 +42,12 @@ class MessageDropDownList extends GetView<MessagesController> {
                         );
                       }).toList(),
                       onChanged: (String? newValue) async {
-                        controller.loading.isTrue
-                            ? null
-                            : controller.selectedValue.value = newValue!;
+                        if (controller.loading.isTrue) {
+                          null;
+                        } else {
+                          controller.selectedValue.value = newValue!;
+                          controller.getAllMessages();
+                        }
                       },
                     )))),
       ),
