@@ -1,5 +1,7 @@
+import 'package:Bareeq/common/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class Ui {
@@ -11,7 +13,7 @@ class Ui {
           style: Get.textTheme.headlineSmall
               ?.merge(TextStyle(color: Get.theme.primaryColor))),
       messageText: Text(message!,
-          style: Get.textTheme.caption
+          style: Get.textTheme.bodySmall
               ?.merge(TextStyle(color: Get.theme.primaryColor))),
       snackPosition: SnackPosition.BOTTOM,
       margin: EdgeInsets.all(30.h),
@@ -32,7 +34,7 @@ class Ui {
           style: Get.textTheme.headlineSmall
               ?.merge(TextStyle(color: Get.theme.primaryColor))),
       messageText: Text(message!,
-          style: Get.textTheme.caption
+          style: Get.textTheme.bodySmall
               ?.merge(TextStyle(color: Get.theme.primaryColor))),
       snackPosition: SnackPosition.BOTTOM,
       margin: EdgeInsets.all(30.h),
@@ -53,7 +55,7 @@ class Ui {
           style: Get.textTheme.headlineSmall
               ?.merge(TextStyle(color: Get.theme.hintColor))),
       messageText: Text(message!,
-          style: Get.textTheme.caption
+          style: Get.textTheme.bodySmall
               ?.merge(TextStyle(color: Get.theme.focusColor))),
       snackPosition: SnackPosition.BOTTOM,
       margin: EdgeInsets.all(20.h),
@@ -80,7 +82,7 @@ class Ui {
           style: Get.textTheme.headlineSmall
               ?.merge(TextStyle(color: Get.theme.hintColor))),
       messageText: Text(message!,
-          style: Get.textTheme.caption
+          style: Get.textTheme.bodySmall
               ?.merge(TextStyle(color: Get.theme.focusColor))),
       snackPosition: SnackPosition.TOP,
       margin: EdgeInsets.all(20.h),
@@ -137,6 +139,17 @@ class Ui {
     );
   }
 
+  static void showToast({required String content, bool error = false}) {
+    Fluttertoast.showToast(
+      msg: content,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: ColorManager.black,
+      textColor: !error ? ColorManager.white : ColorManager.red,
+    );
+  }
+
   static InputDecoration getInputDecoration(
       {String hintText = '',
       String? errorText,
@@ -145,7 +158,7 @@ class Ui {
       Widget? suffix}) {
     return InputDecoration(
       hintText: hintText,
-      hintStyle: Get.textTheme.caption,
+      hintStyle: Get.textTheme.bodySmall,
       prefixIcon: iconData != null
           ? Icon(iconData, color: Get.theme.focusColor).marginOnly(right: 14)
           : const SizedBox(),

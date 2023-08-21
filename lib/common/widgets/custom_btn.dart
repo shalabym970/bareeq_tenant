@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import '../color_manager.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({

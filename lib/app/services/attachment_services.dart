@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import 'package:Bareeq/common/strings/strings.dart';
+import 'package:Bareeq/common/widgets/ui.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
-
 
 class AttachmentServices {
   static Future<String> convertBase64ToFile(
@@ -17,7 +18,9 @@ class AttachmentServices {
 
     // Create a new file in the documents directory
     File file = File('/storage/emulated/0/Download/$fileName');
-    await file.writeAsBytes(bytes);
+    await file
+        .writeAsBytes(bytes)
+        .then((value) => Ui.showToast(content: Strings.downloadSuccess)).onError((error, stackTrace) =>Ui.showToast(content: Strings.downloadFailed,error: true) );
 
     return file.path;
   }
@@ -35,5 +38,18 @@ class AttachmentServices {
       return mimeType.substring(slashIndex + 1);
     }
     return '';
+  }
+
+  static downloadBase64File(
+      {required String fileName,
+      required String mimeType,
+      required String base64String}) async {
+    final fileNameConverted = AttachmentServices.convertToSnakeCase(fileName);
+    String fileExtension = AttachmentServices.extractFileExtension(mimeType);
+    String filePAth = await AttachmentServices.convertBase64ToFile(
+        fileName: "$fileNameConverted.$fileExtension",
+        base64String: base64String);
+
+    Get.log('========== filePathNAME  : $filePAth ============');
   }
 }

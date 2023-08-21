@@ -18,13 +18,13 @@ class MessageCardItem extends StatelessWidget {
             text: "$label: ",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 10.sp,
+                fontSize: 9.sp,
                 color: ColorManager.mainColor),
             children: <TextSpan>[
               TextSpan(
                 text: value,
                 style: TextStyle(
-                    fontSize: 12.sp, color: Colors.black.withOpacity(0.7)),
+                    fontSize: 9.sp, color: Colors.black.withOpacity(0.7)),
               )
             ]));
   }

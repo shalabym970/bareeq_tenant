@@ -12,7 +12,8 @@ class MessagesApi extends GetxService {
     String url =
         '${Constants.baseUrl}blser_portalmessageses?'
         '\$select=blser_readstatus,_blser_account_value,statuscode,subject,blser_messagetext,_blser_contact_value,blser_direction,createdon,_regardingobjectid_value'
-        ',_createdby_value,prioritycode&\$filter=(_regardingobjectid_value eq $regardingId)&\$orderby=createdon desc';
+        ',_createdby_value,prioritycode&\$filter=(_regardingobjectid_value eq $regardingId)'
+        '&\$orderby=createdon desc';
     var response = await NLTMAuthServices.client.get(Uri.parse(url),
         headers: {"Prefer": "odata.include-annotations=*"});
     Get.log('===============  Messages url :  $url ==========');

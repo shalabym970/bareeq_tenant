@@ -3,7 +3,6 @@ import 'package:Bareeq/common/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/strings/strings.dart';
 import '../../../../models/message.dart';
@@ -55,14 +54,14 @@ class MessageCard extends StatelessWidget {
                           label: Strings.subject,
                           value: message.subject.toString()),
                       SizedBox(
-                        height: 5.h,
+                        height: 3.h,
                       ),
                       MessageCardItem(
                           label: Strings.priority,
                           value: StateHandler.messagePriority(
                               statusNo: message.priorityCode!)),
                       SizedBox(
-                        height: 5.h,
+                        height: 3.h,
                       ),
                       MessageCardItem(
                           label: Strings.from,
@@ -73,16 +72,16 @@ class MessageCard extends StatelessWidget {
                                   .name!
                               : Constants.environmentName),
                       SizedBox(
-                        height: 10.h,
+                        height: 5.h,
                       ),
                       Expanded(
                         child: Text(
                           message.messageBody.toString(),
                           style: TextStyle(
-                              height: 2.h,
-                              fontSize: 12.sp,
+                              height: 1.5.h,
+                              fontSize: 9.sp,
                               color: ColorManager.black),
-                          maxLines: 3,
+                          maxLines: 4,
                           overflow: TextOverflow.visible,
                         ),
                       ),
@@ -94,7 +93,7 @@ class MessageCard extends StatelessWidget {
                             child: Text(
                               message.createdOn.toString(),
                               style: TextStyle(
-                                  color: Colors.grey[800], fontSize: 10.sp),
+                                  color: Colors.grey[800], fontSize: 9.sp),
                             ),
                           ),
                           if (message.direction == true)
@@ -102,7 +101,7 @@ class MessageCard extends StatelessWidget {
                               alignment: Alignment.centerRight,
                               child: Icon(
                                 Icons.done_all,
-                                size: 20.sp,
+                                size: 17.sp,
                                 color: message.readStatus == true
                                     ? Colors.green
                                     : Colors.grey[800],

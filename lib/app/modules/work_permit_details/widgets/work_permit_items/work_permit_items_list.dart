@@ -25,7 +25,7 @@ class WorkPermitsItemsList extends GetView<WorkPermitDetailsController> {
                       iconHeight: 20.h,
                       fontSize: 15.sp,
                     )
-                  : controller.messages.isEmpty
+                  : controller.workPermitItems.isEmpty
                       ? Center(
                           child: EmptyListWidget(
                               fontSize: 15.sp,

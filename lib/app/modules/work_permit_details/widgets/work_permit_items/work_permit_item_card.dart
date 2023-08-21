@@ -42,16 +42,16 @@ class WorkPermitItemCard extends StatelessWidget {
               ),
               Text(workPermitItem.id.toString(),
                   style: TextStyle(
-                      fontSize: 12.sp, color: Colors.black.withOpacity(0.7))),
+                      fontSize: 11.sp, color: Colors.black.withOpacity(0.7))),
               SizedBox(
-                height: 10.h,
+                height: 5.h,
               ),
               Expanded(
                 child: Text(
                   workPermitItem.description.toString(),
                   style: TextStyle(
-                      height: 2.h, fontSize: 12.sp, color: ColorManager.black),
-                  maxLines: 4,
+                      height: 2.h, fontSize: 9.sp, color: ColorManager.black),
+                  maxLines: 5,
                   overflow: TextOverflow.visible,
                 ),
               ),

@@ -5,6 +5,7 @@ import '../../../../common/constants.dart';
 import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../common/widgets/error_widget.dart';
+import '../../../../common/widgets/upload_file_widget.dart';
 import '../controllers/work_permit_details_controller.dart';
 
 class WorkPermitAttachmentsWidget extends GetView<WorkPermitDetailsController> {
@@ -28,8 +29,10 @@ class WorkPermitAttachmentsWidget extends GetView<WorkPermitDetailsController> {
             : controller.errorCprAttach.isTrue
                 ? CustomErrorWidget(
                     iconWidth: 20.w, iconHeight: 20.h, fontSize: 15.sp)
-                : CustomAttachmentWidget(
-                    attachment: controller.cprAttach.value)),
+                : controller.cprAttach.value.id == null
+                    ? const UploadFileWidget()
+                    : CustomAttachmentWidget(
+                        attachment: controller.cprAttach.value)),
         SizedBox(height: 5.h),
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.h),
@@ -43,8 +46,10 @@ class WorkPermitAttachmentsWidget extends GetView<WorkPermitDetailsController> {
             : controller.errorInsuranceAttach.isTrue
                 ? CustomErrorWidget(
                     iconWidth: 20.w, iconHeight: 20.h, fontSize: 15.sp)
-                : CustomAttachmentWidget(
-                    attachment: controller.insuranceAttach.value)),
+                : controller.insuranceAttach.value.id == null
+                    ?const UploadFileWidget()
+                    : CustomAttachmentWidget(
+                        attachment: controller.insuranceAttach.value)),
         SizedBox(height: 5.h),
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.h),
@@ -58,8 +63,10 @@ class WorkPermitAttachmentsWidget extends GetView<WorkPermitDetailsController> {
             : controller.errorMethodAttach.isTrue
                 ? CustomErrorWidget(
                     iconWidth: 20.w, iconHeight: 20.h, fontSize: 15.sp)
-                : CustomAttachmentWidget(
-                    attachment: controller.methodAttach.value)),
+                : controller.methodAttach.value.id == null
+                    ? const UploadFileWidget()
+                    : CustomAttachmentWidget(
+                        attachment: controller.methodAttach.value)),
         SizedBox(height: 5.h),
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.h),
@@ -73,8 +80,10 @@ class WorkPermitAttachmentsWidget extends GetView<WorkPermitDetailsController> {
             : controller.errorRiskAttach.isTrue
                 ? CustomErrorWidget(
                     iconWidth: 20.w, iconHeight: 20.h, fontSize: 15.sp)
-                : CustomAttachmentWidget(
-                    attachment: controller.riskAttach.value))
+                : controller.riskAttach.value.id == null
+                    ? const UploadFileWidget()
+                    : CustomAttachmentWidget(
+                        attachment: controller.riskAttach.value))
       ],
     );
   }

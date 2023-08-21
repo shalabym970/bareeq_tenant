@@ -15,7 +15,7 @@ class WorkPermitMessagesList extends GetView<WorkPermitDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(vertical: 8.h),
+        padding: EdgeInsets.symmetric(vertical: 5.h),
         child: Obx(
           () => controller.loadingMessages.isTrue
               ? const HorizontalListLoading()

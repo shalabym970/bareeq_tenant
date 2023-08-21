@@ -192,4 +192,7 @@ class Strings {
   static const String to = "to";
   static const String read = "Read";
   static const String unread = "Unread";
+  static const String downloadSuccess = "File downloaded successfully!";
+  static const String downloadFailed = "Download failed, try again";
+  static const String selectFile = 'Select file to Upload it';
 }
