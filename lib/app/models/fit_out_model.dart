@@ -1,5 +1,5 @@
-import 'package:Seef/app/models/project.dart';
-import 'package:Seef/app/models/unit.dart';
+import 'package:Bareeq/app/models/project.dart';
+import 'package:Bareeq/app/models/unit.dart';
 
 class FitOutModel {
   DateTime? startDate;

@@ -1,5 +1,5 @@
-import 'package:Seef/app/modules/dashboard/widgets/recent_invoices/invoices_list_item.dart';
-import 'package:Seef/common/widgets/vertical_list_loading.dart';
+import 'package:Bareeq/app/modules/dashboard/widgets/recent_invoices/invoices_list_item.dart';
+import 'package:Bareeq/common/widgets/vertical_list_loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

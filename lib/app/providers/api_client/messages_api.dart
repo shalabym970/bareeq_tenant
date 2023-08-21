@@ -1,5 +1,5 @@
-import 'package:Seef/app/models/message.dart';
-import 'package:Seef/app/services/session_services.dart';
+import 'package:Bareeq/app/models/message.dart';
+import 'package:Bareeq/app/services/session_services.dart';
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
 import '../../../common/widgets/ui.dart';

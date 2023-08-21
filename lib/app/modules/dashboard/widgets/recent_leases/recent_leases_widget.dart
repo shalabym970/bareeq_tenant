@@ -1,4 +1,4 @@
-import 'package:Seef/app/modules/dashboard/widgets/recent_leases/recent_leases_list.dart';
+import 'package:Bareeq/app/modules/dashboard/widgets/recent_leases/recent_leases_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

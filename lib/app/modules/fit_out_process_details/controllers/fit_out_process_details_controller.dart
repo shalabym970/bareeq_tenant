@@ -1,7 +1,7 @@
-import 'package:Seef/app/models/fit_out_model.dart';
-import 'package:Seef/app/models/fit_out_step_model.dart';
-import 'package:Seef/app/repositories/fit_out_repo.dart';
-import 'package:Seef/common/strings/strings.dart';
+import 'package:Bareeq/app/models/fit_out_model.dart';
+import 'package:Bareeq/app/models/fit_out_step_model.dart';
+import 'package:Bareeq/app/repositories/fit_out_repo.dart';
+import 'package:Bareeq/common/strings/strings.dart';
 import 'package:get/get.dart';
 import '../../../../common/status_no.dart';
 import '../../../../common/status_string.dart';

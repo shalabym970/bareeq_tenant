@@ -1,6 +1,6 @@
-import 'package:Seef/app/models/message.dart';
-import 'package:Seef/app/repositories/messages_repo.dart';
-import 'package:Seef/common/constants.dart';
+import 'package:Bareeq/app/models/message.dart';
+import 'package:Bareeq/app/repositories/messages_repo.dart';
+import 'package:Bareeq/common/constants.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';

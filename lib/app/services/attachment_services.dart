@@ -1,36 +1,39 @@
 import 'dart:convert';
-
+import 'dart:typed_data';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 
-import '../models/document.dart';
 
 class AttachmentServices {
-  static Future<File?> transferAttachmentToFile(
-      {required Attachment attachment, required String recordName}) async {
-    try {
-      final appStorage = await getApplicationDocumentsDirectory();
-      List<int> bytes = base64Decode(attachment.documentBody!);
-      final file =
-          File('${appStorage.path}/$recordName/${attachment.mimeType}');
-      await file.writeAsBytes(bytes);
+  static Future<String> convertBase64ToFile(
+      {required String base64String, required String fileName}) async {
+    // Decode the Base64 string
+    Uint8List bytes = base64Decode(base64String);
 
-      return file;
-    } catch (e) {
-      return null;
-    }
+    // Get the application documents directory
+    String dir = (await getApplicationDocumentsDirectory()).path;
+    Get.log('========== appDocumentsDirectory : $dir ============');
+
+    // Create a new file in the documents directory
+    File file = File('/storage/emulated/0/Download/$fileName');
+    await file.writeAsBytes(bytes);
+
+    return file.path;
   }
 
-  static openAttachment(
-      {required Attachment attachment, required String recordName}) async {
-    final file = await transferAttachmentToFile(
-        attachment: attachment, recordName: recordName);
-    if (file == null){
-      Get.log(" ===== file is null =========");
+  /// To Convert The String With Space in Attachment With Spase To Snack Case
+  /// EX: "Method Statement Attachment" -> "method_statement_attachment"
+  static String convertToSnakeCase(String input) {
+    return input.toLowerCase().replaceAll(' ', '_');
+  }
+
+  /// Extract File Extension From The Mime Type EX: "image/png" -> ".png"
+  static String extractFileExtension(String mimeType) {
+    int slashIndex = mimeType.lastIndexOf('/');
+    if (slashIndex != -1 && slashIndex < mimeType.length - 1) {
+      return mimeType.substring(slashIndex + 1);
     }
-    Get.log("path : ${file?.path}");
-    OpenFile.open(file?.path);
+    return '';
   }
 }

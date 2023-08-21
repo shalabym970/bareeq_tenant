@@ -1,5 +1,5 @@
-import 'package:Seef/app/services/session_services.dart';
-import 'package:Seef/common/strings/strings.dart';
+import 'package:Bareeq/app/services/session_services.dart';
+import 'package:Bareeq/common/strings/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

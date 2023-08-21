@@ -1,5 +1,5 @@
-import 'package:Seef/app/models/lease_model.dart';
-import 'package:Seef/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:Bareeq/app/models/lease_model.dart';
+import 'package:Bareeq/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
 import '../../../common/widgets/ui.dart';

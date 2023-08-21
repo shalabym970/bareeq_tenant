@@ -1,4 +1,4 @@
-import 'package:Seef/common/color_manager.dart';
+import 'package:Bareeq/common/color_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

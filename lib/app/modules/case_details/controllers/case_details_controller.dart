@@ -1,5 +1,5 @@
-import 'package:Seef/app/models/case_model.dart';
-import 'package:Seef/app/models/message.dart';
+import 'package:Bareeq/app/models/case_model.dart';
+import 'package:Bareeq/app/models/message.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/strings/error_strings.dart';

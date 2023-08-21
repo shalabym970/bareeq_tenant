@@ -1,4 +1,4 @@
-import 'package:Seef/app/models/invoice_details.dart';
+import 'package:Bareeq/app/models/invoice_details.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/strings/error_strings.dart';

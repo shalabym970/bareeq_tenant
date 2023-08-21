@@ -1,5 +1,5 @@
-import 'package:Seef/app/models/unit.dart';
-import 'package:Seef/app/models/work_permit_item.dart';
+import 'package:Bareeq/app/models/unit.dart';
+import 'package:Bareeq/app/models/work_permit_item.dart';
 
 import 'account_model.dart';
 
@@ -56,7 +56,7 @@ class WorkPermitModel {
         numberOfWorkers: json["blser_numberofworkers"],
         riskAssessment: json["blser_riskassessment"],
         ownerId: json["_ownerid_value"],
-        comment: json["blser_seefcomments"],
+        comment: json["blser_Bareeqcomments"],
         workPermitItems: json[
                     "blser_blser_workpermit_blser_workpermititem_WorkPermit"] ==
                 null
@@ -73,7 +73,7 @@ class WorkPermitModel {
   Map<String, dynamic> toJson() => {
         "blser_subject": subject,
         "new_type": type,
-        "blser_seefcomments": comment,
+        "blser_Bareeqcomments": comment,
         "_blser_contractor_value": contractorId,
         "_blser_customer_value": customerId,
         "blser_startdate": startDate?.toIso8601String(),

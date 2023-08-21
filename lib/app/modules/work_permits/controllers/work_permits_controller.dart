@@ -1,4 +1,4 @@
-import 'package:Seef/app/models/work_permit.dart';
+import 'package:Bareeq/app/models/work_permit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../dashboard/controllers/dashboard_controller.dart';

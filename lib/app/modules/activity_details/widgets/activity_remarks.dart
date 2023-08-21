@@ -21,7 +21,7 @@ class ActivityRemarks extends StatelessWidget {
                   fontWeight: FontWeight.w400)),
           SizedBox(height: 20.h),
           Text(
-            'Once the documentation and lease agreement have been finalized, the tenant to • Appoint their fitout team. (Form 2) • Attend formal meeting with SEEF Fit-Out Team to agree on the procedures for Fit-Out • Understand the design criteria and deliverables • Submit fit-out program milestone prior to the submission of conceptual design. (Form 3) • Artwork for hoarding to be submitted for approval.',
+            'Once the documentation and lease agreement have been finalized, the tenant to • Appoint their fitout team. (Form 2) • Attend formal meeting with Bareeq Fit-Out Team to agree on the procedures for Fit-Out • Understand the design criteria and deliverables • Submit fit-out program milestone prior to the submission of conceptual design. (Form 3) • Artwork for hoarding to be submitted for approval.',
             style: TextStyle(
                 fontSize: 12.sp,
                 color: ColorManager.black,

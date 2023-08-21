@@ -1,5 +1,5 @@
-import 'package:Seef/app/models/account_model.dart';
-import 'package:Seef/app/models/contact_model.dart';
+import 'package:Bareeq/app/models/account_model.dart';
+import 'package:Bareeq/app/models/contact_model.dart';
 import 'package:get/get.dart';
 
 import '../../main.dart';

@@ -1,6 +1,6 @@
-import 'package:Seef/app/models/work_permit.dart';
-import 'package:Seef/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:Seef/app/modules/dashboard/widgets/recent_work_permits/work_permits_item.dart';
+import 'package:Bareeq/app/models/work_permit.dart';
+import 'package:Bareeq/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:Bareeq/app/modules/dashboard/widgets/recent_work_permits/work_permits_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

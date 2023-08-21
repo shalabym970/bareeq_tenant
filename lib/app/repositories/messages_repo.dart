@@ -1,5 +1,5 @@
-import 'package:Seef/app/models/message.dart';
-import 'package:Seef/app/providers/api_client/messages_api.dart';
+import 'package:Bareeq/app/models/message.dart';
+import 'package:Bareeq/app/providers/api_client/messages_api.dart';
 
 class MessagesRepo {
   Future<List<MessageModel>> getMessagesForRecord(

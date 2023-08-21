@@ -1,6 +1,6 @@
-import 'package:Seef/app/models/lease_model.dart';
-import 'package:Seef/app/modules/dashboard/widgets/recent_leases/leases_list_item.dart';
-import 'package:Seef/common/widgets/vertical_list_loading.dart';
+import 'package:Bareeq/app/models/lease_model.dart';
+import 'package:Bareeq/app/modules/dashboard/widgets/recent_leases/leases_list_item.dart';
+import 'package:Bareeq/common/widgets/vertical_list_loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

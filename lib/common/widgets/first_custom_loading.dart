@@ -1,7 +1,8 @@
-import 'package:Seef/common/images_paths.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+
+import '../images_paths.dart';
 
 class FirstCustomLoading extends StatelessWidget {
 

@@ -1,4 +1,4 @@
-import 'package:Seef/app/modules/searching/abstract_searching.dart';
+import 'package:Bareeq/app/modules/searching/abstract_searching.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../../models/case_model.dart';

@@ -1,7 +1,8 @@
-import 'package:Seef/app/models/document.dart';
+import 'package:Bareeq/app/models/document.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../app/services/attachment_services.dart';
 import '../color_manager.dart';
@@ -58,8 +59,23 @@ class CustomAttachmentWidget extends StatelessWidget {
                       height: 32.h,
                       width: 32.w,
                       child: FloatingActionButton(
-                          onPressed: () {
-                            AttachmentServices.openAttachment(attachment: attachment!, recordName: "recordName");
+                          onPressed: () async {
+                            String fileName =
+                                AttachmentServices.convertToSnakeCase(
+                                    attachment!.filename.toString());
+
+                            String fileExtension =
+                                AttachmentServices.extractFileExtension(
+                                    attachment!.mimeType.toString());
+
+                            String filePAth =
+                                await AttachmentServices.convertBase64ToFile(
+                                    fileName: "$fileName.$fileExtension",
+                                    base64String:
+                                        attachment!.documentBody.toString());
+
+                            Get.log(
+                                '========== filePathNAME  : $filePAth ============');
                           },
                           heroTag: null,
                           backgroundColor: ColorManager.mainColor,
@@ -76,7 +92,7 @@ class CustomAttachmentWidget extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.centerRight,
-            child: Text("${attachment!.fileSize! ~/ 1024   } MB" ,
+            child: Text("${attachment!.fileSize! ~/ 1024} MB",
                 style: TextStyle(
                     fontSize: 12.sp, color: Colors.black.withOpacity(0.7))),
           )

@@ -1,8 +1,7 @@
-
-import 'package:Seef/app/models/document.dart';
-import 'package:Seef/app/models/work_permit_item.dart';
-import 'package:Seef/app/repositories/messages_repo.dart';
-import 'package:Seef/common/constants.dart';
+import 'package:Bareeq/app/models/document.dart';
+import 'package:Bareeq/app/models/work_permit_item.dart';
+import 'package:Bareeq/app/repositories/messages_repo.dart';
+import 'package:Bareeq/common/constants.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
@@ -82,6 +81,7 @@ class WorkPermitDetailsController extends GetxController {
     }
   }
 
+
   getCprAttach() async {
     try {
       errorCprAttach.value = false;
@@ -158,6 +158,4 @@ class WorkPermitDetailsController extends GetxController {
       loadingRiskAttach.value = false;
     }
   }
-
-
 }

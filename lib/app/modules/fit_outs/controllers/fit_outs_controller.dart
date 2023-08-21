@@ -1,5 +1,5 @@
-import 'package:Seef/app/models/fit_out_model.dart';
-import 'package:Seef/app/modules/searching/abstract_searching.dart';
+import 'package:Bareeq/app/models/fit_out_model.dart';
+import 'package:Bareeq/app/modules/searching/abstract_searching.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../dashboard/controllers/dashboard_controller.dart';

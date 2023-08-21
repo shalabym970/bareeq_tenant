@@ -1,4 +1,4 @@
-import 'package:Seef/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:Bareeq/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
