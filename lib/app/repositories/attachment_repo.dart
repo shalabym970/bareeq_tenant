@@ -5,9 +5,9 @@ import '../models/document.dart';
 
 class AttachmentRepo {
   Future<List<Attachment>> getAttachments(
-      {required String workPermitId,  String? attachmentType}) async {
+      {required String recordId,  String? attachmentType}) async {
     return AttachmentApi.getAttachments(
-        workPermitId: workPermitId, attachmentType: attachmentType);
+        workPermitId: recordId, attachmentType: attachmentType);
   }
 
 

@@ -18,8 +18,9 @@ class FitOutProcessDetailsController extends GetxController {
   final messages = <MessageModel>[].obs;
   final fitOutSteps = <FitOutStepModel>[].obs;
   FitOutModel fitOut = Get.arguments;
-  MessagesRepo messagesRepo = MessagesRepo();
-  FitOutRepo fitOutRepo = FitOutRepo();
+
+  final messagesRepo = MessagesRepo();
+  final fitOutRepo = FitOutRepo();
 
   @override
   void onInit() async {
@@ -32,8 +33,8 @@ class FitOutProcessDetailsController extends GetxController {
     try {
       errorMessages.value = false;
       loadingMessages.value = true;
-      messages
-          .assignAll(await messagesRepo.getMessagesForRecord(regardingId: fitOut.id!));
+      messages.assignAll(
+          await messagesRepo.getMessagesForRecord(regardingId: fitOut.id!));
     } catch (e) {
       errorMessages.value = true;
       Get.showSnackbar(

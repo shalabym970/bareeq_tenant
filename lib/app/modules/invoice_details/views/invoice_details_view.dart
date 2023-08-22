@@ -6,9 +6,9 @@ import '../../../../common/color_manager.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
-import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../controllers/invoice_details_controller.dart';
+import '../widgets/invoice_attachments_list.dart';
 import '../widgets/invoice_general_details.dart';
 import '../widgets/invoice_items/invoice_items_widget.dart';
 import '../widgets/invoice_messages_list.dart';
@@ -93,10 +93,8 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
                     ),
                   ),
                   SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(),
-                  SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(),
-                  SizedBox(height: 20.h),
+                  const InvoiceAttachmentsList(),
+                  SizedBox(height: 50.h),
                 ],
               ),
             ),

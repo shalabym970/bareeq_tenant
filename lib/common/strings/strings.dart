@@ -195,4 +195,5 @@ class Strings {
   static const String downloadSuccess = "File downloaded successfully!";
   static const String downloadFailed = "Download failed, try again";
   static const String selectFile = 'Select file to Upload it';
+  static const String nothingAttachments = 'Nothing Attachments';
 }

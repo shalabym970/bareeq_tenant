@@ -8,9 +8,8 @@ import '../../../../common/constants.dart';
 import '../../../models/message.dart';
 import '../../../routes/app_routes.dart';
 
-class InboxMessagesListItem extends StatelessWidget {
-  const InboxMessagesListItem({Key? key, required this.message})
-      : super(key: key);
+class MessageListItem extends StatelessWidget {
+  const MessageListItem({Key? key, required this.message}) : super(key: key);
   final MessageModel message;
 
   @override
@@ -132,7 +131,7 @@ class InboxMessagesListItem extends StatelessWidget {
                                                 ? Strings.invoice
                                                 : Strings.fitOutProcess,
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: 10.sp,
                                   color: message.regardingName.toString() ==
                                           Constants.caseKey
                                       ? ColorManager.yellow
@@ -162,15 +161,15 @@ class InboxMessagesListItem extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                           fontSize: 12.sp,
                           color: ColorManager.black,
-                          height: 2.h),
-                      maxLines: 2,
+                          height: 1.5.h),
+                      maxLines: 1,
                     ),
                     if (message.direction == true)
                       Align(
                         alignment: Alignment.centerRight,
                         child: Icon(
                           Icons.done_all,
-                          size: 20.sp,
+                          size: 15.sp,
                           color: message.readStatus == true
                               ? Colors.green
                               : Colors.grey[800],

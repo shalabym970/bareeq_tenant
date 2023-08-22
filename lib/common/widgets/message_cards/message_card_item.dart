@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../common/color_manager.dart';
-import '../../../../services/state_handler.dart';
 
 class MessageCardItem extends StatelessWidget {
   const MessageCardItem({Key? key, required this.label, required this.value})

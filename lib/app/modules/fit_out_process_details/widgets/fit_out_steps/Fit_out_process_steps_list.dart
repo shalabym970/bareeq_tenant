@@ -26,9 +26,8 @@ class FitOutProcessStepsList extends GetView<FitOutProcessDetailsController> {
                       fontSize: 15.sp,
                     )
                   : controller.messages.isEmpty
-                      ? Center(
+                      ? const Center(
                           child: EmptyListWidget(
-                              fontSize: 15.sp,
                               message: Strings.nothingFitOutSteps))
                       : ListView.builder(
                           scrollDirection: Axis.horizontal,

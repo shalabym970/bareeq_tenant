@@ -1,6 +1,5 @@
 import 'package:Bareeq/app/models/document.dart';
 import 'package:Bareeq/app/models/work_permit_item.dart';
-import 'package:Bareeq/app/providers/api_client/attachmentApi.dart';
 import 'package:Bareeq/app/repositories/attachment_repo.dart';
 import 'package:Bareeq/app/repositories/messages_repo.dart';
 import 'package:Bareeq/common/constants.dart';
@@ -85,9 +84,9 @@ class WorkPermitDetailsController extends GetxController {
     try {
       errorCprAttach.value = false;
       loadingCprAttach.value = true;
-      cprAttach.value = await attachmentRepo.getAttachments(
-          workPermitId: workPermit.workPermitId!,
-          attachmentType: Constants.workPermitCprCardsAttachment);
+      cprAttach.assignAll(await attachmentRepo.getAttachments(
+          recordId: workPermit.workPermitId!,
+          attachmentType: Constants.workPermitCprCardsAttachment));
     } catch (e) {
       errorCprAttach.value = true;
       Get.showSnackbar(
@@ -102,9 +101,9 @@ class WorkPermitDetailsController extends GetxController {
     try {
       errorInsuranceAttach.value = false;
       loadingInsuranceAttach.value = true;
-      insuranceAttach.value = await attachmentRepo.getAttachments(
-          workPermitId: workPermit.workPermitId!,
-          attachmentType: Constants.workPermitInsuranceAttachment);
+      insuranceAttach.assignAll(await attachmentRepo.getAttachments(
+          recordId: workPermit.workPermitId!,
+          attachmentType: Constants.workPermitInsuranceAttachment));
     } catch (e) {
       errorInsuranceAttach.value = true;
       Get.showSnackbar(
@@ -119,9 +118,9 @@ class WorkPermitDetailsController extends GetxController {
     try {
       errorMethodAttach.value = false;
       loadingMethodAttach.value = true;
-      methodAttach.value = await attachmentRepo.getAttachments(
-          workPermitId: workPermit.workPermitId!,
-          attachmentType: Constants.workPermitMethodStatementAttachment);
+      methodAttach.assignAll(await attachmentRepo.getAttachments(
+          recordId: workPermit.workPermitId!,
+          attachmentType: Constants.workPermitMethodStatementAttachment));
     } catch (e) {
       errorMethodAttach.value = true;
       Get.showSnackbar(
@@ -137,9 +136,9 @@ class WorkPermitDetailsController extends GetxController {
     try {
       errorRiskAttach.value = false;
       loadingRiskAttach.value = true;
-      riskAttach.value = await attachmentRepo.getAttachments(
-          workPermitId: workPermit.workPermitId!,
-          attachmentType: Constants.workPermitRiskAssessmentAttachment);
+      riskAttach.assignAll(await attachmentRepo.getAttachments(
+          recordId: workPermit.workPermitId!,
+          attachmentType: Constants.workPermitRiskAssessmentAttachment));
     } catch (e) {
       errorRiskAttach.value = true;
       Get.showSnackbar(

@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
+import '../../../models/document.dart';
 import '../../../models/invoice.dart';
 import '../../../models/message.dart';
+import '../../../repositories/attachment_repo.dart';
 import '../../../repositories/messages_repo.dart';
 
 class InvoiceDetailsController extends GetxController {
@@ -15,12 +17,17 @@ class InvoiceDetailsController extends GetxController {
   final messages = <MessageModel>[].obs;
   final errorMessages = false.obs;
   final loadingMessages = false.obs;
-  MessagesRepo messagesRepo = MessagesRepo();
+  final errorAttachments = false.obs;
+  final loadingAttachments = false.obs;
+  final attachments = <Attachment>[].obs;
+  final attachmentRepo = AttachmentRepo();
+  final messagesRepo = MessagesRepo();
 
   @override
   void onInit() {
     getInvoiceItems();
     getMessages();
+    getAttachments();
     super.onInit();
   }
 
@@ -28,8 +35,8 @@ class InvoiceDetailsController extends GetxController {
     try {
       errorMessages.value = false;
       loadingMessages.value = true;
-      messages
-          .assignAll(await messagesRepo.getMessagesForRecord(regardingId: invoice.id!));
+      messages.assignAll(
+          await messagesRepo.getMessagesForRecord(regardingId: invoice.id!));
     } catch (e) {
       errorMessages.value = true;
       Get.showSnackbar(
@@ -53,6 +60,22 @@ class InvoiceDetailsController extends GetxController {
       Get.log('========== Error when get invoice items : $e ==========');
     } finally {
       loadingInvoices.value = false;
+    }
+  }
+
+  getAttachments() async {
+    try {
+      errorAttachments.value = false;
+      loadingAttachments.value = true;
+      attachments.assignAll(
+          await attachmentRepo.getAttachments(recordId: invoice.id!));
+    } catch (e) {
+      errorAttachments.value = true;
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when get CPR Card Attachment : $e ==========');
+    } finally {
+      loadingAttachments.value = false;
     }
   }
 }

@@ -87,7 +87,7 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
                     ),
                   ),
                   SizedBox(height: 185.h, child: const FitOutMessagesList()),
-                  SizedBox(height: 20.h),
+                  SizedBox(height: 50.h),
                 ],
               ),
             ),

@@ -29,8 +29,7 @@ class WorkPermitsList extends GetView<DashboardController> {
                       fontSize: 15.sp,
                     )
                   : controller.workPermits.isEmpty
-                      ? EmptyListWidget(
-                          fontSize: 15.sp, message: Strings.workPermitsEmpty)
+                      ? const EmptyListWidget(message: Strings.workPermitsEmpty)
                       : ListView.builder(
                           padding: EdgeInsets.symmetric(vertical: 10.h),
                           primary: false,

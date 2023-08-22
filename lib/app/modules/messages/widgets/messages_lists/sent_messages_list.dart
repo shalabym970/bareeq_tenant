@@ -7,7 +7,7 @@ import '../../../../../common/widgets/error_widget.dart';
 import '../../../../../common/widgets/vertical_list_loading.dart';
 import '../../../../models/message.dart';
 import '../../controllers/messages_controller.dart';
-import '../inbox_messages_list_item.dart';
+import '../message_list_item.dart';
 
 class SentMessagesList extends GetView<MessagesController> {
   const SentMessagesList({super.key});
@@ -26,8 +26,7 @@ class SentMessagesList extends GetView<MessagesController> {
                       fontSize: 15.sp,
                     )
                   : controller.sentMessages.isEmpty
-                      ? EmptyListWidget(
-                          fontSize: 15.sp, message: Strings.nothingMessages)
+                      ? const EmptyListWidget(message: Strings.nothingMessages)
                       : ListView.builder(
                           padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
                           primary: false,
@@ -36,7 +35,7 @@ class SentMessagesList extends GetView<MessagesController> {
                           itemBuilder: ((_, index) {
                             MessageModel message =
                                 controller.sentMessages.elementAt(index);
-                            return InboxMessagesListItem(
+                            return MessageListItem(
                               message: message,
                             );
                           }),

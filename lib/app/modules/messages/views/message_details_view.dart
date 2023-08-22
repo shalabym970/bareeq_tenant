@@ -6,11 +6,11 @@ import '../../../../common/color_manager.dart';
 import '../../../../common/constants.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
-import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_details_item.dart';
 import '../../../services/state_handler.dart';
 import '../controllers/message_details_controller.dart';
+import '../widgets/message_attachments_list.dart';
 
 class MessageDetailsView extends GetView<MessageDetailsController> {
   const MessageDetailsView({Key? key}) : super(key: key);
@@ -154,7 +154,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                           fontSize: 14.sp, fontWeight: FontWeight.w400),
                     ),
                     SizedBox(height: 10.h),
-                    const CustomAttachmentWidget(),
+                    const MessageAttachmentsList(),
                     SizedBox(height: 20.h),
                     if (controller.rout == Constants.inboxMessage)
                       Column(
@@ -202,22 +202,33 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                             ),
                           ),
                           SizedBox(height: 30.h),
-                          Text(
-                            Strings.attachments,
-                            style: TextStyle(
-                                fontSize: 14.sp, fontWeight: FontWeight.w400),
-                          ),
+                          Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10.h),
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      Strings.attachments,
+                                      style: TextStyle(
+                                          fontSize: 14.sp, fontWeight: FontWeight.w400),
+                                    ),
+                                    SizedBox(
+                                      height: 32.h,
+                                      width: 32.w,
+                                      child: FloatingActionButton(
+                                        onPressed: () {},
+                                        heroTag: null,
+                                        backgroundColor: ColorManager.mainColor,
+                                        child: Icon(
+                                          Icons.add,
+                                          color: ColorManager.white,
+                                          size: 20.sp,
+                                        ),
+                                      ),
+                                    )
+                                  ])),
                           SizedBox(height: 10.h),
-                          const CustomAttachmentWidget(),
-                          SizedBox(height: 30.h),
-                          PrimaryButton(
-                            title: Strings.attachFiles,
-                            onPressed: () {},
-                            height: 40.h,
-                            backgroundColor: ColorManager.white,
-                            textAndIconColor: ColorManager.mainColor,
-                            svgIcon: ImagePaths.path68,
-                          ),
+                          const MessageAttachmentsList(),
                           SizedBox(height: 30.h),
                           PrimaryButton(
                             title: Strings.sendReply,

@@ -29,8 +29,7 @@ class RecentFitOutProcessesList extends GetView<DashboardController> {
                       fontSize: 15.sp,
                     )
                   : controller.fitOuts.isEmpty
-                      ? EmptyListWidget(
-                          fontSize: 15.sp, message: Strings.fitOutsEmpty)
+                      ? const EmptyListWidget(message: Strings.fitOutsEmpty)
                       : ListView.builder(
                           padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
                           primary: false,

@@ -6,9 +6,9 @@ import '../../../../common/color_manager.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
-import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../controllers/lease_details_controller.dart';
+import '../widgets/lease_attachments_list.dart';
 import '../widgets/lease_dates_widget.dart';
 import '../widgets/lease_general_details.dart';
 import '../widgets/lease_messages_list.dart';
@@ -93,15 +93,12 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                     ),
                   ),
                   SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(),
-                  SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(),
-                  SizedBox(height: 20.h),
+                  const LeaseAttachmentsList(),
+                  SizedBox(height: 50.h),
                 ],
               ),
             ),
           ),
-
           drawer:
               customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
         ));

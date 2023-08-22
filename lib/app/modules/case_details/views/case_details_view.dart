@@ -11,6 +11,7 @@ import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../../../routes/app_routes.dart';
 import '../controllers/case_details_controller.dart';
+import '../widgets/case_attachments_list.dart';
 import '../widgets/case_description.dart';
 import '../widgets/case_general_details.dart';
 import '../widgets/case_messages_list.dart';
@@ -95,27 +96,33 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                   SizedBox(height: 185.h, child: const CaseMessagesList()),
                   SizedBox(height: 20.h),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.h),
-                    child: Text(
-                      Strings.attachments,
-                      style: TextStyle(
-                          fontSize: 14.sp, fontWeight: FontWeight.w400),
-                    ),
-                  ),
+                      padding: EdgeInsets.symmetric(horizontal: 10.h),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              Strings.attachments,
+                              style: TextStyle(
+                                  fontSize: 14.sp, fontWeight: FontWeight.w400),
+                            ),
+                            SizedBox(
+                              height: 32.h,
+                              width: 32.w,
+                              child: FloatingActionButton(
+                                onPressed: () {},
+                                heroTag: null,
+                                backgroundColor: ColorManager.mainColor,
+                                child: Icon(
+                                  Icons.add,
+                                  color: ColorManager.white,
+                                  size: 20.sp,
+                                ),
+                              ),
+                            )
+                          ])),
                   SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(),
-                  SizedBox(height: 10.h),
-                  const CustomAttachmentWidget(),
-                  SizedBox(height: 20.h),
-                  PrimaryButton(
-                    title: Strings.attachFiles,
-                    onPressed: () {},
-                    height: 40.h,
-                    backgroundColor: ColorManager.white,
-                    textAndIconColor: ColorManager.mainColor,
-                    svgIcon: ImagePaths.path68,
-                  ),
-                  SizedBox(height: 20.h),
+                  const CaseAttachmentsList(),
+                  SizedBox(height: 100.h),
                 ],
               ),
             ),

@@ -30,8 +30,7 @@ class RecentWorkPermitsList extends GetView<DashboardController> {
                       fontSize: 15.sp,
                     )
                   : controller.workPermits.isEmpty
-                      ? EmptyListWidget(
-                          fontSize: 15.sp, message: Strings.workPermitsEmpty)
+                      ? const EmptyListWidget(message: Strings.workPermitsEmpty)
                       : ListView.builder(
                           padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
                           primary: false,
@@ -43,8 +42,7 @@ class RecentWorkPermitsList extends GetView<DashboardController> {
                             WorkPermitModel workPermit =
                                 controller.workPermits.elementAt(index);
 
-                            return WorkPermitItem(
-                                workPermit: workPermit);
+                            return WorkPermitItem(workPermit: workPermit);
                           }),
                         ),
         ));

@@ -26,10 +26,9 @@ class WorkPermitsItemsList extends GetView<WorkPermitDetailsController> {
                       fontSize: 15.sp,
                     )
                   : controller.workPermitItems.isEmpty
-                      ? Center(
-                          child: EmptyListWidget(
-                              fontSize: 15.sp,
-                              message: Strings.nothingMessages))
+                      ? const Center(
+                          child:
+                              EmptyListWidget(message: Strings.nothingMessages))
                       : ListView.builder(
                           scrollDirection: Axis.horizontal,
                           padding: EdgeInsets.symmetric(horizontal: 5.w),

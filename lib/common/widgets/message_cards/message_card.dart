@@ -5,9 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/strings/strings.dart';
-import '../../../../models/message.dart';
-import '../../../../routes/app_routes.dart';
-import '../../../../services/state_handler.dart';
+
+import '../../../app/models/message.dart';
+import '../../../app/routes/app_routes.dart';
+import '../../../app/services/state_handler.dart';
 import 'message_card_item.dart';
 
 class MessageCard extends StatelessWidget {

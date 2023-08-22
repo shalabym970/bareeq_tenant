@@ -5,8 +5,8 @@ import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../../common/widgets/error_widget.dart';
 import '../../../../common/widgets/horizontal_list_loading.dart';
+import '../../../../common/widgets/message_cards/message_card.dart';
 import '../../../models/message.dart';
-import '../../messages/widgets/message_cards/message_card.dart';
 import '../controllers/lease_details_controller.dart';
 
 class LeaseMessagesList extends GetView<LeaseDetailsController> {
@@ -26,10 +26,9 @@ class LeaseMessagesList extends GetView<LeaseDetailsController> {
                       fontSize: 15.sp,
                     )
                   : controller.messages.isEmpty
-                      ? Center(
-                          child: EmptyListWidget(
-                              fontSize: 15.sp,
-                              message: Strings.nothingMessages))
+                      ? const Center(
+                          child:
+                              EmptyListWidget(message: Strings.nothingMessages))
                       : ListView.builder(
                           scrollDirection: Axis.horizontal,
                           padding: EdgeInsets.symmetric(horizontal: 5.w),

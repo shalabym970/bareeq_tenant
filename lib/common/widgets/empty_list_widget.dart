@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EmptyListWidget extends StatelessWidget {
-  const EmptyListWidget(
-      {Key? key, required this.fontSize, required this.message})
-      : super(key: key);
-  final double fontSize;
+  const EmptyListWidget({Key? key, required this.message}) : super(key: key);
   final String message;
 
   @override
@@ -14,7 +12,7 @@ class EmptyListWidget extends StatelessWidget {
         message,
         style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: fontSize,
+            fontSize: 12.sp,
             color: Colors.grey[500]!),
       ),
     );

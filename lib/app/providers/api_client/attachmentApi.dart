@@ -7,11 +7,13 @@ import '../../services/nltm_auhtorization_service.dart';
 class AttachmentApi {
   /// Get work permit attachment
   static Future<List<Attachment>> getAttachments(
-      {required String workPermitId,  String ?  attachmentType}) async {
-    String url =
-        '${Constants.baseUrl}annotations?\$select=notetext,objecttypecode,mimetype,filename,_objectid_value,'
-        'filesize,createdon,objecttypecode,documentbody&\$filter=(_objectid_value eq $workPermitId)'
-        ' and (notetext eq \'$attachmentType\')';
+      {required String workPermitId, String? attachmentType}) async {
+    String url = attachmentType != null
+        ? '${Constants.baseUrl}annotations?\$select=notetext,objecttypecode,mimetype,filename,_objectid_value,'
+            'filesize,createdon,objecttypecode,documentbody&\$filter=(_objectid_value eq $workPermitId)'
+            ' and (notetext eq \'$attachmentType\')'
+        : '${Constants.baseUrl}annotations?\$select=notetext,objecttypecode,mimetype,filename,_objectid_value,'
+            'filesize,createdon,objecttypecode,documentbody&\$filter=(_objectid_value eq $workPermitId)';
     var response = await NLTMAuthServices.client.get(Uri.parse(url),
         headers: {"Prefer": "odata.include-annotations=*"});
     Get.log('===============  attachment url :  $url ==========');

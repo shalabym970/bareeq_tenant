@@ -6,9 +6,9 @@ import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../../common/widgets/error_widget.dart';
 import '../../../../common/widgets/horizontal_list_loading.dart';
+import '../../../../common/widgets/message_cards/message_card.dart';
 import '../../../models/message.dart';
 import '../../../routes/app_routes.dart';
-import '../../messages/widgets/message_cards/message_card.dart';
 import '../controllers/invoice_details_controller.dart';
 
 class InvoiceMessagesList extends GetView<InvoiceDetailsController> {
@@ -28,9 +28,8 @@ class InvoiceMessagesList extends GetView<InvoiceDetailsController> {
                       fontSize: 15.sp,
                     )
                   : controller.messages.isEmpty
-                      ? Center(
+                      ? const Center(
                           child: EmptyListWidget(
-                              fontSize: 15.sp,
                               message: Strings.nothingMessages))
                       : ListView.builder(
                           scrollDirection: Axis.horizontal,

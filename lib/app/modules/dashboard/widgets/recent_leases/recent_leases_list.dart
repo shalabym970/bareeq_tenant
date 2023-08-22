@@ -1,6 +1,5 @@
 import 'package:Bareeq/app/models/lease_model.dart';
 import 'package:Bareeq/app/modules/dashboard/widgets/recent_leases/leases_list_item.dart';
-import 'package:Bareeq/common/widgets/vertical_list_loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -30,8 +29,8 @@ class RecentLeasesList extends GetView<DashboardController> {
                       fontSize: 15.sp,
                     )
                   : controller.leases.isEmpty
-                      ? EmptyListWidget(
-                          fontSize: 15.sp, message: Strings.leasesEmpty)
+                      ? const EmptyListWidget(
+                          message: Strings.leasesEmpty)
                       : ListView.builder(
                           padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
                           primary: false,

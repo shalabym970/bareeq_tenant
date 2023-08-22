@@ -74,8 +74,8 @@ class CasesView extends GetView<CasesController> {
                                         ? Padding(
                                             padding:
                                                 EdgeInsets.only(top: 0.3.sh),
-                                            child: EmptyListWidget(
-                                                fontSize: 17.sp,
+                                            child: const EmptyListWidget(
+
                                                 message:
                                                     Strings.noSearchResult))
                                         : ListView.builder(

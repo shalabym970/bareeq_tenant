@@ -26,8 +26,7 @@ class InvoicesList extends GetView<DashboardController> {
                       fontSize: 15.sp,
                     )
                   : controller.invoices.isEmpty
-                      ? EmptyListWidget(
-                          fontSize: 15.sp, message: Strings.invoicesEmpty)
+                      ? const EmptyListWidget(message: Strings.invoicesEmpty)
                       : ListView.builder(
                           padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
                           primary: false,

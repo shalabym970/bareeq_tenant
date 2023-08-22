@@ -1,29 +1,36 @@
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
+import '../../../models/document.dart';
 import '../../../models/lease_model.dart';
 import '../../../models/message.dart';
+import '../../../repositories/attachment_repo.dart';
 import '../../../repositories/messages_repo.dart';
 
 class LeaseDetailsController extends GetxController {
   final messages = <MessageModel>[].obs;
   final errorMessages = false.obs;
   final loadingMessages = false.obs;
-  MessagesRepo messagesRepo = MessagesRepo();
+  final errorAttachments = false.obs;
+  final loadingAttachments = false.obs;
+  final attachments = <Attachment>[].obs;
+  final attachmentRepo = AttachmentRepo();
+  final messagesRepo = MessagesRepo();
   LeaseModel lease = Get.arguments;
 
   @override
   onInit() {
-    super.onInit();
     getMessages();
+    getAttachments();
+    super.onInit();
   }
 
   getMessages() async {
     try {
       errorMessages.value = false;
       loadingMessages.value = true;
-      messages
-          .assignAll(await messagesRepo.getMessagesForRecord(regardingId: lease.id!));
+      messages.assignAll(
+          await messagesRepo.getMessagesForRecord(regardingId: lease.id!));
     } catch (e) {
       errorMessages.value = true;
       Get.showSnackbar(
@@ -31,6 +38,22 @@ class LeaseDetailsController extends GetxController {
       Get.log('========== Error when get lease messages : $e ==========');
     } finally {
       loadingMessages.value = false;
+    }
+  }
+
+  getAttachments() async {
+    try {
+      errorAttachments.value = false;
+      loadingAttachments.value = true;
+      attachments.assignAll(
+          await attachmentRepo.getAttachments(recordId: lease.id!));
+    } catch (e) {
+      errorAttachments.value = true;
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when get CPR Card Attachment : $e ==========');
+    } finally {
+      loadingAttachments.value = false;
     }
   }
 }
