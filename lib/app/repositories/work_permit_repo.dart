@@ -14,9 +14,5 @@ class WorkPermitRepo {
     return WorkPermitApi.getWorkPermitItems(workPermitId: workPermitId);
   }
 
-  Future<Attachment> getWorkPermitAttachment(
-      {required String workPermitId, required String attachmentType}) async {
-    return WorkPermitApi.getWorkPermitAttachment(
-        workPermitId: workPermitId, attachmentType: attachmentType);
-  }
+
 }

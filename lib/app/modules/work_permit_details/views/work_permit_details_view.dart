@@ -10,7 +10,10 @@ import '../../../../common/widgets/custom_drawer.dart';
 import '../../../routes/app_routes.dart';
 import '../controllers/work_permit_details_controller.dart';
 import '../../../../common/widgets/paragraph_widget.dart';
-import '../widgets/work_permit_attachments_widget.dart';
+import '../widgets/attachments/cpr_card_attachment.dart';
+import '../widgets/attachments/insurance_attachment.dart';
+import '../widgets/attachments/method_statement_attachment.dart';
+import '../widgets/attachments/risk_assessment_attachment.dart';
 import '../widgets/work_permit_general_details.dart';
 import '../widgets/work_permit_items/work_permit_items_list.dart';
 import '../widgets/work_permit_messages_list.dart';
@@ -134,7 +137,10 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                   SizedBox(
                       height: 185.h, child: const WorkPermitMessagesList()),
                   SizedBox(height: 20.h),
-                  const WorkPermitAttachmentsWidget(),
+                  const CprCardAttachment(),
+                  const InsuranceAttachment(),
+                  const MethodStatementAttachment(),
+                  const RiskAssessmentAttachment(),
                   SizedBox(height: 100.h),
                 ],
               ),

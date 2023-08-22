@@ -11,31 +11,33 @@ class CustomErrorWidget extends StatelessWidget {
       {Key? key,
       required this.iconWidth,
       required this.iconHeight,
-      required this.fontSize})
+       this.fontSize})
       : super(key: key);
   final double iconWidth;
   final double iconHeight;
-  final double fontSize;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SvgPicture.asset(ImagePaths.error,
-            height: iconHeight, width: iconWidth),
-        SizedBox(
-          width: 10.w,
-        ),
-        Text(
-          ErrorStrings.publicErrorMessage,
-          style: TextStyle(
-              fontSize: fontSize,
-              color: ColorManager.red,
-              fontWeight: FontWeight.w500),
-        )
-      ],
-    );
+    return Padding(
+        padding: EdgeInsets.symmetric(vertical: 15.h),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(ImagePaths.error,
+                height: iconHeight, width: iconWidth),
+            SizedBox(
+              width: 10.w,
+            ),
+            Text(
+              ErrorStrings.publicErrorMessage,
+              style: TextStyle(
+                  fontSize: fontSize ?? 12.sp,
+                  color: ColorManager.red,
+                  fontWeight: FontWeight.w500),
+            )
+          ],
+        ));
   }
 }

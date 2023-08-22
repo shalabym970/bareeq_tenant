@@ -2,7 +2,6 @@ import 'package:Bareeq/app/models/work_permit.dart';
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
 import '../../../common/widgets/ui.dart';
-import '../../models/document.dart';
 import '../../models/work_permit_item.dart';
 import '../../services/nltm_auhtorization_service.dart';
 import '../../services/session_services.dart';
@@ -47,14 +46,12 @@ class WorkPermitApi extends GetxService {
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      Get.log(
-          '=============== response is 2000  ==========');
       var decodeResponse =
           await NLTMAuthServices.decodeResponse(response: response);
+
       return decodeResponse['value']
           .map<WorkPermit>((obj) => WorkPermit.fromJson(obj))
           .toList();
-
     } else {
       Get.showSnackbar(
           Ui.errorSnackBar(message: response.reasonPhrase.toString()));
@@ -62,32 +59,5 @@ class WorkPermitApi extends GetxService {
     }
   }
 
-  /// Get work permit attachment
-  static Future<Attachment> getWorkPermitAttachment(
-      {required String workPermitId, required String attachmentType}) async {
-    String url =
-        '${Constants.baseUrl}annotations?\$select=notetext,objecttypecode,mimetype,filename,_objectid_value,'
-        'filesize,createdon,objecttypecode,documentbody&\$filter=(_objectid_value eq $workPermitId)'
-        ' and (notetext eq \'$attachmentType\')';
-    var response = await NLTMAuthServices.client.get(Uri.parse(url),
-        headers: {"Prefer": "odata.include-annotations=*"});
-    Get.log('=============== work permit attachment url :  $url ==========');
-    Get.log(
-        '=============== work permit attachment response :  ${response.body} ==========');
-    if (response.statusCode == 200 ||
-        response.statusCode == 201 ||
-        response.statusCode == 204) {
-      var decodeResponse =
-          await NLTMAuthServices.decodeResponse(response: response);
-      if (decodeResponse['value'].length == 0) {
-        return Attachment();
-      } else {
-        return Attachment.fromJson(decodeResponse['value'][0]);
-      }
-    } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
-      throw Exception(response.reasonPhrase.toString());
-    }
-  }
+
 }

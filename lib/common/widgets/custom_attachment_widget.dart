@@ -14,8 +14,18 @@ class CustomAttachmentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(vertical: 10.h),
+        padding: EdgeInsets.symmetric(vertical: 5.h),
         child: Column(children: [
+          Align(
+            alignment: Alignment.centerRight,
+            child: InkWell(
+                onTap: () {},
+                child: Icon(Icons.change_circle_sharp,
+                    size: 25.sp, color: ColorManager.mainColor)),
+          ),
+          SizedBox(
+            height: 5.h,
+          ),
           GestureDetector(
               onTap: () async {
                 AttachmentServices.downloadBase64File(

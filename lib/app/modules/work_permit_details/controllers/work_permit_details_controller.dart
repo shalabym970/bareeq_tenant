@@ -1,5 +1,7 @@
 import 'package:Bareeq/app/models/document.dart';
 import 'package:Bareeq/app/models/work_permit_item.dart';
+import 'package:Bareeq/app/providers/api_client/attachmentApi.dart';
+import 'package:Bareeq/app/repositories/attachment_repo.dart';
 import 'package:Bareeq/app/repositories/messages_repo.dart';
 import 'package:Bareeq/common/constants.dart';
 import 'package:get/get.dart';
@@ -25,12 +27,13 @@ class WorkPermitDetailsController extends GetxController {
   final errorInsuranceAttach = false.obs;
   final errorMethodAttach = false.obs;
   final errorRiskAttach = false.obs;
-  final cprAttach = Attachment().obs;
-  final insuranceAttach = Attachment().obs;
-  final methodAttach = Attachment().obs;
-  final riskAttach = Attachment().obs;
+  final cprAttach = <Attachment>[].obs;
+  final insuranceAttach = <Attachment>[].obs;
+  final methodAttach = <Attachment>[].obs;
+  final riskAttach = <Attachment>[].obs;
   WorkPermitRepo workPermitRepo = WorkPermitRepo();
   MessagesRepo messagesRepo = MessagesRepo();
+  AttachmentRepo attachmentRepo = AttachmentRepo();
   WorkPermitModel workPermit = Get.arguments;
 
   @override
@@ -68,9 +71,6 @@ class WorkPermitDetailsController extends GetxController {
       loadingWorkPermitItems.value = true;
       workPermitItems.assignAll(await workPermitRepo.getWorkPermitItems(
           workPermitId: workPermit.workPermitId!));
-
-      Get.log(
-          '=========== Work Permit items list : ${workPermitItems.first.id} ==========');
     } catch (e) {
       errorWorkPermitItems.value = true;
       Get.showSnackbar(
@@ -81,16 +81,13 @@ class WorkPermitDetailsController extends GetxController {
     }
   }
 
-
   getCprAttach() async {
     try {
       errorCprAttach.value = false;
       loadingCprAttach.value = true;
-      cprAttach.value = await workPermitRepo.getWorkPermitAttachment(
+      cprAttach.value = await attachmentRepo.getAttachments(
           workPermitId: workPermit.workPermitId!,
           attachmentType: Constants.workPermitCprCardsAttachment);
-      Get.log(
-          '=========== CPR card Attachment id : ${cprAttach.value.id.toString()} ==========');
     } catch (e) {
       errorCprAttach.value = true;
       Get.showSnackbar(
@@ -105,11 +102,9 @@ class WorkPermitDetailsController extends GetxController {
     try {
       errorInsuranceAttach.value = false;
       loadingInsuranceAttach.value = true;
-      insuranceAttach.value = await workPermitRepo.getWorkPermitAttachment(
+      insuranceAttach.value = await attachmentRepo.getAttachments(
           workPermitId: workPermit.workPermitId!,
           attachmentType: Constants.workPermitInsuranceAttachment);
-      Get.log(
-          '=========== Insurance Attachment id : ${insuranceAttach.value.id.toString()} ==========');
     } catch (e) {
       errorInsuranceAttach.value = true;
       Get.showSnackbar(
@@ -124,11 +119,9 @@ class WorkPermitDetailsController extends GetxController {
     try {
       errorMethodAttach.value = false;
       loadingMethodAttach.value = true;
-      methodAttach.value = await workPermitRepo.getWorkPermitAttachment(
+      methodAttach.value = await attachmentRepo.getAttachments(
           workPermitId: workPermit.workPermitId!,
           attachmentType: Constants.workPermitMethodStatementAttachment);
-      Get.log(
-          '=========== Method Statment Attachment id : ${methodAttach.value.id.toString()} ==========');
     } catch (e) {
       errorMethodAttach.value = true;
       Get.showSnackbar(
@@ -144,11 +137,9 @@ class WorkPermitDetailsController extends GetxController {
     try {
       errorRiskAttach.value = false;
       loadingRiskAttach.value = true;
-      riskAttach.value = await workPermitRepo.getWorkPermitAttachment(
+      riskAttach.value = await attachmentRepo.getAttachments(
           workPermitId: workPermit.workPermitId!,
           attachmentType: Constants.workPermitRiskAssessmentAttachment);
-      Get.log(
-          '=========== Risk Attachment id : ${riskAttach.value.id.toString()} ==========');
     } catch (e) {
       errorRiskAttach.value = true;
       Get.showSnackbar(
