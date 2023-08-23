@@ -24,7 +24,7 @@ class FitOutProcessGeneralDetailsWidget
             style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
           ),
           SizedBox(
-            height: 20.h,
+            height: 10.h,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,7 +46,7 @@ class FitOutProcessGeneralDetailsWidget
                         title: Strings.unit,
                         value: controller.fitOut.unit!.name.toString()),
                     SizedBox(
-                      height: 20.h,
+                      height: 10.h,
                     ),
                     customDetailsItem(
                       icon: ImagePaths.pylon,

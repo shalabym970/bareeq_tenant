@@ -6,8 +6,6 @@ import '../../../../common/color_manager.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
-import '../../../../common/widgets/custom_attachment_widget.dart';
-import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../../../routes/app_routes.dart';
 import '../controllers/case_details_controller.dart';
@@ -71,7 +69,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                             ),
                             Text(controller.cases.title.toString(),
                                 style: TextStyle(
-                                    fontSize: 18.sp, color: ColorManager.black))
+                                    fontSize: 15.sp, color: ColorManager.black))
                           ],
                         ),
                       ],

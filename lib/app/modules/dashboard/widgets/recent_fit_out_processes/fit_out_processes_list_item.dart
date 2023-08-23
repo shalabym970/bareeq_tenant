@@ -53,11 +53,11 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                                   fontSize: 10.sp,
                                   color: ColorManager.mainColor)),
                           SizedBox(
-                            height: 5.h,
+                            height: 3.h,
                           ),
                           Text(fitOut.name.toString(),
                               style: TextStyle(
-                                  fontSize: 12.sp, color: ColorManager.black))
+                                  fontSize: 10.sp, color: ColorManager.black))
                         ],
                       ),
                       Column(
@@ -68,7 +68,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                                   fontSize: 10.sp,
                                   color: ColorManager.mainColor)),
                           SizedBox(
-                            height: 5.h,
+                            height: 3.h,
                           ),
                           Text(
                               fitOut.completedDate == null
@@ -76,7 +76,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                                   : DateFormat("EEE d MMM y")
                                       .format(fitOut.completedDate!),
                               style: TextStyle(
-                                  fontSize: 12.sp, color: ColorManager.black))
+                                  fontSize: 10.sp, color: ColorManager.black))
                         ],
                       ),
                     ],
@@ -97,7 +97,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                                 color: ColorManager.mainColor),
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 3.h,
                           ),
                           Text(
                               fitOut.expectedOpeningDate == null
@@ -105,7 +105,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                                   : DateFormat("EEE d MMM y")
                                       .format(fitOut.expectedOpeningDate!),
                               style: TextStyle(
-                                  fontSize: 12.sp, color: ColorManager.black))
+                                  fontSize: 10.sp, color: ColorManager.black))
                         ],
                       ),
                       Column(
@@ -118,13 +118,13 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                                 color: ColorManager.mainColor),
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 3.h,
                           ),
                           Text(
                               StateHandler.fitOutStatus(
                                   statusNo: fitOut.status ?? 0),
                               style: TextStyle(
-                                  fontSize: 12.sp, color: ColorManager.black))
+                                  fontSize: 10.sp, color: ColorManager.black))
                         ],
                       ),
                     ],
@@ -141,7 +141,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                               fontSize: 10.sp,
                               color: ColorManager.mainColor)),
                       SizedBox(
-                        height: 5.h,
+                        height: 3.h,
                       ),
                       Text(
                           fitOut.startDate == null
@@ -149,7 +149,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                               : DateFormat("EEE d MMM y")
                                   .format(fitOut.startDate!),
                           style: TextStyle(
-                              fontSize: 12.sp, color: ColorManager.black))
+                              fontSize: 10.sp, color: ColorManager.black))
                     ],
                   ),
                 )

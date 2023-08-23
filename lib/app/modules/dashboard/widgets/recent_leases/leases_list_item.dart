@@ -51,11 +51,11 @@ class LeasesListItem extends GetView<DashboardController> {
                                   fontSize: 10.sp,
                                   color: ColorManager.mainColor)),
                           SizedBox(
-                            height: 5.h,
+                            height: 3.h,
                           ),
                           Text(lease.name.toString(),
                               style: TextStyle(
-                                  fontSize: 12.sp, color: ColorManager.black))
+                                  fontSize: 10.sp, color: ColorManager.black))
                         ],
                       ),
                       Column(
@@ -66,7 +66,7 @@ class LeasesListItem extends GetView<DashboardController> {
                                   fontSize: 10.sp,
                                   color: ColorManager.mainColor)),
                           SizedBox(
-                            height: 5.h,
+                            height: 3.h,
                           ),
                           Text(
                               lease.endDate == null
@@ -75,7 +75,7 @@ class LeasesListItem extends GetView<DashboardController> {
                                       .format(lease.endDate!)
                                       .toString(),
                               style: TextStyle(
-                                  fontSize: 12.sp, color: ColorManager.black))
+                                  fontSize: 10.sp, color: ColorManager.black))
                         ],
                       ),
                     ],
@@ -96,11 +96,11 @@ class LeasesListItem extends GetView<DashboardController> {
                                 color: ColorManager.mainColor),
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 3.h,
                           ),
                           Text(controller.currentUser.account!.name.toString(),
                               style: TextStyle(
-                                  fontSize: 12.sp, color: ColorManager.black))
+                                  fontSize: 10.sp, color: ColorManager.black))
                         ],
                       ),
                       Column(
@@ -117,7 +117,7 @@ class LeasesListItem extends GetView<DashboardController> {
                           ),
                           Text(lease.amount.toString(),
                               style: TextStyle(
-                                  fontSize: 12.sp, color: ColorManager.black))
+                                  fontSize: 10.sp, color: ColorManager.black))
                         ],
                       ),
                     ],
@@ -134,7 +134,7 @@ class LeasesListItem extends GetView<DashboardController> {
                               fontSize: 10.sp,
                               color: ColorManager.mainColor)),
                       SizedBox(
-                        height: 5.h,
+                        height: 3.h,
                       ),
                       Text(
                           lease.startDate == null
@@ -143,7 +143,7 @@ class LeasesListItem extends GetView<DashboardController> {
                                   .format(lease.startDate!)
                                   .toString(),
                           style: TextStyle(
-                              fontSize: 12.sp, color: ColorManager.black))
+                              fontSize: 10.sp, color: ColorManager.black))
                     ],
                   ),
                 )

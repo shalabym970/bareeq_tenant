@@ -60,7 +60,7 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
                             ),
                             Text(controller.invoice.description!,
                                 style: TextStyle(
-                                    fontSize: 18.sp, color: ColorManager.black))
+                                    fontSize: 15.sp, color: ColorManager.black))
                           ],
                         ),
                       ],

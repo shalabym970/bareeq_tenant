@@ -7,7 +7,7 @@ import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../controllers/dashboard_controller.dart';
 import '../widgets/recent_cases/recent_cases_widget.dart';
-import '../widgets/recent_fit_out_processes/recent_fit_out_processes_widget.dart';
+import '../widgets/recent_fit_out_processes/fit_out_processes_widget.dart';
 import '../widgets/recent_invoices/recent_invoices_widget.dart';
 import '../widgets/recent_leases/recent_leases_widget.dart';
 import '../widgets/recent_work_permits/recent_work_permits_widget.dart';
@@ -41,14 +41,14 @@ class DashboardView extends GetView<DashboardController> {
                         text: Strings.welcome,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 20.sp,
+                            fontSize: 17.sp,
                             color: ColorManager.mainColor),
                         children: <TextSpan>[
                           TextSpan(
                             text: controller.currentUser.firstName,
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                fontSize: 20.sp,
+                                fontSize: 17.sp,
                                 color: ColorManager.black),
                           )
                         ],

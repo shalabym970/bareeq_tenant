@@ -63,7 +63,7 @@ class ActivityDetailsView extends GetView<ActivityDetailsController> {
                         ),
                         Text('Organize Fit-out Meeting Kick off',
                             style: TextStyle(
-                                fontSize: 18.sp, color: ColorManager.black))
+                                fontSize: 15.sp, color: ColorManager.black))
                       ],
                     ),
                   ],

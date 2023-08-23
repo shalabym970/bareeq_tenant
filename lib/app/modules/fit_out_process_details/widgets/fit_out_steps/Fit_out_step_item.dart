@@ -60,8 +60,8 @@ class FitOutStepItem extends GetView<FitOutProcessDetailsController> {
                     child: Text(
                   fitOutStep.description.toString(),
                   style: TextStyle(
-                      height: 2.h, fontSize: 12.sp, color: ColorManager.black),
-                  maxLines: 4,
+                      height: 1.5.h, fontSize: 9.sp, color: ColorManager.black),
+                  maxLines: 5,
                   overflow: TextOverflow.visible,
                 )),
               ],

@@ -74,7 +74,7 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                             ),
                             Text(controller.workPermit.subject.toString(),
                                 style: TextStyle(
-                                    fontSize: 18.sp, color: ColorManager.black))
+                                    fontSize: 15.sp, color: ColorManager.black))
                           ],
                         ),
                       ],

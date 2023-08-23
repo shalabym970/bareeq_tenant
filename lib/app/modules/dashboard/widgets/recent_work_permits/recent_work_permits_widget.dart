@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
 import '../../../../../common/strings/strings.dart';
@@ -22,23 +21,27 @@ class RecentWorkPermitWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(6.h),
-                    child: SvgPicture.asset(ImagePaths.briefcase,
-                        height: 20.h, width: 20.w),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(6.h),
-                    child: Text(
-                      Strings.recentWorkPermits,
-                      style: TextStyle(
-                          fontSize: 14.sp, fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
-              ),
+              InkWell(
+                  onTap: () {
+                    Get.toNamed(Routes.workPermits);
+                  },
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(6.h),
+                        child: SvgPicture.asset(ImagePaths.briefcase,
+                            height: 20.h, width: 20.w),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(6.h),
+                        child: Text(
+                          Strings.recentWorkPermits,
+                          style: TextStyle(
+                              fontSize: 14.sp, fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
+                  )),
               SizedBox(
                 height: 32.h,
                 width: 32.w,

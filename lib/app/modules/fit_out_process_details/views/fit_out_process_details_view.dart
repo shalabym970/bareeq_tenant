@@ -59,7 +59,7 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
                             ),
                             Text(controller.fitOut.name.toString(),
                                 style: TextStyle(
-                                    fontSize: 18.sp, color: ColorManager.black))
+                                    fontSize: 15.sp, color: ColorManager.black))
                           ],
                         ),
                       ],

@@ -1,11 +1,10 @@
+import 'package:Bareeq/app/modules/work_permit_details/widgets/attachments/work_permit_attachment_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../../common/color_manager.dart';
 import '../../../../../common/constants.dart';
-import '../../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../../common/widgets/error_widget.dart';
 import '../../../../../common/widgets/upload_file_widget.dart';
@@ -42,7 +41,7 @@ class InsuranceAttachment extends GetView<WorkPermitDetailsController> {
                               itemBuilder: ((_, index) {
                                 Attachment attachment =
                                     controller.insuranceAttach.elementAt(index);
-                                return CustomAttachmentWidget(
+                                return WorkPermitAttachmentWidget(
                                     attachment: attachment);
                               }),
                             ),

@@ -29,13 +29,13 @@ Widget customDetailsItem(
             Text(title,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 13.sp,
+                    fontSize: 12.sp,
                     color: ColorManager.mainColor)),
             SizedBox(
               height: 5.h,
             ),
             Text(value,
-                style: TextStyle(fontSize: 14.sp, color: ColorManager.black))
+                style: TextStyle(fontSize: 12.sp, color: ColorManager.black))
           ],
         ),
       )

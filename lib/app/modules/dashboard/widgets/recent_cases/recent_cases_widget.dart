@@ -20,7 +20,11 @@ class RecentCasesWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+              InkWell(
+                onTap: () {
+                  Get.toNamed(Routes.cases);
+                },
+                child:  Row(
                 children: [
                   Padding(
                     padding:  EdgeInsets.all(6.h),
@@ -36,7 +40,7 @@ class RecentCasesWidget extends StatelessWidget {
                     ),
                   )
                 ],
-              ),
+              )),
               SizedBox(
                 height: 32.h,
                 width: 32.w,

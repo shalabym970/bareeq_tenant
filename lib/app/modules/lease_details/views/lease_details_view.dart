@@ -60,7 +60,7 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                             ),
                             Text(controller.lease.name.toString(),
                                 style: TextStyle(
-                                    fontSize: 18.sp, color: ColorManager.black))
+                                    fontSize: 15.sp, color: ColorManager.black))
                           ],
                         ),
                       ],

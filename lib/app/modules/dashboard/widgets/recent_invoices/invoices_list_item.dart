@@ -14,143 +14,125 @@ class InvoicesListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Get.toNamed(Routes.invoiceDetails, arguments: invoice);
-      },
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 5.h),
-        child: GestureDetector(
-            child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10.h)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                spreadRadius: 1.h,
-                blurRadius: 3.h,
-                offset: Offset(0, 3.h), // changes position of shadow
-              ),
-            ],
-          ),
-          height: 116.h,
-          child: Card(
-            color: ColorManager.textFieldBg,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        children: [
-                          Text(Strings.invoiceNumber,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 10.sp,
-                                  color: ColorManager.mainColor)),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          Text(invoice.invoiceNumber ?? "null",
-                              style: TextStyle(
-                                  fontSize: 12.sp, color: ColorManager.black))
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(Strings.dueDate,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 10.sp,
-                                  color: ColorManager.mainColor)),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          Text(
-                              invoice.dueDate == null
-                                  ? Strings.na
-                                  : intl.DateFormat('EEE d MMM y')
-                                      .format(invoice.dueDate!)
-                                      .toString(),
-                              style: TextStyle(
-                                  fontSize: 12.sp, color: ColorManager.black))
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            Strings.regarding,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10.sp,
-                                color: ColorManager.mainColor),
-                          ),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          Text(invoice.name.toString(),
-                              style: TextStyle(
-                                  fontSize: 12.sp, color: ColorManager.black))
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            Strings.amount,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10.sp,
-                                color: ColorManager.mainColor),
-                          ),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          Text(invoice.amountDueRemaining.toString(),
-                              style: TextStyle(
-                                  fontSize: 12.sp, color: ColorManager.black))
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(Strings.submitDate,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 10.sp,
-                              color: ColorManager.mainColor)),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Text(
-                          invoice.createdOn == null
-                              ? Strings.na
-                              : intl.DateFormat('EEE d MMM y')
-                                  .format(invoice.createdOn!)
-                                  .toString(),
-                          style: TextStyle(
-                              fontSize: 12.sp, color: ColorManager.black))
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        )),
-      ),
-    );
+        onTap: () {
+          Get.toNamed(Routes.invoiceDetails, arguments: invoice);
+        },
+        child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 5.h),
+            child: GestureDetector(
+                child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10.h)),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              spreadRadius: 1.h,
+                              blurRadius: 3.h,
+                              offset:
+                                  Offset(0, 3.h) // changes position of shadow
+                              )
+                        ]),
+                    height: 116.h,
+                    child: Card(
+                        color: ColorManager.textFieldBg,
+                        child: Row(children: [
+                          Expanded(
+                              flex: 1,
+                              child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(Strings.invoiceNumber,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 10.sp,
+                                                color: ColorManager.mainColor)),
+                                        SizedBox(height: 3.h),
+                                        Text(invoice.invoiceNumber ?? "null",
+                                            style: TextStyle(
+                                                fontSize: 10.sp,
+                                                color: ColorManager.black))
+                                      ],
+                                    ),
+                                    Column(children: [
+                                      Text(Strings.dueDate,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 10.sp,
+                                              color: ColorManager.mainColor)),
+                                      SizedBox(height: 3.h),
+                                      Text(
+                                          invoice.dueDate == null
+                                              ? Strings.na
+                                              : intl.DateFormat('EEE d MMM y')
+                                                  .format(invoice.dueDate!)
+                                                  .toString(),
+                                          style: TextStyle(
+                                              fontSize: 10.sp,
+                                              color: ColorManager.black))
+                                    ])
+                                  ])),
+                          Expanded(
+                              flex: 1,
+                              child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(
+                                          Strings.regarding,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 10.sp,
+                                              color: ColorManager.mainColor),
+                                        ),
+                                        SizedBox(height: 3.h),
+                                        Text(invoice.name.toString(),
+                                            style: TextStyle(
+                                                fontSize: 10.sp,
+                                                color: ColorManager.black))
+                                      ],
+                                    ),
+                                    Column(children: [
+                                      Text(
+                                        Strings.amount,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 10.sp,
+                                            color: ColorManager.mainColor),
+                                      ),
+                                      SizedBox(height: 3.h),
+                                      Text(
+                                          invoice.amountDueRemaining.toString(),
+                                          style: TextStyle(
+                                              fontSize: 10.sp,
+                                              color: ColorManager.black))
+                                    ])
+                                  ])),
+                          Expanded(
+                              flex: 1,
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(Strings.submitDate,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 10.sp,
+                                            color: ColorManager.mainColor)),
+                                    SizedBox(height: 3.h),
+                                    Text(
+                                        invoice.createdOn == null
+                                            ? Strings.na
+                                            : intl.DateFormat('EEE d MMM y')
+                                                .format(invoice.createdOn!)
+                                                .toString(),
+                                        style: TextStyle(
+                                            fontSize: 10.sp,
+                                            color: ColorManager.black))
+                                  ]))
+                        ]))))));
   }
 }
