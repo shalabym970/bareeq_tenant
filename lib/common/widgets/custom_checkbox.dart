@@ -26,7 +26,7 @@ class CustomCheckBox extends StatelessWidget {
         ),
         Text(title,
             style: TextStyle(
-                fontSize: 14.sp,
+                fontSize: 12.sp,
                 color: ColorManager.black,
                 fontWeight: FontWeight.w500))
       ],

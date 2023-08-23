@@ -28,7 +28,7 @@ class CustomDropDown extends StatelessWidget {
                 color: ColorManager.mainColor)),
         Container(
           color: ColorManager.textFieldBg,
-          height: 45.h,
+          height: 40.h,
           child: InputDecorator(
               decoration: InputDecoration(
                 enabledBorder: const UnderlineInputBorder(
@@ -41,7 +41,7 @@ class CustomDropDown extends StatelessWidget {
                   style: TextStyle(
                       color: ColorManager.mainColor,
                       //<-- SEE HERE
-                      fontSize: 14.sp,
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w400),
                   dropdownColor: ColorManager.white,
                   icon: Icon(Icons.keyboard_arrow_down,

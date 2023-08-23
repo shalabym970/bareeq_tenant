@@ -30,6 +30,7 @@ class WorkPermitDetailsController extends GetxController {
   final insuranceAttach = <Attachment>[].obs;
   final methodAttach = <Attachment>[].obs;
   final riskAttach = <Attachment>[].obs;
+  bool screenEdited = true;
   WorkPermitRepo workPermitRepo = WorkPermitRepo();
   MessagesRepo messagesRepo = MessagesRepo();
   AttachmentRepo attachmentRepo = AttachmentRepo();
@@ -46,6 +47,12 @@ class WorkPermitDetailsController extends GetxController {
     Get.log(
         '=========== workPermit id :  ${workPermit.workPermitId} ===========');
     super.onInit();
+  }
+
+  @override
+  onClose() {
+    Get.log('========== WorkPermitDetailsController is closed =========');
+    Get.delete<WorkPermitDetailsController>();
   }
 
   getMessages() async {

@@ -31,6 +31,12 @@ class InvoiceDetailsController extends GetxController {
     super.onInit();
   }
 
+  @override
+  onClose() {
+    Get.log('========== InvoiceDetailsController is closed =========');
+    Get.delete<InvoiceDetailsController>();
+  }
+
   getMessages() async {
     try {
       errorMessages.value = false;

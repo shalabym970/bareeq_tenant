@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../../common/color_manager.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
+import '../../../../common/widgets/attachament_title_public_widget.dart';
 import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../controllers/lease_details_controller.dart';
@@ -84,14 +85,7 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                   SizedBox(height: 10.h),
                   SizedBox(height: 185.h, child: const LeaseMessagesList()),
                   SizedBox(height: 20.h),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.h),
-                    child: Text(
-                      Strings.attachments,
-                      style: TextStyle(
-                          fontSize: 14.sp, fontWeight: FontWeight.w400),
-                    ),
-                  ),
+                  const AttachmentTitlePublicWidget(),
                   SizedBox(height: 10.h),
                   const LeaseAttachmentsList(),
                   SizedBox(height: 50.h),

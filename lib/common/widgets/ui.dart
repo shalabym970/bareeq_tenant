@@ -1,8 +1,11 @@
 import 'package:Bareeq/common/color_manager.dart';
+import 'package:Bareeq/common/strings/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+
+import 'custom_btn.dart';
 
 class Ui {
   static GetSnackBar successSnackBar(
@@ -338,67 +341,36 @@ class Ui {
     }
   }
 
-// static AppBar appBar({required String screenName}) {
-//   return AppBar(
-//     backgroundColor: ColorManager.mainColor,
-//     title: Center(
-//       child: Padding(
-//         padding: EdgeInsets.only(left: 60.w),
-//         child: Text(
-//           screenName,
-//           style: TextStyle(color: Colors.white, fontSize: 18.sp),
-//         ),
-//       ),
-//     ),
-//     actions: [
-//       InkWell(
-//         onTap: () {
-//           Get.toNamed(Routes.notifications);
-//         },
-//         child: Padding(
-//           padding: EdgeInsets.all(15.w),
-//           child: Stack(
-//             children: [
-//               SvgPicture.asset(
-//                 ImagePath.bellSvg,
-//                 width: 30.w,
-//                 height: 30.h,
-//               ),
-//               if (Get.find<FirebaseMessagingService>()
-//                   .notificationsCount
-//                   .value !=
-//                   0)
-//                 Align(
-//                     alignment: Alignment.topCenter,
-//                     child: Obx(() => Container(
-//                       height: 18.h,
-//                       width: 18.w,
-//                       alignment: Alignment.center,
-//                       decoration: BoxDecoration(
-//                         color: Colors.red,
-//                         shape: BoxShape.circle,
-//                         border: Border.all(
-//                           color: Colors.white,
-//                           width: 1.w,
-//                         ),
-//                       ),
-//                       child: Text(
-//                         Get.find<FirebaseMessagingService>()
-//                             .notificationsCount
-//                             .value
-//                             .toString(),
-//                         style: TextStyle(
-//                             fontSize: 9.sp,
-//                             fontWeight: FontWeight.bold,
-//                             color: Colors.white),
-//                       ),
-//                     ))),
-//             ],
-//           ),
-//         ),
-//       ),
-//
-//     ],
-//   );
-// }
+  static Future confirmDialog({
+    required String middleText,
+    required String confirmBtnTitle,
+    required void Function() onSave,
+    required void Function() onDiscard,
+  }) {
+    return Get.defaultDialog(
+        title: '',
+        middleText: middleText,
+        middleTextStyle: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: ColorManager.mainColor,
+            fontSize: 14.sp),
+        confirm: PrimaryButton(
+            title: confirmBtnTitle,
+            onPressed: onSave,
+            width: 100.w,
+            height: 30.h,
+            backgroundColor: ColorManager.mainColor,
+            textAndIconColor: ColorManager.white),
+        cancel: PrimaryButton(
+            title: Strings.discard,
+            onPressed: onDiscard,
+            width: 100.w,
+            height: 30.h,
+            backgroundColor: ColorManager.white,
+            textAndIconColor: ColorManager.mainColor),
+        onConfirm: () {
+          Get.back();
+        },
+        radius: 10.h);
+  }
 }

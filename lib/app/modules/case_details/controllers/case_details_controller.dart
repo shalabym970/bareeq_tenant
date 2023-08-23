@@ -17,12 +17,19 @@ class CaseDetailsController extends GetxController {
   final cases = Get.arguments;
   final messagesRepo = MessagesRepo();
   final attachmentRepo = AttachmentRepo();
+  bool screenEdited = true;
 
   @override
   void onInit() async {
     getMessages();
     getAttachments();
     super.onInit();
+  }
+
+  @override
+  onClose() {
+    Get.log('========== CaseDetailsController is closed =========');
+    Get.delete<CaseDetailsController>();
   }
 
   getMessages() async {

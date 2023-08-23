@@ -29,6 +29,13 @@ class FitOutProcessDetailsController extends GetxController {
     super.onInit();
   }
 
+  @override
+  onClose() {
+    Get.log('========== FitOutProcessDetailsController is closed =========');
+    Get.delete<FitOutProcessDetailsController>();
+  }
+
+
   getMessages() async {
     try {
       errorMessages.value = false;

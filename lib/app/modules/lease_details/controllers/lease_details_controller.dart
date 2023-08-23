@@ -25,6 +25,12 @@ class LeaseDetailsController extends GetxController {
     super.onInit();
   }
 
+  @override
+  onClose() {
+    Get.log('========== LeaseDetailsController is closed =========');
+    Get.delete<LeaseDetailsController>();
+  }
+
   getMessages() async {
     try {
       errorMessages.value = false;

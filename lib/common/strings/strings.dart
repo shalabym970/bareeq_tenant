@@ -196,4 +196,11 @@ class Strings {
   static const String downloadFailed = "Download failed, try again";
   static const String selectFile = 'Select file to Upload it';
   static const String nothingAttachments = 'Nothing Attachments';
+  static const String cancel = 'Cancel';
+  static const String save = 'Save';
+  static const String saveCaseData =
+      'You have modified the case data and did not save it. Do you want to save it ?';
+  static const String saveWorkPermitData =
+      'You have modified the work permit data and did not save it. Do you want to save it ?';
+  static const String discard = 'Discard';
 }

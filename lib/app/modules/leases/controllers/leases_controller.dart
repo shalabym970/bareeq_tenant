@@ -11,6 +11,7 @@ class LeasesController extends GetxController with Searching {
   final isSearching = false.obs;
   final focusNode = FocusNode();
 
+
   @override
   void addSearchedItemsForSearchedList({required String searchString}) {
     searchingList.value = Get.find<DashboardController>()

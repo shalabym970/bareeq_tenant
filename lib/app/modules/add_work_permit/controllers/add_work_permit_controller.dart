@@ -1,10 +1,9 @@
 import 'package:Bareeq/common/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart' as intl;
 import 'package:intl/intl.dart';
-
 import '../../../../common/strings/strings.dart';
+import '../../../models/document.dart';
 
 class AddWorkPermitController extends GetxController {
   final subjectController = TextEditingController();
@@ -17,10 +16,19 @@ class AddWorkPermitController extends GetxController {
   final selectedStartDate = Strings.ddMMYY.obs;
   final endDate = Rxn<DateTime>();
   final selectedEndDate = Strings.ddMMYY.obs;
+  final cprAttach = Attachment().obs;
+  final insuranceAttach = Attachment().obs;
+  final methodAttach = Attachment().obs;
+  final riskAttach = Attachment().obs;
+  final loadingCprAttach = false.obs;
+  final loadingInsuranceAttach = false.obs;
+  final loadingMethodAttach = false.obs;
+  final loadingRiskAttach = false.obs;
   final relatedUnitValue = 'Unit 10 - Building 8';
-  final relatedUnitList = <String>['Unit 10 - Building 8','fj','hgh','hghg'];
+  final relatedUnitList = <String>['Unit 10 - Building 8', 'fj', 'hgh', 'hghg'];
   final contractorValue = 'Contractor';
-  final contractorList = <String>['Contractor','fj','hgh','hghg'];
+  final contractorList = <String>['Contractor', 'fj', 'hgh', 'hghg'];
+
   Future<void> selectDate({required bool dateTypeIsStart}) async {
     if (dateTypeIsStart == true) {
       startDate.value = await showDatePicker(

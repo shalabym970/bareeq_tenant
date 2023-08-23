@@ -1,7 +1,12 @@
-import 'package:flutter/cupertino.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get.dart';
+
 
 class ActivityDetailsController extends GetxController {
 
+  @override
+  onClose() {
+    Get.log('========== ActivityDetailsController is closed =========');
+    Get.delete<ActivityDetailsController>();
+  }
 
 }

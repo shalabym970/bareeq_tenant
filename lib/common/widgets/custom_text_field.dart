@@ -66,13 +66,13 @@ class CustomTextField extends StatelessWidget {
                     border: InputBorder.none,
                     hintText: hint,
                     hintStyle: TextStyle(
-                        fontSize: 14.sp,
+                        fontSize: 12.sp,
                         color: ColorManager.mainColor,
                         fontWeight: FontWeight.w400),
                     suffixIcon: suffixIcon ??
                         (stringSuffixIcon != null
                             ? SvgPicture.asset(stringSuffixIcon!,
-                                height: 5.h, width: 5.w)
+                                height: 1.h, width: 1.w)
                             : null)),
                 onSaved: onSaved,
                 validator: validator,
