@@ -38,33 +38,30 @@ class FitOutModel {
 
   factory FitOutModel.fromJson(Map<String, dynamic> json) => FitOutModel(
         startDate: json["blser_startdate"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["blser_startdate"]),
         approved: json["blser_approved"],
         createdOn: json["createdon"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["createdon"]),
         approvedOn: json["blser_approvedon"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["blser_approvedon"]),
-        completedDate: json["blser_completeddate"] == null
-            ? null
-            : DateTime.parse(json["blser_completeddate"]),
+        completedDate: DateTime.parse(
+            json["blser_completeddate"] ?? DateTime(0000, 00, 00)),
         name: json["blser_name"],
         id: json["blser_fitoutprocessid"],
         reviewedOn: json["blser_reviewedon"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["blser_reviewedon"]),
         accountId: json["_blser_relatedtenant_value"],
         expectedOpeningDate: json["blser_expectedopeningdate"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["blser_expectedopeningdate"]),
         reviewed: json["blser_reviewed"],
         relatedContractId: json["_blser_relatedcontract_value"],
         status: json["blser_processstatus"],
-        property: json["blser_RelatedProperty"] == null
-            ? null
-            : Project.fromJson(json["blser_RelatedProperty"]),
+        property: Project.fromJson(json["blser_RelatedProperty"]),
         unit: json["blser_RelatedUnit"] == null
             ? null
             : Unit.fromJson(json["blser_RelatedUnit"]),

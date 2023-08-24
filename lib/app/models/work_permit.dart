@@ -17,7 +17,7 @@ class WorkPermitModel {
   bool? riskAssessment;
   String? ownerId;
   String? comment;
-  List<WorkPermit>? workPermitItems;
+  List<WorkPermitItem>? workPermitItems;
   Unit? relatedUnit;
   Account? contractor;
 
@@ -39,16 +39,17 @@ class WorkPermitModel {
       this.comment,
       this.contractor});
 
-  factory WorkPermitModel.fromJson(Map<String, dynamic> json) => WorkPermitModel(
+  factory WorkPermitModel.fromJson(Map<String, dynamic> json) =>
+      WorkPermitModel(
         subject: json["blser_subject"],
         type: json["new_type"],
         contractorId: json["_blser_contractor_value"],
         customerId: json["_blser_customer_value"],
         startDate: json["blser_startdate"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["blser_startdate"]),
         endDate: json["blser_enddate"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["blser_enddate"]),
         statusCode: json["statuscode"],
         description: json["blser_descriptionofwork"],
@@ -57,17 +58,10 @@ class WorkPermitModel {
         riskAssessment: json["blser_riskassessment"],
         ownerId: json["_ownerid_value"],
         comment: json["blser_Bareeqcomments"],
-        workPermitItems: json[
-                    "blser_blser_workpermit_blser_workpermititem_WorkPermit"] ==
-                null
-            ? []
-            : List<WorkPermit>.from(
-                json["blser_blser_workpermit_blser_workpermititem_WorkPermit"]!
-                    .map((x) => WorkPermit.fromJson(x))),
         relatedUnit: json["blser_RelatedUnit"] == null
             ? null
             : Unit.fromJson(json["blser_RelatedUnit"]),
-      contractor: json["blser_Contractor"] == null ? null : Account.fromJson(json["blser_Contractor"]),
+        contractor: Account.fromJson(json["blser_Contractor"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -84,10 +78,6 @@ class WorkPermitModel {
         "blser_numberofworkers": numberOfWorkers,
         "blser_riskassessment": riskAssessment,
         "_ownerid_value": ownerId,
-        "blser_blser_workpermit_blser_workpermititem_WorkPermit":
-            workPermitItems == null
-                ? []
-                : List<dynamic>.from(workPermitItems!.map((x) => x.toJson())),
         "blser_RelatedUnit": relatedUnit?.toJson(),
       };
 }

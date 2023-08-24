@@ -1,27 +1,28 @@
-import 'package:Bareeq/app/models/invoice_details.dart';
+import 'package:Bareeq/app/models/invoice_item.dart';
 import 'package:get/get.dart';
-
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/document.dart';
 import '../../../models/invoice.dart';
 import '../../../models/message.dart';
 import '../../../repositories/attachment_repo.dart';
+import '../../../repositories/invoices_repo.dart';
 import '../../../repositories/messages_repo.dart';
 
 class InvoiceDetailsController extends GetxController {
-  final errorInvoiceItems = false.obs;
-  final loadingInvoices = false.obs;
-  final Invoice invoice = Get.arguments;
-  final invoiceItems = <InvoiceDetails>[].obs;
+  final loadingInvoiceItems = false.obs;
+  final loadingMessages = false.obs;
+  final loadingAttachments = false.obs;
+  final invoiceItems = <InvoiceItem>[].obs;
   final messages = <MessageModel>[].obs;
   final errorMessages = false.obs;
-  final loadingMessages = false.obs;
   final errorAttachments = false.obs;
-  final loadingAttachments = false.obs;
+  final errorInvoiceItems = false.obs;
   final attachments = <Attachment>[].obs;
   final attachmentRepo = AttachmentRepo();
   final messagesRepo = MessagesRepo();
+  final invoiceRepo = InvoicesRepo();
+  Invoice invoice = Get.arguments;
 
   @override
   void onInit() {
@@ -55,8 +56,11 @@ class InvoiceDetailsController extends GetxController {
 
   getInvoiceItems() async {
     try {
-      loadingInvoices.value = true;
-      invoiceItems.value = invoice.invoiceDetails!;
+      errorInvoiceItems.value = false;
+      loadingInvoiceItems.value = true;
+
+      invoiceItems
+          .assignAll(await invoiceRepo.getInvoiceItems(invoiceId: invoice.id!));
       Get.log(
           '=========== invoice Item list : ${invoiceItems.first.invoiceDetailsId} ==========');
     } catch (e) {
@@ -65,7 +69,7 @@ class InvoiceDetailsController extends GetxController {
           Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
       Get.log('========== Error when get invoice items : $e ==========');
     } finally {
-      loadingInvoices.value = false;
+      loadingInvoiceItems.value = false;
     }
   }
 

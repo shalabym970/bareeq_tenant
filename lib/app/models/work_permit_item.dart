@@ -1,4 +1,4 @@
-class WorkPermit {
+class WorkPermitItem {
   String? workPermitItemId;
   String? id;
   DateTime? createdOn;
@@ -10,7 +10,7 @@ class WorkPermit {
   int? statusCode;
   int? type;
 
-  WorkPermit({
+  WorkPermitItem({
     this.workPermitItemId,
     this.id,
     this.createdOn,
@@ -23,13 +23,12 @@ class WorkPermit {
     this.type,
   });
 
-  factory WorkPermit.fromJson(
-      Map<String, dynamic> json) =>
-      WorkPermit(
+  factory WorkPermitItem.fromJson(Map<String, dynamic> json) => WorkPermitItem(
         workPermitItemId: json["blser_workpermititemid"],
         id: json["blser_id"],
-        createdOn: json["createdon"] == null ? null : DateTime.parse(
-            json["createdon"]),
+        createdOn: json["createdon"] == null
+            ? DateTime(0000, 00, 00)
+            : DateTime.parse(json["createdon"]),
         workPermitId: json["_blser_workpermit_value"],
         ownerId: json["_ownerid_value"],
         owningBusinessUnitId: json["_owningbusinessunit_value"],
@@ -39,8 +38,7 @@ class WorkPermit {
         type: json["blser_worktype"],
       );
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         "blser_workpermititemid": workPermitItemId,
         "blser_id": id,
         "createdon": createdOn?.toIso8601String(),

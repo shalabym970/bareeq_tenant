@@ -40,8 +40,13 @@ class MessagesApi extends GetxService {
         ? '${Constants.baseUrl}blser_portalmessageses?\$select=blser_readstatus,_blser_account_value,'
         'statuscode,subject,blser_messagetext,_blser_contact_value,blser_direction,createdon,'
         '_regardingobjectid_value,_createdby_value,prioritycode&'
-        '\$filter=(_blser_account_value eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId}) and (blser_direction eq false) &\$orderby=createdon desc'
-        : '${Constants.baseUrl}blser_portalmessageses?\$select=blser_readstatus,_blser_account_value,statuscode,subject,blser_messagetext,_blser_contact_value,blser_direction,createdon,_regardingobjectid_value,_createdby_value,prioritycode&\$filter=(_blser_account_value eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId}) and (blser_direction eq true) &\$orderby=createdon desc';
+        '\$filter=(_blser_account_value eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId})'
+        ' and (blser_direction eq false) &\$orderby=createdon desc'
+        : '${Constants.baseUrl}blser_portalmessageses?\$select=blser_readstatus,_blser_account_value,'
+        'statuscode,subject,blser_messagetext,_blser_contact_value,blser_direction,createdon,_regardingobjectid_value,'
+        '_createdby_value,prioritycode&'
+        '\$filter=(_blser_account_value eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId}) '
+        'and (blser_direction eq true) &\$orderby=createdon desc';
     var response = await NLTMAuthServices.client.get(Uri.parse(url),
         headers: {"Prefer": "odata.include-annotations=*"});
     Get.log('===============  Messages url :  $url ==========');

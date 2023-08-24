@@ -27,9 +27,7 @@ class LeaseDatesWidget extends GetView<LeaseDetailsController> {
           customDetailsItem(
             icon: ImagePaths.filingTime,
             title: Strings.communicationDate,
-            value: controller.lease.commencementDate == null
-                ? Strings.na
-                : intl.DateFormat('EEE d MMM y')
+            value: intl.DateFormat('EEE d MMM y')
                     .format(controller.lease.commencementDate!)
                     .toString(),
           ),
@@ -39,9 +37,7 @@ class LeaseDatesWidget extends GetView<LeaseDetailsController> {
           customDetailsItem(
             icon: ImagePaths.filingTime,
             title: Strings.startDate,
-            value: controller.lease.startDate == null
-                ? Strings.na
-                : intl.DateFormat('EEE d MMM y')
+            value:  intl.DateFormat('EEE d MMM y')
                     .format(controller.lease.commencementDate!)
                     .toString(),
           ),
@@ -51,9 +47,7 @@ class LeaseDatesWidget extends GetView<LeaseDetailsController> {
           customDetailsItem(
             icon: ImagePaths.filingTime,
             title: Strings.terminationDate,
-            value: controller.lease.terminationDate == null
-                ? Strings.na
-                : intl.DateFormat('EEE d MMM y')
+            value: intl.DateFormat('EEE d MMM y')
                     .format(controller.lease.terminationDate!)
                     .toString(),
           ),
@@ -63,9 +57,7 @@ class LeaseDatesWidget extends GetView<LeaseDetailsController> {
           customDetailsItem(
             icon: ImagePaths.filingTime,
             title: Strings.endDate,
-            value: controller.lease.endDate == null
-                ? Strings.na
-                : intl.DateFormat('EEE d MMM y')
+            value:  intl.DateFormat('EEE d MMM y')
                     .format(controller.lease.endDate!)
                     .toString(),
           ),

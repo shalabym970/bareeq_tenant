@@ -1,7 +1,6 @@
-class InvoiceDetails {
-  InvoiceDetails({
+class InvoiceItem {
+  InvoiceItem({
     this.pricePerUnit,
-    this.invoiceId,
     this.baseAmount,
     this.quantity,
     this.productName,
@@ -12,7 +11,6 @@ class InvoiceDetails {
 
 
   double? pricePerUnit;
-  String? invoiceId;
   double? baseAmount;
   double? quantity;
   String? productName;
@@ -20,9 +18,8 @@ class InvoiceDetails {
   String? invoiceDetailsId;
   String? productId;
 
-  factory InvoiceDetails.fromJson(Map<String, dynamic> json) => InvoiceDetails(
+  factory InvoiceItem.fromJson(Map<String, dynamic> json) => InvoiceItem(
     pricePerUnit: json["priceperunit"],
-    invoiceId: json["_invoiceid_value"],
     baseAmount: json["baseamount"],
     quantity: json["quantity"],
     productName: json["productname"],

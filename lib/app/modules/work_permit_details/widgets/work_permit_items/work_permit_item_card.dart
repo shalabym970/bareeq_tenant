@@ -6,7 +6,7 @@ import '../../../../../common/strings/strings.dart';
 
 class WorkPermitItemCard extends StatelessWidget {
   const WorkPermitItemCard({Key? key, required this.workPermitItem}) : super(key: key);
-  final WorkPermit workPermitItem;
+  final WorkPermitItem workPermitItem;
 
   @override
   Widget build(BuildContext context) {

@@ -69,9 +69,7 @@ class LeasesListItem extends GetView<DashboardController> {
                             height: 3.h,
                           ),
                           Text(
-                              lease.endDate == null
-                                  ? Strings.na
-                                  : intl.DateFormat('EEE d MMM y')
+                              intl.DateFormat('EEE d MMM y')
                                       .format(lease.endDate!)
                                       .toString(),
                               style: TextStyle(
@@ -137,9 +135,7 @@ class LeasesListItem extends GetView<DashboardController> {
                         height: 3.h,
                       ),
                       Text(
-                          lease.startDate == null
-                              ? Strings.na
-                              : intl.DateFormat('EEE d MMM y')
+                         intl.DateFormat('EEE d MMM y')
                                   .format(lease.startDate!)
                                   .toString(),
                           style: TextStyle(

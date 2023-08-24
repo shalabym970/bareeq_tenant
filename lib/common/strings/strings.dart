@@ -196,6 +196,7 @@ class Strings {
   static const String downloadFailed = "Download failed, try again";
   static const String selectFile = 'Select file to Upload it';
   static const String nothingAttachments = 'Nothing Attachments';
+  static const String nothingInvoiceItems = 'Nothing Invoice Items';
   static const String cancel = 'Cancel';
   static const String save = 'Save';
   static const String saveCaseData =

@@ -31,7 +31,7 @@ class WorkPermitApi extends GetxService {
   }
 
   /// Get work permit items
-  static Future<List<WorkPermit>> getWorkPermitItems(
+  static Future<List<WorkPermitItem>> getWorkPermitItems(
       {required String workPermitId}) async {
     String url =
         '${Constants.baseUrl}blser_workpermititems?\$select=statuscode,blser_workpermititemid,blser_id,'
@@ -50,7 +50,7 @@ class WorkPermitApi extends GetxService {
           await NLTMAuthServices.decodeResponse(response: response);
 
       return decodeResponse['value']
-          .map<WorkPermit>((obj) => WorkPermit.fromJson(obj))
+          .map<WorkPermitItem>((obj) => WorkPermitItem.fromJson(obj))
           .toList();
     } else {
       Get.showSnackbar(

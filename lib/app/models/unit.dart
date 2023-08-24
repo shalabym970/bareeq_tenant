@@ -37,15 +37,19 @@ class Unit {
         unitType: json["_new_unittype_value"],
         totalPrice: json["advanced_totalprice"]?.toDouble(),
         createdOn: json["createdon"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["createdon"]),
         relatedLeaseRenewal: json["_bls_relatedleaserenewal_value"],
         relatedLeaseContract: json["_bls_relatedleasecontract_value"],
         description: json["advanced_description"],
         currentContract: json["_bls_currentcontract_value"],
         ownerId: json["_ownerid_value"],
-        endDate: json["blser_erp_end_date"],
-        startDate: json["blser_erp_start_date"],
+        endDate: json["blser_erp_end_date"] == null
+            ? DateTime(0000, 00, 00)
+            : DateTime.parse(json["blser_erp_end_date"]),
+        startDate: json["blser_erp_start_date"] == null
+            ? DateTime(0000, 00, 00)
+            : DateTime.parse(json["blser_erp_start_date"]),
         transactionCurrencyId: json["_transactioncurrencyid_value"],
         unitId: json["advanced_unitid"],
       );

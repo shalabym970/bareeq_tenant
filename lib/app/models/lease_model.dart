@@ -45,18 +45,18 @@ class LeaseModel {
         id: json["advanced_propertycontractid"],
         amount: json["advanced_rentamount"],
         endDate: json["advanced_enddate"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["advanced_enddate"]),
         terminationDate: json["advanced_terminationdate"],
         contractDate: json["advanced_contractdate"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["advanced_contractdate"]),
         contractPeriod: json["advanced_contractperiod"],
         startDate: json["advanced_startdate"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["advanced_startdate"]),
         commencementDate: json["new_commencementdate"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["new_commencementdate"]),
         type: json["advanced_contracttype"],
         name: json["advanced_name"],
@@ -67,11 +67,7 @@ class LeaseModel {
         unit: json["advanced_unitid"] == null
             ? null
             : Unit.fromJson(json["advanced_unitid"]),
-        brand: json["blser_BrandShop"] == null
-            ? null
-            : Brand.fromJson(json["blser_BrandShop"]),
-        property: json["blser_Property"] == null
-            ? null
-            : Project.fromJson(json["blser_Property"]),
+        brand: Brand.fromJson(json["blser_BrandShop"]),
+        property: Project.fromJson(json["blser_Property"]),
       );
 }

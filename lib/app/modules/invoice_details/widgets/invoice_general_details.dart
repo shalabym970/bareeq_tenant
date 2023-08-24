@@ -64,12 +64,11 @@ class InvoiceGeneralDetailsWidget extends GetView<InvoiceDetailsController> {
                     customDetailsItem(
                         icon: ImagePaths.filingTime,
                         title: Strings.endDate,
-                        value: controller.invoice.deliveredDate != null
-                            ? intl.DateFormat('EEE d MMM y')
+                        value:  intl.DateFormat('EEE d MMM y')
                             .format(DateTime.parse(
                             controller.invoice.deliveredDate!))
                             .toString()
-                            : controller.invoice.deliveredDate!)
+                           )
                   ],
                 ),
               )

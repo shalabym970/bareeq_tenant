@@ -1,26 +1,35 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import 'package:Bareeq/common/constants.dart';
 import 'package:Bareeq/common/strings/strings.dart';
 import 'package:Bareeq/common/widgets/ui.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 
 class AttachmentServices {
   static Future<String> convertBase64ToFile(
       {required String base64String, required String fileName}) async {
+    String filePath = Constants.downloadPath + fileName;
     // Decode the Base64 string
-    Uint8List bytes = base64Decode(base64String);
-
-    // Get the application documents directory
-    String dir = (await getApplicationDocumentsDirectory()).path;
-    Get.log('========== appDocumentsDirectory : $dir ============');
-
+    if (await File(filePath).exists()) {
+      int count = 1;
+      String newFileName;
+      do {
+        newFileName =
+            '${getFileNameWithoutExtension(fileName)}$count.${getFileExtension(fileName)}';
+        count++;
+      } while (await File(Constants.downloadPath + newFileName).exists());
+      filePath = Constants.downloadPath + newFileName;
+    }
     // Create a new file in the documents directory
-    File file = File('/storage/emulated/0/Download/$fileName');
+    File file = File(filePath);
+
+    Uint8List bytes = base64Decode(base64String);
     await file
         .writeAsBytes(bytes)
-        .then((value) => Ui.showToast(content: Strings.downloadSuccess)).onError((error, stackTrace) =>Ui.showToast(content: Strings.downloadFailed,error: true) );
+        .then((value) => Ui.showToast(content: Strings.downloadSuccess))
+        .onError((error, stackTrace) =>
+            Ui.showToast(content: Strings.downloadFailed, error: true));
 
     return file.path;
   }
@@ -51,5 +60,15 @@ class AttachmentServices {
         base64String: base64String);
 
     Get.log('========== filePathNAME  : $filePAth ============');
+  }
+
+  static String getFileNameWithoutExtension(String fileName) {
+    final dotIndex = fileName.lastIndexOf('.');
+    return dotIndex != -1 ? fileName.substring(0, dotIndex) : fileName;
+  }
+
+  static String getFileExtension(String fileName) {
+    final dotIndex = fileName.lastIndexOf('.');
+    return dotIndex != -1 ? fileName.substring(dotIndex + 1) : '';
   }
 }

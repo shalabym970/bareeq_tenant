@@ -52,7 +52,7 @@ class Project {
         city: json["_blser_city_value"],
         status: json["statuscode"],
         createdOn: json["createdon"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["createdon"]),
         englishTitle: json["blser_englishtitle"],
         name: json["advanced_name"],

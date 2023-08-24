@@ -36,7 +36,7 @@ class WorkPermitsItemsList extends GetView<WorkPermitDetailsController> {
                           shrinkWrap: true,
                           itemCount: controller.workPermitItems.length,
                           itemBuilder: ((_, index) {
-                            WorkPermit workPermitItem =
+                            WorkPermitItem workPermitItem =
                                 controller.workPermitItems.elementAt(index);
                             return WorkPermitItemCard(
                               workPermitItem: workPermitItem,

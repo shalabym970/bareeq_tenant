@@ -122,9 +122,7 @@ class CasesListItem extends GetView<DashboardController> {
                                             color: ColorManager.mainColor)),
                                     SizedBox(height: 3.h),
                                     Text(
-                                        cases.submittedOn == null
-                                            ? Strings.na
-                                            : intl.DateFormat('EEE d MMM y')
+                                       intl.DateFormat('EEE d MMM y')
                                                 .format(cases.submittedOn!)
                                                 .toString(),
                                         style: TextStyle(

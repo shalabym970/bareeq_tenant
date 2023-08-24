@@ -9,7 +9,7 @@ class WorkPermitRepo {
     return WorkPermitApi.getWorkPermits();
   }
 
-  Future<List<WorkPermit>> getWorkPermitItems(
+  Future<List<WorkPermitItem>> getWorkPermitItems(
       {required String workPermitId}) async {
     return WorkPermitApi.getWorkPermitItems(workPermitId: workPermitId);
   }

@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/strings/strings.dart';
-import '../../../../models/invoice_details.dart';
+import '../../../../models/invoice_item.dart';
 import '../../controllers/invoice_details_controller.dart';
 
 class InvoiceItemsListItem extends GetView<InvoiceDetailsController> {
   const InvoiceItemsListItem({Key? key, required this.invoiceItem})
       : super(key: key);
-  final InvoiceDetails? invoiceItem;
+  final InvoiceItem? invoiceItem;
 
   @override
   Widget build(BuildContext context) {

@@ -49,7 +49,9 @@ class Contact extends Equatable {
         emailAddress: json["emailaddress1"],
         fullName: json["fullname"],
         customerSizeCode: json["customersizecode"],
-        createdOn: DateTime.parse(json["createdon"]),
+        createdOn: json["createdon"] == null
+            ? DateTime(0000, 00, 00)
+            : DateTime.parse(json["createdon"]),
         callback: json["callback"],
         accountCustomerId: json["_parentcustomerid_value"],
         transactionCurrencyId: json["_transactioncurrencyid_value"],

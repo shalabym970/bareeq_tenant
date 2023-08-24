@@ -49,14 +49,19 @@ class Case {
         state: json["statecode"],
         caseNumber: json["blser_caseserial"],
         type: json["blser_casetypecode"],
-        submittedOn: DateTime.parse(json["createdon"]),
-        completedOn: DateTime.parse(json["blser_datecompleted"]),
+        submittedOn: json["createdon"] == null
+            ? DateTime(0000, 00, 00)
+            : DateTime.parse(json["createdon"]),
+        completedOn: json["blser_datecompleted"] == null
+            ? DateTime(0000, 00, 00)
+            : DateTime.parse(json["blser_datecompleted"]),
         unitLeaseId: json["_blser_leaseunit_value"],
         id: json["blser_caseid"],
         description: json["blser_description"],
         accountId: json["_blser_account_value"],
-        messages: List<MessageModel>.from(json["blser_case_blser_portalmessageses"]
-            .map((x) => MessageModel.fromJson(x))),
+        messages: List<MessageModel>.from(
+            json["blser_case_blser_portalmessageses"]
+                .map((x) => MessageModel.fromJson(x))),
         unit: Unit.fromJson(json["blser_LeaseUnit"]),
         property: Project.fromJson(json["blser_RelatedProject"]),
       );
@@ -76,6 +81,6 @@ class Case {
         "blser_description": description,
         "_blser_account_value": accountId,
         "blser_LeaseUnit": unit?.toJson(),
-      //  "blser_RelatedProject": relatedProject?.toJson(),
+        //  "blser_RelatedProject": relatedProject?.toJson(),
       };
 }

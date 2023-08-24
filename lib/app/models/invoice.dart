@@ -1,5 +1,3 @@
-import 'invoice_details.dart';
-
 class Invoice {
   Invoice(
       {this.totalAmountLessFreight,
@@ -20,19 +18,15 @@ class Invoice {
       this.ownerId,
       this.amountDueRemaining,
       this.customerIdValue,
-      this.paymentTermsCode,
       this.stateCode,
       this.totalDiscountAmount,
       this.totalTax,
       this.statusCode,
-      this.paymentMethod,
-      this.erpInvoiceType,
       this.description,
       this.discountAmount,
       this.discountPercentage,
       this.dueDate,
-      this.advancedPropertyContractId,
-      this.invoiceDetails});
+      this.advancedPropertyContractId});
 
   double? totalAmountLessFreight;
   String? transactionCurrencyId;
@@ -52,19 +46,15 @@ class Invoice {
   String? ownerId;
   dynamic amountDueRemaining;
   String? customerIdValue;
-  dynamic paymentTermsCode;
   int? stateCode;
   double? totalDiscountAmount;
   double? totalTax;
   int? statusCode;
-  dynamic paymentMethod;
-  dynamic erpInvoiceType;
   String? description;
   double? discountAmount;
   double? discountPercentage;
   DateTime? dueDate;
   String? advancedPropertyContractId;
-  List<InvoiceDetails>? invoiceDetails;
 
   factory Invoice.fromJson(Map<String, dynamic> json) => Invoice(
         totalAmountLessFreight: json["totalamountlessfreight"],
@@ -80,26 +70,23 @@ class Invoice {
         id: json["invoiceid"],
         invoiceNumber: json["invoicenumber"],
         priorityCode: json["prioritycode"],
-        createdOn: DateTime.parse(json["createdon"] ?? DateTime(0000, 00, 00)),
-        deliveredDate:
-            json["datedelivered"]  ,
+        createdOn: json["createdon"] == null
+            ? DateTime(0000, 00, 00)
+            : DateTime.parse(json["createdon"]),
+        deliveredDate: json["datedelivered"],
         ownerId: json["_ownerid_value"] ?? 'null',
         amountDueRemaining: json["blser_amountdueremaining"],
         customerIdValue: json["_customerid_value"],
-        paymentTermsCode: json["paymenttermscode"],
         stateCode: json["statecode"],
         totalDiscountAmount: json["totaldiscountamount"],
         totalTax: json["totaltax"],
         statusCode: json["statuscode"],
-        paymentMethod: json["blser_paymentmethod"],
-        erpInvoiceType: json["blser_erpinvoicetype"],
         description: json["description"],
         discountAmount: json["discountamount"],
         discountPercentage: json["discountpercentage"],
-        dueDate: DateTime.parse(json["duedate"] ?? DateTime(0000, 00, 00)),
+        dueDate: json["duedate"] == null
+            ? DateTime(0000, 00, 00)
+            : DateTime.parse(json["duedate"]),
         advancedPropertyContractId: json["_advanced_propertycontractid_value"],
-        invoiceDetails: List<InvoiceDetails>.from(
-            json["invoice_details"].map((x) => InvoiceDetails.fromJson(x))),
       );
-
 }

@@ -16,7 +16,7 @@ class WorkPermitDetailsController extends GetxController {
   final loadingAttachments = false.obs;
   final errorWorkPermitItems = false.obs;
   final errorMessages = false.obs;
-  final workPermitItems = <WorkPermit>[].obs;
+  final workPermitItems = <WorkPermitItem>[].obs;
   final messages = <MessageModel>[].obs;
   final loadingCprAttach = false.obs;
   final loadingInsuranceAttach = false.obs;

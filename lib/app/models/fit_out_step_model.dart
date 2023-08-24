@@ -24,7 +24,7 @@ class FitOutStepModel {
         statusCode: json["statuscode"],
         relatedProcessId: json["_blser_relatedprocess_value"],
         createdOn: json["createdon"] == null
-            ? null
+            ? DateTime(0000, 00, 00)
             : DateTime.parse(json["createdon"]),
         name: json["blser_name"],
         fitOutStepId: json["blser_fitoutstepid"],
