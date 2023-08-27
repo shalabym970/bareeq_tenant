@@ -13,10 +13,8 @@ class LeaseDatesWidget extends GetView<LeaseDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
             padding: EdgeInsets.all(6.h),
             child: Text(
@@ -25,44 +23,36 @@ class LeaseDatesWidget extends GetView<LeaseDetailsController> {
             ),
           ),
           customDetailsItem(
-            icon: ImagePaths.filingTime,
-            title: Strings.communicationDate,
-            value: intl.DateFormat('EEE d MMM y')
-                    .format(controller.lease.commencementDate!)
-                    .toString(),
-          ),
+              icon: ImagePaths.filingTime,
+              title: Strings.communicationDate,
+              value: intl.DateFormat('EEE d MMM y')
+                  .format(controller.lease.commencementDate!)
+                  .toString()),
           SizedBox(
             height: 20.h,
           ),
           customDetailsItem(
-            icon: ImagePaths.filingTime,
-            title: Strings.startDate,
-            value:  intl.DateFormat('EEE d MMM y')
-                    .format(controller.lease.commencementDate!)
-                    .toString(),
-          ),
+              icon: ImagePaths.filingTime,
+              title: Strings.startDate,
+              value: intl.DateFormat('EEE d MMM y')
+                  .format(controller.lease.commencementDate!)
+                  .toString()),
           SizedBox(
             height: 20.h,
           ),
           customDetailsItem(
-            icon: ImagePaths.filingTime,
-            title: Strings.terminationDate,
-            value: intl.DateFormat('EEE d MMM y')
-                    .format(controller.lease.terminationDate!)
-                    .toString(),
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
+              icon: ImagePaths.filingTime,
+              title: Strings.terminationDate,
+              value: intl.DateFormat('EEE d MMM y')
+                  .format(controller.lease.terminationDate!)
+                  .toString()),
+          SizedBox(height: 20.h),
           customDetailsItem(
-            icon: ImagePaths.filingTime,
-            title: Strings.endDate,
-            value:  intl.DateFormat('EEE d MMM y')
-                    .format(controller.lease.endDate!)
-                    .toString(),
-          ),
-        ],
-      ),
-    );
+              icon: ImagePaths.filingTime,
+              title: Strings.endDate,
+              value: intl.DateFormat('EEE d MMM y')
+                  .format(controller.lease.endDate!)
+                  .toString())
+        ]));
   }
 }

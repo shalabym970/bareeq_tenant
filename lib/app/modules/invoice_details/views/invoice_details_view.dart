@@ -46,7 +46,8 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
                         SizedBox(
                           width: 10.w,
                         ),
-                        Column(
+                        Expanded(
+                            child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -62,7 +63,7 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
                                 style: TextStyle(
                                     fontSize: 15.sp, color: ColorManager.black))
                           ],
-                        ),
+                        )),
                       ],
                     ),
                   ),
@@ -94,12 +95,11 @@ class InvoiceDetailsView extends GetView<InvoiceDetailsController> {
                   ),
                   SizedBox(height: 10.h),
                   const InvoiceAttachmentsList(),
-                  SizedBox(height: 50.h),
+                  SizedBox(height: 100.h),
                 ],
               ),
             ),
           ),
-
           drawer:
               customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
         ));

@@ -47,7 +47,8 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                         SizedBox(
                           width: 10.w,
                         ),
-                        Column(
+                    Expanded(
+                      child:  Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -63,7 +64,7 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                                 style: TextStyle(
                                     fontSize: 15.sp, color: ColorManager.black))
                           ],
-                        ),
+                        )),
                       ],
                     ),
                   ),
@@ -88,7 +89,7 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                   const AttachmentTitlePublicWidget(),
                   SizedBox(height: 10.h),
                   const LeaseAttachmentsList(),
-                  SizedBox(height: 50.h),
+                  SizedBox(height: 100.h),
                 ],
               ),
             ),

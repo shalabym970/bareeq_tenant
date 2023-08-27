@@ -1,6 +1,8 @@
 class ImagePaths {
   static const String base = "assets/images/";
   static const String drawerBg = "${base}drawer_bg.svg";
+  static const String help = "${base}help.svg";
+  static const String privacyPolicy = "${base}privacy_policy.svg";
   static const String document = "${base}work_permit/document.svg";
   static const String documentLayout = "${base}work_permit/document-layout.svg";
   static const String filingTime = "${base}work_permit/filing-time.svg";

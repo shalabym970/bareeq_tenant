@@ -47,7 +47,9 @@ class LeaseModel {
         endDate: json["advanced_enddate"] == null
             ? DateTime(0000, 00, 00)
             : DateTime.parse(json["advanced_enddate"]),
-        terminationDate: json["advanced_terminationdate"],
+        terminationDate: json["advanced_terminationdate"] == null
+            ? DateTime(0000, 00, 00)
+            : DateTime.parse(json["advanced_terminationdate"]),
         contractDate: json["advanced_contractdate"] == null
             ? DateTime(0000, 00, 00)
             : DateTime.parse(json["advanced_contractdate"]),

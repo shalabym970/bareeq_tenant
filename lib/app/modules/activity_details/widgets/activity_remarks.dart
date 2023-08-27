@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../../../common/color_manager.dart';
 import '../../../../common/strings/strings.dart';
+import '../controllers/activity_details_controller.dart';
 
-class ActivityRemarks extends StatelessWidget {
+class ActivityRemarks extends GetView<ActivityDetailsController>  {
   const ActivityRemarks({Key? key}) : super(key: key);
 
   @override
@@ -21,7 +23,7 @@ class ActivityRemarks extends StatelessWidget {
                   fontWeight: FontWeight.w400)),
           SizedBox(height: 20.h),
           Text(
-            'Once the documentation and lease agreement have been finalized, the tenant to • Appoint their fitout team. (Form 2) • Attend formal meeting with Bareeq Fit-Out Team to agree on the procedures for Fit-Out • Understand the design criteria and deliverables • Submit fit-out program milestone prior to the submission of conceptual design. (Form 3) • Artwork for hoarding to be submitted for approval.',
+            controller.fitOutStep.description.toString(),
             style: TextStyle(
                 fontSize: 12.sp,
                 color: ColorManager.black,

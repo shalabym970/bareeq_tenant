@@ -36,7 +36,7 @@ class InvoiceAttachmentsList extends GetView<InvoiceDetailsController> {
                               padding: EdgeInsets.symmetric(horizontal: 5.w),
                               primary: false,
                               shrinkWrap: true,
-                              itemCount: 1,
+                              itemCount: controller.attachments.length,
                               itemBuilder: ((_, index) {
                                 Attachment attachment =
                                     controller.attachments.elementAt(index);

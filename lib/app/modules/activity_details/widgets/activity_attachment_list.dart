@@ -8,10 +8,10 @@ import '../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../../common/widgets/error_widget.dart';
 import '../../../models/document.dart';
-import '../controllers/lease_details_controller.dart';
+import '../controllers/activity_details_controller.dart';
 
-class LeaseAttachmentsList extends GetView<LeaseDetailsController> {
-  const LeaseAttachmentsList({Key? key}) : super(key: key);
+class ActivityAttachmentsList extends GetView<ActivityDetailsController> {
+  const ActivityAttachmentsList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

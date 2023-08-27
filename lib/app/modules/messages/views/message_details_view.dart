@@ -1,4 +1,5 @@
 import 'package:Bareeq/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:Bareeq/common/widgets/label_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -166,11 +167,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                             height: 3,
                           ),
                           SizedBox(height: 20.h),
-                          Text(
-                            Strings.reply,
-                            style: TextStyle(
-                                fontSize: 14.sp, fontWeight: FontWeight.w400),
-                          ),
+                          const LabelTextField(label: Strings.reply,isRequired: true),
                           SizedBox(height: 20.h),
                           Container(
                             decoration: BoxDecoration(

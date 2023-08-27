@@ -1,3 +1,5 @@
+import 'fit_out_step_task.dart';
+
 class FitOutStepModel {
   String? description;
   int? status;
@@ -5,7 +7,9 @@ class FitOutStepModel {
   String? relatedProcessId;
   DateTime? createdOn;
   String? name;
-  String? fitOutStepId;
+  String? id;
+  List<FitOutStepTask>? fitOutStepTask;
+
 
   FitOutStepModel({
     this.description,
@@ -14,7 +18,8 @@ class FitOutStepModel {
     this.relatedProcessId,
     this.createdOn,
     this.name,
-    this.fitOutStepId,
+    this.id,
+    this.fitOutStepTask
   });
 
   factory FitOutStepModel.fromJson(Map<String, dynamic> json) =>
@@ -27,7 +32,8 @@ class FitOutStepModel {
             ? DateTime(0000, 00, 00)
             : DateTime.parse(json["createdon"]),
         name: json["blser_name"],
-        fitOutStepId: json["blser_fitoutstepid"],
+        id: json["blser_fitoutstepid"],
+        fitOutStepTask: json["blser_fitoutstep_Tasks"] == null ? [] : List<FitOutStepTask>.from(json["blser_fitoutstep_Tasks"]!.map((x) => FitOutStepTask.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -37,6 +43,6 @@ class FitOutStepModel {
         "_blser_relatedprocess_value": relatedProcessId,
         "createdon": createdOn?.toIso8601String(),
         "blser_name": name,
-        "blser_fitoutstepid": fitOutStepId,
+        "blser_fitoutstepid": id,
       };
 }

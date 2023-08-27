@@ -14,7 +14,7 @@ class FitOutStepItem extends GetView<FitOutProcessDetailsController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.activity);
+        Get.toNamed(Routes.activity,arguments: fitOutStep);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -38,7 +38,7 @@ class FitOutStepItem extends GetView<FitOutProcessDetailsController> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  fitOutStep.name.toString(),
+                  fitOutStep.fitOutStepTask!.first.subject.toString(),
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 10.sp,

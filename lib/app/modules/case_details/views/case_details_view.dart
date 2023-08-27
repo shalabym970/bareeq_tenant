@@ -26,6 +26,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
         onWillPop: () async {
           if (controller.screenEdited) {
             Ui.confirmDialog(
+                title: Strings.confirm,
                 middleText: Strings.saveCaseData,
                 confirmBtnTitle: Strings.save,
                 onSave: () {},
@@ -65,12 +66,13 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                                     SvgPicture.asset(ImagePaths.group86,
                                         height: 24.h, width: 26.w),
                                     SizedBox(width: 10.w),
-                                    Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
+                                    Expanded(
+                                        child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
                                           Text(Strings.caseTitle,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
@@ -85,7 +87,7 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                                               style: TextStyle(
                                                   fontSize: 15.sp,
                                                   color: ColorManager.black))
-                                        ])
+                                        ]))
                                   ])),
                               SizedBox(height: 20.h),
                               const CaseGeneralDetailsWidget(),

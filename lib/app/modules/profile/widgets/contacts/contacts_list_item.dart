@@ -1,13 +1,12 @@
+import 'package:Bareeq/app/models/contact_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/strings/strings.dart';
-import '../../../../routes/app_routes.dart';
 
 class ContactsListItem extends StatelessWidget {
-  const ContactsListItem({Key? key}) : super(key: key);
+  const ContactsListItem({Key? key, required this.contact}) : super(key: key);
+  final Contact contact;
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +37,17 @@ class ContactsListItem extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Text(Strings.fullName,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10.sp,
-                                color: ColorManager.mainColor)),
+                        Text(
+                          Strings.fullName,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10.sp,
+                              color: ColorManager.mainColor),
+                        ),
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('Amal Ragab Gad',
+                        Text(contact.fullName.toString(),
                             style: TextStyle(
                                 fontSize: 12.sp, color: ColorManager.black))
                       ],
@@ -61,7 +62,7 @@ class ContactsListItem extends StatelessWidget {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('aml@aml.com',
+                        Text(contact.emailAddress.toString(),
                             style: TextStyle(
                                 fontSize: 12.sp, color: ColorManager.black))
                       ],
@@ -82,7 +83,7 @@ class ContactsListItem extends StatelessWidget {
                     SizedBox(
                       height: 5.h,
                     ),
-                    Text('06161616161',
+                    Text(contact.businessPhone.toString(),
                         style: TextStyle(
                             fontSize: 12.sp, color: ColorManager.black))
                   ],
@@ -105,7 +106,7 @@ class ContactsListItem extends StatelessWidget {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('Engineer',
+                        Text(contact.jobTile.toString(),
                             style: TextStyle(
                                 fontSize: 12.sp, color: ColorManager.black))
                       ],
@@ -122,7 +123,7 @@ class ContactsListItem extends StatelessWidget {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Text('01212121212',
+                        Text(contact.mobilePhone.toString(),
                             style: TextStyle(
                                 fontSize: 12.sp, color: ColorManager.black))
                       ],

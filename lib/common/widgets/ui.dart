@@ -341,14 +341,14 @@ class Ui {
     }
   }
 
-  static Future confirmDialog({
-    required String middleText,
-    required String confirmBtnTitle,
-    required void Function() onSave,
-    required void Function() onDiscard,
-  }) {
+  static Future confirmDialog(
+      {required String middleText,
+      required String confirmBtnTitle,
+      required void Function() onSave,
+      required void Function() onDiscard,
+      required String title}) {
     return Get.defaultDialog(
-        title: '',
+        title: title,
         middleText: middleText,
         middleTextStyle: TextStyle(
             fontWeight: FontWeight.bold,

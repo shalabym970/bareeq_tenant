@@ -8,9 +8,9 @@ import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../../../../common/widgets/custom_text_field.dart';
-import '../controllers/profile_controller.dart';
+import '../controllers/change_password_controller.dart';
 
-class ChangePasswordView extends GetView<ProfileController> {
+class ChangePasswordView extends GetView<ChangePasswordController> {
   const ChangePasswordView({super.key});
 
   @override

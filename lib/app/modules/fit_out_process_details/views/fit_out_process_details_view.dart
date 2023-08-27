@@ -45,7 +45,8 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
                         SizedBox(
                           width: 10.w,
                         ),
-                        Column(
+                    Expanded(
+                      child:   Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -61,7 +62,7 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
                                 style: TextStyle(
                                     fontSize: 15.sp, color: ColorManager.black))
                           ],
-                        ),
+                        )),
                       ],
                     ),
                   ),

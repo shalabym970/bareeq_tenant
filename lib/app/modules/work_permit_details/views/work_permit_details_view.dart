@@ -35,7 +35,8 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                 onSave: () {},
                 onDiscard: () {
                   Get.until((route) => route.isFirst);
-                });
+                },
+                title: Strings.confirm);
           }
           return true;
         },
@@ -75,7 +76,8 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                             SizedBox(
                               width: 10.w,
                             ),
-                            Column(
+                            Expanded(
+                                child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -92,7 +94,7 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                                         fontSize: 15.sp,
                                         color: ColorManager.black))
                               ],
-                            ),
+                            )),
                           ],
                         ),
                       ),

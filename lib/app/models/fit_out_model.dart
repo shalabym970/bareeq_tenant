@@ -47,8 +47,9 @@ class FitOutModel {
         approvedOn: json["blser_approvedon"] == null
             ? DateTime(0000, 00, 00)
             : DateTime.parse(json["blser_approvedon"]),
-        completedDate: DateTime.parse(
-            json["blser_completeddate"] ?? DateTime(0000, 00, 00)),
+        completedDate: json["blser_completeddate"] == null
+            ? DateTime(0000, 00, 00)
+            : DateTime.parse(json["blser_completeddate"]),
         name: json["blser_name"],
         id: json["blser_fitoutprocessid"],
         reviewedOn: json["blser_reviewedon"] == null

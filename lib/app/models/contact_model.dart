@@ -3,27 +3,27 @@ import 'package:equatable/equatable.dart';
 import 'account_model.dart';
 
 class Contact extends Equatable {
-  const Contact({
-    this.emailAddress,
-    this.fullName,
-    this.customerSizeCode,
-    this.createdOn,
-    this.callback,
-    this.accountCustomerId,
-    this.transactionCurrencyId,
-    this.contactId,
-    this.company,
-    this.country,
-    this.department,
-    this.lastName,
-    this.firstName,
-    this.password,
-    this.account,
-    this.crNumber,
-    this.cprNumber,
-    this.businessPhone,
-    this.mobilePhone,
-  });
+  const Contact(
+      {this.emailAddress,
+      this.fullName,
+      this.customerSizeCode,
+      this.createdOn,
+      this.callback,
+      this.accountCustomerId,
+      this.transactionCurrencyId,
+      this.contactId,
+      this.company,
+      this.country,
+      this.department,
+      this.lastName,
+      this.firstName,
+      this.password,
+      this.account,
+      this.crNumber,
+      this.cprNumber,
+      this.businessPhone,
+      this.mobilePhone,
+      this.jobTile});
 
   final String? emailAddress;
   final String? fullName;
@@ -43,6 +43,7 @@ class Contact extends Equatable {
   final int? cprNumber;
   final String? businessPhone;
   final String? mobilePhone;
+  final String? jobTile;
   final Account? account;
 
   factory Contact.fromJson(Map<String, dynamic> json) => Contact(
@@ -66,6 +67,7 @@ class Contact extends Equatable {
         crNumber: json["bls_crnumber"],
         mobilePhone: json["mobilephone"],
         businessPhone: json["telephone1"],
+        jobTile: json["jobtitle"],
         account: Account.fromJson(json["parentcustomerid_account"]),
       );
 
@@ -87,7 +89,8 @@ class Contact extends Equatable {
         'bls_cprnumber': cprNumber,
         'bls_crnumber': crNumber,
         'mobilephone': mobilePhone,
-        'telephone1': businessPhone
+        'telephone1': businessPhone,
+        "jobtitle": jobTile
       };
 
   @override

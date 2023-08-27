@@ -34,7 +34,7 @@ class DrawerItemWidget extends StatelessWidget {
             style: TextStyle(
                 color: ColorManager.mainColor,
                 fontWeight: FontWeight.w400,
-                fontSize: 14.sp),
+                fontSize: 13.sp),
           )
         ],
       ),

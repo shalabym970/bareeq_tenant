@@ -14,13 +14,28 @@ Drawer customDrawer() {
     backgroundColor: ColorManager.mainColor,
     child: Stack(
       children: <Widget>[
-        SvgPicture.asset(
-          ImagePaths.drawerBg,
-          alignment: Alignment.center,
-          width: Get.width,
-          height: 637.h,
-          color: ColorManager.white,
-        ),
+        Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SvgPicture.asset(
+                ImagePaths.drawerBg,
+                alignment: Alignment.center,
+                width: Get.width,
+                height: 620.h,
+                color: ColorManager.white,
+              ),
+              SizedBox(height: 20.h),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Image.asset(
+                  ImagePaths.logoWithoutBg,
+                  height: 100.h,
+                  width: 100.h,
+                  color: ColorManager.white,
+                ),
+              ),
+            ]),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 30.h),
           child: SingleChildScrollView(
@@ -59,7 +74,7 @@ Drawer customDrawer() {
                           Get.offAllNamed(Routes.dashboard);
                         },
                       ),
-                      SizedBox(height: 40.h),
+                      SizedBox(height: 20.h),
                       DrawerItemWidget(
                         text: Strings.workPermits,
                         svgIconPath: ImagePaths.whiteBriefcase,
@@ -67,7 +82,7 @@ Drawer customDrawer() {
                           Get.toNamed(Routes.workPermits);
                         },
                       ),
-                      SizedBox(height: 40.h),
+                      SizedBox(height: 20.h),
                       DrawerItemWidget(
                         text: Strings.cases,
                         svgIconPath: ImagePaths.whiteBug,
@@ -75,7 +90,7 @@ Drawer customDrawer() {
                           Get.toNamed(Routes.cases);
                         },
                       ),
-                      SizedBox(height: 40.h),
+                      SizedBox(height: 20.h),
                       DrawerItemWidget(
                         text: Strings.fitOutProcesses,
                         svgIconPath: ImagePaths.whiteSettings,
@@ -83,7 +98,7 @@ Drawer customDrawer() {
                           Get.toNamed(Routes.fitOuts);
                         },
                       ),
-                      SizedBox(height: 40.h),
+                      SizedBox(height: 20.h),
                       DrawerItemWidget(
                         text: Strings.invoices,
                         svgIconPath: ImagePaths.whiteReceipt,
@@ -91,7 +106,7 @@ Drawer customDrawer() {
                           Get.toNamed(Routes.invoices);
                         },
                       ),
-                      SizedBox(height: 40.h),
+                      SizedBox(height: 20.h),
                       DrawerItemWidget(
                         text: Strings.leases,
                         svgIconPath: ImagePaths.whiteHouse,
@@ -99,7 +114,21 @@ Drawer customDrawer() {
                           Get.toNamed(Routes.leases);
                         },
                       ),
-                      SizedBox(height: 60.h),
+                      SizedBox(height: 20.h),
+                      DrawerItemWidget(
+                        text: Strings.help,
+                        svgIconPath: ImagePaths.help,
+                        onTap: () {
+                        },
+                      ),
+                      SizedBox(height: 20.h),
+                      DrawerItemWidget(
+                        text: Strings.privacyPolicy,
+                        svgIconPath: ImagePaths.privacyPolicy,
+                        onTap: () {
+                        },
+                      ),
+                      SizedBox(height: 40.h),
                       DrawerItemWidget(
                         text: Strings.logout,
                         svgIconPath: ImagePaths.whiteLogout,
@@ -107,16 +136,6 @@ Drawer customDrawer() {
                           sharedPref!.clear();
                           Get.offAllNamed(Routes.login);
                         },
-                      ),
-                      SizedBox(height: 130.h),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Image.asset(
-                          ImagePaths.logoWithoutBg,
-                          height: 100.h,
-                          width: 100.h,
-                          color: ColorManager.white,
-                        ),
                       ),
                     ],
                   ),

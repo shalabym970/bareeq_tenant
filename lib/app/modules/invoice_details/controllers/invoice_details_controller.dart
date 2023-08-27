@@ -67,7 +67,8 @@ class InvoiceDetailsController extends GetxController {
       errorInvoiceItems.value = true;
       Get.showSnackbar(
           Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
-      Get.log('========== Error when get invoice items : $e ==========');
+      Get.log(
+          '========== Error when get invoice ${invoice.name.toString()} items : $e ==========');
     } finally {
       loadingInvoiceItems.value = false;
     }
@@ -83,7 +84,8 @@ class InvoiceDetailsController extends GetxController {
       errorAttachments.value = true;
       Get.showSnackbar(
           Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
-      Get.log('========== Error when get CPR Card Attachment : $e ==========');
+      Get.log(
+          '========== Error when get ${invoice.name.toString()} Attachments : $e ==========');
     } finally {
       loadingAttachments.value = false;
     }

@@ -105,7 +105,6 @@ class Strings {
   static const String crNumber = 'CR Number';
   static const String cprNumber = 'CPR Number';
   static const String yourProfileData = 'Your Profile Data';
-  static const String changeYourPassword = 'Change Your Password';
   static const String changePassword = 'Change Password';
   static const String addNewContact = 'Add a New Contact';
   static const String saveContact = 'Save Contact';
@@ -184,6 +183,7 @@ class Strings {
   static const String leasesEmpty = 'Leases List is Empty';
   static const String casesEmpty = 'Cases List is Empty';
   static const String fitOutsEmpty = 'Fit Outs List is Empty';
+  static const String contactsEmpty = 'Contacts List is Empty';
   static const String nothingMessages = 'Nothing Messages';
   static const String nothingFitOutSteps = 'Nothing Fit Out Steps';
   static const String na = "N/A";
@@ -204,4 +204,7 @@ class Strings {
   static const String saveWorkPermitData =
       'You have modified the work permit data and did not save it. Do you want to save it ?';
   static const String discard = 'Discard';
+  static const String help = 'Help & Support';
+  static const String privacyPolicy = 'Privacy Policy';
+  static const String confirm = 'Confirm';
 }
