@@ -123,7 +123,6 @@ class Strings {
   static const String activityTitle = 'Activity Title';
   static const String remarks = 'Remarks';
   static const String relatedUnit = 'Related Unit';
-  static const String ddMMYY = 'DD/MM/YY';
   static const String newContractor = 'New Contractor';
   static const String standardWorkPermit = 'Standard Work Permit';
   static const String workPermitSubject = 'Work Permit Subject';
@@ -208,4 +207,11 @@ class Strings {
   static const String privacyPolicy = 'Privacy Policy';
   static const String confirm = 'Confirm';
   static const String notSelectFile = 'No File Selected';
+  static const String replace = 'Replace';
+  static const String enterSubject = 'Enter the subject';
+  static const String enter = 'Enter subject';
+  static const String enterWorkerNumber = 'Enter workers number';
+  static const String enterDetails = 'Enter Details';
+  static const String selectStartDate = 'Select start date';
+  static const String selectEndDate = 'Select end date';
 }

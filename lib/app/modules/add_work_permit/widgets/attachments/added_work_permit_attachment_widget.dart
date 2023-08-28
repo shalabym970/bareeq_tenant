@@ -1,15 +1,21 @@
 import 'dart:io';
+import 'package:Bareeq/app/services/attachment_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:path/path.dart' as path;
 import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
 import '../../../../../common/strings/strings.dart';
+import '../../controllers/add_work_permit_controller.dart';
 
-class AddedAttachmentWidget extends StatelessWidget {
-  const AddedAttachmentWidget({Key? key, required this.file}) : super(key: key);
+class AddedWorkPermitAttachmentWidget extends GetView<AddWorkPermitController> {
+  const AddedWorkPermitAttachmentWidget(
+      {Key? key, required this.file, required this.fileType})
+      : super(key: key);
   final File file;
+  final String fileType;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +23,20 @@ class AddedAttachmentWidget extends StatelessWidget {
       Align(
         alignment: Alignment.centerRight,
         child: InkWell(
-            onTap: () {},
-            child: Icon(Icons.change_circle_sharp,
-                size: 25.sp, color: ColorManager.mainColor)),
+            onTap: () {
+              controller.selectFile(fileType: fileType);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Icon(Icons.change_circle_sharp,
+                    size: 25.sp, color: ColorManager.mainColor),
+                SizedBox(width: 5.w),
+                Text(Strings.replace,
+                    style: TextStyle(
+                        fontSize: 12.sp, color: ColorManager.mainColor))
+              ],
+            )),
       ),
       SizedBox(
         height: 5.h,
@@ -60,12 +77,29 @@ class AddedAttachmentWidget extends StatelessWidget {
       SizedBox(
         height: 5.h,
       ),
-      // Align(
-      //   alignment: Alignment.centerRight,
-      //   child: Text("${attachment!.fileSize! ~/ 1024} KB",
-      //       style: TextStyle(
-      //           fontSize: 12.sp, color: Colors.black.withOpacity(0.7))),
-      // )
+      Align(
+        alignment: Alignment.centerRight,
+        child: FutureBuilder<double>(
+          future: AttachmentServices.getFileSizeInMB(file: file),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator(
+                color: ColorManager.mainColor,
+              );
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}',
+                  style: TextStyle(
+                      fontSize: 12.sp, color: Colors.black.withOpacity(0.7)));
+            } else {
+              double fileSize = snapshot.data ?? 0.0;
+              return Text('${fileSize.toStringAsFixed(2)} MB',
+                  style: TextStyle(
+                      fontSize: 12.sp, color: Colors.black.withOpacity(0.7)));
+            }
+          },
+        ),
+      )
     ]);
   }
 }
+// Text("${AttachmentServices.getFileSizeInMB(file: file).toString()} MB",

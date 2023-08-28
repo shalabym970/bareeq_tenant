@@ -9,15 +9,17 @@ import 'dart:io';
 
 class AddWorkPermitController extends GetxController {
   final subjectController = TextEditingController();
-  final startDateController = TextEditingController();
-  final endDateController = TextEditingController();
-  final standardCheck = false.obs;
+  TextEditingController startDateController = TextEditingController();
+  TextEditingController endDateController = TextEditingController();
+  final numberOfWorkersController = TextEditingController();
+  final detailsController = TextEditingController();
+  final standardCheck = true.obs;
   final urgentCheck = false.obs;
   final acceptResponsibilityCheck = false.obs;
   final startDate = Rxn<DateTime>();
-  final selectedStartDate = Strings.ddMMYY.obs;
+  final selectedStartDate = Strings.selectStartDate.obs;
   final endDate = Rxn<DateTime>();
-  final selectedEndDate = Strings.ddMMYY.obs;
+  final selectedEndDate = Strings.selectEndDate.obs;
   final cprAttach = Rxn<File>();
   final insuranceAttach = Rxn<File>();
   final methodAttach = Rxn<File>();
@@ -26,6 +28,8 @@ class AddWorkPermitController extends GetxController {
   final relatedUnitList = <String>['Unit 10 - Building 8', 'fj', 'hgh', 'hghg'];
   final contractorValue = 'Contractor';
   final contractorList = <String>['Contractor', 'fj', 'hgh', 'hghg'];
+  final addWorkPermitKey = GlobalKey<FormState>();
+  File? file;
 
   Future<void> selectDate({required bool dateTypeIsStart}) async {
     if (dateTypeIsStart == true) {
@@ -50,6 +54,7 @@ class AddWorkPermitController extends GetxController {
       if (startDate.value != null) {
         DateFormat formatter = DateFormat('dd-MM-yyyy');
         selectedStartDate.value = formatter.format(startDate.value!);
+        startDateController.text = selectedStartDate.value;
         Get.log('==== Start Date : ${startDate.toString()} ===');
       }
     } else {
@@ -73,6 +78,7 @@ class AddWorkPermitController extends GetxController {
       if (endDate.value != null) {
         DateFormat formatter = DateFormat('dd-MM-yyyy');
         selectedEndDate.value = formatter.format(endDate.value!);
+        endDateController.text = selectedEndDate.value;
         Get.log('==== End date Date : ${endDate.toString()} ===');
       }
     }
@@ -80,13 +86,33 @@ class AddWorkPermitController extends GetxController {
 
   selectFile({required String fileType}) async {
     if (fileType == Constants.cprFile) {
-      cprAttach.value = await AttachmentServices.pickFile();
+      file = await AttachmentServices.pickFile();
+      cprAttach.value =
+          cprAttach.value != null && file == null ? cprAttach.value : file;
+      file = null;
     } else if (fileType == Constants.insuranceFile) {
-      insuranceAttach.value = await AttachmentServices.pickFile();
+      file = await AttachmentServices.pickFile();
+      insuranceAttach.value = insuranceAttach.value != null && file == null
+          ? insuranceAttach.value
+          : file;
+      file = null;
     } else if (fileType == Constants.methodFile) {
-      methodAttach.value = await AttachmentServices.pickFile();
+      file = await AttachmentServices.pickFile();
+      methodAttach.value = methodAttach.value != null && file == null
+          ? methodAttach.value
+          : file;
+      file = null;
     } else {
-      riskAttach.value = await AttachmentServices.pickFile();
+      file = await AttachmentServices.pickFile();
+      riskAttach.value =
+          riskAttach.value != null && file == null ? riskAttach.value : file;
+      file = null;
+    }
+  }
+
+  submitWorkPermit() {
+    if (addWorkPermitKey.currentState!.validate()) {
+      addWorkPermitKey.currentState?.save();
     }
   }
 }

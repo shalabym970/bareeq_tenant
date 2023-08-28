@@ -21,8 +21,13 @@ class WorkPermitAttachmentWidget extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: InkWell(
                 onTap: () {},
-                child: Icon(Icons.change_circle_sharp,
-                    size: 25.sp, color: ColorManager.mainColor)),
+                child: Row(
+
+                  children: [
+                    Icon(Icons.change_circle_sharp,
+                        size: 25.sp, color: ColorManager.mainColor)
+                  ],
+                )),
           ),
           SizedBox(
             height: 5.h,

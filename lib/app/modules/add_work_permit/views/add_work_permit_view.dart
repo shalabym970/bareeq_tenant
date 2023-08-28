@@ -1,4 +1,5 @@
 import 'package:Bareeq/common/widgets/custom_checkbox.dart';
+import 'package:Bareeq/common/widgets/label_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -35,136 +36,148 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  CustomTextField(
-                      hint: Strings.subject,
-                      controller: controller.subjectController,
-                      height: 35.h,
-                      labelWidget: Text(Strings.subject,
-                          style: TextStyle(
-                              fontSize: 10.sp,
-                              fontWeight: FontWeight.w500,
-                              color: ColorManager.mainColor))),
-                  SizedBox(height: 10.h),
-                  Obx(() => CustomCheckBox(
-                      value: controller.standardCheck.value,
-                      onChanged: (bool? value) {
-                        if (controller.urgentCheck.isTrue) {
-                          controller.urgentCheck.value =
-                              !controller.urgentCheck.value;
-                          controller.standardCheck.value =
-                              !controller.standardCheck.value;
-                        } else {
-                          controller.standardCheck.value =
-                              !controller.standardCheck.value;
-                        }
-                      },
-                      title: Strings.standardWorkPermit)),
-                  Obx(() => CustomCheckBox(
-                      value: controller.urgentCheck.value,
-                      onChanged: (bool? value) {
-                        if (controller.standardCheck.isTrue) {
-                          controller.standardCheck.value =
-                              !controller.standardCheck.value;
-                          controller.urgentCheck.value =
-                              !controller.urgentCheck.value;
-                        } else {
-                          controller.urgentCheck.value =
-                              !controller.urgentCheck.value;
-                        }
-                      },
-                      title: Strings.urgentWorkPermit)),
-                  SizedBox(height: 10.h),
-                  Row(children: [
-                    Expanded(
-                        flex: 1,
-                        child: GestureDetector(
-                            onTap: () {
-                              controller.selectDate(dateTypeIsStart: true);
-                            },
-                            child: Obx(() => CustomTextField(
-                                stringSuffixIcon: ImagePaths.deleteCalendar,
-                                enabled: false,
-                                height: 35.h,
-                                hint: controller.selectedStartDate.value,
-                                controller: controller.startDateController,
-                                labelWidget: Text(Strings.startDate,
-                                    style: TextStyle(
-                                        fontSize: 10.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: ColorManager.mainColor)))))),
-                    SizedBox(width: 15.w),
-                    Expanded(
-                        flex: 1,
-                        child: GestureDetector(
-                            onTap: () {
-                              controller.selectDate(dateTypeIsStart: false);
-                            },
-                            child: Obx(() => CustomTextField(
-                                stringSuffixIcon: ImagePaths.deleteCalendar,
-                                enabled: false,
-                                height: 35.h,
-                                hint: controller.selectedEndDate.value,
-                                controller: controller.endDateController,
-                                labelWidget: Text(Strings.endDate,
-                                    style: TextStyle(
-                                        fontSize: 10.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: ColorManager.mainColor))))))
-                  ]),
-                  SizedBox(height: 20.h),
-                  CustomDropDown(
-                      value: controller.relatedUnitValue,
-                      onChange: (String? newValue) async {},
-                      items: controller.relatedUnitList.map((items) {
-                        return DropdownMenuItem<String>(
-                          value: items,
-                          child: Text(items),
-                        );
-                      }).toList(),
-                      label: Strings.relatedUnit),
-                  SizedBox(height: 10.h),
-                  CustomDropDown(
-                    value: controller.contractorValue,
-                    onChange: (String? newValue) async {},
-                    items: controller.contractorList.map((items) {
-                      return DropdownMenuItem<String>(
-                        value: items,
-                        child: Text(items),
-                      );
-                    }).toList(),
-                    label: Strings.contractor,
-                  ),
-                  SizedBox(height: 20.h),
-                  PrimaryButton(
-                      title: Strings.newContractor,
-                      onPressed: () {
-                        Get.toNamed(Routes.addContractor);
-                      },
-                      height: 40.h,
-                      backgroundColor: ColorManager.white,
-                      textAndIconColor: ColorManager.mainColor),
-                  SizedBox(height: 20.h),
-                  CustomTextField(
-                      hint: Strings.numberOfWorkers,
-                      controller: controller.subjectController,
-                      keyboardType: TextInputType.number,
-                      labelWidget: Text(Strings.numberOfWorkers,
-                          style: TextStyle(
-                              fontSize: 10.sp,
-                              fontWeight: FontWeight.w500,
-                              color: ColorManager.mainColor))),
-                  SizedBox(height: 10.h),
-                  CustomTextField(
-                    height: 105.h,
-                    hint: Strings.requestDetails,
-                    controller: controller.subjectController,
-                    labelWidget: Text(Strings.requestDetails,
-                        style: TextStyle(
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.w500,
-                            color: ColorManager.mainColor)),
-                    maxLines: 6,
-                  ),
+                  Form(
+                      key: controller.addWorkPermitKey,
+                      child: Column(
+                        children: [
+                          CustomTextField(
+                              hint: Strings.subject,
+                              controller: controller.subjectController,
+                              validator: (value) =>
+                                  value!.isEmpty ? Strings.enterSubject : null,
+                              labelWidget: const LabelTextField(
+                                  label: Strings.subject, isRequired: true)),
+                          SizedBox(height: 10.h),
+                          Obx(() => CustomCheckBox(
+                              value: controller.standardCheck.value,
+                              onChanged: (bool? value) {
+                                if (controller.urgentCheck.isTrue) {
+                                  controller.urgentCheck.value =
+                                      !controller.urgentCheck.value;
+                                  controller.standardCheck.value =
+                                      !controller.standardCheck.value;
+                                } else {
+                                  controller.standardCheck.value =
+                                      !controller.standardCheck.value;
+                                }
+                              },
+                              title: Strings.standardWorkPermit)),
+                          Obx(() => CustomCheckBox(
+                              value: controller.urgentCheck.value,
+                              onChanged: (bool? value) {
+                                if (controller.standardCheck.isTrue) {
+                                  controller.standardCheck.value =
+                                      !controller.standardCheck.value;
+                                  controller.urgentCheck.value =
+                                      !controller.urgentCheck.value;
+                                } else {
+                                  controller.urgentCheck.value =
+                                      !controller.urgentCheck.value;
+                                }
+                              },
+                              title: Strings.urgentWorkPermit)),
+                          SizedBox(height: 10.h),
+                          Row(children: [
+                            Expanded(
+                                flex: 1,
+                                child: InkWell(
+                                    onTap: () {
+                                      controller.selectDate(
+                                          dateTypeIsStart: true);
+                                    },
+                                    child: Obx(() => CustomTextField(
+                                        stringSuffixIcon:
+                                            ImagePaths.deleteCalendar,
+                                        enabled: false,
+                                        hint:
+                                            controller.selectedStartDate.value,
+                                        controller:
+                                            controller.startDateController,
+                                        validator: (value) => value!.isEmpty
+                                            ? Strings.selectStartDate
+                                            : null,
+                                        labelWidget: const LabelTextField(
+                                            label: Strings.startDate,
+                                            isRequired: true))))),
+                            SizedBox(width: 15.w),
+                            Expanded(
+                                flex: 1,
+                                child: InkWell(
+                                    onTap: () {
+                                      controller.selectDate(
+                                          dateTypeIsStart: false);
+                                    },
+                                    child: Obx(() => CustomTextField(
+                                        stringSuffixIcon:
+                                            ImagePaths.deleteCalendar,
+                                        enabled: false,
+                                        hint: controller.selectedEndDate.value,
+                                        controller:
+                                            controller.endDateController,
+                                        validator: (value) => value!.isEmpty
+                                            ? Strings.selectEndDate
+                                            : null,
+                                        labelWidget: const LabelTextField(
+                                            label: Strings.endDate,
+                                            isRequired: true)))))
+                          ]),
+                          SizedBox(height: 20.h),
+                          CustomDropDown(
+                              value: controller.relatedUnitValue,
+                              onChange: (String? newValue) async {},
+                              items: controller.relatedUnitList.map((items) {
+                                return DropdownMenuItem<String>(
+                                  value: items,
+                                  child: Text(items),
+                                );
+                              }).toList(),
+                              label: Strings.relatedUnit),
+                          SizedBox(height: 10.h),
+                          CustomDropDown(
+                            value: controller.contractorValue,
+                            onChange: (String? newValue) async {},
+                            items: controller.contractorList.map((items) {
+                              return DropdownMenuItem<String>(
+                                value: items,
+                                child: Text(items),
+                              );
+                            }).toList(),
+                            label: Strings.contractor,
+                          ),
+                          SizedBox(height: 20.h),
+                          PrimaryButton(
+                              title: Strings.newContractor,
+                              onPressed: () {
+                                Get.toNamed(Routes.addContractor);
+                              },
+                              height: 40.h,
+                              backgroundColor: ColorManager.white,
+                              textAndIconColor: ColorManager.mainColor),
+                          SizedBox(height: 20.h),
+                          CustomTextField(
+                              hint: Strings.numberOfWorkers,
+                              controller: controller.numberOfWorkersController,
+                              keyboardType: TextInputType.number,
+                              validator: (value) => value!.isEmpty
+                                  ? Strings.enterWorkerNumber
+                                  : null,
+                              labelWidget: const LabelTextField(
+                                  label: Strings.numberOfWorkers,
+                                  isRequired: true)),
+                          SizedBox(height: 10.h),
+                          CustomTextField(
+                            height: 105.h,
+                            hint: Strings.requestDetails,
+                            controller: controller.detailsController,
+                            labelWidget: const LabelTextField(
+                                label: Strings.requestDetails,
+                                isRequired: true),
+                            validator: (value) =>
+                                value!.isEmpty ? Strings.enterDetails : null,
+                            maxLines: 6,
+                          ),
+                        ],
+                      )),
                   SizedBox(height: 20.h),
                   const AttachmentTitlePublicWidget(),
                   SizedBox(height: 20.h),
@@ -174,6 +187,8 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                   const AddRiskAssessmentAttachment(),
                   SizedBox(height: 20.h),
                   Row(children: [
+                    Icon(Icons.star_rate_sharp,
+                        color: ColorManager.red, size: 8.sp),
                     Obx(() => Checkbox(
                           checkColor: Colors.white,
                           fillColor:
@@ -205,7 +220,9 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                   SizedBox(height: 20.h),
                   PrimaryButton(
                       title: Strings.addWorkPermit,
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.submitWorkPermit();
+                      },
                       height: 40.h,
                       backgroundColor: ColorManager.mainColor,
                       textAndIconColor: ColorManager.white),

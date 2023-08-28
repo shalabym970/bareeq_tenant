@@ -79,16 +79,22 @@ class AttachmentServices {
   static Future<File?> pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['jpg', 'pdf', 'doc','png'],
+      allowedExtensions: ['jpg', 'pdf', 'doc', 'png', 'txt', 'jpeg'],
     );
 
     if (result != null) {
       File file = File(result.files.single.path!);
-
       return file;
     } else {
       Ui.showToast(content: Strings.notSelectFile);
       return null;
     }
+  }
+
+  /// get file size by MB
+  static Future<double> getFileSizeInMB({required File file}) async {
+    int fileSizeInBytes = await file.length();
+    double fileSizeInMB = fileSizeInBytes / (1024 * 1024);
+    return fileSizeInMB;
   }
 }

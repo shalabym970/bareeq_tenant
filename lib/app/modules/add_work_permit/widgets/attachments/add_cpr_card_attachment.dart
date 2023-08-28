@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../../../common/constants.dart';
 import '../../../../../common/widgets/upload_file_widget.dart';
 import '../../controllers/add_work_permit_controller.dart';
-import 'added_attachment_widget.dart';
+import 'added_work_permit_attachment_widget.dart';
 
 class AddCprCardAttachment extends GetView<AddWorkPermitController> {
   const AddCprCardAttachment({Key? key}) : super(key: key);
@@ -26,7 +26,9 @@ class AddCprCardAttachment extends GetView<AddWorkPermitController> {
                         controller.selectFile(fileType: Constants.cprFile);
                       },
                       child: const UploadFileWidget())
-                  : AddedAttachmentWidget(file: controller.cprAttach.value!)),
+                  : AddedWorkPermitAttachmentWidget(
+                      file: controller.cprAttach.value!,
+                      fileType: Constants.cprFile)),
             ]));
   }
 }
