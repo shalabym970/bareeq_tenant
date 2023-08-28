@@ -2,6 +2,8 @@ import 'package:Bareeq/app/modules/add_work_permit/views/add_work_permit_view.da
 import 'package:Bareeq/app/modules/auth/views/recover_account_view.dart';
 import 'package:Bareeq/app/modules/cases/views/cases_view.dart';
 import 'package:Bareeq/app/modules/create_work_permit_item/views/create_work_permit_item_view.dart';
+import 'package:Bareeq/app/modules/profile/bindings/add_contact_binding.dart';
+import 'package:Bareeq/app/modules/profile/bindings/change_password_binding.dart';
 import 'package:Bareeq/app/modules/work_permits/views/work_permits_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
@@ -91,11 +93,11 @@ class ThemeAppPages {
     GetPage(
         name: Routes.addNewContact,
         page: () => const AddContactView(),
-        binding: ProfileBinding()),
+        binding: AddContactBinding()),
     GetPage(
         name: Routes.changePassword,
         page: () => const ChangePasswordView(),
-        binding: ProfileBinding()),
+        binding: ChangePasswordBinding()),
     GetPage(
         name: Routes.workPermits,
         page: () => const WorkPermitsView(),

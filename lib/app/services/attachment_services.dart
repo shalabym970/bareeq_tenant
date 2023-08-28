@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:Bareeq/common/constants.dart';
 import 'package:Bareeq/common/strings/strings.dart';
 import 'package:Bareeq/common/widgets/ui.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'dart:io';
 
@@ -49,6 +50,7 @@ class AttachmentServices {
     return '';
   }
 
+  /// Save file on device
   static downloadBase64File(
       {required String fileName,
       required String mimeType,
@@ -70,5 +72,23 @@ class AttachmentServices {
   static String getFileExtension(String fileName) {
     final dotIndex = fileName.lastIndexOf('.');
     return dotIndex != -1 ? fileName.substring(dotIndex + 1) : '';
+  }
+
+  ///pick file from device
+
+  static Future<File?> pickFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'pdf', 'doc','png'],
+    );
+
+    if (result != null) {
+      File file = File(result.files.single.path!);
+
+      return file;
+    } else {
+      Ui.showToast(content: Strings.notSelectFile);
+      return null;
+    }
   }
 }

@@ -20,6 +20,9 @@ class Constants {
       "Method Statement Attachment";
   static const String workPermitRiskAssessmentAttachment =
       "Risk Assessment Attachment";
-  static const String downloadPath =
-      "/storage/emulated/0/Download/";
+  static const String downloadPath = "/storage/emulated/0/Download/";
+  static const String cprFile = "cprAttach";
+  static const String insuranceFile = "insuranceAttach";
+  static const String methodFile = "methodAttach";
+  static const String riskFile = "riskAttach";
 }

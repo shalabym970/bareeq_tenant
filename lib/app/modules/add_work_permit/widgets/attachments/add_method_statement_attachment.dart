@@ -1,12 +1,12 @@
-import 'package:Bareeq/app/modules/work_permit_details/widgets/attachments/work_permit_attachment_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../common/constants.dart';
 import '../../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../../common/widgets/upload_file_widget.dart';
+import '../../../../services/attachment_services.dart';
 import '../../controllers/add_work_permit_controller.dart';
+import 'added_attachment_widget.dart';
 
 class AddMethodStatementAttachment extends GetView<AddWorkPermitController> {
   const AddMethodStatementAttachment({Key? key}) : super(key: key);
@@ -21,14 +21,14 @@ class AddMethodStatementAttachment extends GetView<AddWorkPermitController> {
           children: [
             Text(Constants.workPermitMethodStatementAttachment,
                 style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400)),
-            Obx(() => controller.loadingMethodAttach.isTrue
-                ? Padding(
-                    padding: EdgeInsets.symmetric(vertical: 5.h),
-                    child: ShimmerWidget.rectangular(height: 50.h))
-                : controller.methodAttach.value.filename == null
-                    ? const UploadFileWidget()
-                    : WorkPermitAttachmentWidget(
-                        attachment: controller.methodAttach.value)),
+            Obx(() => controller.methodAttach.value == null
+                    ? InkWell(
+                onTap: () {
+                  controller.selectFile(fileType: Constants.methodFile);
+                },
+                child: const UploadFileWidget())
+                    : AddedAttachmentWidget(
+                        file: controller.methodAttach.value!)),
           ],
         ));
   }

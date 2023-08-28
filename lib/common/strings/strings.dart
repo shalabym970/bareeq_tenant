@@ -114,11 +114,11 @@ class Strings {
   static const String youAreChangePass =
       'You are about to change your Account\'s Password';
   static const String currentPassword = 'Current Password';
-  static const String enterCurrentPass = 'Please enter your current password';
+  static const String enterCurrentPass = 'Enter current password';
   static const String newPass = 'New Password';
-  static const String enterNewPass = 'Please enter the new password';
+  static const String enterNewPass = 'Enter the new password';
   static const String confirmPassword = 'Confirm New Password';
-  static const String enterNewPassAgain = 'Please enter the new password again';
+  static const String enterNewPassAgain = 'Confirm password';
   static const String activity = 'Activity';
   static const String activityTitle = 'Activity Title';
   static const String remarks = 'Remarks';
@@ -207,4 +207,5 @@ class Strings {
   static const String help = 'Help & Support';
   static const String privacyPolicy = 'Privacy Policy';
   static const String confirm = 'Confirm';
+  static const String notSelectFile = 'No File Selected';
 }

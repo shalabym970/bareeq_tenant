@@ -78,53 +78,50 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                     Expanded(
                         flex: 1,
                         child: GestureDetector(
-                          onTap: () {
-                            controller.selectDate(dateTypeIsStart: true);
-                          },
-                          child: Obx(() => CustomTextField(
-                              stringSuffixIcon: ImagePaths.deleteCalendar,
-                              enabled: false,
-                              height: 35.h,
-                              hint: controller.selectedStartDate.value,
-                              controller: controller.startDateController,
-                              labelWidget: Text(Strings.startDate,
-                                  style: TextStyle(
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: ColorManager.mainColor)))),
-                        )),
+                            onTap: () {
+                              controller.selectDate(dateTypeIsStart: true);
+                            },
+                            child: Obx(() => CustomTextField(
+                                stringSuffixIcon: ImagePaths.deleteCalendar,
+                                enabled: false,
+                                height: 35.h,
+                                hint: controller.selectedStartDate.value,
+                                controller: controller.startDateController,
+                                labelWidget: Text(Strings.startDate,
+                                    style: TextStyle(
+                                        fontSize: 10.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: ColorManager.mainColor)))))),
                     SizedBox(width: 15.w),
                     Expanded(
                         flex: 1,
                         child: GestureDetector(
-                          onTap: () {
-                            controller.selectDate(dateTypeIsStart: false);
-                          },
-                          child: Obx(() => CustomTextField(
-                              stringSuffixIcon: ImagePaths.deleteCalendar,
-                              enabled: false,
-                              height: 35.h,
-                              hint: controller.selectedEndDate.value,
-                              controller: controller.endDateController,
-                              labelWidget: Text(Strings.endDate,
-                                  style: TextStyle(
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: ColorManager.mainColor)))),
-                        ))
+                            onTap: () {
+                              controller.selectDate(dateTypeIsStart: false);
+                            },
+                            child: Obx(() => CustomTextField(
+                                stringSuffixIcon: ImagePaths.deleteCalendar,
+                                enabled: false,
+                                height: 35.h,
+                                hint: controller.selectedEndDate.value,
+                                controller: controller.endDateController,
+                                labelWidget: Text(Strings.endDate,
+                                    style: TextStyle(
+                                        fontSize: 10.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: ColorManager.mainColor))))))
                   ]),
                   SizedBox(height: 20.h),
                   CustomDropDown(
-                    value: controller.relatedUnitValue,
-                    onChange: (String? newValue) async {},
-                    items: controller.relatedUnitList.map((items) {
-                      return DropdownMenuItem<String>(
-                        value: items,
-                        child: Text(items),
-                      );
-                    }).toList(),
-                    label: Strings.relatedUnit,
-                  ),
+                      value: controller.relatedUnitValue,
+                      onChange: (String? newValue) async {},
+                      items: controller.relatedUnitList.map((items) {
+                        return DropdownMenuItem<String>(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      label: Strings.relatedUnit),
                   SizedBox(height: 10.h),
                   CustomDropDown(
                     value: controller.contractorValue,
@@ -150,6 +147,7 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                   CustomTextField(
                       hint: Strings.numberOfWorkers,
                       controller: controller.subjectController,
+                      keyboardType: TextInputType.number,
                       labelWidget: Text(Strings.numberOfWorkers,
                           style: TextStyle(
                               fontSize: 10.sp,
@@ -168,48 +166,42 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                     maxLines: 6,
                   ),
                   SizedBox(height: 20.h),
-                      const AttachmentTitlePublicWidget(),
-                      SizedBox(height: 20.h),
-                      const AddCprCardAttachment(),
-                      const AddInsuranceAttachment(),
-                      const AddMethodStatementAttachment(),
-                      const AddRiskAssessmentAttachment(),
+                  const AttachmentTitlePublicWidget(),
                   SizedBox(height: 20.h),
-                  Row(
-                    children: [
-                      Obx(() => Checkbox(
-                            checkColor: Colors.white,
-                            fillColor:
-                                MaterialStateProperty.all<Color>(Colors.black),
-                            value: controller.acceptResponsibilityCheck.value,
-                            onChanged: (bool? value) {
-                              controller.acceptResponsibilityCheck.value =
-                                  !controller.acceptResponsibilityCheck.value;
-                            },
-                          )),
-                      Expanded(
+                  const AddCprCardAttachment(),
+                  const AddInsuranceAttachment(),
+                  const AddMethodStatementAttachment(),
+                  const AddRiskAssessmentAttachment(),
+                  SizedBox(height: 20.h),
+                  Row(children: [
+                    Obx(() => Checkbox(
+                          checkColor: Colors.white,
+                          fillColor:
+                              MaterialStateProperty.all<Color>(Colors.black),
+                          value: controller.acceptResponsibilityCheck.value,
+                          onChanged: (bool? value) {
+                            controller.acceptResponsibilityCheck.value =
+                                !controller.acceptResponsibilityCheck.value;
+                          },
+                        )),
+                    Expanded(
                         child: RichText(
-                          text: TextSpan(
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: Strings.readAcceptResponse,
-                                  style: TextStyle(
-                                      fontSize: 12.sp,
-                                      color: ColorManager.black,
-                                      fontWeight: FontWeight.w500)),
-                              TextSpan(
-                                  text: Strings.acceptanceResponse,
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      fontSize: 12.sp,
-                                      color: ColorManager.mainColor,
-                                      fontWeight: FontWeight.w500))
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+                            text: TextSpan(children: <TextSpan>[
+                      TextSpan(
+                          text: Strings.readAcceptResponse,
+                          style: TextStyle(
+                              fontSize: 12.sp,
+                              color: ColorManager.black,
+                              fontWeight: FontWeight.w500)),
+                      TextSpan(
+                          text: Strings.acceptanceResponse,
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontSize: 12.sp,
+                              color: ColorManager.mainColor,
+                              fontWeight: FontWeight.w500))
+                    ])))
+                  ]),
                   SizedBox(height: 20.h),
                   PrimaryButton(
                       title: Strings.addWorkPermit,

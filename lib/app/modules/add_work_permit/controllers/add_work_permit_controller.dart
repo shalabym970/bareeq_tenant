@@ -1,9 +1,11 @@
+import 'package:Bareeq/app/services/attachment_services.dart';
 import 'package:Bareeq/common/color_manager.dart';
+import 'package:Bareeq/common/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../../../../common/strings/strings.dart';
-import '../../../models/document.dart';
+import 'dart:io';
 
 class AddWorkPermitController extends GetxController {
   final subjectController = TextEditingController();
@@ -16,14 +18,10 @@ class AddWorkPermitController extends GetxController {
   final selectedStartDate = Strings.ddMMYY.obs;
   final endDate = Rxn<DateTime>();
   final selectedEndDate = Strings.ddMMYY.obs;
-  final cprAttach = Attachment().obs;
-  final insuranceAttach = Attachment().obs;
-  final methodAttach = Attachment().obs;
-  final riskAttach = Attachment().obs;
-  final loadingCprAttach = false.obs;
-  final loadingInsuranceAttach = false.obs;
-  final loadingMethodAttach = false.obs;
-  final loadingRiskAttach = false.obs;
+  final cprAttach = Rxn<File>();
+  final insuranceAttach = Rxn<File>();
+  final methodAttach = Rxn<File>();
+  final riskAttach = Rxn<File>();
   final relatedUnitValue = 'Unit 10 - Building 8';
   final relatedUnitList = <String>['Unit 10 - Building 8', 'fj', 'hgh', 'hghg'];
   final contractorValue = 'Contractor';
@@ -77,6 +75,18 @@ class AddWorkPermitController extends GetxController {
         selectedEndDate.value = formatter.format(endDate.value!);
         Get.log('==== End date Date : ${endDate.toString()} ===');
       }
+    }
+  }
+
+  selectFile({required String fileType}) async {
+    if (fileType == Constants.cprFile) {
+      cprAttach.value = await AttachmentServices.pickFile();
+    } else if (fileType == Constants.insuranceFile) {
+      insuranceAttach.value = await AttachmentServices.pickFile();
+    } else if (fileType == Constants.methodFile) {
+      methodAttach.value = await AttachmentServices.pickFile();
+    } else {
+      riskAttach.value = await AttachmentServices.pickFile();
     }
   }
 }
