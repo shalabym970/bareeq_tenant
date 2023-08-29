@@ -214,4 +214,11 @@ class Strings {
   static const String enterDetails = 'Enter Details';
   static const String selectStartDate = 'Select start date';
   static const String selectEndDate = 'Select end date';
+  static const String pleaseAcceptResponsibility =
+      'Please Accept the Responsibility';
+  static const String enterCompanyName = 'Enter Company Name';
+  static const String enterFirstName = 'Enter First Name';
+  static const String enterLastName = 'Enter Last Name';
+  static const String enterEmail = 'Enter Email';
+  static const String enterPhone = 'Enter Phone Number';
 }

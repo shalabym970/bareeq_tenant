@@ -1,6 +1,7 @@
 import 'package:Bareeq/app/services/attachment_services.dart';
 import 'package:Bareeq/common/color_manager.dart';
 import 'package:Bareeq/common/constants.dart';
+import 'package:Bareeq/common/widgets/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -8,11 +9,6 @@ import '../../../../common/strings/strings.dart';
 import 'dart:io';
 
 class AddWorkPermitController extends GetxController {
-  final subjectController = TextEditingController();
-  TextEditingController startDateController = TextEditingController();
-  TextEditingController endDateController = TextEditingController();
-  final numberOfWorkersController = TextEditingController();
-  final detailsController = TextEditingController();
   final standardCheck = true.obs;
   final urgentCheck = false.obs;
   final acceptResponsibilityCheck = false.obs;
@@ -29,6 +25,11 @@ class AddWorkPermitController extends GetxController {
   final contractorValue = 'Contractor';
   final contractorList = <String>['Contractor', 'fj', 'hgh', 'hghg'];
   final addWorkPermitKey = GlobalKey<FormState>();
+  final numberOfWorkersController = TextEditingController();
+  final detailsController = TextEditingController();
+  final subjectController = TextEditingController();
+  TextEditingController startDateController = TextEditingController();
+  TextEditingController endDateController = TextEditingController();
   File? file;
 
   Future<void> selectDate({required bool dateTypeIsStart}) async {
@@ -112,7 +113,11 @@ class AddWorkPermitController extends GetxController {
 
   submitWorkPermit() {
     if (addWorkPermitKey.currentState!.validate()) {
-      addWorkPermitKey.currentState?.save();
+      if (acceptResponsibilityCheck.isTrue) {
+        addWorkPermitKey.currentState?.save();
+      } else {
+        Ui.showToast(content: Strings.pleaseAcceptResponsibility, error: true);
+      }
     }
   }
 }

@@ -61,3 +61,4 @@ class WorkPermitApi extends GetxService {
 
 
 }
+//http://blive-crm/BAR/api/data/v9.1/advanced_units?$select=advanced_name&$expand=advanced_advanced_unit_advanced_propertycontract($select=advanced_propertycontractid;$expand=advanced_contactid($select=contactid;$filter=(contactid eq 'b5cd583c-ef58-ed11-93c4-6045bd0f6dd1')))&$filter=(advanced_advanced_unit_advanced_propertycontract/any(o1:(o1/advanced_propertycontractid ne null)))&$top=50

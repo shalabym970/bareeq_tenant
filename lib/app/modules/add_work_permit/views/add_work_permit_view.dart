@@ -18,6 +18,8 @@ import '../widgets/attachments/add_cpr_card_attachment.dart';
 import '../widgets/attachments/add_insurance_attachment.dart';
 import '../widgets/attachments/add_method_statement_attachment.dart';
 import '../widgets/attachments/add_risk_assessment_attachment.dart';
+import '../widgets/contractor_drop_down_widget.dart';
+import '../widgets/related_unit_drop_down_widget.dart';
 
 class AddWorkPermitView extends GetView<AddWorkPermitController> {
   const AddWorkPermitView({super.key});
@@ -122,28 +124,9 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                                             isRequired: true)))))
                           ]),
                           SizedBox(height: 20.h),
-                          CustomDropDown(
-                              value: controller.relatedUnitValue,
-                              onChange: (String? newValue) async {},
-                              items: controller.relatedUnitList.map((items) {
-                                return DropdownMenuItem<String>(
-                                  value: items,
-                                  child: Text(items),
-                                );
-                              }).toList(),
-                              label: Strings.relatedUnit),
+                          const RelatedUnitDropDownWidget(),
                           SizedBox(height: 10.h),
-                          CustomDropDown(
-                            value: controller.contractorValue,
-                            onChange: (String? newValue) async {},
-                            items: controller.contractorList.map((items) {
-                              return DropdownMenuItem<String>(
-                                value: items,
-                                child: Text(items),
-                              );
-                            }).toList(),
-                            label: Strings.contractor,
-                          ),
+                          const ContractorDropDownWidget(),
                           SizedBox(height: 20.h),
                           PrimaryButton(
                               title: Strings.newContractor,
@@ -191,8 +174,10 @@ class AddWorkPermitView extends GetView<AddWorkPermitController> {
                         color: ColorManager.red, size: 8.sp),
                     Obx(() => Checkbox(
                           checkColor: Colors.white,
-                          fillColor:
-                              MaterialStateProperty.all<Color>(Colors.black),
+                          fillColor: MaterialStateProperty.all<Color>(
+                              controller.acceptResponsibilityCheck.isTrue
+                                  ? ColorManager.mainColor
+                                  : ColorManager.red),
                           value: controller.acceptResponsibilityCheck.value,
                           onChanged: (bool? value) {
                             controller.acceptResponsibilityCheck.value =

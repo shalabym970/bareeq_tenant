@@ -1,4 +1,4 @@
-import 'package:Bareeq/common/widgets/custom_checkbox.dart';
+import 'package:Bareeq/common/widgets/label_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -17,85 +17,90 @@ class AddContractorView extends GetView<AddContractorController> {
     return SafeArea(
       child: Scaffold(
           body: Padding(
-              padding: EdgeInsets.only(right: 20.w, left: 20.w),
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: SingleChildScrollView(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                    SizedBox(
-                      height: 25.h,
-                    ),
                     const Align(
                         alignment: Alignment.topLeft, child: BackButton()),
-                    Text(Strings.addContractor,
-                        style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500,
-                            color: ColorManager.black)),
-                    SizedBox(
-                      height: 40.h,
-                    ),
-                    CustomTextField(
-                        hint: Strings.companyName,
-                        controller: controller.companyNameController,
-                        labelWidget: Text(Strings.companyName,
-                            style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w500,
-                                color: ColorManager.mainColor))),
-                    SizedBox(height: 30.h),
-                    Row(
-                      children: [
-                        Expanded(
-                            child: CustomTextField(
-                          hint: Strings.firstName,
-                          controller: controller.firstNameController,
-                          labelWidget: Text(
-                            Strings.firstName,
-                            style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w500,
-                                color: ColorManager.mainColor),
-                          ),
+                    Form(
+                        key: controller.addWorkPermitKey,
+                        child: Column(
+                          children: [
+                            Text(Strings.addContractor,
+                                style: TextStyle(
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: ColorManager.black)),
+                            SizedBox(
+                              height: 40.h,
+                            ),
+                            CustomTextField(
+                                hint: Strings.companyName,
+                                controller: controller.companyNameController,
+                                validator: (value) => value!.isEmpty
+                                    ? Strings.enterCompanyName
+                                    : null,
+                                labelWidget: const LabelTextField(
+                                    label: Strings.companyName,
+                                    isRequired: true)),
+                            SizedBox(height: 30.h),
+                            Row(
+                              children: [
+                                Expanded(
+                                    child: CustomTextField(
+                                        hint: Strings.firstName,
+                                        controller:
+                                            controller.firstNameController,
+                                        validator: (value) => value!.isEmpty
+                                            ? Strings.enterFirstName
+                                            : null,
+                                        labelWidget: const LabelTextField(
+                                            label: Strings.firstName,
+                                            isRequired: true))),
+                                SizedBox(width: 20.w),
+                                Expanded(
+                                    child: CustomTextField(
+                                        hint: Strings.lastName,
+                                        controller:
+                                            controller.lastNameController,
+                                        validator: (value) => value!.isEmpty
+                                            ? Strings.enterLastName
+                                            : null,
+                                        labelWidget: const LabelTextField(
+                                            label: Strings.lastName,
+                                            isRequired: true)))
+                              ],
+                            ),
+                            SizedBox(height: 30.h),
+                            CustomTextField(
+                                hint: Strings.email,
+                                controller: controller.emailController,
+                                keyboardType: TextInputType.emailAddress,
+                                validator: (value) =>
+                                    value!.isEmpty ? Strings.enterEmail : null,
+                                labelWidget: const LabelTextField(
+                                    label: Strings.email, isRequired: true)),
+                            SizedBox(height: 30.h),
+                            CustomTextField(
+                                hint: Strings.phoneNumber,
+                                controller: controller.phoneController,
+                                keyboardType: TextInputType.phone,
+                                validator: (value) =>
+                                    value!.isEmpty ? Strings.enterPhone : null,
+                                labelWidget: const LabelTextField(
+                                    label: Strings.phoneNumber,
+                                    isRequired: true)),
+                          ],
                         )),
-                        SizedBox(width: 20.w),
-                        Expanded(
-                            child: CustomTextField(
-                          hint: Strings.lastName,
-                          controller: controller.lastNameController,
-                          labelWidget: Text(
-                            Strings.lastName,
-                            style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w500,
-                                color: ColorManager.mainColor),
-                          ),
-                        ))
-                      ],
-                    ),
-                    SizedBox(height: 30.h),
-                    CustomTextField(
-                        hint: Strings.email,
-                        controller: controller.emailController,
-                        labelWidget: Text(Strings.email,
-                            style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w500,
-                                color: ColorManager.mainColor))),
-                    SizedBox(height: 30.h),
-                    CustomTextField(
-                        hint: Strings.phoneNumber,
-                        controller: controller.phoneController,
-                        labelWidget: Text(Strings.phoneNumber,
-                            style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w500,
-                                color: ColorManager.mainColor))),
                     SizedBox(height: 30.h),
                     PrimaryButton(
                         title: Strings.addContractor,
-                        onPressed: () {},
+                        onPressed: () {
+                          controller.submitNewContractor();
+                        },
                         height: 40.h,
                         backgroundColor: ColorManager.mainColor,
                         textAndIconColor: ColorManager.white),

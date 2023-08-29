@@ -1,9 +1,5 @@
-import 'package:Bareeq/common/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-
-import '../../../../common/strings/strings.dart';
 
 class AddContractorController extends GetxController {
   final companyNameController = TextEditingController();
@@ -11,4 +7,11 @@ class AddContractorController extends GetxController {
   final lastNameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
+  final addWorkPermitKey = GlobalKey<FormState>();
+
+  submitNewContractor() {
+    if (addWorkPermitKey.currentState!.validate()) {
+      addWorkPermitKey.currentState?.save();
+    }
+  }
 }

@@ -148,7 +148,7 @@ class Ui {
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 1,
-      backgroundColor: ColorManager.black,
+      backgroundColor: !error ? ColorManager.black : ColorManager.white,
       textColor: !error ? ColorManager.white : ColorManager.red,
     );
   }
