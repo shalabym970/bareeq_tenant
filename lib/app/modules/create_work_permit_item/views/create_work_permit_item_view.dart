@@ -36,26 +36,26 @@ class CreateWorkPermitItemView extends GetView<CreateWorkPermitItemController> {
                     children: [
                       CustomDropDown(
                         value: controller.relatedWorkPermitValue,
-                        onChange: (String? newValue) async {},
+                        onChange: ( newValue) async {},
                         items: controller.relatedWorkPermitList.map((items) {
                           return DropdownMenuItem<String>(
                             value: items,
                             child: Text(items),
                           );
                         }).toList(),
-                        label: Strings.relatedWorkPermit,
+                        label: Strings.relatedWorkPermit, hint: '',
                       ),
                       SizedBox(height: 20.h),
                       CustomDropDown(
                         value: controller.relatedWorkPermitValue,
-                        onChange: (String? newValue) async {},
+                        onChange: ( newValue) async {},
                         items: controller.relatedWorkPermitList.map((items) {
                           return DropdownMenuItem<String>(
                             value: items,
                             child: Text(items),
                           );
                         }).toList(),
-                        label: Strings.itemType,
+                        label: Strings.itemType, hint: '',
                       ),
                       SizedBox(height: 20.h),
                       CustomTextField(

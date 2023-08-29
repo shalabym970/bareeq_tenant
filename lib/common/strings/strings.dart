@@ -138,7 +138,9 @@ class Strings {
   static const String newCase = "New Case";
   static const String addCase = "Add Case";
   static const String caseType = "Case Type";
+  static const String selectCase = "Select Case";
   static const String natureOfCase = "Nature of Complaint";
+  static const String selectnatureOfCase = "Select Nature OfCase";
   static const String recoverAccountTitle =
       "You are about to Recover your Account's Password";
   static const String resetPassword = "Reset Password";
@@ -221,4 +223,5 @@ class Strings {
   static const String enterLastName = 'Enter Last Name';
   static const String enterEmail = 'Enter Email';
   static const String enterPhone = 'Enter Phone Number';
+  static const String selectUnit = 'Select Unit';
 }

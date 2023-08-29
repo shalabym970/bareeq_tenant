@@ -8,27 +8,26 @@ class CustomDropDown extends StatelessWidget {
       required this.value,
       required this.onChange,
       required this.items,
-      required this.label})
+      required this.label,
+      required this.hint})
       : super(key: key);
-  final String value;
+  final dynamic value;
   final String label;
+  final String hint;
 
-  final void Function(String?) onChange;
-  final List<DropdownMenuItem<String>> items;
+  final void Function(dynamic) onChange;
+  final List<DropdownMenuItem<dynamic>> items;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label,
-            style: TextStyle(
-                fontSize: 10.sp,
-                fontWeight: FontWeight.w500,
-                color: ColorManager.mainColor)),
-        Container(
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(label,
+          style: TextStyle(
+              fontSize: 10.sp,
+              fontWeight: FontWeight.w500,
+              color: ColorManager.mainColor)),
+      Container(
           color: ColorManager.textFieldBg,
-          height: 40.h,
           child: InputDecorator(
               decoration: InputDecoration(
                 enabledBorder: const UnderlineInputBorder(
@@ -36,22 +35,23 @@ class CustomDropDown extends StatelessWidget {
                 contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
               ),
               child: DropdownButtonHideUnderline(
-                child: DropdownButton<String>(
-                  value: value,
-                  style: TextStyle(
-                      color: ColorManager.mainColor,
-                      //<-- SEE HERE
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400),
-                  dropdownColor: ColorManager.white,
-                  icon: Icon(Icons.keyboard_arrow_down,
-                      color: ColorManager.mainColor),
-                  items: items,
-                  onChanged: onChange,
-                ),
-              )),
-        ),
-      ],
-    );
+                  child: DropdownButton<dynamic>(
+                      value: value,
+                      style: TextStyle(
+                          color: ColorManager.mainColor,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400),
+                      dropdownColor: ColorManager.white,
+                      icon: Icon(
+                        Icons.keyboard_arrow_down,
+                        color: ColorManager.mainColor,
+                        size: 20.sp,
+                      ),
+                      items: items,
+                      hint: Text(hint,
+                          style: TextStyle(
+                              color: ColorManager.mainColor, fontSize: 12.sp)),
+                      onChanged: onChange))))
+    ]);
   }
 }

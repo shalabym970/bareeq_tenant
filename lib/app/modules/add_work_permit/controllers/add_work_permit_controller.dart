@@ -5,14 +5,21 @@ import 'package:Bareeq/common/widgets/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
 import 'dart:io';
+
+import '../../../models/unit.dart';
+import '../../../repositories/work_permit_repo.dart';
 
 class AddWorkPermitController extends GetxController {
   final standardCheck = true.obs;
   final urgentCheck = false.obs;
   final acceptResponsibilityCheck = false.obs;
   final startDate = Rxn<DateTime>();
+  final loadingRelatedUnits = false.obs;
+  final errorRelatedUnits = false.obs;
+  final relatedUnitsList = <Unit>[].obs;
   final selectedStartDate = Strings.selectStartDate.obs;
   final endDate = Rxn<DateTime>();
   final selectedEndDate = Strings.selectEndDate.obs;
@@ -20,8 +27,7 @@ class AddWorkPermitController extends GetxController {
   final insuranceAttach = Rxn<File>();
   final methodAttach = Rxn<File>();
   final riskAttach = Rxn<File>();
-  final relatedUnitValue = 'Unit 10 - Building 8';
-  final relatedUnitList = <String>['Unit 10 - Building 8', 'fj', 'hgh', 'hghg'];
+  final relatedUnitValue = Unit().obs;
   final contractorValue = 'Contractor';
   final contractorList = <String>['Contractor', 'fj', 'hgh', 'hghg'];
   final addWorkPermitKey = GlobalKey<FormState>();
@@ -30,7 +36,14 @@ class AddWorkPermitController extends GetxController {
   final subjectController = TextEditingController();
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
+  WorkPermitRepo workPermitRepo = WorkPermitRepo();
   File? file;
+
+  @override
+  onInit() async{
+     getRelatedUnits();
+    super.onInit();
+  }
 
   Future<void> selectDate({required bool dateTypeIsStart}) async {
     if (dateTypeIsStart == true) {
@@ -118,6 +131,21 @@ class AddWorkPermitController extends GetxController {
       } else {
         Ui.showToast(content: Strings.pleaseAcceptResponsibility, error: true);
       }
+    }
+  }
+
+  void getRelatedUnits() async {
+    try {
+      errorRelatedUnits.value = false;
+      loadingRelatedUnits.value = true;
+      relatedUnitsList.assignAll(await workPermitRepo.getRelatedUnites());
+    } catch (e) {
+      errorRelatedUnits.value = true;
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when get related Unites : $e ==========');
+    } finally {
+      loadingRelatedUnits.value = false;
     }
   }
 }

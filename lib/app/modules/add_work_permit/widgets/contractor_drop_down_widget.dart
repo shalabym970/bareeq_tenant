@@ -12,14 +12,14 @@ class ContractorDropDownWidget extends GetView<AddWorkPermitController> {
   Widget build(BuildContext context) {
     return  CustomDropDown(
       value: controller.contractorValue,
-      onChange: (String? newValue) async {},
+      onChange: ( newValue) async {},
       items: controller.contractorList.map((items) {
         return DropdownMenuItem<String>(
           value: items,
           child: Text(items),
         );
       }).toList(),
-      label: Strings.contractor,
+      label: Strings.contractor, hint: ''
     );
   }
 }
