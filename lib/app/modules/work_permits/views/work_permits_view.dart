@@ -36,8 +36,8 @@ class WorkPermitsView extends GetView<WorkPermitsController> {
                 child: Scaffold(
                     appBar: customAppBar(title: Strings.workPermits),
                     body: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.w, vertical: 20.h),
+                      padding:
+                          EdgeInsets.only(right: 10.w, left: 10.w, top: 20.h),
                       child: SingleChildScrollView(
                         primary: false,
                         physics: const AlwaysScrollableScrollPhysics(),
@@ -85,7 +85,7 @@ class WorkPermitsView extends GetView<WorkPermitsController> {
                                               itemCount: controller
                                                   .searchingList.length,
                                               itemBuilder: ((_, index) {
-                                                WorkPermitModel workPermit =
+                                                WorkPermit workPermit =
                                                     controller.searchingList
                                                         .elementAt(index);
                                                 return WorkPermitItem(

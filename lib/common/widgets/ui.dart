@@ -368,9 +368,6 @@ class Ui {
             height: 30.h,
             backgroundColor: ColorManager.white,
             textAndIconColor: ColorManager.mainColor),
-        onConfirm: () {
-          Get.back();
-        },
         radius: 10.h);
   }
 }

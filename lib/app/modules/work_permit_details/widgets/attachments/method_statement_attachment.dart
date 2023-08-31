@@ -8,6 +8,7 @@ import '../../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../../common/widgets/error_widget.dart';
 import '../../../../../common/widgets/upload_file_widget.dart';
 import '../../../../models/document.dart';
+import '../../../../../common/widgets/uploaded_attachment_widget.dart';
 import '../../controllers/work_permit_details_controller.dart';
 
 class MethodStatementAttachment extends GetView<WorkPermitDetailsController> {
@@ -18,34 +19,46 @@ class MethodStatementAttachment extends GetView<WorkPermitDetailsController> {
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(Constants.workPermitMethodStatementAttachment,
-                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400)),
-            Obx(
-              () => controller.loadingMethodAttach.isTrue
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(Constants.workPermitMethodStatementAttachment,
+                  style:
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400)),
+              Obx(() => controller.loadingMethodAttach.isTrue
                   ? Padding(
                       padding: EdgeInsets.symmetric(vertical: 5.h),
                       child: ShimmerWidget.rectangular(height: 50.h))
                   : controller.errorMethodAttach.isTrue
                       ? CustomErrorWidget(iconWidth: 20.w, iconHeight: 20.h)
-                      : controller.methodAttach.isEmpty
-                          ? const UploadFileWidget()
-                          : ListView.builder(
-                              padding: EdgeInsets.symmetric(horizontal: 5.w),
-                              primary: false,
-                              shrinkWrap: true,
-                              itemCount: 1,
-                              itemBuilder: ((_, index) {
-                                Attachment attachment =
-                                    controller.methodAttach.elementAt(index);
-                                return WorkPermitAttachmentWidget(
-                                    attachment: attachment);
-                              }),
-                            ),
-            ),
-          ],
-        ));
+                      : controller.methodAttach.isEmpty&& controller.methodFile.value == null
+                          ? InkWell(
+                              onTap: () {
+                                controller.selectFile(
+                                    fileType: Constants.methodFile);
+                              },
+                              child: const UploadFileWidget())
+                          : controller.methodFile.value == null
+                              ? ListView.builder(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 5.w),
+                                  primary: false,
+                                  shrinkWrap: true,
+                                  itemCount: 1,
+                                  itemBuilder: ((_, index) {
+                                    Attachment attachment =
+                                        controller.methodAttach.first;
+                                    return WorkPermitAttachmentWidget(
+                                        attachment: attachment,
+                                        fileType: Constants.methodFile);
+                                  }),
+                                )
+                              : UploadedAttachmentWidget(
+                                  file: controller.methodFile.value!,
+                                  onPressedCancel: () =>
+                                      controller.methodFile.value = null,
+                                  onReplace: () => controller.selectFile(
+                                      fileType: Constants.methodFile)))
+            ]));
   }
 }

@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
-import '../../../common/widgets/ui.dart';
 import '../../models/case_model.dart';
 import '../../services/nltm_auhtorization_service.dart';
 import '../../services/session_services.dart';
@@ -29,8 +28,6 @@ class CasesApi {
           .map<Case>((obj) => Case.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
       throw Exception(response.reasonPhrase.toString());
     }
   }

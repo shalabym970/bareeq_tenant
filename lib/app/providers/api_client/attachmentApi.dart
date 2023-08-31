@@ -24,13 +24,10 @@ class AttachmentApi {
         response.statusCode == 204) {
       var decodeResponse =
           await NLTMAuthServices.decodeResponse(response: response);
-
       return decodeResponse['value']
           .map<Attachment>((obj) => Attachment.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
       throw Exception(response.reasonPhrase.toString());
     }
   }

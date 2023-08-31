@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../../../common/constants.dart';
 import '../../../../../common/widgets/upload_file_widget.dart';
 import '../../controllers/add_work_permit_controller.dart';
-import 'added_work_permit_attachment_widget.dart';
+import '../../../../../common/widgets/uploaded_attachment_widget.dart';
 
 class AddInsuranceAttachment extends GetView<AddWorkPermitController> {
   const AddInsuranceAttachment({Key? key}) : super(key: key);
@@ -20,16 +20,18 @@ class AddInsuranceAttachment extends GetView<AddWorkPermitController> {
               Text(Constants.workPermitInsuranceAttachment,
                   style:
                       TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400)),
-              Obx(() => controller.insuranceAttach.value == null
+              Obx(() => controller.insuranceFile.value == null
                   ? InkWell(
                       onTap: () {
                         controller.selectFile(
                             fileType: Constants.insuranceFile);
                       },
                       child: const UploadFileWidget())
-                  : AddedWorkPermitAttachmentWidget(
-                      file: controller.insuranceAttach.value!,
-                      fileType: Constants.insuranceFile)),
+                  : UploadedAttachmentWidget(
+                      file: controller.insuranceFile.value!,
+                      onPressedCancel: () => controller.insuranceFile.value = null,
+                      onReplace: () => controller.selectFile(
+                          fileType: Constants.insuranceFile))),
             ]));
   }
 }

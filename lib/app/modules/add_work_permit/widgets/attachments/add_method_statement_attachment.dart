@@ -6,7 +6,7 @@ import '../../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../../common/widgets/upload_file_widget.dart';
 import '../../../../services/attachment_services.dart';
 import '../../controllers/add_work_permit_controller.dart';
-import 'added_work_permit_attachment_widget.dart';
+import '../../../../../common/widgets/uploaded_attachment_widget.dart';
 
 class AddMethodStatementAttachment extends GetView<AddWorkPermitController> {
   const AddMethodStatementAttachment({Key? key}) : super(key: key);
@@ -21,15 +21,16 @@ class AddMethodStatementAttachment extends GetView<AddWorkPermitController> {
           children: [
             Text(Constants.workPermitMethodStatementAttachment,
                 style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400)),
-            Obx(() => controller.methodAttach.value == null
+            Obx(() => controller.methodFile.value == null
                 ? InkWell(
                     onTap: () {
                       controller.selectFile(fileType: Constants.methodFile);
                     },
                     child: const UploadFileWidget())
-                : AddedWorkPermitAttachmentWidget(
-                    file: controller.methodAttach.value!,
-                    fileType: Constants.methodFile)),
+                : UploadedAttachmentWidget(
+                    file: controller.methodFile.value!,
+                    onPressedCancel: () => controller.methodFile.value = null, onReplace: () =>Constants.methodFile
+                  )),
           ],
         ));
   }

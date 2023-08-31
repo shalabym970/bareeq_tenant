@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +13,7 @@ import 'common/color_manager.dart';
 import 'common/constants.dart';
 
 SharedPreferences? sharedPref;
+final encoding = Encoding.getByName('utf-8');
 
 Future initServices() async {
   Get.log('starting services ...');

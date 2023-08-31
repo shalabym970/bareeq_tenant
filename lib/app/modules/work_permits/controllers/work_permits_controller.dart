@@ -5,7 +5,7 @@ import '../../dashboard/controllers/dashboard_controller.dart';
 import '../../searching/abstract_searching.dart';
 
 class WorkPermitsController extends GetxController with Searching{
-  final searchingList = <WorkPermitModel>[].obs;
+  final searchingList = <WorkPermit>[].obs;
   final searchController = TextEditingController();
   final isSearching = false.obs;
   final focusNode = FocusNode();

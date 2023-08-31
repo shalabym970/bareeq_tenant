@@ -1,7 +1,6 @@
 import 'package:Bareeq/app/models/invoice_item.dart';
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
-import '../../../common/widgets/ui.dart';
 import '../../models/invoice.dart';
 import '../../services/nltm_auhtorization_service.dart';
 import '../../services/session_services.dart';
@@ -28,8 +27,6 @@ class InvoiceApi {
           .map<Invoice>((obj) => Invoice.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
       throw Exception(response.reasonPhrase.toString());
     }
   }
@@ -53,8 +50,6 @@ class InvoiceApi {
           .map<InvoiceItem>((obj) => InvoiceItem.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
       throw Exception(response.reasonPhrase.toString());
     }
   }

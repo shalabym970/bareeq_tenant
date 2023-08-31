@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
-import '../../../common/widgets/ui.dart';
 import '../../models/contact_model.dart';
 import '../../services/nltm_auhtorization_service.dart';
 
@@ -33,10 +32,7 @@ class ContactApi extends GetxService {
           .map<Contact>((obj) => Contact.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
       throw Exception(response.reasonPhrase.toString());
     }
   }
-
 }

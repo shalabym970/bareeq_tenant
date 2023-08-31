@@ -25,4 +25,9 @@ class Constants {
   static const String insuranceFile = "insuranceAttach";
   static const String methodFile = "methodAttach";
   static const String riskFile = "riskAttach";
+
+  static const headers = {
+    "Content-Type": "application/json",
+    "Prefer": "return=representation"
+  };
 }

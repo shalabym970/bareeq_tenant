@@ -39,13 +39,7 @@ class WorkPermitItem {
       );
 
   Map<String, dynamic> toJson() => {
-        "blser_workpermititemid": workPermitItemId,
-        "blser_id": id,
-        "createdon": createdOn?.toIso8601String(),
-        "_blser_workpermit_value": workPermitId,
-        "_ownerid_value": ownerId,
-        "_owningbusinessunit_value": owningBusinessUnitId,
-        "_createdby_value": createdById,
+        "blser_WorkPermit@odata.bind": "/blser_workpermits($workPermitId)",
         "blser_workdescription": description,
         "blser_worktype": type,
       };

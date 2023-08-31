@@ -2,7 +2,6 @@ import 'package:Bareeq/app/models/message.dart';
 import 'package:Bareeq/app/services/session_services.dart';
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
-import '../../../common/widgets/ui.dart';
 import '../../services/nltm_auhtorization_service.dart';
 
 class MessagesApi extends GetxService {
@@ -27,8 +26,6 @@ class MessagesApi extends GetxService {
           .map<MessageModel>((obj) => MessageModel.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
       throw Exception(response.reasonPhrase.toString());
     }
   }
@@ -60,8 +57,6 @@ class MessagesApi extends GetxService {
           .map<MessageModel>((obj) => MessageModel.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
       throw Exception(response.reasonPhrase.toString());
     }
   }

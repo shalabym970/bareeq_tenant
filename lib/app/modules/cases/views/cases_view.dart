@@ -37,7 +37,7 @@ class CasesView extends GetView<CasesController> {
                 appBar: customAppBar(title: Strings.cases),
                 body: Padding(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+                  EdgeInsets.only(right: 10.w, left: 10.w, top: 20.h),
                   child: SingleChildScrollView(
                       primary: false,
                       physics: const AlwaysScrollableScrollPhysics(),

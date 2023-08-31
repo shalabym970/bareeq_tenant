@@ -1,3 +1,5 @@
+import 'package:Bareeq/app/models/account_model.dart';
+import 'package:Bareeq/app/models/work_permit.dart';
 import 'package:Bareeq/app/services/attachment_services.dart';
 import 'package:Bareeq/common/color_manager.dart';
 import 'package:Bareeq/common/constants.dart';
@@ -8,40 +10,45 @@ import 'package:intl/intl.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
 import 'dart:io';
-
 import '../../../models/unit.dart';
 import '../../../repositories/work_permit_repo.dart';
+import '../../../services/session_services.dart';
 
 class AddWorkPermitController extends GetxController {
   final standardCheck = true.obs;
   final urgentCheck = false.obs;
   final acceptResponsibilityCheck = false.obs;
-  final startDate = Rxn<DateTime>();
+  final submitLoading = false.obs;
   final loadingRelatedUnits = false.obs;
   final errorRelatedUnits = false.obs;
+  final loadingContractors = false.obs;
+  final errorContractors = false.obs;
+  final startDate = Rxn<DateTime>();
   final relatedUnitsList = <Unit>[].obs;
   final selectedStartDate = Strings.selectStartDate.obs;
   final endDate = Rxn<DateTime>();
   final selectedEndDate = Strings.selectEndDate.obs;
-  final cprAttach = Rxn<File>();
-  final insuranceAttach = Rxn<File>();
-  final methodAttach = Rxn<File>();
-  final riskAttach = Rxn<File>();
-  final relatedUnitValue = Unit().obs;
-  final contractorValue = 'Contractor';
-  final contractorList = <String>['Contractor', 'fj', 'hgh', 'hghg'];
+  final cprFile = Rxn<File>();
+  final insuranceFile = Rxn<File>();
+  final methodFile = Rxn<File>();
+  final riskFile = Rxn<File>();
+  final relatedUnitValue = Rxn<Unit>();
+  final contractorValue = Rxn<Account>();
+  final contractorsList = <Account>[].obs;
   final addWorkPermitKey = GlobalKey<FormState>();
   final numberOfWorkersController = TextEditingController();
   final detailsController = TextEditingController();
   final subjectController = TextEditingController();
+  final _workPermit = WorkPermit().obs;
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
   WorkPermitRepo workPermitRepo = WorkPermitRepo();
   File? file;
 
   @override
-  onInit() async{
-     getRelatedUnits();
+  onInit() async {
+    getRelatedUnits();
+    getContractors();
     super.onInit();
   }
 
@@ -101,36 +108,78 @@ class AddWorkPermitController extends GetxController {
   selectFile({required String fileType}) async {
     if (fileType == Constants.cprFile) {
       file = await AttachmentServices.pickFile();
-      cprAttach.value =
-          cprAttach.value != null && file == null ? cprAttach.value : file;
+      cprFile.value =
+          cprFile.value != null && file == null ? cprFile.value : file;
       file = null;
     } else if (fileType == Constants.insuranceFile) {
       file = await AttachmentServices.pickFile();
-      insuranceAttach.value = insuranceAttach.value != null && file == null
-          ? insuranceAttach.value
+      insuranceFile.value = insuranceFile.value != null && file == null
+          ? insuranceFile.value
           : file;
       file = null;
     } else if (fileType == Constants.methodFile) {
       file = await AttachmentServices.pickFile();
-      methodAttach.value = methodAttach.value != null && file == null
-          ? methodAttach.value
+      methodFile.value = methodFile.value != null && file == null
+          ? methodFile.value
           : file;
       file = null;
     } else {
       file = await AttachmentServices.pickFile();
-      riskAttach.value =
-          riskAttach.value != null && file == null ? riskAttach.value : file;
+      riskFile.value =
+          riskFile.value != null && file == null ? riskFile.value : file;
       file = null;
     }
   }
 
-  submitWorkPermit() {
-    if (addWorkPermitKey.currentState!.validate()) {
-      if (acceptResponsibilityCheck.isTrue) {
-        addWorkPermitKey.currentState?.save();
+  submitWorkPermit() async {
+    try {
+      if (addWorkPermitKey.currentState!.validate()) {
+        if (relatedUnitValue.value != null) {
+          if (contractorValue.value != null) {
+            if (acceptResponsibilityCheck.isTrue) {
+              submitLoading.value = true;
+              addWorkPermitKey.currentState?.save();
+              _workPermit.value = WorkPermit(
+                  type: urgentCheck.value,
+                  subject: subjectController.text,
+                  startDate: startDate.value,
+                  endDate: endDate.value,
+                  contractor: contractorValue.value,
+                  relatedUnit: relatedUnitValue.value,
+                  description: detailsController.text,
+                  numberOfWorkers: int.parse(numberOfWorkersController.text),
+                  contract: relatedUnitValue.value?.contract?.first,
+                  customerId: Get.find<SessionServices>()
+                      .currentUser
+                      .value
+                      .account!
+                      .id);
+              await workPermitRepo.postWorkPermit(request: _workPermit.value);
+              Ui.showToast(content: Strings.workPermitAddedSuccessfuly);
+              Get.back();
+            } else {
+              Ui.showToast(
+                  content: ErrorStrings.pleaseAcceptResponsibility,
+                  error: true);
+            }
+          } else {
+            Ui.showToast(
+                content: ErrorStrings.pleaseSelectContractor, error: true);
+          }
+        } else {
+          Ui.showToast(
+              content: ErrorStrings.pleaseSelectRelatedUnit, error: true);
+        }
       } else {
-        Ui.showToast(content: Strings.pleaseAcceptResponsibility, error: true);
+        Ui.showToast(content: ErrorStrings.pleaseFillFields, error: true);
       }
+    } catch (e) {
+      submitLoading.value = false;
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.failedAddWorkPermit));
+      Get.log('========== Error when create work permit : $e ==========');
+    } finally {
+      submitLoading.value = false;
     }
   }
 
@@ -146,6 +195,21 @@ class AddWorkPermitController extends GetxController {
       Get.log('========== Error when get related Unites : $e ==========');
     } finally {
       loadingRelatedUnits.value = false;
+    }
+  }
+
+  void getContractors() async {
+    try {
+      errorContractors.value = false;
+      loadingContractors.value = true;
+      contractorsList.assignAll(await workPermitRepo.getContractors());
+    } catch (e) {
+      errorContractors.value = true;
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when get contractors : $e ==========');
+    } finally {
+      loadingContractors.value = false;
     }
   }
 }

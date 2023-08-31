@@ -7,6 +7,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'dart:io';
 
+import '../../common/strings/error_strings.dart';
+
 class AttachmentServices {
   static Future<String> convertBase64ToFile(
       {required String base64String, required String fileName}) async {
@@ -86,7 +88,7 @@ class AttachmentServices {
       File file = File(result.files.single.path!);
       return file;
     } else {
-      Ui.showToast(content: Strings.notSelectFile);
+      Ui.showToast(content: ErrorStrings.notSelectFile);
       return null;
     }
   }

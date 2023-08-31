@@ -9,6 +9,8 @@ import '../../../../common/widgets/ui.dart';
 import '../../../models/message.dart';
 import '../../../models/work_permit.dart';
 import '../../../repositories/work_permit_repo.dart';
+import 'dart:io';
+import '../../../services/attachment_services.dart';
 
 class WorkPermitDetailsController extends GetxController {
   final loadingWorkPermitItems = false.obs;
@@ -26,15 +28,20 @@ class WorkPermitDetailsController extends GetxController {
   final errorInsuranceAttach = false.obs;
   final errorMethodAttach = false.obs;
   final errorRiskAttach = false.obs;
+  final cprFile = Rxn<File>();
+  final insuranceFile = Rxn<File>();
+  final methodFile = Rxn<File>();
+  final riskFile = Rxn<File>();
   final cprAttach = <Attachment>[].obs;
   final insuranceAttach = <Attachment>[].obs;
   final methodAttach = <Attachment>[].obs;
   final riskAttach = <Attachment>[].obs;
-  bool screenEdited = true;
+  final submitLoading = false.obs;
   WorkPermitRepo workPermitRepo = WorkPermitRepo();
   MessagesRepo messagesRepo = MessagesRepo();
   AttachmentRepo attachmentRepo = AttachmentRepo();
-  WorkPermitModel workPermit = Get.arguments;
+  WorkPermit workPermit = Get.arguments;
+  File? file;
 
   @override
   onInit() {
@@ -44,8 +51,7 @@ class WorkPermitDetailsController extends GetxController {
     getInsuranceAttach();
     getMethodAttach();
     getRiskAttach();
-    Get.log(
-        '=========== workPermit id :  ${workPermit.workPermitId} ===========');
+    Get.log('=========== workPermit id :  ${workPermit.id} ===========');
     super.onInit();
   }
 
@@ -59,8 +65,8 @@ class WorkPermitDetailsController extends GetxController {
     try {
       errorMessages.value = false;
       loadingMessages.value = true;
-      messages.assignAll(await messagesRepo.getMessagesForRecord(
-          regardingId: workPermit.workPermitId!));
+      messages.assignAll(
+          await messagesRepo.getMessagesForRecord(regardingId: workPermit.id!));
     } catch (e) {
       errorMessages.value = true;
       Get.showSnackbar(
@@ -76,7 +82,7 @@ class WorkPermitDetailsController extends GetxController {
       errorWorkPermitItems.value = false;
       loadingWorkPermitItems.value = true;
       workPermitItems.assignAll(await workPermitRepo.getWorkPermitItems(
-          workPermitId: workPermit.workPermitId!));
+          workPermitId: workPermit.id!));
     } catch (e) {
       errorWorkPermitItems.value = true;
       Get.showSnackbar(
@@ -92,7 +98,7 @@ class WorkPermitDetailsController extends GetxController {
       errorCprAttach.value = false;
       loadingCprAttach.value = true;
       cprAttach.assignAll(await attachmentRepo.getAttachments(
-          recordId: workPermit.workPermitId!,
+          recordId: workPermit.id!,
           attachmentType: Constants.workPermitCprCardsAttachment));
     } catch (e) {
       errorCprAttach.value = true;
@@ -109,7 +115,7 @@ class WorkPermitDetailsController extends GetxController {
       errorInsuranceAttach.value = false;
       loadingInsuranceAttach.value = true;
       insuranceAttach.assignAll(await attachmentRepo.getAttachments(
-          recordId: workPermit.workPermitId!,
+          recordId: workPermit.id!,
           attachmentType: Constants.workPermitInsuranceAttachment));
     } catch (e) {
       errorInsuranceAttach.value = true;
@@ -126,7 +132,7 @@ class WorkPermitDetailsController extends GetxController {
       errorMethodAttach.value = false;
       loadingMethodAttach.value = true;
       methodAttach.assignAll(await attachmentRepo.getAttachments(
-          recordId: workPermit.workPermitId!,
+          recordId: workPermit.id!,
           attachmentType: Constants.workPermitMethodStatementAttachment));
     } catch (e) {
       errorMethodAttach.value = true;
@@ -144,7 +150,7 @@ class WorkPermitDetailsController extends GetxController {
       errorRiskAttach.value = false;
       loadingRiskAttach.value = true;
       riskAttach.assignAll(await attachmentRepo.getAttachments(
-          recordId: workPermit.workPermitId!,
+          recordId: workPermit.id!,
           attachmentType: Constants.workPermitRiskAssessmentAttachment));
     } catch (e) {
       errorRiskAttach.value = true;
@@ -153,6 +159,60 @@ class WorkPermitDetailsController extends GetxController {
       Get.log('========== Error when get Risk Attachment : $e ==========');
     } finally {
       loadingRiskAttach.value = false;
+    }
+  }
+
+  selectFile({required String fileType}) async {
+    if (fileType == Constants.cprFile) {
+      file = await AttachmentServices.pickFile();
+      cprFile.value =
+          cprFile.value != null && file == null ? cprFile.value : file;
+      file = null;
+    } else if (fileType == Constants.insuranceFile) {
+      file = await AttachmentServices.pickFile();
+      insuranceFile.value = insuranceFile.value != null && file == null
+          ? insuranceFile.value
+          : file;
+      file = null;
+    } else if (fileType == Constants.methodFile) {
+      file = await AttachmentServices.pickFile();
+      methodFile.value =
+          methodFile.value != null && file == null ? methodFile.value : file;
+      file = null;
+    } else {
+      file = await AttachmentServices.pickFile();
+      riskFile.value =
+          riskFile.value != null && file == null ? riskFile.value : file;
+      file = null;
+    }
+  }
+  //Todo : don't miss to implement this save work permit method
+  saveWorkPermit() {
+    try {
+      submitLoading.value = true;
+      Get.back();
+    } catch (e) {
+      submitLoading.value = false;
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when edit Work Permit : $e ==========');
+    } finally {
+      submitLoading.value = false;
+    }
+  }
+
+  //Todo : don't miss to implement this delete attachment method
+  deleteAttachament() {
+    try {
+      Get.back();
+      submitLoading.value = true;
+    } catch (e) {
+      submitLoading.value = false;
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when delete attachament : $e ==========');
+    } finally {
+      submitLoading.value = false;
     }
   }
 }

@@ -59,8 +59,9 @@ class Case {
         id: json["blser_caseid"],
         description: json["blser_description"],
         accountId: json["_blser_account_value"],
-        messages: List<MessageModel>.from(
-            json["blser_case_blser_portalmessageses"]
+        messages: json["blser_case_blser_portalmessageses"] == null
+            ? []
+            : List<MessageModel>.from(json["blser_case_blser_portalmessageses"]
                 .map((x) => MessageModel.fromJson(x))),
         unit: Unit.fromJson(json["blser_LeaseUnit"]),
         property: Project.fromJson(json["blser_RelatedProject"]),

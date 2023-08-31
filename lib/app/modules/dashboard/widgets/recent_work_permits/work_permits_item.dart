@@ -10,7 +10,7 @@ import '../../../../routes/app_routes.dart';
 
 class WorkPermitItem extends StatelessWidget {
   const WorkPermitItem({Key? key, required this.workPermit}) : super(key: key);
-  final WorkPermitModel workPermit;
+  final WorkPermit workPermit;
 
   @override
   Widget build(BuildContext context) {

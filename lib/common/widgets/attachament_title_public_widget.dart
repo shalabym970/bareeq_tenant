@@ -8,13 +8,20 @@ class AttachmentTitlePublicWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.h),
-      child: Text(
-        Strings.attachments,
-        style: TextStyle(
-            fontSize: 14.sp, fontWeight: FontWeight.w500),
-      ),
-    );
+    return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.h),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+          Text(
+            Strings.attachments,
+            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
+          ),
+          SizedBox(height: 5.h),
+          Text(
+            '(jpg , pdf , doc , png , txt , jpeg)',
+            style: TextStyle(fontSize: 9.sp, fontWeight: FontWeight.w400),
+          ),
+        ]));
   }
 }

@@ -1,7 +1,6 @@
 import 'package:Bareeq/app/models/lease_model.dart';
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
-import '../../../common/widgets/ui.dart';
 import '../../services/nltm_auhtorization_service.dart';
 import '../../services/session_services.dart';
 
@@ -29,8 +28,6 @@ class LeasesApi {
           .map<LeaseModel>((obj) => LeaseModel.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
       throw Exception(response.reasonPhrase.toString());
     }
   }

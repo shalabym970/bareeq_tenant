@@ -58,8 +58,6 @@ class FitOutApi extends GetxService {
           .map<FitOutStepModel>((obj) => FitOutStepModel.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
       throw Exception(response.reasonPhrase.toString());
     }
   }

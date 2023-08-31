@@ -39,7 +39,7 @@ class RecentWorkPermitsList extends GetView<DashboardController> {
                               ? 3
                               : controller.workPermits.length,
                           itemBuilder: ((_, index) {
-                            WorkPermitModel workPermit =
+                            WorkPermit workPermit =
                                 controller.workPermits.elementAt(index);
 
                             return WorkPermitItem(workPermit: workPermit);

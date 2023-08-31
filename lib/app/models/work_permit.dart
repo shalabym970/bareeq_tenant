@@ -2,8 +2,9 @@ import 'package:Bareeq/app/models/unit.dart';
 import 'package:Bareeq/app/models/work_permit_item.dart';
 
 import 'account_model.dart';
+import 'contract.dart';
 
-class WorkPermitModel {
+class WorkPermit {
   String? subject;
   bool? type;
   String? contractorId;
@@ -12,7 +13,7 @@ class WorkPermitModel {
   DateTime? endDate;
   int? statusCode;
   String? description;
-  String? workPermitId;
+  String? id;
   int? numberOfWorkers;
   bool? riskAssessment;
   String? ownerId;
@@ -20,8 +21,9 @@ class WorkPermitModel {
   List<WorkPermitItem>? workPermitItems;
   Unit? relatedUnit;
   Account? contractor;
+  Contract? contract;
 
-  WorkPermitModel(
+  WorkPermit(
       {this.subject,
       this.type,
       this.contractorId,
@@ -30,17 +32,17 @@ class WorkPermitModel {
       this.endDate,
       this.statusCode,
       this.description,
-      this.workPermitId,
+      this.id,
       this.numberOfWorkers,
       this.riskAssessment,
       this.ownerId,
       this.workPermitItems,
       this.relatedUnit,
       this.comment,
-      this.contractor});
+      this.contractor,
+      this.contract});
 
-  factory WorkPermitModel.fromJson(Map<String, dynamic> json) =>
-      WorkPermitModel(
+  factory WorkPermit.fromJson(Map<String, dynamic> json) => WorkPermit(
         subject: json["blser_subject"],
         type: json["new_type"],
         contractorId: json["_blser_contractor_value"],
@@ -53,7 +55,7 @@ class WorkPermitModel {
             : DateTime.parse(json["blser_enddate"]),
         statusCode: json["statuscode"],
         description: json["blser_descriptionofwork"],
-        workPermitId: json["blser_workpermitid"],
+        id: json["blser_workpermitid"],
         numberOfWorkers: json["blser_numberofworkers"],
         riskAssessment: json["blser_riskassessment"],
         ownerId: json["_ownerid_value"],
@@ -67,17 +69,17 @@ class WorkPermitModel {
   Map<String, dynamic> toJson() => {
         "blser_subject": subject,
         "new_type": type,
-        "blser_Bareeqcomments": comment,
-        "_blser_contractor_value": contractorId,
-        "_blser_customer_value": customerId,
+        "blser_Contractor@odata.bind": "accounts(${contractor!.id})",
+        "blser_Customer_account@odata.bind": "/accounts($customerId)",
         "blser_startdate": startDate?.toIso8601String(),
         "blser_enddate": endDate?.toIso8601String(),
-        "statuscode": statusCode,
+        "statuscode": 1,
         "blser_descriptionofwork": description,
-        "blser_workpermitid": workPermitId,
         "blser_numberofworkers": numberOfWorkers,
-        "blser_riskassessment": riskAssessment,
-        "_ownerid_value": ownerId,
-        "blser_RelatedUnit": relatedUnit?.toJson(),
+        "blser_PropertyContract@odata.bind":
+            "advanced_propertycontracts(${contract!.id})",
+        "blser_RelatedProject@odata.bind":
+            "advanced_projects(${contract!.propertyID})",
+        "blser_RelatedUnit@odata.bind": "advanced_units(${relatedUnit!.id})",
       };
 }

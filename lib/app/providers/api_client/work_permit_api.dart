@@ -1,15 +1,17 @@
+import 'dart:convert';
+import 'package:Bareeq/app/models/account_model.dart';
 import 'package:Bareeq/app/models/unit.dart';
 import 'package:Bareeq/app/models/work_permit.dart';
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
-import '../../../common/widgets/ui.dart';
+import '../../../main.dart';
 import '../../models/work_permit_item.dart';
 import '../../services/nltm_auhtorization_service.dart';
 import '../../services/session_services.dart';
 
 class WorkPermitApi extends GetxService {
   /// Get work permits
-  static Future<List<WorkPermitModel>> getWorkPermits() async {
+  static Future<List<WorkPermit>> getWorkPermits() async {
     String url =
         '${Constants.baseUrl}blser_workpermits?\$select=blser_subject,new_type,statuscode,_blser_contractor_value,_blser_customer_value,'
         'blser_startdate,blser_enddate,blser_descriptionofwork,blser_workpermitid,blser_numberofworkers,blser_riskassessment,_ownerid_value,'
@@ -27,11 +29,9 @@ class WorkPermitApi extends GetxService {
       var decodeResponse =
           await NLTMAuthServices.decodeResponse(response: response);
       return decodeResponse['value']
-          .map<WorkPermitModel>((obj) => WorkPermitModel.fromJson(obj))
+          .map<WorkPermit>((obj) => WorkPermit.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
       throw Exception(response.reasonPhrase.toString());
     }
   }
@@ -59,8 +59,6 @@ class WorkPermitApi extends GetxService {
           .map<WorkPermitItem>((obj) => WorkPermitItem.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
       throw Exception(response.reasonPhrase.toString());
     }
   }
@@ -69,13 +67,14 @@ class WorkPermitApi extends GetxService {
   static Future<List<Unit>> getRelatedUnits() async {
     String url =
         "${Constants.baseUrl}advanced_units?\$select=advanced_name&\$expand=advanced_advanced_unit_advanced_propertycontract"
-        "(\$select=advanced_propertycontractid;\$expand=advanced_contactid(\$select=contactid;"
+        "(\$select=advanced_propertycontractid,_blser_property_value;\$expand=advanced_contactid(\$select=contactid;"
         "\$filter=(contactid eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId})))&"
         "\$filter=(advanced_advanced_unit_advanced_propertycontract/any(o1:(o1/advanced_propertycontractid ne null)))";
     var response = await NLTMAuthServices.client.get(Uri.parse(url),
         headers: {"Prefer": "odata.include-annotations=*"});
     Get.log('=============== related units url :  $url ==========');
-    Get.log('=============== related response url :  ${response.body} ==========');
+    Get.log(
+        '=============== related response url :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
@@ -86,9 +85,79 @@ class WorkPermitApi extends GetxService {
           .map<Unit>((obj) => Unit.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
       throw Exception(response.reasonPhrase.toString());
+    }
+  }
+
+  /// Get Contractors
+  static Future<List<Account>> getContractors() async {
+    String url = "${Constants.baseUrl}accounts?\$select=name";
+    var response = await NLTMAuthServices.client.get(Uri.parse(url),
+        headers: {"Prefer": "odata.include-annotations=*"});
+    Get.log('=============== Contractors url :  $url ==========');
+    Get.log(
+        '=============== Contractors response url :  ${response.body} ==========');
+    if (response.statusCode == 200 ||
+        response.statusCode == 201 ||
+        response.statusCode == 204) {
+      var decodeResponse =
+          await NLTMAuthServices.decodeResponse(response: response);
+
+      return decodeResponse['value']
+          .map<Account>((obj) => Account.fromJson(obj))
+          .toList();
+    } else {
+      throw Exception(response.reasonPhrase.toString());
+    }
+  }
+
+  /// Post Work Permit
+  static Future postWorkPermit({required WorkPermit request}) async {
+    String url = "${Constants.baseUrl}blser_workpermits";
+    Get.log("========== post Work permit url : $url ==========");
+
+    var response = await NLTMAuthServices.client
+        .post(Uri.parse(url),
+            headers: Constants.headers,
+            body: jsonEncode(request.toJson()),
+            encoding: encoding)
+        .catchError((error) {
+      Get.log(error.toString());
+    }).timeout(const Duration(seconds: 30));
+    var decodeResponse =
+        await NLTMAuthServices.decodeResponse(response: response);
+    if (response.statusCode == 200 ||
+        response.statusCode == 201 ||
+        response.statusCode == 204) {
+      Get.log(
+          '========== post Work permit response : $decodeResponse ==========');
+    } else {
+      throw Exception(decodeResponse['message']);
+    }
+  }
+
+  /// Post Work Permit item
+  static Future postWorkPermitItem({required WorkPermitItem request}) async {
+    String url = "${Constants.baseUrl}blser_workpermititems";
+    Get.log("========== post Work permit Itm url : $url ==========");
+
+    var response = await NLTMAuthServices.client
+        .post(Uri.parse(url),
+            headers: Constants.headers,
+            body: jsonEncode(request.toJson()),
+            encoding: encoding)
+        .catchError((error) {
+      Get.log(error.toString());
+    }).timeout(const Duration(seconds: 30));
+    var decodeResponse =
+        await NLTMAuthServices.decodeResponse(response: response);
+    if (response.statusCode == 200 ||
+        response.statusCode == 201 ||
+        response.statusCode == 204) {
+      Get.log(
+          '========== post Work permit Item  response : $decodeResponse ==========');
+    } else {
+      throw Exception(decodeResponse['message']);
     }
   }
 }

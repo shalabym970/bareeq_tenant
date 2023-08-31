@@ -204,24 +204,26 @@ class Strings {
       'You have modified the case data and did not save it. Do you want to save it ?';
   static const String saveWorkPermitData =
       'You have modified the work permit data and did not save it. Do you want to save it ?';
+  static const String deleteAttachmentDiscreption =
+      'Are you sure to want deleting this attachment from this work permit ?';
   static const String discard = 'Discard';
   static const String help = 'Help & Support';
   static const String privacyPolicy = 'Privacy Policy';
   static const String confirm = 'Confirm';
-  static const String notSelectFile = 'No File Selected';
+  static const String delete = 'Delete';
   static const String replace = 'Replace';
-  static const String enterSubject = 'Enter the subject';
-  static const String enter = 'Enter subject';
-  static const String enterWorkerNumber = 'Enter workers number';
-  static const String enterDetails = 'Enter Details';
-  static const String selectStartDate = 'Select start date';
-  static const String selectEndDate = 'Select end date';
-  static const String pleaseAcceptResponsibility =
-      'Please Accept the Responsibility';
   static const String enterCompanyName = 'Enter Company Name';
   static const String enterFirstName = 'Enter First Name';
   static const String enterLastName = 'Enter Last Name';
   static const String enterEmail = 'Enter Email';
   static const String enterPhone = 'Enter Phone Number';
   static const String selectUnit = 'Select Unit';
+  static const String selectStartDate = 'Select start date';
+  static const String selectEndDate = 'Select end date';
+  static const String workPermitAddedSuccessfuly =
+      'Work Permit is Added Successfuly ';
+  static const String caseAddedSuccessfuly =
+      'Case is Added Successfuly ';
+  static const String workPermitItemAddedSuccessfuly =
+      'Work Permit Item is Added Successfuly ';
 }
