@@ -29,8 +29,9 @@ class AddMethodStatementAttachment extends GetView<AddWorkPermitController> {
                     child: const UploadFileWidget())
                 : UploadedAttachmentWidget(
                     file: controller.methodFile.value!,
-                    onPressedCancel: () => controller.methodFile.value = null, onReplace: () =>Constants.methodFile
-                  )),
+                    onPressedCancel: () => controller.methodFile.value = null,
+                    onReplace: () =>
+                        controller.selectFile(fileType: Constants.methodFile)))
           ],
         ));
   }

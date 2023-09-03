@@ -81,7 +81,7 @@ class DashboardController extends GetxController {
     }
   }
 
-  void getWorkPermits() async {
+  getWorkPermits() async {
     try {
       errorWorkPermits.value = false;
       loadingWorkPermits.value = true;

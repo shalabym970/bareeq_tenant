@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../common/color_manager.dart';
+import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_drawer.dart';
@@ -41,7 +42,7 @@ class AddContractorView extends GetView<AddContractorController> {
                                 hint: Strings.companyName,
                                 controller: controller.companyNameController,
                                 validator: (value) => value!.isEmpty
-                                    ? Strings.enterCompanyName
+                                    ? ErrorStrings.enterCompanyName
                                     : null,
                                 labelWidget: const LabelTextField(
                                     label: Strings.companyName,
@@ -55,7 +56,7 @@ class AddContractorView extends GetView<AddContractorController> {
                                         controller:
                                             controller.firstNameController,
                                         validator: (value) => value!.isEmpty
-                                            ? Strings.enterFirstName
+                                            ? ErrorStrings.enterFirstName
                                             : null,
                                         labelWidget: const LabelTextField(
                                             label: Strings.firstName,
@@ -67,7 +68,7 @@ class AddContractorView extends GetView<AddContractorController> {
                                         controller:
                                             controller.lastNameController,
                                         validator: (value) => value!.isEmpty
-                                            ? Strings.enterLastName
+                                            ? ErrorStrings.enterLastName
                                             : null,
                                         labelWidget: const LabelTextField(
                                             label: Strings.lastName,
@@ -79,8 +80,9 @@ class AddContractorView extends GetView<AddContractorController> {
                                 hint: Strings.email,
                                 controller: controller.emailController,
                                 keyboardType: TextInputType.emailAddress,
-                                validator: (value) =>
-                                    value!.isEmpty ? Strings.enterEmail : null,
+                                validator: (value) => value!.isEmpty
+                                    ? ErrorStrings.enterEmail
+                                    : null,
                                 labelWidget: const LabelTextField(
                                     label: Strings.email, isRequired: true)),
                             SizedBox(height: 30.h),
@@ -88,8 +90,9 @@ class AddContractorView extends GetView<AddContractorController> {
                                 hint: Strings.phoneNumber,
                                 controller: controller.phoneController,
                                 keyboardType: TextInputType.phone,
-                                validator: (value) =>
-                                    value!.isEmpty ? Strings.enterPhone : null,
+                                validator: (value) => value!.isEmpty
+                                    ? ErrorStrings.enterPhone
+                                    : null,
                                 labelWidget: const LabelTextField(
                                     label: Strings.phoneNumber,
                                     isRequired: true)),

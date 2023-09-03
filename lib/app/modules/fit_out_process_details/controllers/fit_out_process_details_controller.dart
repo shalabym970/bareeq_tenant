@@ -68,19 +68,5 @@ class FitOutProcessDetailsController extends GetxController {
     }
   }
 
-  String getFitOutStepStatus({required int statusNo}) {
-    if (statusNo == StatusNo.fitOutStepCompleted) {
-      return StatusString.fitOutStepCompleted;
-    } else if (statusNo == StatusNo.fitOutStepFurtherRequirementSubmitted) {
-      return StatusString.fitOutStepFurtherRequirementSubmitted;
-    } else if (statusNo == StatusNo.fitOutStepPending) {
-      return StatusString.fitOutStepPending;
-    } else if (statusNo == StatusNo.fitOutStepVerified) {
-      return StatusString.fitOutStepVerified;
-    } else if (statusNo == StatusNo.fitOutStepSkipped) {
-      return StatusString.fitOutStepSkipped;
-    } else {
-      return Strings.na;
-    }
-  }
+
 }

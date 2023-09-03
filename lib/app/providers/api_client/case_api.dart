@@ -14,7 +14,7 @@ class CasesApi {
         'blser_caseid,blser_description,_blser_account_value&'
         '\$expand=blser_case_blser_portalmessageses(\$select=subject,blser_messagetext,activityid,createdon)'
         ',blser_LeaseUnit(\$select=advanced_name,_bls_relatedleasecontract_value,statecode),blser_RelatedProject'
-        '(\$select=advanced_name,advanced_buildingno)&\$filter=(_blser_contact_value eq ${Get.find<SessionServices>().currentUser.value.contactId}) '
+        '(\$select=advanced_name,advanced_buildingno)&\$filter=(_blser_contact_value eq ${Get.find<SessionServices>().currentUser.value.id}) '
         'and (blser_RelatedProject/advanced_projectid ne null)&\$orderby=createdon desc';
     var response = await NLTMAuthServices.client.get(Uri.parse(url));
     Get.log('=============== Cases url :  $url ==========');

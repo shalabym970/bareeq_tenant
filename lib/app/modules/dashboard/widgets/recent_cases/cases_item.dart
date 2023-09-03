@@ -4,9 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import '../../../../../common/color_manager.dart';
+import '../../../../../common/constants.dart';
 import '../../../../../common/strings/strings.dart';
 import '../../../../routes/app_routes.dart';
-import '../../../../services/state_handler.dart';
+import '../../../../services/general_services.dart';
 import '../../controllers/dashboard_controller.dart';
 
 class CasesListItem extends GetView<DashboardController> {
@@ -64,8 +65,9 @@ class CasesListItem extends GetView<DashboardController> {
                                               color: ColorManager.mainColor)),
                                       SizedBox(height: 3.h),
                                       Text(
-                                          StateHandler.caseType(
-                                              statusNo: cases.status ?? 0),
+                                          GeneralServices.getKeyFromValue(
+                                              Constants.caseTypesMap,
+                                              cases.status ?? 0).toString(),
                                           style: TextStyle(
                                               fontSize: 10.sp,
                                               color: ColorManager.black))
@@ -103,8 +105,9 @@ class CasesListItem extends GetView<DashboardController> {
                                       ),
                                       SizedBox(height: 3.h),
                                       Text(
-                                          StateHandler.casePriority(
-                                              statusNo: cases.priority ?? 0),
+                                          GeneralServices.getKeyFromValue(
+                                              Constants.casePirorityMap,
+                                              cases.priority ?? 0),
                                           style: TextStyle(
                                               fontSize: 10.sp,
                                               color: ColorManager.black))
@@ -122,9 +125,9 @@ class CasesListItem extends GetView<DashboardController> {
                                             color: ColorManager.mainColor)),
                                     SizedBox(height: 3.h),
                                     Text(
-                                       intl.DateFormat('EEE d MMM y')
-                                                .format(cases.submittedOn!)
-                                                .toString(),
+                                        intl.DateFormat('EEE d MMM y')
+                                            .format(cases.submittedOn!)
+                                            .toString(),
                                         style: TextStyle(
                                             fontSize: 10.sp,
                                             color: ColorManager.black))

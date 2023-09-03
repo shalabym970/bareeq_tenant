@@ -17,30 +17,28 @@ class WorkPermitsList extends GetView<DashboardController> {
   Widget build(BuildContext context) {
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 8.h),
-        child: Obx(
-          () => controller.loadingWorkPermits.isTrue
-              ? VerticalListLoading(
-                  height: 62.h,
-                )
-              : controller.errorWorkPermits.isTrue
-                  ? CustomErrorWidget(
-                      iconWidth: 20.w,
-                      iconHeight: 20.h,
-                      fontSize: 15.sp,
-                    )
-                  : controller.workPermits.isEmpty
-                      ? const EmptyListWidget(message: Strings.workPermitsEmpty)
-                      : ListView.builder(
-                          padding: EdgeInsets.symmetric(vertical: 10.h),
-                          primary: false,
-                          shrinkWrap: true,
-                          itemCount: controller.workPermits.length,
-                          itemBuilder: ((_, index) {
-                            WorkPermit workPermit =
-                                controller.workPermits.elementAt(index);
-                            return WorkPermitItem(workPermit: workPermit);
-                          }),
-                        ),
-        ));
+        child: Obx(() => controller.loadingWorkPermits.isTrue
+            ? VerticalListLoading(
+                height: 62.h,
+              )
+            : controller.errorWorkPermits.isTrue
+                ? CustomErrorWidget(
+                    iconWidth: 20.w,
+                    iconHeight: 20.h,
+                    fontSize: 15.sp,
+                  )
+                : controller.workPermits.isEmpty
+                    ? const EmptyListWidget(message: Strings.workPermitsEmpty)
+                    : Scrollbar(
+                        child: ListView.builder(
+                            padding: EdgeInsets.symmetric(vertical: 10.h),
+                            primary: false,
+                            shrinkWrap: true,
+                            itemCount: controller.workPermits.length,
+                            itemBuilder: ((_, index) {
+                              WorkPermit workPermit =
+                                  controller.workPermits.elementAt(index);
+                              return WorkPermitItem(workPermit: workPermit);
+                            })))));
   }
 }

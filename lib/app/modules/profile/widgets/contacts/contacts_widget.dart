@@ -55,7 +55,7 @@ class ContactsWidget extends StatelessWidget {
               )
             ],
           ),
-          const ContactsList()
+         SizedBox( height: 0.3.sh, child: const ContactsList())
         ],
       ),
     );

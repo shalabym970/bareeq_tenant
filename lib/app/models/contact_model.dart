@@ -11,7 +11,7 @@ class Contact extends Equatable {
       this.callback,
       this.accountCustomerId,
       this.transactionCurrencyId,
-      this.contactId,
+      this.id,
       this.company,
       this.country,
       this.department,
@@ -32,7 +32,7 @@ class Contact extends Equatable {
   final String? callback;
   final String? accountCustomerId;
   final String? transactionCurrencyId;
-  final String? contactId;
+  final String? id;
   final String? company;
   final String? country;
   final String? department;
@@ -56,7 +56,7 @@ class Contact extends Equatable {
         callback: json["callback"],
         accountCustomerId: json["_parentcustomerid_value"],
         transactionCurrencyId: json["_transactioncurrencyid_value"],
-        contactId: json["contactid"],
+        id: json["contactid"],
         company: json["company"],
         country: json["blser_country"],
         department: json["department"],
@@ -68,26 +68,16 @@ class Contact extends Equatable {
         mobilePhone: json["mobilephone"],
         businessPhone: json["telephone1"],
         jobTile: json["jobtitle"],
-        account: Account.fromJson(json["parentcustomerid_account"]),
+        account: json["parentcustomerid_account"] != null
+            ? Account.fromJson(json["parentcustomerid_account"])
+            : null,
       );
 
   Map<String, dynamic> toJson() => {
         "emailaddress1": emailAddress,
-        "fullname": fullName,
-        "customersizecode": customerSizeCode,
-        "createdon": createdOn!.toIso8601String(),
-        "callback": callback,
-        "_parentcustomerid_value": accountCustomerId,
-        "_transactioncurrencyid_value": transactionCurrencyId,
-        "contactid": contactId,
-        "company": company,
-        "blser_country": country,
-        "department": department,
+        "parentcustomerid_account@odata.bind": "/accounts($accountCustomerId)",
         "lastname": lastName,
         "firstname": firstName,
-        'blser_password': password,
-        'bls_cprnumber': cprNumber,
-        'bls_crnumber': crNumber,
         'mobilephone': mobilePhone,
         'telephone1': businessPhone,
         "jobtitle": jobTile

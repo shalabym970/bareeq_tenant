@@ -7,6 +7,7 @@ class LoginRepository {
   Future<bool> getAllContacts(
       {required String email, required String password}) async {
     Contact potentialUser = Contact(emailAddress: email, password: password);
+
     bool authorizedUser = await checkUser(user: potentialUser);
     return authorizedUser;
   }

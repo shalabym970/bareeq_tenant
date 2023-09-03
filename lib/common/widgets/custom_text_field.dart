@@ -15,7 +15,6 @@ class CustomTextField extends StatelessWidget {
       this.width,
       this.height,
       this.enabled,
-      this.stringSuffixIcon,
       this.maxLines,
       this.obscureText = false,
       this.suffixIcon,
@@ -33,7 +32,6 @@ class CustomTextField extends StatelessWidget {
   final double? width;
   final double? height;
   final bool? enabled;
-  final String? stringSuffixIcon;
   final int? maxLines;
   final bool obscureText;
   final Widget? suffixIcon;
@@ -75,13 +73,7 @@ class CustomTextField extends StatelessWidget {
                                   fontSize: 10.sp,
                                   color: ColorManager.mainColor,
                                   fontWeight: FontWeight.w400),
-                              suffixIcon: stringSuffixIcon != null
-                                  ? Icon(
-                                      Icons.calendar_month_outlined,
-                                      size: 30.sp,
-                                      color: ColorManager.mainColor,
-                                    )
-                                  : null),
+                              suffixIcon: suffixIcon),
                           onSaved: onSaved,
                           validator: validator,
                           maxLines: obscureText == true ? 1 : maxLines,

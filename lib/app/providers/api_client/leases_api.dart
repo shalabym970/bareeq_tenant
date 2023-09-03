@@ -13,7 +13,7 @@ class LeasesApi {
         'new_commencementdate,advanced_contracttype,advanced_name,blser_brandname,new_erpcontractnumber,'
         'blser_leasenumber,advanced_contractstatus,advanced_rentamount&\$expand=advanced_unitid(\$select=advanced_name),'
         'blser_BrandShop(\$select=blser_name),blser_Property(\$select=advanced_name)'
-        '&\$filter=(_advanced_contactid_value eq ${Get.find<SessionServices>().currentUser.value.contactId}) '
+        '&\$filter=(_advanced_contactid_value eq ${Get.find<SessionServices>().currentUser.value.id}) '
         'and (advanced_unitid/advanced_unitid ne null) and (blser_BrandShop/blser_erpshopid ne null) and '
         '(blser_Property/advanced_projectid ne null)&\$orderby=createdon desc';
     var response = await NLTMAuthServices.client.get(Uri.parse(url));

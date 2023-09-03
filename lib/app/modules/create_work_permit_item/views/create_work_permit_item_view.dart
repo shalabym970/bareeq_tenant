@@ -25,7 +25,7 @@ class CreateWorkPermitItemView extends GetView<CreateWorkPermitItemController> {
           Padding(
               padding: EdgeInsets.only(
                   top: 30.h, right: 15.w, left: 15.w, bottom: 10.h),
-              child: Column(
+              child: SingleChildScrollView(child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -58,7 +58,7 @@ class CreateWorkPermitItemView extends GetView<CreateWorkPermitItemController> {
                             SizedBox(height: 50.h)
                           ])
                         ]))
-                  ])),
+                  ]))),
           Obx(() => Visibility(
               visible: controller.submitLoading.isTrue ? true : false,
               child: const Opacity(

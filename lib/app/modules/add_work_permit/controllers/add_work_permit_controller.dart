@@ -1,5 +1,6 @@
 import 'package:Bareeq/app/models/account_model.dart';
 import 'package:Bareeq/app/models/work_permit.dart';
+import 'package:Bareeq/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:Bareeq/app/services/attachment_services.dart';
 import 'package:Bareeq/common/color_manager.dart';
 import 'package:Bareeq/common/constants.dart';
@@ -119,9 +120,8 @@ class AddWorkPermitController extends GetxController {
       file = null;
     } else if (fileType == Constants.methodFile) {
       file = await AttachmentServices.pickFile();
-      methodFile.value = methodFile.value != null && file == null
-          ? methodFile.value
-          : file;
+      methodFile.value =
+          methodFile.value != null && file == null ? methodFile.value : file;
       file = null;
     } else {
       file = await AttachmentServices.pickFile();
@@ -137,8 +137,8 @@ class AddWorkPermitController extends GetxController {
         if (relatedUnitValue.value != null) {
           if (contractorValue.value != null) {
             if (acceptResponsibilityCheck.isTrue) {
-              submitLoading.value = true;
               addWorkPermitKey.currentState?.save();
+              submitLoading.value = true;
               _workPermit.value = WorkPermit(
                   type: urgentCheck.value,
                   subject: subjectController.text,
@@ -156,7 +156,8 @@ class AddWorkPermitController extends GetxController {
                       .id);
               await workPermitRepo.postWorkPermit(request: _workPermit.value);
               Ui.showToast(content: Strings.workPermitAddedSuccessfuly);
-              Get.back();
+              Get.back(
+                  result: Get.find<DashboardController>().getWorkPermits());
             } else {
               Ui.showToast(
                   content: ErrorStrings.pleaseAcceptResponsibility,

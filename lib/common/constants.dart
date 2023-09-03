@@ -30,4 +30,58 @@ class Constants {
     "Content-Type": "application/json",
     "Prefer": "return=representation"
   };
+
+  /// Work Permit Item TYPES
+  static const Map<String, int> workPermitItemTypesMap = {
+    "Carpentry": 550220000,
+    "Fit out": 550220001,
+    "Layout change": 550220002,
+    "Structural": 550220003,
+    "Electrical": 550220004,
+    "Snagging": 550220005,
+    "Flooring": 550220006,
+    "Decorating": 550220007,
+    "Painting": 550220008,
+    "Hot work": 550220009,
+    "Working on the Roof": 550220010,
+    "Other": 550220011
+  };
+
+  /// FIT OUT TYPES
+  static const Map<String, int> fitOuTTypesMap = {
+    'Approved': 550220005,
+    'Not Yet Started': 550220004,
+    'Rejected': 550220003,
+    'Completed': 550220002,
+    'In Progress': 550220001,
+    'Further requirement to be submitted': 550220000
+  };
+
+  /// FIT OUT STEPS TYPES
+  static const Map<String, int> fitOuTStepsTypesMap = {
+    'Further requirement to be submitted': 550220004,
+    "Skipped": 550220003,
+    'Verified': 550220002,
+    'Completed': 550220001,
+    'Pending': 550220000
+  };
+
+  /// CASE TYPES
+  static const Map<String, int> caseTypesMap = {
+    'Question': 550220000,
+    "Problem": 550220001,
+    'Request': 550220002,
+    'Handover': 550220003,
+    'Warranty': 550220004
+  };
+
+  /// CASES PRIORITY
+  static const Map<String, int> casePirorityMap = {
+    'High': 100000000,
+    'Normal': 100000001,
+    'Low': 100000002
+  };
+
+  /// CASES STATE
+  static const Map<String, int> caseStatesMap = {"Active": 1, "InActive": 0};
 }

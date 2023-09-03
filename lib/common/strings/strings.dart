@@ -212,18 +212,16 @@ class Strings {
   static const String confirm = 'Confirm';
   static const String delete = 'Delete';
   static const String replace = 'Replace';
-  static const String enterCompanyName = 'Enter Company Name';
-  static const String enterFirstName = 'Enter First Name';
-  static const String enterLastName = 'Enter Last Name';
-  static const String enterEmail = 'Enter Email';
-  static const String enterPhone = 'Enter Phone Number';
   static const String selectUnit = 'Select Unit';
   static const String selectStartDate = 'Select start date';
   static const String selectEndDate = 'Select end date';
+  static const String selectItemType = 'Select Item Type';
+  static const String id = 'ID: ';
+
   static const String workPermitAddedSuccessfuly =
       'Work Permit is Added Successfuly ';
-  static const String caseAddedSuccessfuly =
-      'Case is Added Successfuly ';
+  static const String contactAddedSuccessfuly = 'Contact is Added Successfuly ';
+  static const String caseAddedSuccessfuly = 'Case is Added Successfuly ';
   static const String workPermitItemAddedSuccessfuly =
       'Work Permit Item is Added Successfuly ';
 }

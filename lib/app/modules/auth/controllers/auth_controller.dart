@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/global_widgets.dart';
+import '../../../../common/widgets/ui.dart';
 import '../../../models/contact_model.dart';
 import '../../../repositories/login_repo.dart';
 import '../../../routes/app_routes.dart';
@@ -35,7 +36,10 @@ class AuthController extends GetxController {
         }
       }
     } catch (e) {
-      Get.log(' ========== error : $e ==========');
+      loading.value = false;
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.wrongEmailOrPassword));
+      Get.log('========== Error when login : $e ==========');
     } finally {
       loading.value = false;
     }

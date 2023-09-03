@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../common/color_manager.dart';
+import '../../../../../common/constants.dart';
 import '../../../../routes/app_routes.dart';
+import '../../../../services/general_services.dart';
 import '../../controllers/fit_out_process_details_controller.dart';
 
 class FitOutStepItem extends GetView<FitOutProcessDetailsController> {
@@ -14,7 +16,7 @@ class FitOutStepItem extends GetView<FitOutProcessDetailsController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.activity,arguments: fitOutStep);
+        Get.toNamed(Routes.activity, arguments: fitOutStep);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -49,8 +51,8 @@ class FitOutStepItem extends GetView<FitOutProcessDetailsController> {
                   height: 5.h,
                 ),
                 Text(
-                    controller.getFitOutStepStatus(
-                        statusNo: fitOutStep.status ?? 0),
+                    GeneralServices.getKeyFromValue(
+                        Constants.fitOuTStepsTypesMap, fitOutStep.status ?? 0),
                     style: TextStyle(
                         fontSize: 12.sp, color: ColorManager.mainColor)),
                 SizedBox(

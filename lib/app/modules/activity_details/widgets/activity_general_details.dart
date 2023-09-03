@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
+import '../../../../common/constants.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
-import '../../fit_out_process_details/controllers/fit_out_process_details_controller.dart';
+import '../../../services/general_services.dart';
 import '../controllers/activity_details_controller.dart';
 
 class ActivityGeneralDetailsWidget extends GetView<ActivityDetailsController> {
@@ -35,9 +36,9 @@ class ActivityGeneralDetailsWidget extends GetView<ActivityDetailsController> {
                 child: customDetailsItem(
                     icon: ImagePaths.pylon,
                     title: Strings.status,
-                    value: Get.find<FitOutProcessDetailsController>()
-                        .getFitOutStepStatus(
-                            statusNo: controller.fitOutStep.status ?? 0)))
+                    value: GeneralServices.getKeyFromValue(
+                        Constants.fitOuTStepsTypesMap,
+                        controller.fitOutStep.status ?? 0)))
           ])
         ]));
   }

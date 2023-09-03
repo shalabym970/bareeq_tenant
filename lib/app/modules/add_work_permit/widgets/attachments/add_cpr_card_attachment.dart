@@ -30,7 +30,7 @@ class AddCprCardAttachment extends GetView<AddWorkPermitController> {
                       file: controller.cprFile.value!,
                       onPressedCancel: () => controller.cprFile.value = null,
                       onReplace: () =>
-                          controller.selectFile(fileType: Constants.cprFile))),
+                          controller.selectFile(fileType: Constants.cprFile)))
             ]));
   }
 }
