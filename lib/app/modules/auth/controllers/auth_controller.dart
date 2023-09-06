@@ -25,8 +25,12 @@ class AuthController extends GetxController {
       if (loginFormKey.currentState!.validate()) {
         loading.value = true;
         loginFormKey.currentState?.save();
-        final isPotentialUser = await loginRepository.getAllContacts(
-            email: emailController.text, password: passwordController.text);
+        currentContact.value = Contact(
+          emailAddress: emailController.text,
+          password: passwordController.text,
+        );
+        final isPotentialUser =
+            await loginRepository.authorizing(user: currentContact.value);
         if (isPotentialUser == true) {
           Get.log('=================  authorized =================');
           Get.offAllNamed(Routes.dashboard);

@@ -11,8 +11,15 @@ class ErrorStrings {
   static const String enterTitle = 'Enter Tilte';
   static const String enterWorkerNumber = 'Enter workers number';
   static const String enterDetails = 'Enter Details';
+  static const String enterCurrentPassword = 'Enter your current password';
+  static const String enterNewPassword = 'Enter new password';
+  static const String enterCorrectConfirmationPass =
+      'Enter correct confirmtion password';
+  static const String enterConfirmationPass = 'Enter confirmtion password';
   static const String notSelectFile = 'No File Selected';
   static const String failedAddWorkPermit = 'Failed to add work permit';
+  static const String failedToSave = 'Failed to save new data!!';
+  static const String failedToChangePass = 'Failed to change password !!';
   static const String failedAddContact = 'Failed to add Contact';
   static const String failedAddWorkCase = 'Failed to add Case';
   static const String enterCompanyName = 'Enter Company Name';
@@ -23,4 +30,10 @@ class ErrorStrings {
   static const String enterValidEmail = 'Enter a valid Email';
   static const String enterPassword = 'Enter Password';
   static const String wrongEmailOrPassword = 'Wrong Email or Password';
+  static const String enterJobTitle = 'Enter Job Tilte';
+  static const String enterCRNumber = 'Enter CR Number';
+  static const String enterCPRNumber = 'Enter CPR Number';
+  static const String notMatchPass = "Doesn't match your current password";
+  static const String cannotEnterSameCurrentPass =
+      "You cannot type the same password as your current password";
 }

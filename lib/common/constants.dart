@@ -84,4 +84,30 @@ class Constants {
 
   /// CASES STATE
   static const Map<String, int> caseStatesMap = {"Active": 1, "InActive": 0};
+
+  /// LEASES STATUS
+  static const Map<String, int> leaseStatusMap = {
+    "Draft": 153160000,
+    "Pending for Mgmt Signature": 153160001,
+    "Pending for Tenant Signature": 153160002,
+    "Pending for Final Signature": 153160003,
+    "Active": 153160004,
+    "Renewed": 153160005,
+    "Expired": 100000000,
+    "Terminated": 858870000,
+    "Hold Over": 550220000
+  };
+
+  /// LEASES TYPE
+  static const Map<String, int> leaseTypeMap = {
+    "New Lease": 153160000,
+    "Renewal Lease": 153160001
+  };
+
+  /// MESSAGES PRIORITY
+  static const Map<String, int> messagePriorityMap = {
+    "Normal": 1,
+    "Low": 0,
+    "Height": 2
+  };
 }

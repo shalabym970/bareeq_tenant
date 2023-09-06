@@ -7,7 +7,6 @@ import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
 import '../../../services/general_services.dart';
-import '../../../services/state_handler.dart';
 import '../controllers/case_details_controller.dart';
 
 class CaseGeneralDetailsWidget extends GetView<CaseDetailsController> {

@@ -65,4 +65,28 @@ class ContactApi extends GetxService {
       throw Exception();
     }
   }
+
+  /// update user profile
+  static Future updateProfile({required Contact request}) async {
+    String url = "${Constants.baseUrl}contacts";
+    Get.log("========== update contact url : $url ==========");
+
+    var response = await NLTMAuthServices.client
+        .patch(Uri.parse(url),
+            headers: Constants.headers,
+            body: jsonEncode(request.toJson()),
+            encoding: encoding)
+        .catchError((error) {
+      Get.log(error.toString());
+    }).timeout(const Duration(seconds: 30));
+    var decodeResponse =
+        await NLTMAuthServices.decodeResponse(response: response);
+    Get.log('========== update contact response : $decodeResponse ==========');
+    if (response.statusCode == 200 ||
+        response.statusCode == 201 ||
+        response.statusCode == 204) {
+    } else {
+      throw Exception();
+    }
+  }
 }

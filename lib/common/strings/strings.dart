@@ -220,8 +220,15 @@ class Strings {
 
   static const String workPermitAddedSuccessfuly =
       'Work Permit is Added Successfuly ';
-  static const String contactAddedSuccessfuly = 'Contact is Added Successfuly ';
+  static const String contactAddedSuccessfuly =
+      'Contact is Added Successfully ';
+  static const String profileChangedSuccessfuly =
+      'profile is Changed Successfully ';
+  static const String passwordChangedSuccessfuly =
+      'Password changed successfully ';
   static const String caseAddedSuccessfuly = 'Case is Added Successfuly ';
   static const String workPermitItemAddedSuccessfuly =
       'Work Permit Item is Added Successfuly ';
+  static const String saveProfileChangedData =
+      'You have modified your profile data and did not save it. Do you want to save it ?';
 }

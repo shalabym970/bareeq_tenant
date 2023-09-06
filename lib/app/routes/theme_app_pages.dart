@@ -1,25 +1,28 @@
-import 'package:Bareeq/app/modules/add_work_permit/views/add_work_permit_view.dart';
 import 'package:Bareeq/app/modules/auth/views/recover_account_view.dart';
 import 'package:Bareeq/app/modules/cases/views/cases_view.dart';
+import 'package:Bareeq/app/modules/contacts/bindings/contacts_binding.dart';
 import 'package:Bareeq/app/modules/create_work_permit_item/views/create_work_permit_item_view.dart';
-import 'package:Bareeq/app/modules/profile/bindings/add_contact_binding.dart';
-import 'package:Bareeq/app/modules/profile/bindings/change_password_binding.dart';
+import 'package:Bareeq/app/modules/change_password/bindings/change_password_binding.dart';
 import 'package:Bareeq/app/modules/work_permits/views/work_permits_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import '../middleware/auth_middleware.dart';
 import '../modules/activity_details/bindings/activity_details_binding.dart';
 import '../modules/activity_details/views/activity_details_view.dart';
-import '../modules/add_case/bindings/add_case_binding.dart';
-import '../modules/add_case/views/add_case_view.dart';
-import '../modules/add_contractor/bindings/add_contractor_binding.dart';
-import '../modules/add_contractor/views/add_contractor_view.dart';
-import '../modules/add_work_permit/bindings/add_work_permit_binding.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/login_view.dart';
 import '../modules/case_details/bindings/case_details_binding.dart';
 import '../modules/case_details/views/case_details_view.dart';
 import '../modules/cases/bindings/cases_binding.dart';
+import '../modules/contacts/views/contacts_view.dart';
+import '../modules/create_case/bindings/add_case_binding.dart';
+import '../modules/create_case/views/add_case_view.dart';
+import '../modules/create_contact/bindings/add_contact_binding.dart';
+import '../modules/create_contact/views/add_contact_view.dart';
+import '../modules/create_contractor/bindings/add_contractor_binding.dart';
+import '../modules/create_contractor/views/add_contractor_view.dart';
+import '../modules/create_work_permit/bindings/add_work_permit_binding.dart';
+import '../modules/create_work_permit/views/add_work_permit_view.dart';
 import '../modules/create_work_permit_item/bindings/create_work_permit_item_binding.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
@@ -40,8 +43,7 @@ import '../modules/messages/bindings/messages_binding.dart';
 import '../modules/messages/views/message_details_view.dart';
 import '../modules/messages/views/messages_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
-import '../modules/profile/views/add_contact_view.dart';
-import '../modules/profile/views/change_password_view.dart';
+import '../modules/change_password/views/change_password_view.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/work_permit_details/bindings/work_permit_details_binding.dart';
 import '../modules/work_permit_details/views/work_permit_details_view.dart';
@@ -90,6 +92,10 @@ class ThemeAppPages {
         name: Routes.profile,
         page: () => const ProfileView(),
         binding: ProfileBinding()),
+    GetPage(
+        name: Routes.contacts,
+        page: () => const ContactsView(),
+        binding: ContactsBinding()),
     GetPage(
         name: Routes.addNewContact,
         page: () => const AddContactView(),

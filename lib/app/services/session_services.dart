@@ -13,7 +13,7 @@ class SessionServices extends GetxService {
 
   setSessionData({required Contact user}) async {
     sharedPref!.setString('user_fullName', user.fullName.toString());
-    sharedPref!.setString('user_email', user.emailAddress.toString());
+    sharedPref!.setString('user_email', user.emailAddress!);
     sharedPref!
         .setString('user_customerSizeCode', user.customerSizeCode.toString());
     sharedPref!.setString('user_callback', user.callback.toString());

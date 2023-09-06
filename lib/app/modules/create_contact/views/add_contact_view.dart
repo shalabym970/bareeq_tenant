@@ -10,6 +10,7 @@ import '../../../../common/widgets/custom_btn.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../../../../common/widgets/custom_text_field.dart';
 import '../../../../common/widgets/label_text_field.dart';
+import '../../../../common/widgets/second_custom_loading.dart';
 import '../controllers/add_contact_controller.dart';
 
 class AddContactView extends GetView<AddContactController> {
@@ -21,7 +22,7 @@ class AddContactView extends GetView<AddContactController> {
       appBar: customAppBar(
           title: Strings.newContact, svgProfileIcon: ImagePaths.profileBrown),
 
-      body: GestureDetector(
+      body: Stack(children: [ GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
           },
@@ -119,6 +120,17 @@ class AddContactView extends GetView<AddContactController> {
                         textAndIconColor: ColorManager.white),
                     SizedBox(height: 40.h)
                   ])))),
+        Obx(() => Visibility(
+            visible: controller.submitLoading.isTrue ? true : false,
+            child: const Opacity(
+                opacity: 0.8,
+                child:
+                ModalBarrier(dismissible: false, color: Colors.black)))),
+        Obx(() => Visibility(
+            visible: controller.submitLoading.isTrue ? true : false,
+            child: const Center(child: SecondCustomLoading())))
+
+      ]),
 
       drawer:
           customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.

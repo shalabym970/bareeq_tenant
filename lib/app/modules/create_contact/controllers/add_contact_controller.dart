@@ -18,7 +18,7 @@ class AddContactController extends GetxController {
   final addNewContactKey = GlobalKey<FormState>();
   final submitLoading = false.obs;
   final _contact = const Contact().obs;
-  ProfileRepo profileRepo = ProfileRepo();
+  final profileRepo = ProfileRepo();
 
   submitNewContact() async {
     try {

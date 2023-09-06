@@ -4,19 +4,15 @@ import '../providers/api_client/contact_api.dart';
 import '../services/session_services.dart';
 
 class LoginRepository {
-  Future<bool> getAllContacts(
-      {required String email, required String password}) async {
-    Contact potentialUser = Contact(emailAddress: email, password: password);
-
-    bool authorizedUser = await checkUser(user: potentialUser);
-    return authorizedUser;
+  final contacts = <Contact>[].obs;
+  Future<List<Contact>> getAllContacts() async {
+    return await ContactApi.getAllContacts();
   }
 
-  Future<bool> checkUser({required Contact user}) async {
-    List<Contact> allContacts = await ContactApi.getAllContacts();
-    for (var contact in allContacts) {
+  Future<bool> authorizing({required Contact user}) async {
+    contacts.assignAll(await getAllContacts());
+    for (var contact in contacts) {
       if (contact == user) {
-        Get.log('====================  true =======================');
         await Get.find<SessionServices>().setSessionData(user: contact);
         await Get.find<SessionServices>().getSessionUser();
         return true;
