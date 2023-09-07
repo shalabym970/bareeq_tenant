@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
+import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/global_widgets.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/contact_model.dart';
@@ -17,6 +18,7 @@ class AuthController extends GetxController {
   final passwordController = TextEditingController();
   final passwordVisible = true.obs;
   final loading = false.obs;
+  final loadingRecoverAccount = false.obs;
   final currentContact = const Contact().obs;
   LoginRepository loginRepository = LoginRepository();
 
@@ -46,6 +48,28 @@ class AuthController extends GetxController {
       Get.log('========== Error when login : $e ==========');
     } finally {
       loading.value = false;
+    }
+  }
+
+  recoverAccount() async {
+    try {
+      if (recoverFormKey.currentState!.validate()) {
+        recoverFormKey.currentState?.save();
+        loadingRecoverAccount.value = true;
+        // _contact.value = Contact(
+        //     id: Get.find<SessionServices>().currentUser.value.id,
+        //     password: newPassController.text);
+        // await profileRepo.updateProfile(request: _contact.value);
+        //
+      //  Ui.showToast(content: Strings.passwordChangedSuccessfuly);
+        Get.back();
+      }
+    } catch (e) {
+      loadingRecoverAccount.value = false;
+    //   Get.showSnackbar(
+    //       Ui.errorSnackBar(message: ErrorStrings.failedToChangePass));
+    // } finally {
+      loadingRecoverAccount.value = false;
     }
   }
 }

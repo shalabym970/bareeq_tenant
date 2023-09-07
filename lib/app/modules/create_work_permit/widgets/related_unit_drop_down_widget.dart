@@ -6,9 +6,9 @@ import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_dropdown.dart';
 import '../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../common/widgets/error_widget.dart';
-import '../controllers/add_work_permit_controller.dart';
+import '../controllers/create_work_permit_controller.dart';
 
-class RelatedUnitDropDownWidget extends GetView<AddWorkPermitController> {
+class RelatedUnitDropDownWidget extends GetView<CreateWorkPermitController> {
   const RelatedUnitDropDownWidget({Key? key}) : super(key: key);
 
   @override
@@ -33,7 +33,7 @@ class RelatedUnitDropDownWidget extends GetView<AddWorkPermitController> {
       iconHeight: 20.h,
       fontSize: 15.sp,
     )
-        : GetBuilder<AddWorkPermitController>(
+        : GetBuilder<CreateWorkPermitController>(
         builder: (controller) =>
             CustomDropDown(
                 value: controller.relatedUnitValue.value?.name == null

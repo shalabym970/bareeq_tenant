@@ -9,9 +9,9 @@ import '../../../../common/widgets/custom_dropdown.dart';
 import '../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../common/widgets/error_widget.dart';
 import '../../../models/account_model.dart';
-import '../controllers/add_work_permit_controller.dart';
+import '../controllers/create_work_permit_controller.dart';
 
-class ContractorDropDownWidget extends GetView<AddWorkPermitController> {
+class ContractorDropDownWidget extends GetView<CreateWorkPermitController> {
   const ContractorDropDownWidget({Key? key}) : super(key: key);
 
   @override
@@ -35,7 +35,7 @@ class ContractorDropDownWidget extends GetView<AddWorkPermitController> {
                 iconHeight: 20.h,
                 fontSize: 15.sp,
               )
-            : GetBuilder<AddWorkPermitController>(
+            : GetBuilder<CreateWorkPermitController>(
                 builder: (controller) => CustomDropDown(
                     value: controller.contractorValue.value?.name == null
                         ? null

@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../common/constants.dart';
 import '../../../../../common/widgets/upload_file_widget.dart';
-import '../../controllers/add_work_permit_controller.dart';
-import '../../../../../common/widgets/uploaded_attachment_widget.dart';
+import '../../controllers/create_work_permit_controller.dart';
+import '../../../work_permit_details/widgets/attachments/work_permit_uploaded_attachment_widget.dart';
 
-class AddInsuranceAttachment extends GetView<AddWorkPermitController> {
+class AddInsuranceAttachment extends GetView<CreateWorkPermitController> {
   const AddInsuranceAttachment({Key? key}) : super(key: key);
 
   @override
@@ -27,7 +27,7 @@ class AddInsuranceAttachment extends GetView<AddWorkPermitController> {
                             fileType: Constants.insuranceFile);
                       },
                       child: const UploadFileWidget())
-                  : UploadedAttachmentWidget(
+                  : WorkPermitUploadedAttachmentWidget(
                       file: controller.insuranceFile.value!,
                       onPressedCancel: () => controller.insuranceFile.value = null,
                       onReplace: () => controller.selectFile(

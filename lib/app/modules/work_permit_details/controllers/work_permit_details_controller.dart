@@ -37,6 +37,8 @@ class WorkPermitDetailsController extends GetxController {
   final methodAttach = <Attachment>[].obs;
   final riskAttach = <Attachment>[].obs;
   final submitLoading = false.obs;
+  final deletingLoading = false.obs;
+
   WorkPermitRepo workPermitRepo = WorkPermitRepo();
   MessagesRepo messagesRepo = MessagesRepo();
   AttachmentRepo attachmentRepo = AttachmentRepo();
@@ -186,6 +188,7 @@ class WorkPermitDetailsController extends GetxController {
       file = null;
     }
   }
+
   //Todo : don't miss to implement this save work permit method
   saveWorkPermit() {
     try {
@@ -202,17 +205,17 @@ class WorkPermitDetailsController extends GetxController {
   }
 
   //Todo : don't miss to implement this delete attachment method
-  deleteAttachament() {
+  deleteAttachment() {
     try {
       Get.back();
-      submitLoading.value = true;
+      deletingLoading.value = true;
     } catch (e) {
-      submitLoading.value = false;
+      deletingLoading.value = false;
       Get.showSnackbar(
           Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
       Get.log('========== Error when delete attachament : $e ==========');
     } finally {
-      submitLoading.value = false;
+      deletingLoading.value = false;
     }
   }
 }

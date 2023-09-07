@@ -8,4 +8,8 @@ class AttachmentRepo {
     return await AttachmentApi.getAttachments(
         workPermitId: recordId, attachmentType: attachmentType);
   }
+
+  Future<List<Attachment>> postAttachments({required List<Attachment> request})async{
+    return await AttachmentApi.postAttachments(request: request);
+  }
 }

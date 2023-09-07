@@ -36,4 +36,8 @@ class ErrorStrings {
   static const String notMatchPass = "Doesn't match your current password";
   static const String cannotEnterSameCurrentPass =
       "You cannot type the same password as your current password";
+  static const String enterReply = "You don't reply to the message";
+  static const String failedReply = 'Failed to reply the message !!';
+  static const String errorConvertFileToBase64 =
+      'Error converting file to base64: ';
 }

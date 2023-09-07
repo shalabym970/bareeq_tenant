@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
-import '../../../common/widgets/ui.dart';
 import '../../models/document.dart';
 import '../../services/nltm_auhtorization_service.dart';
 
@@ -30,5 +29,9 @@ class AttachmentApi {
     } else {
       throw Exception(response.reasonPhrase.toString());
     }
+  }
+
+  static postAttachments({required List<Attachment> request}) {
+
   }
 }

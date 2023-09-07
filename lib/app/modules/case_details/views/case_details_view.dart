@@ -11,7 +11,7 @@ import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../../../routes/app_routes.dart';
 import '../controllers/case_details_controller.dart';
-import '../widgets/case_attachments_list.dart';
+import '../widgets/attachments/case_attachments_list.dart';
 import '../widgets/case_description.dart';
 import '../widgets/case_general_details.dart';
 import '../widgets/case_messages_list.dart';
@@ -24,12 +24,14 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: () async {
-          if (controller.screenEdited) {
+          if (controller.uploadedFiles.isNotEmpty) {
             Ui.confirmDialog(
                 title: Strings.confirm,
                 middleText: Strings.saveCaseData,
                 confirmBtnTitle: Strings.save,
-                onSave: () {},
+                onSave: () {
+
+                },
                 onDiscard: () {
                   Get.until((route) => route.isFirst);
                 });
@@ -120,7 +122,9 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                                             height: 32.h,
                                             width: 32.w,
                                             child: FloatingActionButton(
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  controller.selectFiles();
+                                                },
                                                 heroTag: null,
                                                 backgroundColor:
                                                     ColorManager.mainColor,

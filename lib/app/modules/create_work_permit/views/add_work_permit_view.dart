@@ -13,7 +13,7 @@ import '../../../../common/widgets/custom_drawer.dart';
 import '../../../../common/widgets/custom_text_field.dart';
 import '../../../../common/widgets/second_custom_loading.dart';
 import '../../../routes/app_routes.dart';
-import '../controllers/add_work_permit_controller.dart';
+import '../controllers/create_work_permit_controller.dart';
 import '../widgets/attachments/add_cpr_card_attachment.dart';
 import '../widgets/attachments/add_insurance_attachment.dart';
 import '../widgets/attachments/add_method_statement_attachment.dart';
@@ -21,7 +21,7 @@ import '../widgets/attachments/add_risk_assessment_attachment.dart';
 import '../widgets/contractor_drop_down_widget.dart';
 import '../widgets/related_unit_drop_down_widget.dart';
 
-class AddWorkPermitView extends GetView<AddWorkPermitController> {
+class AddWorkPermitView extends GetView<CreateWorkPermitController> {
   const AddWorkPermitView({super.key});
 
   @override

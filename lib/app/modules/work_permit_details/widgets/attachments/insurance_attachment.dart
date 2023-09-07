@@ -9,7 +9,7 @@ import '../../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../../common/widgets/error_widget.dart';
 import '../../../../../common/widgets/upload_file_widget.dart';
 import '../../../../models/document.dart';
-import '../../../../../common/widgets/uploaded_attachment_widget.dart';
+import 'work_permit_uploaded_attachment_widget.dart';
 import '../../controllers/work_permit_details_controller.dart';
 
 class InsuranceAttachment extends GetView<WorkPermitDetailsController> {
@@ -54,7 +54,7 @@ class InsuranceAttachment extends GetView<WorkPermitDetailsController> {
                                         fileType: Constants.insuranceFile);
                                   }),
                                 )
-                              : UploadedAttachmentWidget(
+                              : WorkPermitUploadedAttachmentWidget(
                                   file: controller.insuranceFile.value!,
                                   onPressedCancel: () =>
                                       controller.insuranceFile.value = null,

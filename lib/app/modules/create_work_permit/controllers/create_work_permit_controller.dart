@@ -1,6 +1,8 @@
 import 'package:Bareeq/app/models/account_model.dart';
+import 'package:Bareeq/app/models/document.dart';
 import 'package:Bareeq/app/models/work_permit.dart';
 import 'package:Bareeq/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:Bareeq/app/repositories/attachment_repo.dart';
 import 'package:Bareeq/app/services/attachment_services.dart';
 import 'package:Bareeq/common/color_manager.dart';
 import 'package:Bareeq/common/constants.dart';
@@ -15,7 +17,7 @@ import '../../../models/unit.dart';
 import '../../../repositories/work_permit_repo.dart';
 import '../../../services/session_services.dart';
 
-class AddWorkPermitController extends GetxController {
+class CreateWorkPermitController extends GetxController {
   final standardCheck = true.obs;
   final urgentCheck = false.obs;
   final acceptResponsibilityCheck = false.obs;
@@ -35,6 +37,8 @@ class AddWorkPermitController extends GetxController {
   final riskFile = Rxn<File>();
   final relatedUnitValue = Rxn<Unit>();
   final contractorValue = Rxn<Account>();
+  final uploadedAttachmentList = <Attachment>[].obs;
+  final uploadedFilesList = <File>[].obs;
   final contractorsList = <Account>[].obs;
   final addWorkPermitKey = GlobalKey<FormState>();
   final numberOfWorkersController = TextEditingController();
@@ -44,6 +48,7 @@ class AddWorkPermitController extends GetxController {
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
   WorkPermitRepo workPermitRepo = WorkPermitRepo();
+  AttachmentRepo attachmentRepo = AttachmentRepo();
   File? file;
 
   @override
@@ -155,6 +160,8 @@ class AddWorkPermitController extends GetxController {
                       .account!
                       .id);
               await workPermitRepo.postWorkPermit(request: _workPermit.value);
+              await postAttachments();
+
               Ui.showToast(content: Strings.workPermitAddedSuccessfuly);
               Get.back(
                   result: Get.find<DashboardController>().getWorkPermits());
@@ -181,6 +188,23 @@ class AddWorkPermitController extends GetxController {
       Get.log('========== Error when create work permit : $e ==========');
     } finally {
       submitLoading.value = false;
+    }
+  }
+
+  postAttachments() async {
+    try {
+      if (insuranceFile.value != null ||
+          cprFile.value != null ||
+          methodFile.value != null ||
+          riskFile.value != null) {
+        addAllFilesToList();
+
+        await attachmentRepo.postAttachments(request: uploadedAttachmentList);
+      }
+    } catch (e) {
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when post attachments: $e ==========');
     }
   }
 
@@ -213,4 +237,24 @@ class AddWorkPermitController extends GetxController {
       loadingContractors.value = false;
     }
   }
+
+  addAllFilesToList() {
+    if (insuranceFile.value != null) {
+      uploadedFilesList.add(insuranceFile.value!);
+    }
+    if (cprFile.value != null) {
+      uploadedFilesList.add(cprFile.value!);
+    }
+    if (methodFile.value != null) {
+      uploadedFilesList.add(methodFile.value!);
+    }
+    if (riskFile.value != null) {
+      uploadedFilesList.add(riskFile.value!);
+    }
+  }
+
+//Todo: you must implement this as soon as possible
+// Attachment convertFileToAttachment(File file) {
+//   return Attachment(name: file.uri.pathSegments.last, path: file.path);
+// }
 }

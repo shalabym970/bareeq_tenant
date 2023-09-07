@@ -5,10 +5,10 @@ import '../../../../../common/constants.dart';
 import '../../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../../common/widgets/upload_file_widget.dart';
 import '../../../../services/attachment_services.dart';
-import '../../controllers/add_work_permit_controller.dart';
-import '../../../../../common/widgets/uploaded_attachment_widget.dart';
+import '../../controllers/create_work_permit_controller.dart';
+import '../../../work_permit_details/widgets/attachments/work_permit_uploaded_attachment_widget.dart';
 
-class AddMethodStatementAttachment extends GetView<AddWorkPermitController> {
+class AddMethodStatementAttachment extends GetView<CreateWorkPermitController> {
   const AddMethodStatementAttachment({Key? key}) : super(key: key);
 
   @override
@@ -27,7 +27,7 @@ class AddMethodStatementAttachment extends GetView<AddWorkPermitController> {
                       controller.selectFile(fileType: Constants.methodFile);
                     },
                     child: const UploadFileWidget())
-                : UploadedAttachmentWidget(
+                : WorkPermitUploadedAttachmentWidget(
                     file: controller.methodFile.value!,
                     onPressedCancel: () => controller.methodFile.value = null,
                     onReplace: () =>

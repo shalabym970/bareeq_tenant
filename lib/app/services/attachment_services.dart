@@ -93,10 +93,40 @@ class AttachmentServices {
     }
   }
 
+  ///pick Multiple Files from device
+  static Future<List<File>?> pickMultipleFiles() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      allowMultiple: true,
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'pdf', 'doc', 'png', 'txt', 'jpeg'],
+    );
+
+    if (result != null) {
+      List<File> files = result.files.map((file) => File(file.path!)).toList();
+      return files;
+    } else {
+      Ui.showToast(content: ErrorStrings.notSelectFile);
+      return null;
+    }
+  }
+
   /// get file size by MB
   static Future<double> getFileSizeInMB({required File file}) async {
     int fileSizeInBytes = await file.length();
     double fileSizeInMB = fileSizeInBytes / (1024 * 1024);
     return fileSizeInMB;
+  }
+
+  /// convert file to base64
+  Future<String?> fileToBase64(File file) async {
+    try {
+      List<int> fileBytes = await file.readAsBytes();
+      String base64String = base64Encode(fileBytes);
+      return base64String;
+    } catch (e) {
+      Ui.showToast(
+          content: ErrorStrings.errorConvertFileToBase64 + e.toString());
+      return null;
+    }
   }
 }

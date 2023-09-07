@@ -7,7 +7,7 @@ import '../../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../../common/widgets/error_widget.dart';
 import '../../../../../common/widgets/upload_file_widget.dart';
 import '../../../../models/document.dart';
-import '../../../../../common/widgets/uploaded_attachment_widget.dart';
+import 'work_permit_uploaded_attachment_widget.dart';
 import '../../controllers/work_permit_details_controller.dart';
 
 class RiskAssessmentAttachment extends GetView<WorkPermitDetailsController> {
@@ -52,7 +52,7 @@ class RiskAssessmentAttachment extends GetView<WorkPermitDetailsController> {
                                   );
                                 }),
                               )
-                            : UploadedAttachmentWidget(
+                            : WorkPermitUploadedAttachmentWidget(
                                 file: controller.riskFile.value!,
                                 onPressedCancel: () =>
                                     controller.riskFile.value = null,

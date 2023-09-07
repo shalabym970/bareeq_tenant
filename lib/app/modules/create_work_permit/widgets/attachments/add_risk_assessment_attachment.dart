@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../common/constants.dart';
 import '../../../../../common/widgets/upload_file_widget.dart';
-import '../../controllers/add_work_permit_controller.dart';
-import '../../../../../common/widgets/uploaded_attachment_widget.dart';
+import '../../controllers/create_work_permit_controller.dart';
+import '../../../work_permit_details/widgets/attachments/work_permit_uploaded_attachment_widget.dart';
 
-class AddRiskAssessmentAttachment extends GetView<AddWorkPermitController> {
+class AddRiskAssessmentAttachment extends GetView<CreateWorkPermitController> {
   const AddRiskAssessmentAttachment({Key? key}) : super(key: key);
 
   @override
@@ -26,7 +26,7 @@ class AddRiskAssessmentAttachment extends GetView<AddWorkPermitController> {
                         controller.selectFile(fileType: Constants.riskFile);
                       },
                       child: const UploadFileWidget())
-                  : UploadedAttachmentWidget(
+                  : WorkPermitUploadedAttachmentWidget(
                       file: controller.riskFile.value!,
                       onPressedCancel: () => controller.riskFile.value = null,
                       onReplace: () =>

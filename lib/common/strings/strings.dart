@@ -231,4 +231,6 @@ class Strings {
       'Work Permit Item is Added Successfuly ';
   static const String saveProfileChangedData =
       'You have modified your profile data and did not save it. Do you want to save it ?';
+  static const String mesaageReplyed =
+      'The message has been answerd';
 }

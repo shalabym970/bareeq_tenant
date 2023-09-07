@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:Bareeq/app/models/message.dart';
 import 'package:get/get.dart';
 
@@ -6,6 +8,7 @@ import '../../../../common/widgets/ui.dart';
 import '../../../models/document.dart';
 import '../../../repositories/attachment_repo.dart';
 import '../../../repositories/messages_repo.dart';
+import '../../../services/attachment_services.dart';
 
 class CaseDetailsController extends GetxController {
   final errorMessages = false.obs;
@@ -14,10 +17,11 @@ class CaseDetailsController extends GetxController {
   final loadingMessages = false.obs;
   final messages = <MessageModel>[].obs;
   final attachments = <Attachment>[].obs;
+  final uploadedFiles = <File>[].obs;
   final cases = Get.arguments;
   final messagesRepo = MessagesRepo();
   final attachmentRepo = AttachmentRepo();
-  bool screenEdited = true;
+  final deletingLoading = false.obs;
 
   @override
   void onInit() async {
@@ -61,6 +65,31 @@ class CaseDetailsController extends GetxController {
       Get.log('========== Error when get CPR Card Attachment : $e ==========');
     } finally {
       loadingAttachments.value = false;
+    }
+  }
+
+  selectFiles() async {
+    List<File>? list = await AttachmentServices.pickMultipleFiles();
+    uploadedFiles.addAll(list!);
+    list.clear();
+  }
+
+  deleteSelectedFile({required int index}) {
+    uploadedFiles.removeAt(index);
+  }
+
+  //Todo : don't miss to implement this delete attachment method
+  deleteAttachment() {
+    try {
+      Get.back();
+      deletingLoading.value = true;
+    } catch (e) {
+      deletingLoading.value = false;
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when delete attachment : $e ==========');
+    } finally {
+      deletingLoading.value = false;
     }
   }
 }

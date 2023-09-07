@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
-import '../../../../common/strings/strings.dart';
-import '../../../../common/widgets/custom_attachment_widget.dart';
-import '../../../../common/widgets/dashboard_shimmer.dart';
-import '../../../../common/widgets/empty_list_widget.dart';
-import '../../../../common/widgets/error_widget.dart';
-import '../../../models/document.dart';
-import '../controllers/message_details_controller.dart';
+import '../../../../../common/strings/strings.dart';
+import '../../../../../common/widgets/custom_attachment_widget.dart';
+import '../../../../../common/widgets/dashboard_shimmer.dart';
+import '../../../../../common/widgets/empty_list_widget.dart';
+import '../../../../../common/widgets/error_widget.dart';
+import '../../../../models/document.dart';
+import '../../controllers/message_details_controller.dart';
 
 class MessageAttachmentsList extends GetView<MessageDetailsController> {
   const MessageAttachmentsList({Key? key}) : super(key: key);
@@ -18,11 +17,10 @@ class MessageAttachmentsList extends GetView<MessageDetailsController> {
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Obx(
-              () => controller.loadingAttachments.isTrue
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Obx(() => controller.loadingAttachments.isTrue
                   ? Padding(
                       padding: EdgeInsets.symmetric(vertical: 5.h),
                       child: ShimmerWidget.rectangular(height: 50.h))
@@ -42,10 +40,7 @@ class MessageAttachmentsList extends GetView<MessageDetailsController> {
                                     controller.attachments.elementAt(index);
                                 return CustomAttachmentWidget(
                                     attachment: attachment);
-                              }),
-                            ),
-            ),
-          ],
-        ));
+                              })))
+            ]));
   }
 }
