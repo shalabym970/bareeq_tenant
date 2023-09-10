@@ -4,6 +4,7 @@ import 'package:Bareeq/app/models/message.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/strings/error_strings.dart';
+import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/document.dart';
 import '../../../repositories/attachment_repo.dart';
@@ -78,16 +79,17 @@ class CaseDetailsController extends GetxController {
     uploadedFiles.removeAt(index);
   }
 
-  //Todo : don't miss to implement this delete attachment method
-  deleteAttachment() {
+  deleteAttachment({required Attachment attachment}) async {
     try {
-      Get.back();
       deletingLoading.value = true;
+      await attachmentRepo.deleteAttachment(attachmentId: attachment.id!);
+      Get.back(result: getAttachments());
+      Ui.showToast(content: attachment.noteText! + Strings.hasBeenDeleted);
     } catch (e) {
       deletingLoading.value = false;
       Get.showSnackbar(
           Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
-      Get.log('========== Error when delete attachment : $e ==========');
+      Get.log('========== Error when delete attachament : $e ==========');
     } finally {
       deletingLoading.value = false;
     }

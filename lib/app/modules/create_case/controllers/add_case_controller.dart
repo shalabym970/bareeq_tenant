@@ -43,7 +43,7 @@ class AddCaseController extends GetxController {
         addCaseKey.currentState?.save();
         submitLoading.value = true;
         _case.value = Case();
-        Ui.showToast(content: Strings.caseAddedSuccessfuly);
+        Ui.showToast(content: Strings.caseAddedSuccessfully);
         Get.back();
       } else {
         Ui.showToast(content: ErrorStrings.pleaseFillFields, error: true);

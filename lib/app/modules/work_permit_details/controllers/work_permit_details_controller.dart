@@ -4,13 +4,16 @@ import 'package:Bareeq/app/repositories/attachment_repo.dart';
 import 'package:Bareeq/app/repositories/messages_repo.dart';
 import 'package:Bareeq/common/constants.dart';
 import 'package:get/get.dart';
+import 'package:mime/mime.dart';
 import '../../../../common/strings/error_strings.dart';
+import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/message.dart';
 import '../../../models/work_permit.dart';
 import '../../../repositories/work_permit_repo.dart';
 import 'dart:io';
 import '../../../services/attachment_services.dart';
+import '../../dashboard/controllers/dashboard_controller.dart';
 
 class WorkPermitDetailsController extends GetxController {
   final loadingWorkPermitItems = false.obs;
@@ -38,10 +41,10 @@ class WorkPermitDetailsController extends GetxController {
   final riskAttach = <Attachment>[].obs;
   final submitLoading = false.obs;
   final deletingLoading = false.obs;
-
-  WorkPermitRepo workPermitRepo = WorkPermitRepo();
-  MessagesRepo messagesRepo = MessagesRepo();
-  AttachmentRepo attachmentRepo = AttachmentRepo();
+  final uploadedAttachmentList = <Attachment>[].obs;
+  final workPermitRepo = WorkPermitRepo();
+  final messagesRepo = MessagesRepo();
+  final attachmentRepo = AttachmentRepo();
   WorkPermit workPermit = Get.arguments;
   File? file;
 
@@ -49,10 +52,11 @@ class WorkPermitDetailsController extends GetxController {
   onInit() {
     getWorkPermitItems();
     getMessages();
-    getCprAttach();
-    getInsuranceAttach();
-    getMethodAttach();
-    getRiskAttach();
+    getAttachments();
+    methodFile.value = null;
+    riskFile.value = null;
+    insuranceFile.value = null;
+    cprFile.value = null;
     Get.log('=========== workPermit id :  ${workPermit.id} ===========');
     super.onInit();
   }
@@ -93,6 +97,13 @@ class WorkPermitDetailsController extends GetxController {
     } finally {
       loadingWorkPermitItems.value = false;
     }
+  }
+
+  getAttachments() {
+    getCprAttach();
+    getInsuranceAttach();
+    getMethodAttach();
+    getRiskAttach();
   }
 
   getCprAttach() async {
@@ -189,11 +200,13 @@ class WorkPermitDetailsController extends GetxController {
     }
   }
 
-  //Todo : don't miss to implement this save work permit method
-  saveWorkPermit() {
+  saveWorkPermit() async {
     try {
       submitLoading.value = true;
-      Get.back();
+      await addAllFilesToAttachmentList(workPermitId: workPermit.id!);
+      await postAttachments();
+      Ui.showToast(content: Strings.workPermitUpdatedSuccessfully);
+      Get.back(result: Get.find<DashboardController>().getWorkPermits());
     } catch (e) {
       submitLoading.value = false;
       Get.showSnackbar(
@@ -204,11 +217,12 @@ class WorkPermitDetailsController extends GetxController {
     }
   }
 
-  //Todo : don't miss to implement this delete attachment method
-  deleteAttachment() {
+  deleteAttachment({required Attachment attachment}) async {
     try {
-      Get.back();
       deletingLoading.value = true;
+      await attachmentRepo.deleteAttachment(attachmentId: attachment.id!);
+      Get.back(result: getAttachments());
+      Ui.showToast(content: attachment.noteText! + Strings.hasBeenDeleted);
     } catch (e) {
       deletingLoading.value = false;
       Get.showSnackbar(
@@ -216,6 +230,113 @@ class WorkPermitDetailsController extends GetxController {
       Get.log('========== Error when delete attachament : $e ==========');
     } finally {
       deletingLoading.value = false;
+    }
+  }
+
+  /// post attachments
+  postAttachments() async {
+    try {
+      if (uploadedAttachmentList.isNotEmpty) {
+        await attachmentRepo.postAttachments(requests: uploadedAttachmentList);
+      }
+    } catch (e) {
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when post attachments: $e ==========');
+    }
+  }
+
+  updateAttachment({required Attachment attachment}) async {
+    try {
+      await attachmentRepo.updateAttachment(attachment: attachment);
+    } catch (e) {
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+      Get.log('========== Error when post attachments: $e ==========');
+    }
+  }
+
+  /// fill attachment list by files
+  addAllFilesToAttachmentList({required String workPermitId}) async {
+    if (insuranceFile.value != null) {
+      String? base64Body = await AttachmentServices.convertFileToBase64(
+          file: insuranceFile.value!);
+      String? mimeType = lookupMimeType(insuranceFile.value!.path);
+      if (insuranceAttach.isEmpty) {
+        Get.log('========== insurance file base64Body : $mimeType ==========');
+        uploadedAttachmentList.add(Attachment(
+          noteText: Constants.workPermitInsuranceAttachment,
+          filename: Constants.workPermitInsuranceAttachment,
+          objectIdValue: workPermitId.toString(),
+          objectTypeCode: Constants.workPermitTableName,
+          documentBody: base64Body,
+          mimeType: mimeType,
+        ));
+      } else {
+        insuranceAttach.first.mimeType = mimeType;
+        insuranceAttach.first.documentBody = base64Body;
+        await updateAttachment(attachment: insuranceAttach.first);
+      }
+    }
+    if (cprFile.value != null) {
+      String? base64Body =
+          await AttachmentServices.convertFileToBase64(file: cprFile.value!);
+      String? mimeType = lookupMimeType(cprFile.value!.path);
+      if (cprAttach.isEmpty) {
+        Get.log('========== cpr file base64Body : $mimeType ==========');
+        uploadedAttachmentList.add(Attachment(
+          noteText: Constants.workPermitCprCardsAttachment,
+          filename: Constants.workPermitCprCardsAttachment,
+          objectIdValue: workPermitId.toString(),
+          objectTypeCode: Constants.workPermitTableName,
+          documentBody: base64Body,
+          mimeType: mimeType,
+        ));
+      } else {
+        cprAttach.first.mimeType = mimeType;
+        cprAttach.first.documentBody = base64Body;
+        await updateAttachment(attachment: cprAttach.first);
+      }
+    }
+    if (methodFile.value != null) {
+      String? base64Body =
+          await AttachmentServices.convertFileToBase64(file: methodFile.value!);
+      String? mimeType = lookupMimeType(methodFile.value!.path);
+      if (methodAttach.isEmpty) {
+        Get.log('========== method file base64Body : $mimeType ==========');
+        uploadedAttachmentList.add(Attachment(
+          noteText: Constants.workPermitMethodStatementAttachment,
+          filename: Constants.workPermitMethodStatementAttachment,
+          objectIdValue: workPermitId.toString(),
+          objectTypeCode: Constants.workPermitTableName,
+          documentBody: base64Body,
+          mimeType: mimeType,
+        ));
+      } else {
+        methodAttach.first.mimeType = mimeType;
+        methodAttach.first.documentBody = base64Body;
+        await updateAttachment(attachment: methodAttach.first);
+      }
+    }
+    if (riskFile.value != null) {
+      String? base64Body =
+          await AttachmentServices.convertFileToBase64(file: riskFile.value!);
+      String? mimeType = lookupMimeType(riskFile.value!.path);
+      if (riskAttach.isEmpty) {
+        Get.log('========== riskFile file base64Body : $mimeType ==========');
+        uploadedAttachmentList.add(Attachment(
+          noteText: Constants.workPermitRiskAssessmentAttachment,
+          filename: Constants.workPermitRiskAssessmentAttachment,
+          objectIdValue: workPermitId.toString(),
+          objectTypeCode: Constants.workPermitTableName,
+          documentBody: base64Body,
+          mimeType: mimeType,
+        ));
+      } else {
+        riskAttach.first.mimeType = mimeType;
+        riskAttach.first.documentBody = base64Body;
+        await updateAttachment(attachment: riskAttach.first);
+      }
     }
   }
 }

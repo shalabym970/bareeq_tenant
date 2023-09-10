@@ -217,20 +217,27 @@ class Strings {
   static const String selectEndDate = 'Select end date';
   static const String selectItemType = 'Select Item Type';
   static const String id = 'ID: ';
-
-  static const String workPermitAddedSuccessfuly =
-      'Work Permit is Added Successfuly ';
-  static const String contactAddedSuccessfuly =
+  static const String ok = 'Ok';
+  static const String workPermitAddedSuccessfully =
+      'Work Permit Added Successfully ';
+  static const String workPermitUpdatedSuccessfully =
+      'Work Permit Updated Successfully ';
+  static const String hasBeenDeleted = ' has been deleted';
+  static const String contactAddedSuccessfully =
       'Contact is Added Successfully ';
-  static const String profileChangedSuccessfuly =
+  static const String profileChangedSuccessfully =
       'profile is Changed Successfully ';
-  static const String passwordChangedSuccessfuly =
+  static const String passwordChangedSuccessfully =
       'Password changed successfully ';
-  static const String caseAddedSuccessfuly = 'Case is Added Successfuly ';
-  static const String workPermitItemAddedSuccessfuly =
-      'Work Permit Item is Added Successfuly ';
+  static const String caseAddedSuccessfully = 'Case is Added Successfully ';
+  static const String workPermitItemAddedSuccessfully =
+      'Work Permit Item is Added Successfully ';
   static const String saveProfileChangedData =
       'You have modified your profile data and did not save it. Do you want to save it ?';
-  static const String mesaageReplyed =
-      'The message has been answerd';
+  static const String messageReplayed = 'The message has been answered';
+  static const String workPermitTermsTile = 'Work Permit Terms';
+  static const String workPermitTermsFirstDialog =
+      "The tenant and his Contractor will be held liable if there is any breach in the terms of this work permit.";
+  static const String workPermitTermsSecondDialog =
+      "The authorised tenant and/or contractor are responsible for taking all necessary actions to protect their workers from the work environment risks, and meet all the legal requirements in the field of occupational safety and health as per Bahrain Ministry of Labour, Health & Safety regulations.";
 }

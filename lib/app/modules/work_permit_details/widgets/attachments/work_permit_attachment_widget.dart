@@ -119,7 +119,7 @@ class WorkPermitAttachmentWidget extends GetView<WorkPermitDetailsController> {
                     middleText: Strings.deleteAttachmentDiscreption,
                     confirmBtnTitle: Strings.delete,
                     onSave: () {
-                      controller.deleteAttachment();
+                      controller.deleteAttachment(attachment: attachment!);
                     },
                     onDiscard: () {
                       Get.back();

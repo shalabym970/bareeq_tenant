@@ -21,8 +21,6 @@ class WorkPermitApi extends GetxService {
         '&\$filter=(_blser_customer_value%20eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId})&\$orderby=createdon desc';
     var response = await NLTMAuthServices.client.get(Uri.parse(url));
     Get.log('=============== Work Permit url :  $url ==========');
-    Get.log(
-        '=============== Work Permit response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
@@ -112,9 +110,9 @@ class WorkPermitApi extends GetxService {
   }
 
   /// Post Work Permit
-  static Future postWorkPermit({required WorkPermit request}) async {
+  static Future<String> postWorkPermit({required WorkPermit request}) async {
     String url = "${Constants.baseUrl}blser_workpermits";
-    Get.log("========== post Work permit url : $url ==========");
+    Get.log("========== post Work permit url :: $url ==========");
 
     var response = await NLTMAuthServices.client
         .post(Uri.parse(url),
@@ -129,8 +127,9 @@ class WorkPermitApi extends GetxService {
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      Get.log(
-          '========== post Work permit response : $decodeResponse ==========');
+      Map<String, dynamic> responseMap = decodeResponse;
+      String workPermitId = responseMap['blser_workpermitid'];
+      return workPermitId;
     } else {
       throw Exception(decodeResponse['message']);
     }
@@ -139,7 +138,7 @@ class WorkPermitApi extends GetxService {
   /// Post Work Permit item
   static Future postWorkPermitItem({required WorkPermitItem request}) async {
     String url = "${Constants.baseUrl}blser_workpermititems";
-    Get.log("========== post Work permit Itm url : $url ==========");
+    Get.log("========== post Work permit Item url : $url ==========");
 
     var response = await NLTMAuthServices.client
         .post(Uri.parse(url),
@@ -160,4 +159,7 @@ class WorkPermitApi extends GetxService {
       throw Exception(decodeResponse['message']);
     }
   }
+
+
+
 }

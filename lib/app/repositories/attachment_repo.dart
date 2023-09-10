@@ -9,7 +9,15 @@ class AttachmentRepo {
         workPermitId: recordId, attachmentType: attachmentType);
   }
 
-  Future<List<Attachment>> postAttachments({required List<Attachment> request})async{
-    return await AttachmentApi.postAttachments(request: request);
+  Future postAttachments({required List<Attachment> requests}) async {
+    return await AttachmentApi.postAttachments(requests: requests);
+  }
+
+  Future updateAttachment({required Attachment attachment}) async {
+    return await AttachmentApi.updateAttachment(attachment: attachment);
+  }
+
+  Future deleteAttachment({required String attachmentId}) async {
+    return await AttachmentApi.deleteAttachment(id: attachmentId);
   }
 }

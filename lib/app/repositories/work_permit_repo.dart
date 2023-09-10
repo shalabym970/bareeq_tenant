@@ -22,7 +22,7 @@ class WorkPermitRepo {
     return await WorkPermitApi.getContractors();
   }
 
-  Future postWorkPermit({required WorkPermit request}) async {
+  Future<String> postWorkPermit({required WorkPermit request}) async {
     return await WorkPermitApi.postWorkPermit(request: request);
   }
 

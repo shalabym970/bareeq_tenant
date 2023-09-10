@@ -1,4 +1,5 @@
 import 'package:Bareeq/app/models/document.dart';
+import 'package:Bareeq/app/modules/work_permit_details/controllers/work_permit_details_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -98,7 +99,7 @@ class CaseAttachmentWidget extends GetView<CaseDetailsController> {
                     middleText: Strings.deleteAttachmentDiscreption,
                     confirmBtnTitle: Strings.delete,
                     onSave: () {
-                      controller.deleteAttachment();
+                      controller.deleteAttachment(attachment: attachment!);
                     },
                     onDiscard: () {
                       Get.back();

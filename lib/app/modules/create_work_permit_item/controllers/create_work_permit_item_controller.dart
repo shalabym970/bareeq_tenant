@@ -33,7 +33,7 @@ class CreateWorkPermitItemController extends GetxController {
               description: descriptionController.text);
           await workPermitRepo.postWorkPermitItem(
               request: workPermitItem.value);
-          Ui.showToast(content: Strings.workPermitItemAddedSuccessfuly);
+          Ui.showToast(content: Strings.workPermitItemAddedSuccessfully);
           Get.back(
               result:
                   Get.find<WorkPermitDetailsController>().getWorkPermitItems());

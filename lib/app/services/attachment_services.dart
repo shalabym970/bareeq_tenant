@@ -118,7 +118,7 @@ class AttachmentServices {
   }
 
   /// convert file to base64
-  Future<String?> fileToBase64(File file) async {
+  static Future<String?> convertFileToBase64({required File file}) async {
     try {
       List<int> fileBytes = await file.readAsBytes();
       String base64String = base64Encode(fileBytes);

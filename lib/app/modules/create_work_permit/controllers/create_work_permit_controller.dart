@@ -10,6 +10,7 @@ import 'package:Bareeq/common/widgets/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:mime/mime.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
 import 'dart:io';
@@ -38,7 +39,6 @@ class CreateWorkPermitController extends GetxController {
   final relatedUnitValue = Rxn<Unit>();
   final contractorValue = Rxn<Account>();
   final uploadedAttachmentList = <Attachment>[].obs;
-  final uploadedFilesList = <File>[].obs;
   final contractorsList = <Account>[].obs;
   final addWorkPermitKey = GlobalKey<FormState>();
   final numberOfWorkersController = TextEditingController();
@@ -136,6 +136,7 @@ class CreateWorkPermitController extends GetxController {
     }
   }
 
+  /// post work permits
   submitWorkPermit() async {
     try {
       if (addWorkPermitKey.currentState!.validate()) {
@@ -159,10 +160,14 @@ class CreateWorkPermitController extends GetxController {
                       .value
                       .account!
                       .id);
-              await workPermitRepo.postWorkPermit(request: _workPermit.value);
+              String workPermitId = await workPermitRepo.postWorkPermit(
+                  request: _workPermit.value);
+              Get.log(
+                  '========== post Work permit id : $workPermitId ==========');
+              await addAllFilesToAttachmentList(workPermitId: workPermitId);
               await postAttachments();
 
-              Ui.showToast(content: Strings.workPermitAddedSuccessfuly);
+              Ui.showToast(content: Strings.workPermitAddedSuccessfully);
               Get.back(
                   result: Get.find<DashboardController>().getWorkPermits());
             } else {
@@ -191,15 +196,11 @@ class CreateWorkPermitController extends GetxController {
     }
   }
 
+  /// post attachments
   postAttachments() async {
     try {
-      if (insuranceFile.value != null ||
-          cprFile.value != null ||
-          methodFile.value != null ||
-          riskFile.value != null) {
-        addAllFilesToList();
-
-        await attachmentRepo.postAttachments(request: uploadedAttachmentList);
+      if (uploadedAttachmentList.isNotEmpty) {
+        await attachmentRepo.postAttachments(requests: uploadedAttachmentList);
       }
     } catch (e) {
       Get.showSnackbar(
@@ -208,6 +209,7 @@ class CreateWorkPermitController extends GetxController {
     }
   }
 
+  /// get all units wich related by this account
   void getRelatedUnits() async {
     try {
       errorRelatedUnits.value = false;
@@ -223,6 +225,7 @@ class CreateWorkPermitController extends GetxController {
     }
   }
 
+  /// get all contractors
   void getContractors() async {
     try {
       errorContractors.value = false;
@@ -238,23 +241,63 @@ class CreateWorkPermitController extends GetxController {
     }
   }
 
-  addAllFilesToList() {
+  /// fill attachment list by files
+  addAllFilesToAttachmentList({required String workPermitId}) async {
     if (insuranceFile.value != null) {
-      uploadedFilesList.add(insuranceFile.value!);
+      String? base64 = await AttachmentServices.convertFileToBase64(
+          file: insuranceFile.value!);
+      String? mimeType = lookupMimeType(insuranceFile.value!.path);
+      Get.log('========== insurance file base64 : $mimeType ==========');
+      uploadedAttachmentList.add(Attachment(
+        noteText: Constants.workPermitInsuranceAttachment,
+        filename: Constants.workPermitInsuranceAttachment,
+        objectIdValue: workPermitId.toString(),
+        objectTypeCode: Constants.workPermitTableName,
+        documentBody: base64,
+        mimeType: mimeType,
+      ));
     }
     if (cprFile.value != null) {
-      uploadedFilesList.add(cprFile.value!);
+      String? base64 =
+          await AttachmentServices.convertFileToBase64(file: cprFile.value!);
+      String? mimeType = lookupMimeType(cprFile.value!.path);
+      Get.log('========== cpr file base64 : $mimeType ==========');
+      uploadedAttachmentList.add(Attachment(
+        noteText: Constants.workPermitCprCardsAttachment,
+        filename: Constants.workPermitCprCardsAttachment,
+        objectIdValue: workPermitId.toString(),
+        objectTypeCode: Constants.workPermitTableName,
+        documentBody: base64,
+        mimeType: mimeType,
+      ));
     }
     if (methodFile.value != null) {
-      uploadedFilesList.add(methodFile.value!);
+      String? base64 =
+          await AttachmentServices.convertFileToBase64(file: methodFile.value!);
+      String? mimeType = lookupMimeType(methodFile.value!.path);
+      Get.log('========== method file base64 : $mimeType ==========');
+      uploadedAttachmentList.add(Attachment(
+        noteText: Constants.workPermitMethodStatementAttachment,
+        filename: Constants.workPermitMethodStatementAttachment,
+        objectIdValue: workPermitId.toString(),
+        objectTypeCode: Constants.workPermitTableName,
+        documentBody: base64,
+        mimeType: mimeType,
+      ));
     }
     if (riskFile.value != null) {
-      uploadedFilesList.add(riskFile.value!);
+      String? base64 = await AttachmentServices.convertFileToBase64(
+          file: insuranceFile.value!);
+      String? mimeType = lookupMimeType(insuranceFile.value!.path);
+      Get.log('========== riskFile file base64 : $mimeType ==========');
+      uploadedAttachmentList.add(Attachment(
+        noteText: Constants.workPermitRiskAssessmentAttachment,
+        filename: Constants.workPermitRiskAssessmentAttachment,
+        objectIdValue: workPermitId.toString(),
+        objectTypeCode: Constants.workPermitTableName,
+        documentBody: base64,
+        mimeType: mimeType,
+      ));
     }
   }
-
-//Todo: you must implement this as soon as possible
-// Attachment convertFileToAttachment(File file) {
-//   return Attachment(name: file.uri.pathSegments.last, path: file.path);
-// }
 }

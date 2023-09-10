@@ -36,7 +36,7 @@ class AddContactController extends GetxController {
           jobTile: jobTitleController.text,
         );
         await profileRepo.postContact(request: _contact.value);
-        Ui.showToast(content: Strings.contactAddedSuccessfuly);
+        Ui.showToast(content: Strings.contactAddedSuccessfully);
         Get.back(result: Get.find<ProfileController>().getContacts());
       } else {
         Ui.showToast(content: ErrorStrings.pleaseFillFields, error: true);

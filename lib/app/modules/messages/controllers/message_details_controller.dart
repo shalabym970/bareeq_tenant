@@ -64,7 +64,7 @@ class MessageDetailsController extends GetxController {
         //     password: newPassController.text);
         // await profileRepo.updateProfile(request: _contact.value);
         //
-        Ui.showToast(content: Strings.mesaageReplyed);
+        Ui.showToast(content: Strings.messageReplayed);
         Get.back();
       }
     } catch (e) {

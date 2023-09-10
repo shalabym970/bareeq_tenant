@@ -67,7 +67,7 @@ class ProfileController extends GetxController {
             crNumber: int.tryParse(crNumberController.text),
             cprNumber: int.tryParse(cprNumberController.text));
         await profileRepo.updateProfile(request: _contact.value);
-        Ui.showToast(content: Strings.profileChangedSuccessfuly);
+        Ui.showToast(content: Strings.profileChangedSuccessfully);
         Get.offAllNamed(Routes.dashboard);
       }
     } catch (e) {

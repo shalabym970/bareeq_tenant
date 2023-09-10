@@ -27,7 +27,7 @@ class ChangePasswordController extends GetxController {
             id: Get.find<SessionServices>().currentUser.value.id,
             password: newPassController.text);
         await profileRepo.updateProfile(request: _contact.value);
-        Ui.showToast(content: Strings.passwordChangedSuccessfuly);
+        Ui.showToast(content: Strings.passwordChangedSuccessfully);
         Get.back();
       }
     } catch (e) {
