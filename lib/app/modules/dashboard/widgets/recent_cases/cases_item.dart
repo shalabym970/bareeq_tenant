@@ -66,8 +66,9 @@ class CasesListItem extends GetView<DashboardController> {
                                       SizedBox(height: 3.h),
                                       Text(
                                           GeneralServices.getKeyFromValue(
-                                              Constants.caseTypesMap,
-                                              cases.status ?? 0).toString(),
+                                                  Constants.caseTypesMap,
+                                                  cases.type ?? 0)
+                                              .toString(),
                                           style: TextStyle(
                                               fontSize: 10.sp,
                                               color: ColorManager.black))

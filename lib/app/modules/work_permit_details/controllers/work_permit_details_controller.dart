@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/models/document.dart';
+import 'package:Bareeq/app/models/attachment.dart';
 import 'package:Bareeq/app/models/work_permit_item.dart';
 import 'package:Bareeq/app/repositories/attachment_repo.dart';
 import 'package:Bareeq/app/repositories/messages_repo.dart';
@@ -201,27 +201,33 @@ class WorkPermitDetailsController extends GetxController {
   }
 
   saveWorkPermit() async {
-    try {
-      submitLoading.value = true;
-      await addAllFilesToAttachmentList(workPermitId: workPermit.id!);
-      await postAttachments();
-      Ui.showToast(content: Strings.workPermitUpdatedSuccessfully);
-      Get.back(result: Get.find<DashboardController>().getWorkPermits());
-    } catch (e) {
-      submitLoading.value = false;
-      Get.showSnackbar(
-          Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
-      Get.log('========== Error when edit Work Permit : $e ==========');
-    } finally {
-      submitLoading.value = false;
+    if (cprFile.value != null ||
+        insuranceFile.value != null ||
+        methodFile.value != null ||
+        riskFile.value != null) {
+      try {
+        submitLoading.value = true;
+        await addAllFilesToAttachmentList(workPermitId: workPermit.id!);
+        await postAttachments();
+        Ui.showToast(content: Strings.workPermitUpdatedSuccessfully);
+        Get.back(result: Get.find<DashboardController>().getWorkPermits());
+      } catch (e) {
+        submitLoading.value = false;
+        Get.showSnackbar(
+            Ui.errorSnackBar(message: ErrorStrings.publicErrorMessage));
+        Get.log('========== Error when edit Work Permit : $e ==========');
+      } finally {
+        submitLoading.value = false;
+      }
     }
   }
 
   deleteAttachment({required Attachment attachment}) async {
     try {
+      Get.back();
       deletingLoading.value = true;
       await attachmentRepo.deleteAttachment(attachmentId: attachment.id!);
-      Get.back(result: getAttachments());
+      getAttachments();
       Ui.showToast(content: attachment.noteText! + Strings.hasBeenDeleted);
     } catch (e) {
       deletingLoading.value = false;

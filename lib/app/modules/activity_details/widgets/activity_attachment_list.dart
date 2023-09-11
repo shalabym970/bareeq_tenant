@@ -1,13 +1,15 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
+import '../../../../common/color_manager.dart';
 import '../../../../common/strings/strings.dart';
-import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../../common/widgets/error_widget.dart';
-import '../../../models/document.dart';
+import '../../../../common/widgets/uploaded_attachment_widget.dart';
+import '../../../models/attachment.dart';
+import '../../../../common/widgets/dynamic_attachment_widget.dart';
 import '../controllers/activity_details_controller.dart';
 
 class ActivityAttachmentsList extends GetView<ActivityDetailsController> {
@@ -18,11 +20,10 @@ class ActivityAttachmentsList extends GetView<ActivityDetailsController> {
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Obx(
-              () => controller.loadingAttachments.isTrue
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Obx(() => controller.loadingAttachments.isTrue
                   ? Padding(
                       padding: EdgeInsets.symmetric(vertical: 5.h),
                       child: ShimmerWidget.rectangular(height: 50.h))
@@ -40,12 +41,36 @@ class ActivityAttachmentsList extends GetView<ActivityDetailsController> {
                               itemBuilder: ((_, index) {
                                 Attachment attachment =
                                     controller.attachments.elementAt(index);
-                                return CustomAttachmentWidget(
-                                    attachment: attachment);
-                              }),
-                            ),
-            ),
-          ],
-        ));
+                                return DynamicAttachmentWidget(
+                                    attachment: attachment,
+                                    onDelete: () {
+                                      controller.deleteAttachment(
+                                          attachment: attachment!);
+                                    });
+                              }))),
+              Obx(() => controller.uploadedFiles.isNotEmpty
+                  ? Column(children: <Widget>[
+                      SizedBox(height: 10.h),
+                      Divider(
+                          height: 5.h,
+                          thickness: 1.h,
+                          color: ColorManager.black),
+                      SizedBox(height: 10.h),
+                      ListView.builder(
+                          padding: EdgeInsets.symmetric(horizontal: 5.w),
+                          primary: false,
+                          shrinkWrap: true,
+                          itemCount: controller.uploadedFiles.length,
+                          itemBuilder: ((_, index) {
+                            File file =
+                                controller.uploadedFiles.elementAt(index);
+                            return UploadedAttachmentWidget(
+                                file: file,
+                                onPressedCancel: () => controller
+                                    .deleteSelectedFile(index: index));
+                          }))
+                    ])
+                  : Container())
+            ]));
   }
 }

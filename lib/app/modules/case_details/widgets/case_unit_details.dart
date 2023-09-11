@@ -49,10 +49,10 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                       SizedBox(height: 20.h),
                       customDetailsItem(
                           icon: ImagePaths.pylon,
-                          title: Strings.status,
+                          title: Strings.natureOfComplaint,
                           value: GeneralServices.getKeyFromValue(
-                              Constants.caseStatesMap,
-                              controller.cases.state ?? 2))
+                              Constants.natureOfComplaints,
+                              controller.cases.natureOfComplaint ?? 0))
                     ]))
           ])
         ]));

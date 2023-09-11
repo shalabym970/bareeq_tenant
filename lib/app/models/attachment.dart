@@ -40,7 +40,8 @@ class Attachment {
         "objecttypecode": objectTypeCode,
         "mimetype": mimeType,
         "filename": filename,
-        "objectid_blser_workpermit@odata.bind": "/blser_workpermits($objectIdValue)",
+        "objectid_$objectTypeCode@odata.bind":
+            "/${objectTypeCode}s($objectIdValue)",
         "documentbody": documentBody,
       };
 }

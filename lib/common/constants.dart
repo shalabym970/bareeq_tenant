@@ -21,6 +21,8 @@ class Constants {
   static const String workPermitRiskAssessmentAttachment =
       "Risk Assessment Attachment";
   static const String workPermitTableName = "blser_workpermit";
+  static const String caseTableName = "blser_case";
+  static const String fitOutStepTableName = "blser_fitoutstep";
   static const String downloadPath = "/storage/emulated/0/Download/";
   static const String cprFile = "cprAttach";
   static const String insuranceFile = "insuranceAttach";
@@ -110,5 +112,31 @@ class Constants {
     "Normal": 1,
     "Low": 0,
     "Height": 2
+  };
+
+  /// Nature Of Complaints
+  static const Map<String, int> natureOfComplaints = {
+    "Ambience - Overall look": 550220000,
+    "Ambience - Smell": 550220001,
+    "Ambience - Disturbance": 550220002,
+    "Ambience - Tenant relation": 550220003,
+    "Ambience - Cleanliness": 550220004,
+    "Staff - Attitude": 550220005,
+    "Staff - Knowledge": 550220006,
+    "Staff - Professional ethics": 550220007,
+    "Security - Competence": 550220008,
+    "Security - Safety": 550220009,
+    "Security - Fire": 550220010,
+    "Security - Privacy": 550220011,
+    "Contractual - Price": 550220012,
+    "Contractual - Renewal": 550220013,
+    "Contractual - Value for money": 550220014,
+    "Contractual - Move-in/move-out": 550220015,
+    "Facilities - Repeat maintenance": 550220016,
+    "Facilities - Parking": 550220017,
+    "Facilities - F&B": 550220018,
+    "Facilities - Recreation": 550220019,
+    "Facilities - TV/Internet": 550220020,
+    "Others": 550220021
   };
 }

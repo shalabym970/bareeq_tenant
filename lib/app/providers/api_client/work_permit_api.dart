@@ -159,7 +159,4 @@ class WorkPermitApi extends GetxService {
       throw Exception(decodeResponse['message']);
     }
   }
-
-
-
 }

@@ -1,6 +1,6 @@
 import 'package:Bareeq/app/providers/api_client/attachmentApi.dart';
 
-import '../models/document.dart';
+import '../models/attachment.dart';
 
 class AttachmentRepo {
   Future<List<Attachment>> getAttachments(

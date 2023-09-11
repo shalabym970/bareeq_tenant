@@ -7,7 +7,7 @@ import '../../../../common/widgets/custom_attachment_widget.dart';
 import '../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../../common/widgets/error_widget.dart';
-import '../../../models/document.dart';
+import '../../../models/attachment.dart';
 import '../controllers/lease_details_controller.dart';
 
 class LeaseAttachmentsList extends GetView<LeaseDetailsController> {

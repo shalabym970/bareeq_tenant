@@ -38,6 +38,8 @@ class Strings {
   static const String completeDate = 'Complete Date';
   static const String openingDate = 'Opening Date';
   static const String status = 'Status';
+  static const String natureOfComplaint = 'Nature Of Complaint';
+
   static const String startDate = 'Start Date';
   static const String workPermit = 'Work Permit';
   static const String workPermits = 'Work Permits';
@@ -139,8 +141,8 @@ class Strings {
   static const String addCase = "Add Case";
   static const String caseType = "Case Type";
   static const String selectCase = "Select Case";
-  static const String natureOfCase = "Nature of Complaint";
-  static const String selectnatureOfCase = "Select Nature OfCase";
+  static const String selectNatureOfComplaint = "Nature of Complaint";
+  static const String selectPriority = "Select Priority";
   static const String recoverAccountTitle =
       "You are about to Recover your Account's Password";
   static const String resetPassword = "Reset Password";
@@ -202,6 +204,8 @@ class Strings {
   static const String save = 'Save';
   static const String saveCaseData =
       'You have modified the case data and did not save it. Do you want to save it ?';
+  static const String saveActivityData =
+      'You have modified the activity data and did not save it. Do you want to save it ?';
   static const String saveWorkPermitData =
       'You have modified the work permit data and did not save it. Do you want to save it ?';
   static const String deleteAttachmentDiscreption =
@@ -222,6 +226,8 @@ class Strings {
       'Work Permit Added Successfully ';
   static const String workPermitUpdatedSuccessfully =
       'Work Permit Updated Successfully ';
+  static const String caseUpdatedSuccessfully = 'Case Updated Successfully ';
+  static const String fitOutStepUpdatedSuccessfully = 'Fit out step Updated Successfully ';
   static const String hasBeenDeleted = ' has been deleted';
   static const String contactAddedSuccessfully =
       'Contact is Added Successfully ';

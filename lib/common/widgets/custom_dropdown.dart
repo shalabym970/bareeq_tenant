@@ -50,7 +50,7 @@ class CustomDropDown extends StatelessWidget {
                       items: items,
                       hint: Text(hint,
                           style: TextStyle(
-                              color: ColorManager.mainColor, fontSize: 12.sp)),
+                              color: ColorManager.grey, fontSize: 12.sp)),
                       onChanged: onChange))))
     ]);
   }

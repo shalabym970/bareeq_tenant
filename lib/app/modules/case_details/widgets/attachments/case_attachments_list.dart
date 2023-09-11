@@ -6,9 +6,9 @@ import '../../../../../common/strings/strings.dart';
 import '../../../../../common/widgets/dashboard_shimmer.dart';
 import '../../../../../common/widgets/empty_list_widget.dart';
 import '../../../../../common/widgets/error_widget.dart';
-import '../../../../models/document.dart';
+import '../../../../models/attachment.dart';
 import '../../controllers/case_details_controller.dart';
-import 'case_attachment_widget.dart';
+import '../../../../../common/widgets/dynamic_attachment_widget.dart';
 import 'dart:io';
 
 import '../../../../../common/widgets/uploaded_attachment_widget.dart';
@@ -42,12 +42,15 @@ class CaseAttachmentsList extends GetView<CaseDetailsController> {
                               itemBuilder: ((_, index) {
                                 Attachment attachment =
                                     controller.attachments.elementAt(index);
-                                return CaseAttachmentWidget(
-                                    attachment: attachment);
+                                return DynamicAttachmentWidget(
+                                    attachment: attachment, onDelete:  () {
+                                  controller.deleteAttachment(attachment: attachment!);
+                                });
                               }))),
               Obx(
                 () => controller.uploadedFiles.isNotEmpty
                     ? Column(children: <Widget>[
+                        SizedBox(height: 10.h),
                         Divider(
                             height: 5.h,
                             thickness: 1.h,

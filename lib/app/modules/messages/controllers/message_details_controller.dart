@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/ui.dart';
-import '../../../models/document.dart';
+import '../../../models/attachment.dart';
 import '../../../models/message.dart';
 import '../../../repositories/attachment_repo.dart';
 import 'dart:io';

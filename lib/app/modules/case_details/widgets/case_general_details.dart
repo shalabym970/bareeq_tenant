@@ -38,7 +38,7 @@ class CaseGeneralDetailsWidget extends GetView<CaseDetailsController> {
                           title: Strings.type,
                           value: GeneralServices.getKeyFromValue(
                               Constants.caseTypesMap,
-                              controller.cases.status ?? 0))
+                              controller.cases.type ?? 0))
                     ])),
             Expanded(
                 flex: 1,

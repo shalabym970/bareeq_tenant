@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
-import '../../../models/document.dart';
+import '../../../models/attachment.dart';
 import '../../../models/lease_model.dart';
 import '../../../models/message.dart';
 import '../../../repositories/attachment_repo.dart';

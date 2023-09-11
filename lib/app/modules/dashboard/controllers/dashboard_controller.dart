@@ -66,7 +66,7 @@ class DashboardController extends GetxController {
     }
   }
 
-  void getCases() async {
+  getCases() async {
     try {
       errorCases.value = false;
       loadingCases.value = true;

@@ -5,9 +5,11 @@ import 'package:Bareeq/common/strings/strings.dart';
 import 'package:Bareeq/common/widgets/ui.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:mime/mime.dart';
 import 'dart:io';
 
 import '../../common/strings/error_strings.dart';
+import '../models/attachment.dart';
 
 class AttachmentServices {
   static Future<String> convertBase64ToFile(
@@ -128,5 +130,29 @@ class AttachmentServices {
           content: ErrorStrings.errorConvertFileToBase64 + e.toString());
       return null;
     }
+  }
+
+  /// Convert List Of Files To List Of Attachments
+  static Future<List<Attachment>> convertListOfFilesToListOfAttachments(
+      {required List<File> files,
+        required String objectId,
+        required String objectTypeCode}) async {
+    List<Attachment> attachments = [];
+    for (File file in files) {
+      String? base64Body =
+      await AttachmentServices.convertFileToBase64(file: file);
+      String? mimeType = lookupMimeType(file.path);
+      String fileName = file.path.split('/').last;
+      Attachment attachment = Attachment(
+        noteText: fileName,
+        filename: fileName,
+        objectIdValue: objectId.toString(),
+        objectTypeCode: objectTypeCode,
+        documentBody: base64Body,
+        mimeType: mimeType,
+      );
+      attachments.add(attachment);
+    }
+    return attachments;
   }
 }

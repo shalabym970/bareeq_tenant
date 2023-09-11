@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
 import '../../../main.dart';
-import '../../models/document.dart';
+import '../../models/attachment.dart';
 import '../../services/nltm_auhtorization_service.dart';
 
 class AttachmentApi {

@@ -1,19 +1,20 @@
-import 'package:Bareeq/app/models/document.dart';
-import 'package:Bareeq/app/modules/work_permit_details/controllers/work_permit_details_controller.dart';
+import 'package:Bareeq/app/models/attachment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../../../../common/color_manager.dart';
-import '../../../../../common/images_paths.dart';
-import '../../../../../common/strings/strings.dart';
-import '../../../../../common/widgets/ui.dart';
-import '../../../../services/attachment_services.dart';
-import '../../controllers/case_details_controller.dart';
+import '../color_manager.dart';
+import '../images_paths.dart';
+import '../strings/strings.dart';
+import 'ui.dart';
+import '../../app/services/attachment_services.dart';
 
-class CaseAttachmentWidget extends GetView<CaseDetailsController> {
-  const CaseAttachmentWidget({Key? key, this.attachment}) : super(key: key);
+class DynamicAttachmentWidget extends StatelessWidget {
+  const DynamicAttachmentWidget(
+      {Key? key, this.attachment, required this.onDelete})
+      : super(key: key);
   final Attachment? attachment;
+  final void Function() onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -98,9 +99,7 @@ class CaseAttachmentWidget extends GetView<CaseDetailsController> {
                 Ui.confirmDialog(
                     middleText: Strings.deleteAttachmentDiscreption,
                     confirmBtnTitle: Strings.delete,
-                    onSave: () {
-                      controller.deleteAttachment(attachment: attachment!);
-                    },
+                    onSave: onDelete,
                     onDiscard: () {
                       Get.back();
                     },

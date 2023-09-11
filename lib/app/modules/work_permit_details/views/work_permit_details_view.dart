@@ -185,13 +185,15 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                   ),
                 ),
                 Obx(() => Visibility(
-                    visible: controller.submitLoading.isTrue ? true : false,
+                    visible:controller.submitLoading.isTrue ||
+                        controller.deletingLoading.isTrue ? true : false,
                     child: const Opacity(
                         opacity: 0.8,
                         child: ModalBarrier(
                             dismissible: false, color: Colors.black)))),
                 Obx(() => Visibility(
-                    visible: controller.submitLoading.isTrue ? true : false,
+                    visible:controller.submitLoading.isTrue ||
+                        controller.deletingLoading.isTrue ? true : false,
                     child: const Center(child: SecondCustomLoading())))
               ]),
 

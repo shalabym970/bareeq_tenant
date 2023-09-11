@@ -1,5 +1,5 @@
 import 'package:Bareeq/app/models/account_model.dart';
-import 'package:Bareeq/app/models/document.dart';
+import 'package:Bareeq/app/models/attachment.dart';
 import 'package:Bareeq/app/models/work_permit.dart';
 import 'package:Bareeq/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:Bareeq/app/repositories/attachment_repo.dart';

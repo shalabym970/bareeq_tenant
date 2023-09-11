@@ -58,21 +58,4 @@ class Unit  {
                         .map((x) => Contract.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
-        "advanced_name": name,
-        "statecode": stateCode,
-        "_new_unittype_value": unitType,
-        "advanced_totalprice": totalPrice,
-        "createdon": createdOn?.toIso8601String(),
-        "advanced_description": description,
-        "_bls_currentcontract_value": currentContract,
-        "_ownerid_value": ownerId,
-        "blser_erp_end_date": endDate,
-        "blser_erp_start_date": startDate,
-        "_transactioncurrencyid_value": transactionCurrencyId,
-        "advanced_unitid": id,
-        "advanced_advanced_unit_advanced_propertycontract": contract == null
-            ? []
-            : List<dynamic>.from(contract!.map((x) => x.toJson())),
-      };
 }
