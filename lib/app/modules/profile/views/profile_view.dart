@@ -57,11 +57,7 @@ class ProfileView extends GetView<ProfileController> {
                           svgProfileIcon: ImagePaths.profileBrown),
                       floatingActionButton: FloatingActionButton(
                           onPressed: () {
-                            if (controller.profileIsChanged) {
-                              controller.changeProfile();
-                            } else {
-                              Get.offAllNamed(Routes.dashboard);
-                            }
+                            controller.changeProfile();
                           },
                           heroTag: null,
                           backgroundColor: ColorManager.mainColor,

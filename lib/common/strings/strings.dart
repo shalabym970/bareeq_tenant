@@ -118,7 +118,8 @@ class Strings {
   static const String currentPassword = 'Current Password';
   static const String enterCurrentPass = 'Enter current password';
   static const String newPass = 'New Password';
-  static const String enterNewPass = 'Enter the new password';
+  static const String enterNewPass = 'Enter new password';
+
   static const String confirmPassword = 'Confirm New Password';
   static const String enterNewPassAgain = 'Confirm password';
   static const String activity = 'Activity';
@@ -245,5 +246,7 @@ class Strings {
   static const String workPermitTermsFirstDialog =
       "The tenant and his Contractor will be held liable if there is any breach in the terms of this work permit.";
   static const String workPermitTermsSecondDialog =
-      "The authorised tenant and/or contractor are responsible for taking all necessary actions to protect their workers from the work environment risks, and meet all the legal requirements in the field of occupational safety and health as per Bahrain Ministry of Labour, Health & Safety regulations.";
+      "The authorised tenant and/or contractor are responsible for taking all necessary actions to protect their workers from the work environment risks, "
+      "and meet all the legal requirements in the field of occupational safety and health as per Bahrain Ministry of Labour, Health & Safety regulations.";
+  static const String dontChangedAnyThing = "You don't make any change to save it";
 }

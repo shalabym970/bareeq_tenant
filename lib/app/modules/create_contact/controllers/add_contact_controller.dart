@@ -17,7 +17,7 @@ class AddContactController extends GetxController {
   final businessPhoneController = TextEditingController();
   final addNewContactKey = GlobalKey<FormState>();
   final submitLoading = false.obs;
-  final _contact = const Contact().obs;
+  final _contact =  Contact().obs;
   final profileRepo = ProfileRepo();
 
   submitNewContact() async {

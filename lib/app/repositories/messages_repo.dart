@@ -7,7 +7,12 @@ class MessagesRepo {
     return MessagesApi.getMessagesForRecord(regardingId: regardingId);
   }
 
-  Future<List<MessageModel>> getAllMessages({required bool isInbox, required String type}) async {
-    return MessagesApi.getAllMessages(isInbox: isInbox,type:"");
+  Future<List<MessageModel>> getAllMessages(
+      {required bool isInbox, required String type}) async {
+    return MessagesApi.getAllMessages(isInbox: isInbox, type: "");
+  }
+
+  Future<String> replyMessage({required MessageModel request}) async {
+   return await MessagesApi.replyMessage(request: request);
   }
 }

@@ -1,3 +1,5 @@
+import 'package:Bareeq/common/constants.dart';
+
 class Attachment {
   String? noteText;
   String? objectTypeCode;
@@ -41,7 +43,7 @@ class Attachment {
         "mimetype": mimeType,
         "filename": filename,
         "objectid_$objectTypeCode@odata.bind":
-            "/${objectTypeCode}s($objectIdValue)",
+            "/${objectTypeCode == Constants.messageKey ? "${objectTypeCode!}e" : objectTypeCode}s($objectIdValue)",
         "documentbody": documentBody,
       };
 }

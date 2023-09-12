@@ -7,7 +7,7 @@ class ProfileRepo {
     return await ContactApi.postContact(request: request);
   }
   Future updateProfile({required Contact request}) async {
-    return await ContactApi.postContact(request: request);
+    return await ContactApi.updateProfile(request: request);
   }
 
   Future<List<Contact>> getContacts({required String accountId}) async {

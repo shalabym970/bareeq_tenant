@@ -34,18 +34,21 @@ class UploadedAttachmentWidget extends StatelessWidget {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
+                              Expanded(
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
                                     SvgPicture.asset(ImagePaths.document,
                                         height: 24.h, width: 21.w),
                                     SizedBox(width: 20.w),
-                                    Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
+                                    Expanded(
+                                        child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
                                           Text(
                                             Strings.fileName,
                                             style: TextStyle(
@@ -58,9 +61,11 @@ class UploadedAttachmentWidget extends StatelessWidget {
                                                   fontSize: 10.sp,
                                                   color: Colors.black
                                                       .withOpacity(0.7)),
+                                              overflow: TextOverflow.ellipsis,
                                               maxLines: 1)
-                                        ]),
-                                  ]),
+                                        ])),
+                                  ])),
+                              SizedBox(width: 5.h),
                               SvgPicture.asset(ImagePaths.upload,
                                   color: ColorManager.mainColor,
                                   height: 20.h,

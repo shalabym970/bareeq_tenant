@@ -9,6 +9,7 @@ class Constants {
   static const String baseUrl = 'http://d365.blive.me/bar/api/data/v9.1/';
   static const String environmentName = "Bareeq";
   static const String workPermitKey = "blser_workpermit";
+  static const String messageKey = "blser_portalmessages";
   static const String caseKey = "blser_case";
   static const String invoiceKey = "blser_invoice";
   static const String leaseKey = "advanced_propertycontract";
@@ -79,7 +80,7 @@ class Constants {
   };
 
   /// CASES PRIORITY
-  static const Map<String, int> casePirorityMap = {
+  static const Map<String, int> casePriorityMap = {
     'High': 100000000,
     'Normal': 100000001,
     'Low': 100000002

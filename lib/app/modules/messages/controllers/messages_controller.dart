@@ -13,7 +13,8 @@ class MessagesController extends GetxController {
   final sentMessages = <MessageModel>[].obs;
   final loading = false.obs;
   final error = false.obs;
-  MessagesRepo messagesRepo = MessagesRepo();
+
+  final messagesRepo = MessagesRepo();
 
   Map<String, String> messageType = {
     Constants.allKey: "All",

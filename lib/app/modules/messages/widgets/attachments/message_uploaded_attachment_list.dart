@@ -1,4 +1,3 @@
-import 'package:Bareeq/common/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -17,26 +16,20 @@ class MessageUploadedAttachmentsList extends GetView<MessageDetailsController> {
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
         child: Obx(
           () => controller.uploadedFiles.isNotEmpty
-              ? Column(children: <Widget>[
-                  Divider(
-                      height: 5.h, thickness: 1.h, color: ColorManager.black),
-                  SizedBox(height: 10.h),
-                  ListView.builder(
-                      padding: EdgeInsets.symmetric(horizontal: 5.w),
-                      primary: false,
-                      shrinkWrap: true,
-                      itemCount: controller.uploadedFiles.length,
-                      itemBuilder: ((_, index) {
-                        File file = controller.uploadedFiles.elementAt(index);
-                        return UploadedAttachmentWidget(
-                            file: file,
-                            onPressedCancel: () =>
-                                controller.deleteSelectedFile(index: index));
-                      }))
-                ])
-              :  const Center(
-              child: EmptyListWidget(
-                  message: Strings.nothingAttachments)),
+              ? ListView.builder(
+                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                  primary: false,
+                  shrinkWrap: true,
+                  itemCount: controller.uploadedFiles.length,
+                  itemBuilder: ((_, index) {
+                    File file = controller.uploadedFiles.elementAt(index);
+                    return UploadedAttachmentWidget(
+                        file: file,
+                        onPressedCancel: () =>
+                            controller.deleteSelectedFile(index: index));
+                  }))
+              : const Center(
+                  child: EmptyListWidget(message: Strings.nothingAttachments)),
         ));
   }
 }

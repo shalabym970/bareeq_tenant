@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
-import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/global_widgets.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/contact_model.dart';
@@ -19,7 +18,7 @@ class AuthController extends GetxController {
   final passwordVisible = true.obs;
   final loading = false.obs;
   final loadingRecoverAccount = false.obs;
-  final currentContact = const Contact().obs;
+  final currentContact =  Contact().obs;
   LoginRepository loginRepository = LoginRepository();
 
   login() async {

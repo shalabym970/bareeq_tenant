@@ -56,7 +56,7 @@ class CaseGeneralDetailsWidget extends GetView<CaseDetailsController> {
                           icon: ImagePaths.import,
                           title: Strings.priority,
                           value: GeneralServices.getKeyFromValue(
-                              Constants.casePirorityMap,
+                              Constants.casePriorityMap,
                               controller.cases.priority ?? 0))
                     ]))
           ])

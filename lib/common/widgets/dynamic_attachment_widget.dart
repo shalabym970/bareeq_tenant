@@ -36,29 +36,36 @@ class DynamicAttachmentWidget extends StatelessWidget {
                             children: [
                               SvgPicture.asset(ImagePaths.document,
                                   height: 24.h, width: 21.w),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      Strings.fileName,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 10.sp,
-                                          color: ColorManager.mainColor),
-                                    ),
-                                    Text(
-                                      attachment?.filename ?? "",
-                                      style: TextStyle(
-                                          fontSize: 10.sp,
-                                          color: Colors.black.withOpacity(0.7)),
-                                      maxLines: 1,
-                                    )
-                                  ],
-                                ),
-                              ),
+                              Expanded(
+                                  child: Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 5.w),
+                                      child: Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  Strings.fileName,
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 10.sp,
+                                                      color: ColorManager
+                                                          .mainColor),
+                                                ),
+                                                Text(
+                                                    attachment?.filename ??
+                                                        Strings.na,
+                                                    style: TextStyle(
+                                                        fontSize: 10.sp,
+                                                        color: Colors.black
+                                                            .withOpacity(0.7)),
+                                                    maxLines: 1)
+                                              ])))),
                               SizedBox(
                                   height: 32.h,
                                   width: 32.w,

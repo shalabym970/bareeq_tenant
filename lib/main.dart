@@ -25,9 +25,6 @@ Future initServices() async {
 }
 
 void main() async {
-  ///
-  //TODO: i am paused inn this project in display case details page & invoices
-  ///
   WidgetsFlutterBinding.ensureInitialized();
   await initServices();
   SystemChrome.setPreferredOrientations(

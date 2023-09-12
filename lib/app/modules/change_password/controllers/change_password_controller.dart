@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/ui.dart';
+import '../../../../main.dart';
 import '../../../models/contact_model.dart';
 import '../../../services/session_services.dart';
 
@@ -11,22 +12,22 @@ class ChangePasswordController extends GetxController {
   final changePassLoading = false.obs;
   final profile = ProfileRepo();
   final changePasswordKey = GlobalKey<FormState>();
-  final _contact = const Contact().obs;
+  final _contact = Contact().obs;
   final profileRepo = ProfileRepo();
-
-  TextEditingController currentPassController = TextEditingController();
-  TextEditingController newPassController = TextEditingController();
-  TextEditingController confirmPassController = TextEditingController();
+  final currentPassController = TextEditingController();
+  final newPassController = TextEditingController();
+  final confirmPassController = TextEditingController();
 
   changePassword() async {
     try {
       if (changePasswordKey.currentState!.validate()) {
         changePasswordKey.currentState?.save();
         changePassLoading.value = true;
-        _contact.value = Contact(
-            id: Get.find<SessionServices>().currentUser.value.id,
-            password: newPassController.text);
-        await profileRepo.updateProfile(request: _contact.value);
+        _contact.value = Contact(password: confirmPassController.text);
+        await profileRepo.updateProfile(request: _contact.value).then((value) {
+          Get.find<SessionServices>().currentUser.value.password =
+              confirmPassController.text;
+        }).then((value) => updateSharedUserData());
         Ui.showToast(content: Strings.passwordChangedSuccessfully);
         Get.back();
       }
@@ -37,5 +38,10 @@ class ChangePasswordController extends GetxController {
     } finally {
       changePassLoading.value = false;
     }
+  }
+
+  updateSharedUserData() {
+    sharedPref!
+        .setString('user_password', confirmPassController.text.toString());
   }
 }

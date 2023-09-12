@@ -102,6 +102,8 @@ class CaseDetailsController extends GetxController {
       } finally {
         submitLoading.value = false;
       }
+    } else {
+      Ui.showToast(content: Strings.dontChangedAnyThing);
     }
   }
 

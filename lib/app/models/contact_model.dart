@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'account_model.dart';
 
 class Contact extends Equatable {
-  const Contact(
+  Contact(
       {this.emailAddress,
       this.fullName,
       this.customerSizeCode,
@@ -38,12 +38,12 @@ class Contact extends Equatable {
   final String? department;
   final String? lastName;
   final String? firstName;
-  final String? password;
-  final int? crNumber;
-  final int? cprNumber;
+  late String? password;
+  late int? crNumber;
+  late int? cprNumber;
   final String? businessPhone;
-  final String? mobilePhone;
-  final String? jobTile;
+  late String? mobilePhone;
+  late String? jobTile;
   final Account? account;
 
   factory Contact.fromJson(Map<String, dynamic> json) => Contact(
@@ -74,13 +74,18 @@ class Contact extends Equatable {
       );
 
   Map<String, dynamic> toJson() => {
-        "emailaddress1": emailAddress,
-        "parentcustomerid_account@odata.bind": "/accounts($accountCustomerId)",
-        "lastname": lastName,
-        "firstname": firstName,
-        'mobilephone': mobilePhone,
-        'telephone1': businessPhone,
-        "jobtitle": jobTile
+        if (lastName != null) "emailAddress": emailAddress,
+        if (accountCustomerId != null)
+          "parentcustomerid_account@odata.bind":
+              "/accounts($accountCustomerId)",
+        if (lastName != null) "lastname": lastName,
+        if (firstName != null) "firstname": firstName,
+        if (mobilePhone != null) 'mobilephone': mobilePhone,
+        if (businessPhone != null) 'telephone1': businessPhone,
+        if (jobTile != null) "jobtitle": jobTile,
+        if (crNumber != null) "bls_crnumber": crNumber,
+        if (cprNumber != null) "bls_cprnumber": cprNumber,
+        if (password != null) "blser_password": password
       };
 
   @override

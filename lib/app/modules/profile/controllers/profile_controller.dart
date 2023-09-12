@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/ui.dart';
+import '../../../../main.dart';
 import '../../../models/contact_model.dart';
 import '../../../repositories/profile_repo.dart';
 import '../../../routes/app_routes.dart';
@@ -15,7 +16,7 @@ class ProfileController extends GetxController {
   final profileRepo = ProfileRepo();
   final changeProfileKey = GlobalKey<FormState>();
   final changeProfileLoading = false.obs;
-  final _contact = const Contact().obs;
+  final _contact = Contact().obs;
   bool profileIsChanged = false;
   TextEditingController jobTitleController = TextEditingController();
   TextEditingController mobileNumberController = TextEditingController();
@@ -56,27 +57,50 @@ class ProfileController extends GetxController {
   }
 
   changeProfile() async {
-    try {
-      if (changeProfileKey.currentState!.validate()) {
-        changeProfileKey.currentState?.save();
-        changeProfileLoading.value = true;
-        _contact.value = Contact(
-            id: Get.find<SessionServices>().currentUser.value.id,
-            mobilePhone: mobileNumberController.text,
-            jobTile: jobTitleController.text,
-            crNumber: int.tryParse(crNumberController.text),
-            cprNumber: int.tryParse(cprNumberController.text));
-        await profileRepo.updateProfile(request: _contact.value);
-        Ui.showToast(content: Strings.profileChangedSuccessfully);
-        Get.offAllNamed(Routes.dashboard);
+    if (profileIsChanged) {
+      try {
+        if (changeProfileKey.currentState!.validate()) {
+          changeProfileKey.currentState?.save();
+          changeProfileLoading.value = true;
+          _contact.value = Contact(
+              mobilePhone: mobileNumberController.text,
+              jobTile: jobTitleController.text,
+              crNumber: int.tryParse(crNumberController.text),
+              cprNumber: int.tryParse(cprNumberController.text));
+          await profileRepo
+              .updateProfile(request: _contact.value)
+              .then((value) {
+            Get.find<SessionServices>().currentUser.value.jobTile =
+                jobTitleController.text;
+            Get.find<SessionServices>().currentUser.value.mobilePhone =
+                mobileNumberController.text;
+            Get.find<SessionServices>().currentUser.value.cprNumber =
+                int.tryParse(cprNumberController.text);
+            Get.find<SessionServices>().currentUser.value.crNumber =
+                int.tryParse(crNumberController.text);
+          }).then((value) => updateSharedUserData());
+
+          Ui.showToast(content: Strings.profileChangedSuccessfully);
+          Get.offAllNamed(Routes.dashboard);
+        }
+      } catch (e) {
+        changeProfileLoading.value = false;
+        Get.showSnackbar(Ui.errorSnackBar(message: ErrorStrings.failedToSave));
+        Get.log('========== Error when update profile : $e ==========');
+      } finally {
+        changeProfileLoading.value = false;
       }
-    } catch (e) {
-      changeProfileLoading.value = false;
-      Get.showSnackbar(Ui.errorSnackBar(message: ErrorStrings.failedToSave));
-      Get.log('========== Error when create work permit : $e ==========');
-    } finally {
-      changeProfileLoading.value = false;
+    } else {
+      Ui.showToast(content: Strings.dontChangedAnyThing);
     }
+  }
+
+  updateSharedUserData() {
+    sharedPref!.setString('user_job_title', jobTitleController.text);
+    sharedPref!.setString('user_mobilePhone', mobileNumberController.text);
+    sharedPref!.setString('user_crNumber', crNumberController.text.toString());
+    sharedPref!
+        .setString('user_cprNumber', cprNumberController.text.toString());
   }
 
   @override

@@ -73,7 +73,10 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                                                   .password
                                           ? ErrorStrings
                                               .cannotEnterSameCurrentPass
-                                          : null,
+                                          : value.length < 8
+                                              ? ErrorStrings
+                                                  .cannotEnterPassLessThen8Character
+                                              : null,
                                   labelWidget: const LabelTextField(
                                       label: Strings.newPass,
                                       isRequired: true)),

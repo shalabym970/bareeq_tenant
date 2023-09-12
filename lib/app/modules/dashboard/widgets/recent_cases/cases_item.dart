@@ -107,7 +107,7 @@ class CasesListItem extends GetView<DashboardController> {
                                       SizedBox(height: 3.h),
                                       Text(
                                           GeneralServices.getKeyFromValue(
-                                              Constants.casePirorityMap,
+                                              Constants.casePriorityMap,
                                               cases.priority ?? 0),
                                           style: TextStyle(
                                               fontSize: 10.sp,

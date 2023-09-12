@@ -219,6 +219,8 @@ class WorkPermitDetailsController extends GetxController {
       } finally {
         submitLoading.value = false;
       }
+    } else {
+      Ui.showToast(content: Strings.dontChangedAnyThing);
     }
   }
 

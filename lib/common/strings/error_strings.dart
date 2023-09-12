@@ -37,6 +37,8 @@ class ErrorStrings {
   static const String notMatchPass = "Doesn't match your current password";
   static const String cannotEnterSameCurrentPass =
       "You cannot type the same password as your current password";
+  static const String cannotEnterPassLessThen8Character =
+      "You cannot type enter password contains Less than 8 character";
   static const String enterReply = "You don't reply to the message";
   static const String failedReply = 'Failed to reply the message !!';
   static const String errorConvertFileToBase64 =

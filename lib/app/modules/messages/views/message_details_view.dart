@@ -170,7 +170,6 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                                   SizedBox(height: 10.h),
                                   const MessageAttachmentsList(),
                                   SizedBox(height: 20.h),
-                                  if (controller.rout == Constants.inboxMessage)
                                     Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:Bareeq/app/services/session_services.dart';
 import 'package:get/get.dart';
 import '../../../common/constants.dart';
 import '../../../main.dart';
@@ -68,7 +69,8 @@ class ContactApi extends GetxService {
 
   /// update user profile
   static Future updateProfile({required Contact request}) async {
-    String url = "${Constants.baseUrl}contacts";
+    String url =
+        "${Constants.baseUrl}contacts(${Get.find<SessionServices>().currentUser.value.id})";
     Get.log("========== update contact url : $url ==========");
 
     var response = await NLTMAuthServices.client
@@ -81,10 +83,11 @@ class ContactApi extends GetxService {
     }).timeout(const Duration(seconds: 30));
     var decodeResponse =
         await NLTMAuthServices.decodeResponse(response: response);
-    Get.log('========== update contact response : $decodeResponse ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
+      Get.log(
+          '========== update contact response : $decodeResponse ==========');
     } else {
       throw Exception();
     }

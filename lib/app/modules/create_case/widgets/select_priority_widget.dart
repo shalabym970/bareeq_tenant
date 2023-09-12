@@ -15,7 +15,7 @@ class SelectPriorityWidget extends GetView<AddCaseController> {
         onChange: (newValue) async {
           controller.selectedPriority.value = newValue;
         },
-        items: Constants.casePirorityMap.keys
+        items: Constants.casePriorityMap.keys
             .map<DropdownMenuItem<String>>(
               (String key) => DropdownMenuItem<String>(
                 value: key,

@@ -1,3 +1,6 @@
+import 'package:get/get.dart';
+import '../services/session_services.dart';
+
 class MessageModel {
   MessageModel(
       {this.subject,
@@ -11,7 +14,8 @@ class MessageModel {
       this.direction,
       this.createdBy,
       this.priorityCode,
-      this.regardingName});
+      this.regardingName,
+      this.scheduledStart});
 
   String? subject;
   String? messageBody;
@@ -25,6 +29,7 @@ class MessageModel {
   String? createdBy;
   int? priorityCode;
   String? regardingName;
+  DateTime? scheduledStart;
 
   factory MessageModel.fromJson(Map<String, dynamic> json) => MessageModel(
       subject: json["subject"],
@@ -43,16 +48,16 @@ class MessageModel {
 
   Map<String, dynamic> toJson() => {
         "subject": subject,
+        "blser_Account_blser_portalmessages@odata.bind":
+            "/accounts(${Get.find<SessionServices>().currentUser.value.accountCustomerId})",
+        "blser_Contact_blser_portalmessages@odata.bind":
+            "/contacts(${Get.find<SessionServices>().currentUser.value.id})",
+        "regardingobjectid_blser_workpermit_blser_portalmessages@odata.bind":
+            "/${regardingName}s($regardingId)",
         "blser_messagetext": messageBody,
-        "activityid": activityId,
-        "_regardingobjectid_value": regardingId,
         "blser_readstatus": readStatus,
-        "_blser_account_value": accountId,
-        "statuscode": statusCode,
         "blser_direction": direction,
-        "_createdby_value": createdBy,
         "prioritycode": priorityCode,
-        "_regardingobjectid_value@Microsoft.Dynamics.CRM.lookuplogicalname":
-            regardingName
+        "scheduledstart": scheduledStart?.toIso8601String()
       };
 }

@@ -60,7 +60,7 @@ class AddCaseController extends GetxController {
                     title: caseTitleController.text,
                     description: caseDescriptionController.text,
                     type: Constants.caseTypesMap[selectedType.value],
-                    priority: Constants.casePirorityMap[selectedPriority.value],
+                    priority: Constants.casePriorityMap[selectedPriority.value],
                     natureOfComplaint: Constants
                         .natureOfComplaints[selectedNatureOfComplaint.value],
                     unit: relatedUnitValue.value);
