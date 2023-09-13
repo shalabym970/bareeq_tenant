@@ -1,25 +1,26 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/global_widgets.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/contact_model.dart';
+import '../../../models/login_activity_model.dart';
 import '../../../repositories/login_repo.dart';
 import '../../../routes/app_routes.dart';
 
 class AuthController extends GetxController {
+  final loading = false.obs;
+  final currentContact = Contact().obs;
   final loginFormKey = GlobalKey<FormState>();
   final recoverFormKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final recoverEmailController = TextEditingController();
   final passwordController = TextEditingController();
   final passwordVisible = true.obs;
-  final loading = false.obs;
   final loadingRecoverAccount = false.obs;
-  final currentContact =  Contact().obs;
   LoginRepository loginRepository = LoginRepository();
+  LoginActivityModel activity = LoginActivityModel();
 
   login() async {
     try {
@@ -50,25 +51,13 @@ class AuthController extends GetxController {
     }
   }
 
-  recoverAccount() async {
-    try {
-      if (recoverFormKey.currentState!.validate()) {
-        recoverFormKey.currentState?.save();
-        loadingRecoverAccount.value = true;
-        // _contact.value = Contact(
-        //     id: Get.find<SessionServices>().currentUser.value.id,
-        //     password: newPassController.text);
-        // await profileRepo.updateProfile(request: _contact.value);
-        //
-      //  Ui.showToast(content: Strings.passwordChangedSuccessfuly);
-        Get.back();
-      }
-    } catch (e) {
-      loadingRecoverAccount.value = false;
-    //   Get.showSnackbar(
-    //       Ui.errorSnackBar(message: ErrorStrings.failedToChangePass));
-    // } finally {
-      loadingRecoverAccount.value = false;
-    }
-  }
+// Future getActivity() async {
+//   try {
+//     activity = await loginRepository.addLoginActivity();
+//   } catch (e) {
+//     Get.showSnackbar(
+//         Ui.errorSnackBar(message: ErrorStrings.wrongEmailOrPassword));
+//     Get.log('========== Error when login : $e ==========');
+//   }
+// }
 }

@@ -43,8 +43,8 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10.h)),
                                   color: controller.message.readStatus == true
-                                      ? ColorManager.green
-                                      : ColorManager.red),
+                                      ? ColorManager.red
+                                      : ColorManager.green),
                               height: 10.h,
                               width: 10.w),
                           Padding(
@@ -52,14 +52,14 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                                   vertical: 20.h, horizontal: 10.w),
                               child: Text(
                                   controller.message.readStatus == true
-                                      ? Strings.read
-                                      : Strings.unread,
+                                      ? Strings.unread
+                                      : Strings.read,
                                   style: TextStyle(
                                       fontSize: 15.sp,
                                       color:
                                           controller.message.readStatus == true
-                                              ? ColorManager.green
-                                              : ColorManager.red,
+                                              ? ColorManager.red
+                                              : ColorManager.green,
                                       fontWeight: FontWeight.w500)))
                         ])
                     ]),
@@ -271,7 +271,7 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                                                   ])),
                                           SizedBox(height: 10.h),
                                           const MessageUploadedAttachmentsList(),
-                                          SizedBox(height: 30.h),
+                                          SizedBox(height: 10.h),
                                           PrimaryButton(
                                               title: Strings.sendReply,
                                               onPressed: () {

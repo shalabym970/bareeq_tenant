@@ -23,7 +23,7 @@ class MessagesSwitcherBTN extends GetView<MessagesController> {
                   onTap: () {
                     controller.selectInboxMessages.value =
                         !controller.selectInboxMessages.value;
-                    controller.getAllMessages();
+                    controller.getMessages();
                   },
                   child: Container(
                       color: controller.selectInboxMessages.isTrue
@@ -44,7 +44,7 @@ class MessagesSwitcherBTN extends GetView<MessagesController> {
                   onTap: () {
                     controller.selectInboxMessages.value =
                         !controller.selectInboxMessages.value;
-                    controller.getAllMessages();
+                    controller.getMessages();
                   },
                   child: Container(
                       color: controller.selectInboxMessages.isTrue

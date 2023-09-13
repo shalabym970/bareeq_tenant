@@ -1,3 +1,4 @@
+import 'package:Bareeq/app/modules/messages/controllers/messages_controller.dart';
 import 'package:Bareeq/app/services/session_services.dart';
 import 'package:Bareeq/common/strings/strings.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +17,7 @@ class MessageListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 5.h),
-        child: GestureDetector(
-            onTap: () {
-              Get.toNamed(Routes.messagesDetails, arguments: [
-                message.direction == true
-                    ? Constants.sentMessage
-                    : Constants.inboxMessage,
-                message
-              ]);
-            },
-            child: Container(
+        child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10.h)),
                     boxShadow: [
@@ -177,6 +169,6 @@ class MessageListItem extends StatelessWidget {
                                         color: message.readStatus == true
                                             ? Colors.green
                                             : Colors.grey[800]))
-                            ]))))));
+                            ])))));
   }
 }

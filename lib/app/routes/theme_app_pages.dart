@@ -1,4 +1,3 @@
-import 'package:Bareeq/app/modules/auth/views/recover_account_view.dart';
 import 'package:Bareeq/app/modules/cases/views/cases_view.dart';
 import 'package:Bareeq/app/modules/contacts/bindings/contacts_binding.dart';
 import 'package:Bareeq/app/modules/create_work_permit_item/views/create_work_permit_item_view.dart';
@@ -140,10 +139,6 @@ class ThemeAppPages {
         name: Routes.addCase,
         page: () => const AddCaseView(),
         binding: AddCaseBinding()),
-    GetPage(
-        name: Routes.passwordRecovering,
-        page: () => const RecoverAccountView(),
-        binding: AuthBinding()),
     GetPage(
         name: Routes.messagesDetails,
         page: () => const MessageDetailsView(),

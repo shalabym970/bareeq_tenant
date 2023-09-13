@@ -46,7 +46,7 @@ class MessageDropDownList extends GetView<MessagesController> {
                           null;
                         } else {
                           controller.selectedValue.value = newValue!;
-                          controller.getAllMessages();
+                          controller.getMessages();
                         }
                       },
                     )))),

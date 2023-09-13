@@ -27,11 +27,11 @@ class MessagesController extends GetxController {
 
   @override
   void onInit() {
-    getAllMessages();
+    getMessages();
     super.onInit();
   }
 
-  void getAllMessages() async {
+  void getMessages() async {
     try {
       error.value = false;
       loading.value = true;

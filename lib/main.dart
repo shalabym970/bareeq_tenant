@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:aad_oauth/aad_oauth.dart';
+import 'package:aad_oauth/model/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,6 +16,14 @@ import 'common/constants.dart';
 
 SharedPreferences? sharedPref;
 final encoding = Encoding.getByName('utf-8');
+final Config config = Config(
+    tenant: 'd7be1e00-bf67-40de-a606-1a75a207d413',
+    clientId: '1789a239-2a62-402b-9670-4f8722c8f7b5',
+    scope:
+        'openid profile offline_access https://initiumsolutionsdefault.crm4.dynamics.com/.default',
+    redirectUri: 'https://bar.crm4.dynamics.com/XRMServices/2011/Organization.svc',
+    clientSecret: 'wEM8Q~VQAaFhIMLl5vx1cg4AHXSr6oJX2HGHcak6');
+final oauth = AadOAuth(config);
 
 Future initServices() async {
   Get.log('starting services ...');

@@ -6,7 +6,8 @@ class Constants {
   static const String password = 'pass@T1#22';
   static const String standard = 'Standard';
   static const String emergency = 'Emergency';
-  static const String baseUrl = 'http://d365.blive.me/bar/api/data/v9.1/';
+  static const String baseUrl =  "https://bar.crm4.dynamics.com/XRMServices/2011/Organization.svc/bar/api/data/v9.1/";
+      // 'http://d365.blive.me/bar/api/data/v9.1/';
   static const String environmentName = "Bareeq";
   static const String workPermitKey = "blser_workpermit";
   static const String messageKey = "blser_portalmessages";
@@ -29,6 +30,7 @@ class Constants {
   static const String insuranceFile = "insuranceAttach";
   static const String methodFile = "methodAttach";
   static const String riskFile = "riskAttach";
+
 
   static const headers = {
     "Content-Type": "application/json",
@@ -75,7 +77,6 @@ class Constants {
     'Question': 550220000,
     "Problem": 550220001,
     'Request': 550220002,
-    'Handover': 550220003,
     'Warranty': 550220004
   };
 

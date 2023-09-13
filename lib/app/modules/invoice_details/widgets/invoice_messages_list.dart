@@ -18,40 +18,33 @@ class InvoiceMessagesList extends GetView<InvoiceDetailsController> {
   Widget build(BuildContext context) {
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 8.h),
-        child: Obx(
-          () => controller.loadingMessages.isTrue
-              ? const HorizontalListLoading()
-              : controller.errorMessages.isTrue
-                  ? CustomErrorWidget(
-                      iconWidth: 20.w,
-                      iconHeight: 20.h,
-                      fontSize: 15.sp,
-                    )
-                  : controller.messages.isEmpty
-                      ? const Center(
-                          child: EmptyListWidget(
-                              message: Strings.nothingMessages))
-                      : ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          padding: EdgeInsets.symmetric(horizontal: 5.w),
-                          primary: false,
-                          shrinkWrap: true,
-                          itemCount: controller.messages.length,
-                          itemBuilder: ((_, index) {
-                            MessageModel message =
-                                controller.messages.elementAt(index);
-                            return GestureDetector(
-                                onTap: () {
-                                  Get.toNamed(Routes.messagesDetails,
-                                      arguments: message.direction == true
-                                          ? Constants.sentMessage
-                                          : Constants.inboxMessage);
-                                },
-                                child: MessageCard(
-                                  message: message,
-                                ));
-                          }),
-                        ),
-        ));
+        child: Obx(() => controller.loadingMessages.isTrue
+            ? const HorizontalListLoading()
+            : controller.errorMessages.isTrue
+                ? CustomErrorWidget(
+                    iconWidth: 20.w, iconHeight: 20.h, fontSize: 15.sp)
+                : controller.messages.isEmpty
+                    ? const Center(
+                        child:
+                            EmptyListWidget(message: Strings.nothingMessages))
+                    : ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.symmetric(horizontal: 5.w),
+                        primary: false,
+                        shrinkWrap: true,
+                        itemCount: controller.messages.length,
+                        itemBuilder: ((_, index) {
+                          MessageModel message =
+                              controller.messages.elementAt(index);
+                          return GestureDetector(
+                              onTap: () {
+                                Get.toNamed(Routes.messagesDetails,
+                                        arguments: message.direction == true
+                                            ? Constants.sentMessage
+                                            : Constants.inboxMessage)
+                                    ?.then((value) => controller.getMessages());
+                              },
+                              child: MessageCard(message: message));
+                        }))));
   }
 }

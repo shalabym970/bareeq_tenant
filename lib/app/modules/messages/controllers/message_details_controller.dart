@@ -26,6 +26,7 @@ class MessageDetailsController extends GetxController {
   final _replyMessage = MessageModel().obs;
   MessageModel message = Get.arguments[1];
 
+
   @override
   void onInit() async {
     getAttachments();
@@ -79,6 +80,7 @@ class MessageDetailsController extends GetxController {
             await _messagesRepo.replyMessage(request: _replyMessage.value);
         Get.log('========== message id : $messageId ==========');
         await convertFilesToAttachment(messageId: messageId);
+
         Ui.showToast(content: Strings.messageReplayed);
         Get.back();
       }

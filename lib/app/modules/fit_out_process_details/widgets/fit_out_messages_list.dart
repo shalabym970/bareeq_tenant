@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../common/constants.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
 import '../../../../common/widgets/message_cards/message_card.dart';
 import '../../../models/message.dart';
 import '../../../../common/widgets/error_widget.dart';
 import '../../../../common/widgets/horizontal_list_loading.dart';
+import '../../../routes/app_routes.dart';
 import '../controllers/fit_out_process_details_controller.dart';
 
 class FitOutMessagesList extends GetView<FitOutProcessDetailsController> {
@@ -27,9 +29,8 @@ class FitOutMessagesList extends GetView<FitOutProcessDetailsController> {
                     )
                   : controller.messages.isEmpty
                       ? const Center(
-                          child: EmptyListWidget(
-
-                              message: Strings.nothingMessages))
+                          child:
+                              EmptyListWidget(message: Strings.nothingMessages))
                       : ListView.builder(
                           scrollDirection: Axis.horizontal,
                           padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -39,9 +40,19 @@ class FitOutMessagesList extends GetView<FitOutProcessDetailsController> {
                           itemBuilder: ((_, index) {
                             MessageModel message =
                                 controller.messages.elementAt(index);
-                            return MessageCard(
-                              message: message,
-                            );
+                            return GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(Routes.messagesDetails,
+                                      arguments: [
+                                        message.direction == true
+                                            ? Constants.sentMessage
+                                            : Constants.inboxMessage,
+                                        message
+                                      ])?.then((value) => controller.getMessages());
+                                },
+                                child: MessageCard(
+                                  message: message,
+                                ));
                           }),
                         ),
         ));
