@@ -1,16 +1,11 @@
 import 'package:get/get.dart';
 import '../models/contact_model.dart';
-import '../models/login_activity_model.dart';
 import '../providers/api_client/contact_api.dart';
 import '../services/session_services.dart';
 
 class LoginRepository {
-
-  Future<LoginActivityModel> addLoginActivity() {
-    return ContactApi.addLoginActivity();
-  }
-
   final contacts = <Contact>[].obs;
+
   Future<List<Contact>> getAllContacts() async {
     return await ContactApi.getAllContacts();
   }

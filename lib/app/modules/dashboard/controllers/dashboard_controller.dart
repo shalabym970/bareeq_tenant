@@ -43,11 +43,13 @@ class DashboardController extends GetxController {
 
   @override
   void onInit() {
+    Get.log(' ============ current user : ${currentUser.accountCustomerId} ========== ');
     getWorkPermits();
     getInvoices();
     getCases();
     getFitOuts();
     getLeases();
+
     super.onInit();
   }
 

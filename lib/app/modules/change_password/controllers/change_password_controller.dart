@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/ui.dart';
-import '../../../../main.dart';
+import '../../../helper/cash_helper.dart';
 import '../../../models/contact_model.dart';
 import '../../../services/session_services.dart';
 
@@ -41,7 +41,6 @@ class ChangePasswordController extends GetxController {
   }
 
   updateSharedUserData() {
-    sharedPref!
-        .setString('user_password', confirmPassController.text.toString());
+    CashHelper.saveData(key:'user_password', value :confirmPassController.text.toString());
   }
 }

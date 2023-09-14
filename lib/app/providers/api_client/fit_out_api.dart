@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 import '../../../common/widgets/ui.dart';
 import '../../models/fit_out_model.dart';
 import '../../models/fit_out_step_model.dart';
-import '../../services/api_services.dart';
+import '../../helper/api_helper.dart';
 import '../../services/session_services.dart';
-import '../../services/token_services.dart';
+import '../../helper/token_helper.dart';
 
 class FitOutApi extends GetxService {
   /// Get fit outs
@@ -21,8 +21,8 @@ class FitOutApi extends GetxService {
         ' and (blser_RelatedProperty/advanced_projectid ne null) and (blser_RelatedUnit/advanced_unitid ne null)'
         '&\$orderby=createdon desc';
     Get.log('===============  fit outs url :  $url ==========');
-    var response = await ApiServices.getData(url: url);
-    var decodeResponse = await TokenServices.decodeResponse(response: response);
+    var response = await ApiHelper.getData(url: url);
+    var decodeResponse = await TokenHelper.decodeResponse(response: response);
     Get.log('=============== fit outs response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
@@ -42,19 +42,19 @@ class FitOutApi extends GetxService {
     String url =
         'blser_fitoutsteps?\$select=blser_description,blser_stepstatus,statuscode,_blser_relatedprocess_value,createdon,blser_name&\$expand=blser_fitoutstep_Tasks(\$select=subject)&\$filter=(_blser_relatedprocess_value%20eq $fitOutId)';
     Get.log('===============  fit out steps url :  $url ==========');
-    var response = await ApiServices.getData(url: url);
+    var response = await ApiHelper.getData(url: url);
     Get.log(
         '=============== fit out steps response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<FitOutStepModel>((obj) => FitOutStepModel.fromJson(obj))
           .toList();
     } else {
-      throw Exception(response.bodyString.toString());
+      throw Exception(response.reasonPhrase.toString());
     }
   }
 }

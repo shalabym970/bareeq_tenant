@@ -1,8 +1,8 @@
 import 'package:Bareeq/app/models/lease_model.dart';
 import 'package:get/get.dart';
-import '../../services/api_services.dart';
+import '../../helper/api_helper.dart';
 import '../../services/session_services.dart';
-import '../../services/token_services.dart';
+import '../../helper/token_helper.dart';
 
 class LeasesApi {
   /// Get all cases
@@ -16,19 +16,19 @@ class LeasesApi {
         '&\$filter=(_advanced_contactid_value eq ${Get.find<SessionServices>().currentUser.value.id}) '
         'and (advanced_unitid/advanced_unitid ne null) and (blser_BrandShop/blser_erpshopid ne null) and '
         '(blser_Property/advanced_projectid ne null)&\$orderby=createdon desc';
-    var response = await ApiServices.getData(url: url);
+    var response = await ApiHelper.getData(url: url);
     Get.log('=============== Leases url :  $url ==========');
     Get.log('=============== Leases response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<LeaseModel>((obj) => LeaseModel.fromJson(obj))
           .toList();
     } else {
-      throw Exception(response.bodyString.toString());
+      throw Exception(response.reasonPhrase.toString());
     }
   }
 }

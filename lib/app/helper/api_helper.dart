@@ -1,20 +1,22 @@
 import 'dart:convert';
-import 'package:Bareeq/app/services/token_services.dart';
+import 'package:Bareeq/app/helper/cash_helper.dart';
+import 'package:Bareeq/app/helper/token_helper.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 import '../../common/constants.dart';
 import '../../main.dart';
 
-class ApiServices {
+class ApiHelper {
   ///Post
-  static Future<Response> postData({
+  static Future<http.Response> postData({
     required String url,
     required Map<String, dynamic> body,
   }) async {
-    if (TokenServices.accessTokenIsExpired()) {
-      await TokenServices.refreshToken();
+    if (TokenHelper.accessTokenIsExpired()) {
+      await TokenHelper.refreshToken();
     }
-    var token = await oauth.getAccessToken();
+    var token = CashHelper.getData(key: 'access_token');
     Constants.headers['Authorization'] = 'Bearer $token';
 
     return await http
@@ -25,52 +27,53 @@ class ApiServices {
     )
         .catchError((error) {
       return error;
-    }) as Response;
+    });
   }
 
   ///Get
-  static Future<Response> getData({
+  static Future<http.Response> getData({
     required String url,
   }) async {
-    if (TokenServices.accessTokenIsExpired()) {
-      await TokenServices.refreshToken();
+    if (TokenHelper.accessTokenIsExpired()) {
+      await TokenHelper.refreshToken();
     }
-    var token = await oauth.getAccessToken();
+    var token = CashHelper.getData(key: 'access_token');
     Constants.headers['Authorization'] = 'Bearer $token';
-
-    return await http
+    var response = await http
         .get(Uri.parse(Constants.baseUrl + url), headers: Constants.headers)
         .catchError((error) {
       return error;
-    }) as Response;
+    });
+
+    return response;
   }
 
   ///Patch
-  static Future<Response> patchData({
+  static Future<http.Response> patchData({
     required String url,
     required Map<String, dynamic> body,
   }) async {
-    if (TokenServices.accessTokenIsExpired()) {
-      await TokenServices.refreshToken();
+    if (TokenHelper.accessTokenIsExpired()) {
+      await TokenHelper.refreshToken();
     }
-    var token = await oauth.getAccessToken();
+    var token = CashHelper.getData(key: 'access_token');
     Constants.headers['Authorization'] = 'Bearer $token';
     return await http
         .patch(Uri.parse(Constants.baseUrl + url),
             body: body, headers: Constants.headers)
         .catchError((error) {
       return error;
-    }) as Response;
+    });
   }
 
   ///Delete
   static Future<Response> deleteData({
     required String url,
   }) async {
-    if (TokenServices.accessTokenIsExpired()) {
-      await TokenServices.refreshToken();
+    if (TokenHelper.accessTokenIsExpired()) {
+      await TokenHelper.refreshToken();
     }
-    var token = await oauth.getAccessToken();
+    var token = CashHelper.getData(key: 'access_token');
     Constants.headers['Authorization'] = 'Bearer $token';
 
     return await http

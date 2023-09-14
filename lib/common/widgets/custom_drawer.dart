@@ -1,3 +1,4 @@
+import 'package:Bareeq/app/helper/cash_helper.dart';
 import 'package:Bareeq/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -118,22 +119,20 @@ Drawer customDrawer() {
                       DrawerItemWidget(
                         text: Strings.help,
                         svgIconPath: ImagePaths.help,
-                        onTap: () {
-                        },
+                        onTap: () {},
                       ),
                       SizedBox(height: 20.h),
                       DrawerItemWidget(
                         text: Strings.privacyPolicy,
                         svgIconPath: ImagePaths.privacyPolicy,
-                        onTap: () {
-                        },
+                        onTap: () {},
                       ),
                       SizedBox(height: 40.h),
                       DrawerItemWidget(
                         text: Strings.logout,
                         svgIconPath: ImagePaths.whiteLogout,
                         onTap: () {
-                          sharedPref!.clear();
+                          CashHelper.clearData();
                           Get.offAllNamed(Routes.login);
                         },
                       ),

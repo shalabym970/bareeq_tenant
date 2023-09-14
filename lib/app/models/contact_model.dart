@@ -1,13 +1,14 @@
-import 'package:equatable/equatable.dart';
+import 'dart:convert';
+import 'dart:developer';
 
+import 'package:equatable/equatable.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'account_model.dart';
 
 class Contact extends Equatable {
   Contact(
       {this.emailAddress,
       this.fullName,
-      this.customerSizeCode,
-      this.createdOn,
       this.callback,
       this.accountCustomerId,
       this.transactionCurrencyId,
@@ -27,14 +28,12 @@ class Contact extends Equatable {
 
   final String? emailAddress;
   final String? fullName;
-  final int? customerSizeCode;
-  final DateTime? createdOn;
   final String? callback;
   final String? accountCustomerId;
   final String? transactionCurrencyId;
   final String? id;
   final String? company;
-  final String? country;
+  final int? country;
   final String? department;
   final String? lastName;
   final String? firstName;
@@ -46,32 +45,31 @@ class Contact extends Equatable {
   late String? jobTile;
   final Account? account;
 
-  factory Contact.fromJson(Map<String, dynamic> json) => Contact(
-        emailAddress: json["emailaddress1"],
-        fullName: json["fullname"],
-        customerSizeCode: json["customersizecode"],
-        createdOn: json["createdon"] == null
-            ? DateTime(0000, 00, 00)
-            : DateTime.parse(json["createdon"]),
-        callback: json["callback"],
-        accountCustomerId: json["_parentcustomerid_value"],
-        transactionCurrencyId: json["_transactioncurrencyid_value"],
-        id: json["contactid"],
-        company: json["company"],
-        country: json["blser_country"],
-        department: json["department"],
-        lastName: json["lastname"],
-        firstName: json["firstname"],
-        password: json['blser_password'],
-        cprNumber: json["bls_cprnumber"],
-        crNumber: json["bls_crnumber"],
-        mobilePhone: json["mobilephone"],
-        businessPhone: json["telephone1"],
-        jobTile: json["jobtitle"],
-        account: json["parentcustomerid_account"] != null
-            ? Account.fromJson(json["parentcustomerid_account"])
-            : null,
-      );
+  factory Contact.fromJson(Map<String, dynamic> json) {
+    log("jsonEncode>>${jsonEncode(json)}");
+    return Contact(
+      emailAddress: json["emailaddress1"],
+      fullName: json["fullname"],
+      callback: json["callback"],
+      accountCustomerId: json["_parentcustomerid_value"],
+      transactionCurrencyId: json["_transactioncurrencyid_value"],
+      id: json["contactid"],
+      company: json["company"],
+      country: json["blser_country"],
+      department: json["department"],
+      lastName: json["lastname"],
+      firstName: json["firstname"],
+      password: json['blser_password'],
+      cprNumber: json["bls_cprnumber"],
+      crNumber: json["bls_crnumber"],
+      mobilePhone: json["mobilephone"],
+      businessPhone: json["telephone1"],
+      jobTile: json["jobtitle"],
+      account: json["parentcustomerid_account"] != null
+          ? Account.fromJson(json["parentcustomerid_account"])
+          : null,
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         if (lastName != null) "emailAddress": emailAddress,

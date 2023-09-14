@@ -1,55 +1,57 @@
 import 'package:Bareeq/app/models/account_model.dart';
 import 'package:Bareeq/app/models/contact_model.dart';
+import 'package:Bareeq/common/strings/strings.dart';
 import 'package:get/get.dart';
 
 import '../../main.dart';
+import '../helper/cash_helper.dart';
 
 class SessionServices extends GetxService {
-  final currentUser =  Contact().obs;
+  final currentUser = Contact().obs;
 
   bool hasSession() {
     return sharedPref!.containsKey('user_id') ? true : false;
   }
 
   setSessionData({required Contact user}) async {
-    sharedPref!.setString('user_fullName', user.fullName.toString());
-    sharedPref!.setString('user_email', user.emailAddress!);
-    sharedPref!
-        .setString('user_customerSizeCode', user.customerSizeCode.toString());
-    sharedPref!.setString('user_callback', user.callback.toString());
-    sharedPref!.setString('user_job_title', user.jobTile.toString());
-    sharedPref!
-        .setString('user_parentCustomerId', user.accountCustomerId.toString());
-    sharedPref!.setString(
-        'user_transactionCurrencyId', user.transactionCurrencyId.toString());
-    sharedPref!.setString('user_id', user.id.toString());
-    sharedPref!.setString('user_company', user.company.toString());
-    sharedPref!.setString('user_country', user.country.toString());
-    sharedPref!.setString('user_department', user.department.toString());
-    sharedPref!.setString('user_lastName', user.lastName.toString());
-    sharedPref!.setString('user_firstName', user.firstName.toString());
-    sharedPref!.setString('user_password', user.password.toString());
-    sharedPref!.setString('user_crNumber', user.crNumber.toString());
-    sharedPref!.setString('user_cprNumber', user.cprNumber.toString());
-    sharedPref!.setString('user_businessPhone', user.businessPhone.toString());
-    sharedPref!.setString('user_mobilePhone', user.mobilePhone.toString());
-    sharedPref!.setString('user_accountName', user.account!.name.toString());
-    sharedPref!.setString('user_accountId', user.account!.id.toString());
-    sharedPref!.setString('user_accountPrimaryContactId',
-        user.account!.primaryContactId.toString());
-    sharedPref!.setString(
-        'user_accountStatus', user.account!.accountStatus.toString());
-    sharedPref!.setString('user_ownerId', user.account!.ownerId!);
-    sharedPref!
-        .setString('user_emailAddress1', user.account!.emailAddress.toString());
-    sharedPref!
-        .setString('user_accountCrNumber', user.account!.crNumber.toString());
-    sharedPref!
-        .setString('user_accountType', user.account!.accountType.toString());
-    sharedPref!
-        .setString('user_accountCbrNumber', user.account!.cbrNumber.toString());
-    sharedPref!.setString('user_accountTransactionCurrencyId',
-        user.account!.transactionCurrencyId.toString());
+    CashHelper.saveData(key: 'user_fullName', value: user.fullName);
+    CashHelper.saveData(key: 'user_email', value: user.emailAddress);
+    CashHelper.saveData(key: 'user_callback', value: user.callback);
+    CashHelper.saveData(key: 'user_job_title', value: user.jobTile);
+    CashHelper.saveData(
+        key: 'user_parentCustomerId', value: user.accountCustomerId);
+    CashHelper.saveData(
+        key: 'user_transactionCurrencyId', value: user.transactionCurrencyId);
+    CashHelper.saveData(key: 'user_id', value: user.id);
+    CashHelper.saveData(key: 'user_company', value: user.company);
+    CashHelper.saveData(key: 'user_country', value: user.country);
+    CashHelper.saveData(key: 'user_department', value: user.department);
+    CashHelper.saveData(key: 'user_lastName', value: user.lastName);
+    CashHelper.saveData(key: 'user_firstName', value: user.firstName);
+    CashHelper.saveData(key: 'user_password', value: user.password);
+    CashHelper.saveData(key: 'user_crNumber', value: user.crNumber);
+    CashHelper.saveData(key: 'user_cprNumber', value: user.cprNumber);
+    CashHelper.saveData(key: 'user_businessPhone', value: user.businessPhone);
+    CashHelper.saveData(key: 'user_mobilePhone', value: user.mobilePhone);
+    CashHelper.saveData(key: 'user_accountName', value: user.account?.name);
+    CashHelper.saveData(key: 'user_accountId', value: user.account?.id);
+    CashHelper.saveData(
+        key: 'user_accountPrimaryContactId',
+        value: user.account?.primaryContactId);
+    CashHelper.saveData(
+        key: 'user_accountStatus', value: user.account?.accountStatus);
+    CashHelper.saveData(key: 'user_ownerId', value: user.account?.ownerId);
+    CashHelper.saveData(
+        key: 'user_emailAddress1', value: user.account?.emailAddress);
+    CashHelper.saveData(
+        key: 'user_accountCrNumber', value: user.account?.crNumber);
+    CashHelper.saveData(
+        key: 'user_accountType', value: user.account?.accountType);
+    CashHelper.saveData(
+        key: 'user_accountCbrNumber', value: user.account?.cbrNumber);
+    CashHelper.saveData(
+        key: 'user_accountTransactionCurrencyId',
+        value: user.account?.transactionCurrencyId);
 
     Get.log(
         '======================== user data is saved Successfully ========================');
@@ -57,50 +59,52 @@ class SessionServices extends GetxService {
 
   getSessionUser() async {
     currentUser.value = Contact(
-        fullName: sharedPref!.getString('user_fullName'),
-        jobTile: sharedPref!.getString('user_job_title'),
-        emailAddress: sharedPref!.getString('user_email'),
-        customerSizeCode: sharedPref!.getString('user_customerSizeCode') != null
-            ? int.parse(sharedPref!.getString('user_customerSizeCode')!)
-            : 0,
-        callback: sharedPref!.getString('user_callback'),
-        accountCustomerId: sharedPref!.getString('user_parentCustomerId'),
+        fullName: CashHelper.getData(key: 'user_fullName') ?? Strings.na,
+        jobTile: CashHelper.getData(key: 'user_job_title') ?? Strings.na,
+        emailAddress: CashHelper.getData(key: 'user_email') ?? Strings.na,
+        callback: CashHelper.getData(key: 'user_callback') ?? Strings.na,
+        accountCustomerId:
+            CashHelper.getData(key: 'user_parentCustomerId') ?? Strings.na,
         transactionCurrencyId:
-            sharedPref!.getString('user_transactionCurrencyId'),
-        id: sharedPref!.getString('user_id'),
-        company: sharedPref!.getString('user_company'),
-        country: sharedPref!.getString('user_country'),
-        department: sharedPref!.getString('user_department'),
-        lastName: sharedPref!.getString('user_lastName'),
-        firstName: sharedPref!.getString('user_firstName'),
-        password: sharedPref!.getString('user_password'),
-        crNumber: sharedPref!.getString('user_crNumber') != null
-            ? int.parse(sharedPref!.getString('user_crNumber')!)
+            CashHelper.getData(key: 'user_transactionCurrencyId') ?? Strings.na,
+        id: CashHelper.getData(key: 'user_id') ?? Strings.na,
+        company: CashHelper.getData(key: 'user_company') ?? Strings.na,
+        country: CashHelper.getData(key: 'user_country') != null
+            ? int.parse(CashHelper.getData(key: 'user_country')!)
             : 0,
-        cprNumber: sharedPref!.getString('user_cprNumber') != null
-            ? int.parse(sharedPref!.getString('user_cprNumber')!)
+        department: CashHelper.getData(key: 'user_department') ?? Strings.na,
+        lastName: CashHelper.getData(key: 'user_lastName') ?? Strings.na,
+        firstName: CashHelper.getData(key: 'user_firstName') ?? Strings.na,
+        password: CashHelper.getData(key: 'user_password') ?? Strings.na,
+        crNumber: CashHelper.getData(key: 'user_crNumber') != null
+            ? int.parse(CashHelper.getData(key: 'user_crNumber')!)
             : 0,
-        businessPhone: sharedPref!.getString('user_businessPhone'),
-        mobilePhone: sharedPref!.getString('user_mobilePhone'),
+        cprNumber: CashHelper.getData(key: 'user_cprNumber') != null
+            ? int.parse(CashHelper.getData(key: 'user_cprNumber')!)
+            : 0,
+        businessPhone:
+            CashHelper.getData(key: 'user_businessPhone') ?? Strings.na,
+        mobilePhone: CashHelper.getData(key: 'user_mobilePhone') ?? Strings.na,
         account: Account(
-            name: sharedPref!.getString('user_accountName'),
-            id: sharedPref!.getString('user_accountId'),
+            name: CashHelper.getData(key: 'user_accountName') ?? Strings.na,
+            id: CashHelper.getData(key: 'user_accountId') ?? Strings.na,
             primaryContactId:
-                sharedPref!.getString('user_accountPrimaryContactId'),
-            accountStatus: sharedPref!.getString('user_accountStatus') != 'null'
-                ? int.parse(sharedPref!.getString('user_accountStatus')!)
+                CashHelper.getData(key: 'user_accountPrimaryContactId') ??
+                    Strings.na,
+            accountStatus: CashHelper.getData(key: 'user_accountStatus') != null
+                ? int.parse(CashHelper.getData(key: 'user_accountStatus'))
                 : 0,
-            ownerId: sharedPref!.getString('user_ownerId'),
-            emailAddress: sharedPref!.getString('user_emailAddress1'),
-            crNumber: sharedPref!.getString('user_accountCrNumber') != 'null'
-                ? int.parse(sharedPref!.getString('user_accountCrNumber')!)
+            ownerId: CashHelper.getData(key: 'user_ownerId') ?? Strings.na,
+            emailAddress:
+                CashHelper.getData(key: 'user_emailAddress1') ?? Strings.na,
+            crNumber: CashHelper.getData(key: 'user_accountCrNumber') != null
+                ? int.parse(CashHelper.getData(key: 'user_accountCrNumber'))
                 : 0,
-            accountType: sharedPref!.getString('user_accountType') != 'null'
-                ? int.parse(sharedPref!.getString('user_accountType')!)
+            accountType: CashHelper.getData(key: 'user_accountType') != null
+                ? int.parse(CashHelper.getData(key: 'user_accountType'))
                 : 0,
-            cbrNumber: sharedPref!.getString('user_accountCbrNumber'),
-            transactionCurrencyId:
-                sharedPref!.getString('user_accountTransactionCurrencyId')));
+            cbrNumber: CashHelper.getData(key: 'user_accountCbrNumber') ?? Strings.na,
+            transactionCurrencyId: CashHelper.getData(key: 'user_accountTransactionCurrencyId') ?? Strings.na));
     return currentUser;
   }
 }

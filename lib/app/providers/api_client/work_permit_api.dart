@@ -3,9 +3,9 @@ import 'package:Bareeq/app/models/unit.dart';
 import 'package:Bareeq/app/models/work_permit.dart';
 import 'package:get/get.dart';
 import '../../models/work_permit_item.dart';
-import '../../services/api_services.dart';
+import '../../helper/api_helper.dart';
 import '../../services/session_services.dart';
-import '../../services/token_services.dart';
+import '../../helper/token_helper.dart';
 
 class WorkPermitApi extends GetxService {
   /// Get work permits
@@ -17,18 +17,18 @@ class WorkPermitApi extends GetxService {
         '_bls_relatedleaserenewal_value,_bls_relatedleasecontract_value,advanced_description,_bls_currentcontract_value,_ownerid_value,'
         'blser_erp_end_date,blser_erp_start_date),blser_Contractor(\$select=bls_accountstatus,name,accountid,blser_accounttype)'
         '&\$filter=(_blser_customer_value%20eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId})&\$orderby=createdon desc';
-    var response = await ApiServices.getData(url: url);
+    var response = await ApiHelper.getData(url: url);
     Get.log('=============== Work Permit url :  $url ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<WorkPermit>((obj) => WorkPermit.fromJson(obj))
           .toList();
     } else {
-      throw Exception(response.bodyString.toString());
+      throw Exception(response.reasonPhrase.toString());
     }
   }
 
@@ -40,7 +40,7 @@ class WorkPermitApi extends GetxService {
         'createdon,_blser_workpermit_value,_ownerid_value,_owningbusinessunit_value,_createdby_value,'
         'blser_workdescription,blser_worktype&\$filter=(_blser_workpermit_value eq $workPermitId)'
         '&\$orderby=createdon desc';
-    var response = await ApiServices.getData(url: url);
+    var response = await ApiHelper.getData(url: url);
     Get.log('=============== Work Permit items url :  $url ==========');
     Get.log(
         '=============== Work Permit items response :  ${response.body} ==========');
@@ -48,13 +48,13 @@ class WorkPermitApi extends GetxService {
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
 
       return decodeResponse['value']
           .map<WorkPermitItem>((obj) => WorkPermitItem.fromJson(obj))
           .toList();
     } else {
-      throw Exception(response.bodyString.toString());
+      throw Exception(response.reasonPhrase.toString());
     }
   }
 
@@ -65,7 +65,7 @@ class WorkPermitApi extends GetxService {
         "(\$select=advanced_propertycontractid,_blser_property_value;\$expand=advanced_contactid(\$select=contactid;"
         "\$filter=(contactid eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId})))&"
         "\$filter=(advanced_advanced_unit_advanced_propertycontract/any(o1:(o1/advanced_propertycontractid ne null)))";
-    var response = await ApiServices.getData(url: url);
+    var response = await ApiHelper.getData(url: url);
     Get.log('=============== related units url :  $url ==========');
     Get.log(
         '=============== related response url :  ${response.body} ==========');
@@ -73,20 +73,20 @@ class WorkPermitApi extends GetxService {
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
 
       return decodeResponse['value']
           .map<Unit>((obj) => Unit.fromJson(obj))
           .toList();
     } else {
-      throw Exception(response.bodyString.toString());
+      throw Exception(response.reasonPhrase.toString());
     }
   }
 
   /// Get Contractors
   static Future<List<Account>> getContractors() async {
     String url = "accounts?\$select=name";
-    var response = await ApiServices.getData(url: url);
+    var response = await ApiHelper.getData(url: url);
     Get.log('=============== Contractors url :  $url ==========');
     Get.log(
         '=============== Contractors response url :  ${response.body} ==========');
@@ -94,13 +94,13 @@ class WorkPermitApi extends GetxService {
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
 
       return decodeResponse['value']
           .map<Account>((obj) => Account.fromJson(obj))
           .toList();
     } else {
-      throw Exception(response.bodyString.toString());
+      throw Exception(response.reasonPhrase.toString());
     }
   }
 
@@ -108,8 +108,8 @@ class WorkPermitApi extends GetxService {
   static Future<String> postWorkPermit({required WorkPermit request}) async {
     String url = "blser_workpermits";
     Get.log("========== post Work permit url :: $url ==========");
-    var response = await ApiServices.postData(body: request.toJson(), url: url);
-    var decodeResponse = await TokenServices.decodeResponse(response: response);
+    var response = await ApiHelper.postData(body: request.toJson(), url: url);
+    var decodeResponse = await TokenHelper.decodeResponse(response: response);
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
@@ -125,8 +125,8 @@ class WorkPermitApi extends GetxService {
   static Future postWorkPermitItem({required WorkPermitItem request}) async {
     String url = "blser_workpermititems";
     Get.log("========== post Work permit Item url : $url ==========");
-    var response = await ApiServices.postData(body: request.toJson(), url: url);
-    var decodeResponse = await TokenServices.decodeResponse(response: response);
+    var response = await ApiHelper.postData(body: request.toJson(), url: url);
+    var decodeResponse = await TokenHelper.decodeResponse(response: response);
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {

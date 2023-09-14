@@ -1,3 +1,4 @@
+import 'package:Bareeq/app/helper/cash_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -5,7 +6,6 @@ import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/global_widgets.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/contact_model.dart';
-import '../../../models/login_activity_model.dart';
 import '../../../repositories/login_repo.dart';
 import '../../../routes/app_routes.dart';
 
@@ -20,7 +20,6 @@ class AuthController extends GetxController {
   final passwordVisible = true.obs;
   final loadingRecoverAccount = false.obs;
   LoginRepository loginRepository = LoginRepository();
-  LoginActivityModel activity = LoginActivityModel();
 
   login() async {
     try {
@@ -45,19 +44,10 @@ class AuthController extends GetxController {
       loading.value = false;
       Get.showSnackbar(
           Ui.errorSnackBar(message: ErrorStrings.wrongEmailOrPassword));
+      CashHelper.clearData();
       Get.log('========== Error when login : $e ==========');
     } finally {
       loading.value = false;
     }
   }
-
-// Future getActivity() async {
-//   try {
-//     activity = await loginRepository.addLoginActivity();
-//   } catch (e) {
-//     Get.showSnackbar(
-//         Ui.errorSnackBar(message: ErrorStrings.wrongEmailOrPassword));
-//     Get.log('========== Error when login : $e ==========');
-//   }
-// }
 }

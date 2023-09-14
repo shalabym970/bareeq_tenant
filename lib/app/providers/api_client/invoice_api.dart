@@ -1,9 +1,9 @@
 import 'package:Bareeq/app/models/invoice_item.dart';
 import 'package:get/get.dart';
 import '../../models/invoice.dart';
-import '../../services/api_services.dart';
+import '../../helper/api_helper.dart';
 import '../../services/session_services.dart';
-import '../../services/token_services.dart';
+import '../../helper/token_helper.dart';
 
 class InvoiceApi {
   /// Get all invoices
@@ -16,18 +16,18 @@ class InvoiceApi {
         'description,discountamount,discountpercentage,duedate,_advanced_propertycontractid_value&'
         '\$filter=(_customerid_value eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId})&\$orderby=createdon desc';
     Get.log('=============== Invoices url :  $url ==========');
-    var response = await ApiServices.getData(url: url);
+    var response = await ApiHelper.getData(url: url);
     Get.log('=============== Invoices response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<Invoice>((obj) => Invoice.fromJson(obj))
           .toList();
     } else {
-      throw Exception(response.bodyString.toString());
+      throw Exception(response.reasonPhrase.toString());
     }
   }
 
@@ -37,19 +37,19 @@ class InvoiceApi {
         'productname&\$expand=productid(\$select=name,productnumber,productid)'
         '&\$filter=(_invoiceid_value eq $invoiceId)&\$orderby=createdon desc';
     Get.log('=============== Invoices Items url :  $url ==========');
-    var response = await ApiServices.getData(url: url);
+    var response = await ApiHelper.getData(url: url);
     Get.log(
         '=============== Invoices Items response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<InvoiceItem>((obj) => InvoiceItem.fromJson(obj))
           .toList();
     } else {
-      throw Exception(response.bodyString.toString());
+      throw Exception(response.reasonPhrase.toString());
     }
   }
 }

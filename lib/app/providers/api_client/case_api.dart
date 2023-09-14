@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import '../../models/case_model.dart';
-import '../../services/api_services.dart';
+import '../../helper/api_helper.dart';
 import '../../services/session_services.dart';
-import '../../services/token_services.dart';
+import '../../helper/token_helper.dart';
 
 class CasesApi {
   /// Get all cases
@@ -16,18 +16,18 @@ class CasesApi {
         ',blser_LeaseUnit(\$select=advanced_name,_bls_relatedleasecontract_value,statecode),blser_RelatedProject'
         '(\$select=advanced_name,advanced_buildingno)&\$filter=(_blser_contact_value eq ${Get.find<SessionServices>().currentUser.value.id}) ';
     Get.log('=============== Cases url :  $url ==========');
-    var response = await ApiServices.getData(url: url);
+    var response = await ApiHelper.getData(url: url);
     Get.log('=============== Cases response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<Case>((obj) => Case.fromJson(obj))
           .toList();
     } else {
-      throw Exception(response.bodyString.toString());
+      throw Exception(response.reasonPhrase.toString());
     }
   }
 
@@ -35,8 +35,8 @@ class CasesApi {
   static Future postCase({required Case request}) async {
     String url = "blser_cases";
     Get.log("========== post case url :: $url ==========");
-    var response = await ApiServices.postData(body: request.toJson(), url: url);
-    var decodeResponse = await TokenServices.decodeResponse(response: response);
+    var response = await ApiHelper.postData(body: request.toJson(), url: url);
+    var decodeResponse = await TokenHelper.decodeResponse(response: response);
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import '../../models/attachment.dart';
-import '../../services/api_services.dart';
-import '../../services/token_services.dart';
+import '../../helper/api_helper.dart';
+import '../../helper/token_helper.dart';
 
 class AttachmentApi {
   /// Get work permit attachment
@@ -14,19 +14,19 @@ class AttachmentApi {
         : 'annotations?\$select=notetext,objecttypecode,mimetype,filename,_objectid_value,'
             'filesize,createdon,objecttypecode,documentbody&\$filter=(_objectid_value eq $workPermitId)';
     Get.log('===============  attachment url :  $url ==========');
-    var response = await ApiServices.getData(url: url);
+    var response = await ApiHelper.getData(url: url);
     Get.log(
         '===============  attachment response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<Attachment>((obj) => Attachment.fromJson(obj))
           .toList();
     } else {
-      throw Exception(response.bodyString.toString());
+      throw Exception(response.reasonPhrase.toString());
     }
   }
 
@@ -36,9 +36,9 @@ class AttachmentApi {
     Get.log("========== post Attachments url :: $url ==========");
     for (var request in requests) {
       var response =
-          await ApiServices.postData(body: request.toJson(), url: url);
+          await ApiHelper.postData(body: request.toJson(), url: url);
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
       Get.log(
           '========== post Attachments response :: $decodeResponse ==========');
       if (response.statusCode == 200 ||
@@ -54,11 +54,11 @@ class AttachmentApi {
   static Future updateAttachment({required Attachment attachment}) async {
     String url = "annotations(${attachment.id})";
     Get.log("========== update attachment url : $url ==========");
-    var response = await ApiServices.patchData(
+    var response = await ApiHelper.patchData(
       url: url,
       body: attachment.toJson(),
     );
-    var decodeResponse = await TokenServices.decodeResponse(response: response);
+    var decodeResponse = await TokenHelper.decodeResponse(response: response);
     Get.log(
         '========== update attachment response : $decodeResponse ==========');
     if (response.statusCode == 200 ||
@@ -73,7 +73,7 @@ class AttachmentApi {
   static Future deleteAttachment({required String id}) async {
     String url = "annotations($id)";
     Get.log("========== delete attachment url : $url ==========");
-    var response = await ApiServices.deleteData(url: url);
+    var response = await ApiHelper.deleteData(url: url);
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {

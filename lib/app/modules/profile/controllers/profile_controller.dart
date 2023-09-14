@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/ui.dart';
-import '../../../../main.dart';
+import '../../../helper/cash_helper.dart';
 import '../../../models/contact_model.dart';
 import '../../../repositories/profile_repo.dart';
 import '../../../routes/app_routes.dart';
@@ -96,11 +96,13 @@ class ProfileController extends GetxController {
   }
 
   updateSharedUserData() {
-    sharedPref!.setString('user_job_title', jobTitleController.text);
-    sharedPref!.setString('user_mobilePhone', mobileNumberController.text);
-    sharedPref!.setString('user_crNumber', crNumberController.text.toString());
-    sharedPref!
-        .setString('user_cprNumber', cprNumberController.text.toString());
+    CashHelper.saveData(key: 'user_job_title', value: jobTitleController.text);
+    CashHelper.saveData(
+        key: 'user_mobilePhone', value: mobileNumberController.text);
+    CashHelper.saveData(
+        key: 'user_crNumber', value: crNumberController.text.toString());
+    CashHelper.saveData(
+        key: 'user_cprNumber', value: cprNumberController.text.toString());
   }
 
   @override

@@ -1,8 +1,8 @@
 import 'package:Bareeq/app/models/message.dart';
 import 'package:Bareeq/app/services/session_services.dart';
 import 'package:get/get.dart';
-import '../../services/api_services.dart';
-import '../../services/token_services.dart';
+import '../../helper/api_helper.dart';
+import '../../helper/token_helper.dart';
 
 class MessagesApi extends GetxService {
   /// Get messages
@@ -13,18 +13,18 @@ class MessagesApi extends GetxService {
         ',_createdby_value,prioritycode&\$filter=(_regardingobjectid_value eq $regardingId)'
         '&\$orderby=createdon desc';
     Get.log('===============  Messages url :  $url ==========');
-    var response = await ApiServices.getData(url: url);
+    var response = await ApiHelper.getData(url: url);
     Get.log('=============== Messages response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<MessageModel>((obj) => MessageModel.fromJson(obj))
           .toList();
     } else {
-      throw Exception(response.bodyString.toString());
+      throw Exception(response.reasonPhrase.toString());
     }
   }
 
@@ -43,18 +43,18 @@ class MessagesApi extends GetxService {
             '\$filter=(_blser_account_value eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId}) '
             'and (blser_direction eq true) &\$orderby=createdon desc';
     Get.log('===============  Messages url :  $url ==========');
-    var response = await ApiServices.getData(url: url);
+    var response = await ApiHelper.getData(url: url);
     Get.log('=============== Messages response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse =
-          await TokenServices.decodeResponse(response: response);
+          await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<MessageModel>((obj) => MessageModel.fromJson(obj))
           .toList();
     } else {
-      throw Exception(response.bodyString.toString());
+      throw Exception(response.reasonPhrase.toString());
     }
   }
 
@@ -62,8 +62,8 @@ class MessagesApi extends GetxService {
   static Future<String> replyMessage({required MessageModel request}) async {
     String url = "blser_portalmessageses";
     Get.log("========== reply message url :: $url ==========");
-    var response = await ApiServices.postData(body: request.toJson(), url: url);
-    var decodeResponse = await TokenServices.decodeResponse(response: response);
+    var response = await ApiHelper.postData(body: request.toJson(), url: url);
+    var decodeResponse = await TokenHelper.decodeResponse(response: response);
     Get.log(
         '=============== reply message response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
