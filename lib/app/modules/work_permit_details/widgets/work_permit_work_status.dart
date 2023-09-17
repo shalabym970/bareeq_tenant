@@ -13,69 +13,55 @@ class WorkPermitWorkStatusWidget extends GetView<WorkPermitDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        padding: EdgeInsets.all(10.h),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             Strings.workStatus,
             style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
           ),
-          SizedBox(
-            height: 20.h,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
+          SizedBox(height: 20.h),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Expanded(
                 flex: 1,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    customDetailsItem(
-                      icon: ImagePaths.filingTime,
-                      title: Strings.startDate,
-                      value:  controller.workPermit.startDate == null
-                          ? Strings.na
-                          : DateFormat("EEE d MMM y")
-                          .format(controller.workPermit.startDate!),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    customDetailsItem(
-                        icon: ImagePaths.workers,
-                        title: Strings.numberOfWorkers,
-                        value: controller.workPermit.numberOfWorkers.toString())
-                  ],
-                ),
-              ),
-              Expanded(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      customDetailsItem(
+                          icon: ImagePaths.filingTime,
+                          title: Strings.startDate,
+                          value: controller.workPermit.startDate == null
+                              ? Strings.na
+                              : DateFormat("EEE d MMM y")
+                                  .format(controller.workPermit.startDate!)),
+                      SizedBox(height: 20.h),
+                      customDetailsItem(
+                          icon: ImagePaths.workers,
+                          title: Strings.numberOfWorkers,
+                          value: controller.workPermit.numberOfWorkers != null
+                              ? controller.workPermit.numberOfWorkers.toString()
+                              : Strings.na)
+                    ])),
+            Expanded(
                 flex: 1,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    customDetailsItem(
-                        icon: ImagePaths.filingTime,
-                        title: Strings.endDate,
-                        value: controller.workPermit.endDate == null
-                            ?  Strings.na
-                            : DateFormat("EEE d MMM y")
-                                .format(controller.workPermit.endDate!)),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    customDetailsItem(
-                        icon: ImagePaths.pylon,
-                        title: Strings.status,
-                        value:  controller.workPermit.statusCode.toString())
-                  ],
-                ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      customDetailsItem(
+                          icon: ImagePaths.filingTime,
+                          title: Strings.endDate,
+                          value: controller.workPermit.endDate == null
+                              ? Strings.na
+                              : DateFormat("EEE d MMM y")
+                                  .format(controller.workPermit.endDate!)),
+                      SizedBox(height: 20.h),
+                      customDetailsItem(
+                          icon: ImagePaths.pylon,
+                          title: Strings.status,
+                          value: controller.workPermit.statusCode != null
+                              ? controller.workPermit.statusCode.toString()
+                              : Strings.na)
+                    ]))
+          ])
+        ]));
   }
 }

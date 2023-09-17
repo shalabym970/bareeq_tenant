@@ -28,6 +28,7 @@ class AddCaseController extends GetxController {
 
   @override
   onInit() async {
+    relatedUnitValue.value = null;
     getRelatedUnits();
     super.onInit();
   }

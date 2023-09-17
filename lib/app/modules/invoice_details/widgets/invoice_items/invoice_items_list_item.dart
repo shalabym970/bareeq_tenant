@@ -43,7 +43,7 @@ class InvoiceItemsListItem extends GetView<InvoiceDetailsController> {
                                             fontSize: 10.sp,
                                             color: ColorManager.mainColor)),
                                     SizedBox(height: 3.h),
-                                    Text(invoiceItem!.productName.toString(),
+                                    Text(invoiceItem!.productName ?? Strings.na,
                                         style: TextStyle(
                                             fontSize: 10.sp,
                                             color: ColorManager.black))
@@ -57,7 +57,7 @@ class InvoiceItemsListItem extends GetView<InvoiceDetailsController> {
                                           color: ColorManager.mainColor)),
                                   SizedBox(height: 3.h),
                                   Text(
-                                      '${controller.invoice.discountPercentage}%',
+                                      '${controller.invoice.discountPercentage ?? Strings.na}%',
                                       style: TextStyle(
                                           fontSize: 10.sp,
                                           color: ColorManager.black))
@@ -77,7 +77,10 @@ class InvoiceItemsListItem extends GetView<InvoiceDetailsController> {
                                         color: ColorManager.mainColor),
                                   ),
                                   SizedBox(height: 3.h),
-                                  Text(invoiceItem!.pricePerUnit.toString(),
+                                  Text(
+                                      invoiceItem!.pricePerUnit != null
+                                          ? invoiceItem!.pricePerUnit.toString()
+                                          : Strings.na,
                                       style: TextStyle(
                                           fontSize: 10.sp,
                                           color: ColorManager.black))
@@ -91,7 +94,10 @@ class InvoiceItemsListItem extends GetView<InvoiceDetailsController> {
                                         color: ColorManager.mainColor),
                                   ),
                                   SizedBox(height: 3.h),
-                                  Text(invoiceItem!.baseAmount.toString(),
+                                  Text(
+                                      invoiceItem!.baseAmount != null
+                                          ? invoiceItem!.baseAmount.toString()
+                                          : Strings.na,
                                       style: TextStyle(
                                           fontSize: 10.sp,
                                           color: ColorManager.black))
@@ -108,7 +114,10 @@ class InvoiceItemsListItem extends GetView<InvoiceDetailsController> {
                                         fontSize: 10.sp,
                                         color: ColorManager.mainColor)),
                                 SizedBox(height: 3.h),
-                                Text(invoiceItem!.quantity.toString(),
+                                Text(
+                                    invoiceItem!.quantity != null
+                                        ? invoiceItem!.quantity.toString()
+                                        : Strings.na,
                                     style: TextStyle(
                                         fontSize: 10.sp,
                                         color: ColorManager.black))

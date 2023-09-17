@@ -13,10 +13,8 @@ class InvoiceGeneralDetailsWidget extends GetView<InvoiceDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        padding: EdgeInsets.all(10.h),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             Strings.generalDetails,
             style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
@@ -24,58 +22,53 @@ class InvoiceGeneralDetailsWidget extends GetView<InvoiceDetailsController> {
           SizedBox(
             height: 20.h,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                flex: 1,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    customDetailsItem(
-                        icon: ImagePaths.path79,
-                        title: Strings.invoiceNumber,
-                        value: controller.invoice.invoiceNumber!),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    customDetailsItem(
-                        icon: ImagePaths.filingTime,
-                        title: Strings.submitDate,
-                        value: intl.DateFormat('EEE d MMM y')
-                            .format(controller.invoice.createdOn!)
-                            .toString())
-                  ],
-                ),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Expanded(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  customDetailsItem(
+                    icon: ImagePaths.path79,
+                    title: Strings.invoiceNumber,
+                    value: controller.invoice.invoiceNumber ?? Strings.na,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  customDetailsItem(
+                      icon: ImagePaths.filingTime,
+                      title: Strings.submitDate,
+                      value: controller.invoice.createdOn != null
+                          ? intl.DateFormat('EEE d MMM y')
+                              .format(controller.invoice.createdOn!)
+                              .toString()
+                          : Strings.na)
+                ],
               ),
-              Expanded(
+            ),
+            Expanded(
                 flex: 1,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    customDetailsItem(
-                        icon: ImagePaths.deleteCalendar,
-                        title: Strings.amount,
-                        value:
-                            controller.invoice.amountDueRemaining.toString()),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    customDetailsItem(
-                        icon: ImagePaths.filingTime,
-                        title: Strings.endDate,
-                        value:  intl.DateFormat('EEE d MMM y')
-                            .format(DateTime.parse(
-                            controller.invoice.deliveredDate!))
-                            .toString()
-                           )
-                  ],
-                ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      customDetailsItem(
+                          icon: ImagePaths.deleteCalendar,
+                          title: Strings.amount,
+                          value: controller.invoice.amountDueRemaining ??
+                              Strings.na),
+                      SizedBox(height: 20.h),
+                      customDetailsItem(
+                          icon: ImagePaths.filingTime,
+                          title: Strings.endDate,
+                          value: controller.invoice.deliveredDate != null
+                              ? intl.DateFormat('EEE d MMM y')
+                                  .format(DateTime.parse(
+                                      controller.invoice.deliveredDate!))
+                                  .toString()
+                              : Strings.na)
+                    ]))
+          ])
+        ]));
   }
 }

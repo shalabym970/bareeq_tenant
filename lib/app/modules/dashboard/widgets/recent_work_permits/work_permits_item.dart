@@ -46,7 +46,7 @@ class WorkPermitItem extends StatelessWidget {
                                         fontSize: 10.sp,
                                         color: ColorManager.mainColor)),
                                 SizedBox(height: 3.h),
-                                Text(workPermit.subject.toString(),
+                                Text(workPermit.subject ?? Strings.na,
                                     style: TextStyle(
                                         fontSize: 10.sp,
                                         color: ColorManager.black))
@@ -56,13 +56,11 @@ class WorkPermitItem extends StatelessWidget {
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  Strings.type,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10.sp,
-                                      color: ColorManager.mainColor),
-                                ),
+                                Text(Strings.type,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 10.sp,
+                                        color: ColorManager.mainColor)),
                                 SizedBox(height: 3.h),
                                 Text(
                                     workPermit.type == true
@@ -83,7 +81,7 @@ class WorkPermitItem extends StatelessWidget {
                                         fontSize: 10.sp,
                                         color: ColorManager.mainColor)),
                                 SizedBox(height: 3.h),
-                                Text(workPermit.contractor!.name.toString(),
+                                Text(workPermit.contractor!.name ?? Strings.na,
                                     style: TextStyle(
                                         fontSize: 10.sp,
                                         color: ColorManager.black))

@@ -51,7 +51,7 @@ class CasesListItem extends GetView<DashboardController> {
                                                 fontSize: 10.sp,
                                                 color: ColorManager.mainColor)),
                                         SizedBox(height: 3.h),
-                                        Text(cases.caseNumber.toString(),
+                                        Text(cases.caseNumber ?? Strings.na,
                                             style: TextStyle(
                                                 fontSize: 10.sp,
                                                 color: ColorManager.black))
@@ -90,7 +90,7 @@ class CasesListItem extends GetView<DashboardController> {
                                               color: ColorManager.mainColor),
                                         ),
                                         SizedBox(height: 3.h),
-                                        Text(cases.title.toString(),
+                                        Text(cases.title ?? Strings.na,
                                             style: TextStyle(
                                                 fontSize: 10.sp,
                                                 color: ColorManager.black))
@@ -126,9 +126,11 @@ class CasesListItem extends GetView<DashboardController> {
                                             color: ColorManager.mainColor)),
                                     SizedBox(height: 3.h),
                                     Text(
-                                        intl.DateFormat('EEE d MMM y')
-                                            .format(cases.submittedOn!)
-                                            .toString(),
+                                        cases.submittedOn != null
+                                            ? intl.DateFormat('EEE d MMM y')
+                                                .format(cases.submittedOn!)
+                                                .toString()
+                                            : Strings.na,
                                         style: TextStyle(
                                             fontSize: 10.sp,
                                             color: ColorManager.black))

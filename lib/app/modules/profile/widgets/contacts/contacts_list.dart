@@ -33,7 +33,9 @@ class ContactsList extends GetView<ProfileController> {
                         padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
                         primary: false,
                         shrinkWrap: true,
-                        itemCount: 2,
+                        itemCount: controller.contacts.length <= 2
+                            ? controller.contacts.length
+                            : 2,
                         itemBuilder: ((_, index) {
                           Contact contact =
                               controller.contacts.elementAt(index);

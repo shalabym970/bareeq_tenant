@@ -28,12 +28,14 @@ class LeaseGeneralDetailsWidget extends GetView<LeaseDetailsController> {
                       customDetailsItem(
                           icon: ImagePaths.path79,
                           title: Strings.leaseCRMNumber,
-                          value: controller.lease.crmLeaseNumber.toString()),
+                          value: controller.lease.crmLeaseNumber ?? Strings.na),
                       SizedBox(height: 20.h),
                       customDetailsItem(
                           icon: ImagePaths.deleteCalendar,
                           title: Strings.contractPeriod,
-                          value: controller.lease.contractPeriod.toString())
+                          value: controller.lease.contractPeriod != null
+                              ? controller.lease.contractPeriod.toString()
+                              : Strings.na)
                     ])),
             Expanded(
                 flex: 1,

@@ -49,21 +49,29 @@ class ApiHelper {
   }
 
   ///Patch
-  static Future<http.Response> patchData({
+  static Future patchData({
     required String url,
     required Map<String, dynamic> body,
   }) async {
-    if (TokenHelper.accessTokenIsExpired()) {
-      await TokenHelper.refreshToken();
+    try {
+      if (TokenHelper.accessTokenIsExpired()) {
+        await TokenHelper.refreshToken();
+      }
+      var token = CashHelper.getData(key: 'access_token');
+      Constants.headers['Authorization'] = 'Bearer $token';
+      Get.log("========== url : ${Constants.baseUrl + url} ==========");
+      Get.log("========== header : ${Constants.headers} ==========");
+      Get.log("========== body : ${body.toString()} ==========");
+
+      var response = await http.patch(
+        Uri.parse(Constants.baseUrl + url),
+        body: body,
+        headers: Constants.headers,
+      );
+      return response;
+    } catch (e) {
+      return;
     }
-    var token = CashHelper.getData(key: 'access_token');
-    Constants.headers['Authorization'] = 'Bearer $token';
-    return await http
-        .patch(Uri.parse(Constants.baseUrl + url),
-            body: body, headers: Constants.headers)
-        .catchError((error) {
-      return error;
-    });
   }
 
   ///Delete

@@ -78,40 +78,34 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          height: 20.h,
-                        ),
+                        SizedBox(height: 20.h),
                         Padding(
-                          padding: EdgeInsets.all(10.h),
-                          child: Row(
-                            children: [
+                            padding: EdgeInsets.all(10.h),
+                            child: Row(children: [
                               SvgPicture.asset(ImagePaths.officeBag,
                                   height: 24.h, width: 26.w),
-                              SizedBox(
-                                width: 10.w,
-                              ),
+                              SizedBox(width: 10.w),
                               Expanded(
                                   child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(Strings.subject,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 10.sp,
-                                          color: ColorManager.mainColor)),
-                                  SizedBox(
-                                    height: 5.h,
-                                  ),
-                                  Text(controller.workPermit.subject.toString(),
-                                      style: TextStyle(
-                                          fontSize: 15.sp,
-                                          color: ColorManager.black))
-                                ],
-                              )),
-                            ],
-                          ),
-                        ),
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                    Text(Strings.subject,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 10.sp,
+                                            color: ColorManager.mainColor)),
+                                    SizedBox(height: 5.h),
+                                    Text(
+                                        controller.workPermit.subject ??
+                                            Strings.na,
+                                        style: TextStyle(
+                                            fontSize: 15.sp,
+                                            color: ColorManager.black))
+                                  ]))
+                            ])),
                         SizedBox(height: 20.h),
                         const WorkPermitGeneralDetailsWidget(),
                         SizedBox(height: 20.h),
@@ -120,54 +114,50 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                         ParagraphWidget(
                             title: Strings.description,
                             description:
-                                "- ${controller.workPermit.description.toString()}"),
+                                "- ${controller.workPermit.description ?? Strings.na}"),
                         ParagraphWidget(
                             title: Strings.comment,
                             description:
                                 "- ${controller.workPermit.comment ?? Strings.na}"),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10.w),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                Strings.workPermitItems,
-                                style: TextStyle(
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              SizedBox(
-                                height: 32.h,
-                                width: 32.w,
-                                child: FloatingActionButton(
-                                  onPressed: () {
-                                    Get.toNamed(Routes.createWorkPermitItem,
-                                        arguments: controller.workPermit);
-                                  },
-                                  heroTag: null,
-                                  backgroundColor: ColorManager.mainColor,
-                                  child: Icon(
-                                    Icons.add,
-                                    color: Colors.white,
-                                    size: 20.sp,
+                            padding: EdgeInsets.symmetric(horizontal: 10.w),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    Strings.workPermitItems,
+                                    style: TextStyle(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w400),
                                   ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                                  SizedBox(
+                                      height: 32.h,
+                                      width: 32.w,
+                                      child: FloatingActionButton(
+                                          onPressed: () {
+                                            Get.toNamed(
+                                                Routes.createWorkPermitItem,
+                                                arguments:
+                                                    controller.workPermit);
+                                          },
+                                          heroTag: null,
+                                          backgroundColor:
+                                              ColorManager.mainColor,
+                                          child: Icon(Icons.add,
+                                              color: Colors.white,
+                                              size: 20.sp)))
+                                ])),
                         SizedBox(height: 10.h),
                         SizedBox(
                             height: 185.h, child: const WorkPermitsItemsList()),
                         SizedBox(height: 20.h),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10.h),
-                          child: Text(
-                            Strings.messages,
-                            style: TextStyle(
-                                fontSize: 14.sp, fontWeight: FontWeight.w400),
-                          ),
-                        ),
+                            padding: EdgeInsets.symmetric(horizontal: 10.h),
+                            child: Text(Strings.messages,
+                                style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400))),
                         SizedBox(height: 10.h),
                         SizedBox(
                             height: 185.h,
@@ -185,15 +175,19 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                   ),
                 ),
                 Obx(() => Visibility(
-                    visible:controller.submitLoading.isTrue ||
-                        controller.deletingLoading.isTrue ? true : false,
+                    visible: controller.submitLoading.isTrue ||
+                            controller.deletingLoading.isTrue
+                        ? true
+                        : false,
                     child: const Opacity(
                         opacity: 0.8,
                         child: ModalBarrier(
                             dismissible: false, color: Colors.black)))),
                 Obx(() => Visibility(
-                    visible:controller.submitLoading.isTrue ||
-                        controller.deletingLoading.isTrue ? true : false,
+                    visible: controller.submitLoading.isTrue ||
+                            controller.deletingLoading.isTrue
+                        ? true
+                        : false,
                     child: const Center(child: SecondCustomLoading())))
               ]),
 

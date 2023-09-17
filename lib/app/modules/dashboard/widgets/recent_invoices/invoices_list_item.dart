@@ -50,7 +50,8 @@ class InvoicesListItem extends StatelessWidget {
                                                 fontSize: 10.sp,
                                                 color: ColorManager.mainColor)),
                                         SizedBox(height: 3.h),
-                                        Text(invoice.invoiceNumber ?? "null",
+                                        Text(
+                                            invoice.invoiceNumber ?? Strings.na,
                                             style: TextStyle(
                                                 fontSize: 10.sp,
                                                 color: ColorManager.black))
@@ -64,9 +65,11 @@ class InvoicesListItem extends StatelessWidget {
                                               color: ColorManager.mainColor)),
                                       SizedBox(height: 3.h),
                                       Text(
-                                          intl.DateFormat('EEE d MMM y')
+                                          invoice.dueDate != null
+                                              ? intl.DateFormat('EEE d MMM y')
                                                   .format(invoice.dueDate!)
-                                                  .toString(),
+                                                  .toString()
+                                              : Strings.na,
                                           style: TextStyle(
                                               fontSize: 10.sp,
                                               color: ColorManager.black))
@@ -88,7 +91,7 @@ class InvoicesListItem extends StatelessWidget {
                                               color: ColorManager.mainColor),
                                         ),
                                         SizedBox(height: 3.h),
-                                        Text(invoice.name.toString(),
+                                        Text(invoice.name ?? Strings.na,
                                             style: TextStyle(
                                                 fontSize: 10.sp,
                                                 color: ColorManager.black))
@@ -104,7 +107,8 @@ class InvoicesListItem extends StatelessWidget {
                                       ),
                                       SizedBox(height: 3.h),
                                       Text(
-                                          invoice.amountDueRemaining.toString(),
+                                          invoice.amountDueRemaining ??
+                                              Strings.na,
                                           style: TextStyle(
                                               fontSize: 10.sp,
                                               color: ColorManager.black))
@@ -122,9 +126,11 @@ class InvoicesListItem extends StatelessWidget {
                                             color: ColorManager.mainColor)),
                                     SizedBox(height: 3.h),
                                     Text(
-                                        intl.DateFormat('EEE d MMM y')
+                                        invoice.createdOn != null
+                                            ? intl.DateFormat('EEE d MMM y')
                                                 .format(invoice.createdOn!)
-                                                .toString(),
+                                                .toString()
+                                            : Strings.na,
                                         style: TextStyle(
                                             fontSize: 10.sp,
                                             color: ColorManager.black))

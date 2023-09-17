@@ -47,8 +47,8 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                         SizedBox(
                           width: 10.w,
                         ),
-                    Expanded(
-                      child:  Column(
+                        Expanded(
+                            child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -60,7 +60,7 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                             SizedBox(
                               height: 5.h,
                             ),
-                            Text(controller.lease.name.toString(),
+                            Text(controller.lease.name ?? Strings.na,
                                 style: TextStyle(
                                     fontSize: 15.sp, color: ColorManager.black))
                           ],

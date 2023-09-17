@@ -45,7 +45,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                         Form(
                             key: controller.changePasswordKey,
                             child: Column(children: [
-                              CustomTextField(
+                              Obx(() => CustomTextField(
                                   hint: Strings.enterCurrentPass,
                                   controller: controller.currentPassController,
                                   validator: (value) => value!.isEmpty
@@ -57,11 +57,26 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                                                   .password
                                           ? ErrorStrings.notMatchPass
                                           : null,
+                                  obscureText:
+                                      controller.currentPasswordVisible.value,
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      controller.currentPasswordVisible.value
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
+                                      color: ColorManager.mainColor,
+                                      size: 20.sp,
+                                    ),
+                                    onPressed: () {
+                                      controller.currentPasswordVisible.value =
+                                          !controller.currentPasswordVisible.value;
+                                    },
+                                  ),
                                   labelWidget: const LabelTextField(
                                       label: Strings.currentPassword,
-                                      isRequired: true)),
+                                      isRequired: true))),
                               SizedBox(height: 20.h),
-                              CustomTextField(
+                              Obx(() => CustomTextField(
                                   hint: Strings.enterNewPass,
                                   controller: controller.newPassController,
                                   validator: (value) => value!.isEmpty
@@ -77,11 +92,27 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                                               ? ErrorStrings
                                                   .cannotEnterPassLessThen8Character
                                               : null,
+                                  obscureText:
+                                      controller.newPasswordVisible.value,
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      controller.newPasswordVisible.value
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
+                                      color: ColorManager.mainColor,
+                                      size: 20.sp,
+                                    ),
+                                    onPressed: () {
+                                      controller.newPasswordVisible.value =
+                                          !controller.newPasswordVisible.value;
+                                    },
+                                  ),
+                                  maxLines: 1,
                                   labelWidget: const LabelTextField(
                                       label: Strings.newPass,
-                                      isRequired: true)),
+                                      isRequired: true))),
                               SizedBox(height: 20.h),
-                              CustomTextField(
+                              Obx(() => CustomTextField(
                                   hint: Strings.enterNewPassAgain,
                                   controller: controller.confirmPassController,
                                   validator: (value) => value!.isEmpty
@@ -91,9 +122,11 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                                           ? ErrorStrings
                                               .enterCorrectConfirmationPass
                                           : null,
+                                  obscureText:
+                                      controller.newPasswordVisible.value,
                                   labelWidget: const LabelTextField(
                                       label: Strings.confirmPassword,
-                                      isRequired: true)),
+                                      isRequired: true))),
                             ])),
                         SizedBox(height: 50.h),
                         PrimaryButton(

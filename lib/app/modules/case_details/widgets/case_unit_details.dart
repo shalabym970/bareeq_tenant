@@ -29,7 +29,7 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                       customDetailsItem(
                           icon: ImagePaths.office,
                           title: Strings.property,
-                          value: controller.cases.property!.name.toString()),
+                          value: controller.cases.property!.name ?? Strings.na),
                       SizedBox(height: 20.h),
                       customDetailsItem(
                           icon: ImagePaths.group77,
@@ -45,7 +45,7 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                       customDetailsItem(
                           icon: ImagePaths.group42,
                           title: Strings.unit,
-                          value: controller.cases.unit!.name.toString()),
+                          value: controller.cases.unit!.name ?? Strings.na),
                       SizedBox(height: 20.h),
                       customDetailsItem(
                           icon: ImagePaths.pylon,

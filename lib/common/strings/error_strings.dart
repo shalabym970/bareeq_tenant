@@ -18,10 +18,10 @@ class ErrorStrings {
       'Enter correct confirmtion password';
   static const String enterConfirmationPass = 'Enter confirmtion password';
   static const String notSelectFile = 'No File Selected';
-  static const String failedAddWorkPermit = 'Failed to add work permit';
+  static const String failedAddWorkPermit = 'Failed to create work permit';
   static const String failedToSave = 'Failed to save new data!!';
   static const String failedToChangePass = 'Failed to change password !!';
-  static const String failedAddContact = 'Failed to add Contact';
+  static const String failedAddContact = 'Failed to create Contact';
   static const String failedAddWorkCase = 'Failed to add Case';
   static const String enterCompanyName = 'Enter Company Name';
   static const String enterFirstName = 'Enter First Name';

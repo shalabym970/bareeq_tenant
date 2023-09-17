@@ -17,7 +17,7 @@ class AddContactController extends GetxController {
   final businessPhoneController = TextEditingController();
   final addNewContactKey = GlobalKey<FormState>();
   final submitLoading = false.obs;
-  final _contact =  Contact().obs;
+  final _contact = Contact().obs;
   final profileRepo = ProfileRepo();
 
   submitNewContact() async {
@@ -44,7 +44,7 @@ class AddContactController extends GetxController {
     } catch (e) {
       submitLoading.value = false;
       Get.showSnackbar(
-          Ui.errorSnackBar(message: ErrorStrings.failedAddWorkPermit));
+          Ui.errorSnackBar(message: ErrorStrings.failedAddContact));
       Get.log('========== Error when new contact : $e ==========');
     } finally {
       submitLoading.value = false;

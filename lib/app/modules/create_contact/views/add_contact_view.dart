@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../common/color_manager.dart';
 import '../../../../common/images_paths.dart';
+import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_appbar.dart';
 import '../../../../common/widgets/custom_btn.dart';
@@ -11,6 +12,7 @@ import '../../../../common/widgets/custom_drawer.dart';
 import '../../../../common/widgets/custom_text_field.dart';
 import '../../../../common/widgets/label_text_field.dart';
 import '../../../../common/widgets/second_custom_loading.dart';
+import '../../../services/general_services.dart';
 import '../controllers/add_contact_controller.dart';
 
 class AddContactView extends GetView<AddContactController> {
@@ -81,8 +83,15 @@ class AddContactView extends GetView<AddContactController> {
                             CustomTextField(
                                 hint: Strings.email,
                                 controller: controller.emailController,
-                                validator: (value) =>
-                                    value!.isEmpty ? Strings.email : null,
+                                validator:  (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return ErrorStrings.enterEmail;
+                                  } else if (!GeneralServices.isEmailValid(
+                                      value)) {
+                                    return ErrorStrings.enterValidEmail;
+                                  }
+                                  return null; // Return null to indicate no validation error
+                                },
                                 labelWidget: const LabelTextField(
                                     label: Strings.email, isRequired: true)),
                             SizedBox(height: 20.h),

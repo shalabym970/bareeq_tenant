@@ -83,7 +83,6 @@ class AddWorkPermitView extends GetView<CreateWorkPermitController> {
                                         value: controller.urgentCheck.value,
                                         onChanged: (bool? value) {
                                           FocusScope.of(context).unfocus();
-
                                           if (controller.standardCheck.isTrue) {
                                             controller.standardCheck.value =
                                                 !controller.standardCheck.value;

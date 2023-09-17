@@ -43,42 +43,31 @@ class WorkPermitItemCard extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 10.sp,
                                   color: ColorManager.mainColor)),
-                          SizedBox(
-                            height: 3.h,
-                          ),
+                          SizedBox(height: 3.h),
                           Text(
                               GeneralServices.getKeyFromValue(
                                   Constants.workPermitItemTypesMap,
-                                  workPermitItem.type!),
+                                  workPermitItem.type ?? 0),
                               style: TextStyle(
                                   fontSize: 10.sp,
                                   color: Colors.black.withOpacity(0.7))),
-                          SizedBox(
-                            height: 3.h,
-                          ),
+                          SizedBox(height: 3.h),
                           Expanded(
-                            child: Text(
-                              workPermitItem.description.toString(),
-                              style: TextStyle(
-                                  height: 2.h,
-                                  fontSize: 9.sp,
-                                  color: ColorManager.black),
-                              maxLines: 5,
-                              overflow: TextOverflow.visible,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 3.h,
-                          ),
+                              child: Text(workPermitItem.description.toString(),
+                                  style: TextStyle(
+                                      height: 2.h,
+                                      fontSize: 9.sp,
+                                      color: ColorManager.black),
+                                  maxLines: 5,
+                                  overflow: TextOverflow.visible)),
+                          SizedBox(height: 3.h),
                           Row(children: [
                             Text(Strings.id,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 10.sp,
                                     color: ColorManager.mainColor)),
-                            SizedBox(
-                              width: 3.w,
-                            ),
+                            SizedBox(width: 3.w),
                             Text(workPermitItem.id.toString(),
                                 style: TextStyle(
                                     fontSize: 10.sp,

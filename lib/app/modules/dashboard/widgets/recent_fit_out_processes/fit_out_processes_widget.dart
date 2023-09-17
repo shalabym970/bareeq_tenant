@@ -14,33 +14,24 @@ class RecentFitOutProcessesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.w),
-      child: Column(
-        children: [
+        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        child: Column(children: [
           InkWell(
               onTap: () {
                 Get.toNamed(Routes.fitOuts);
               },
-              child: Row(
-                children: [
-                  Padding(
+              child: Row(children: [
+                Padding(
                     padding: EdgeInsets.all(6.h),
                     child: SvgPicture.asset(ImagePaths.settings,
-                        height: 20.h, width: 20.w),
-                  ),
-                  Padding(
+                        height: 20.h, width: 20.w)),
+                Padding(
                     padding: EdgeInsets.all(6.h),
-                    child: Text(
-                      Strings.recentFitOutProcesses,
-                      style: TextStyle(
-                          fontSize: 14.sp, fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
-              )),
+                    child: Text(Strings.recentFitOutProcesses,
+                        style: TextStyle(
+                            fontSize: 14.sp, fontWeight: FontWeight.bold)))
+              ])),
           const RecentFitOutProcessesList()
-        ],
-      ),
-    );
+        ]));
   }
 }

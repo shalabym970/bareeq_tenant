@@ -50,4 +50,26 @@ class AuthController extends GetxController {
       loading.value = false;
     }
   }
+
+  recoverAccount() async {
+    try {
+      if (recoverFormKey.currentState!.validate()) {
+        recoverFormKey.currentState?.save();
+        loadingRecoverAccount.value = true;
+        // _contact.value = Contact(
+        //     id: Get.find<SessionServices>().currentUser.value.id,
+        //     password: newPassController.text);
+        // await profileRepo.updateProfile(request: _contact.value);
+        //
+        //  Ui.showToast(content: Strings.passwordChangedSuccessfuly);
+        Get.back();
+      }
+    } catch (e) {
+      loadingRecoverAccount.value = false;
+      //   Get.showSnackbar(
+      //       Ui.errorSnackBar(message: ErrorStrings.failedToChangePass));
+      // } finally {
+      loadingRecoverAccount.value = false;
+    }
+  }
 }

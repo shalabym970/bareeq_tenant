@@ -2,7 +2,6 @@ import 'package:Bareeq/app/models/account_model.dart';
 import 'package:Bareeq/app/models/contact_model.dart';
 import 'package:Bareeq/common/strings/strings.dart';
 import 'package:get/get.dart';
-
 import '../../main.dart';
 import '../helper/cash_helper.dart';
 
@@ -52,7 +51,6 @@ class SessionServices extends GetxService {
     CashHelper.saveData(
         key: 'user_accountTransactionCurrencyId',
         value: user.account?.transactionCurrencyId);
-
     Get.log(
         '======================== user data is saved Successfully ========================');
   }
@@ -69,19 +67,13 @@ class SessionServices extends GetxService {
             CashHelper.getData(key: 'user_transactionCurrencyId') ?? Strings.na,
         id: CashHelper.getData(key: 'user_id') ?? Strings.na,
         company: CashHelper.getData(key: 'user_company') ?? Strings.na,
-        country: CashHelper.getData(key: 'user_country') != null
-            ? int.parse(CashHelper.getData(key: 'user_country')!)
-            : 0,
+        country: CashHelper.getData(key: 'user_country'),
         department: CashHelper.getData(key: 'user_department') ?? Strings.na,
         lastName: CashHelper.getData(key: 'user_lastName') ?? Strings.na,
         firstName: CashHelper.getData(key: 'user_firstName') ?? Strings.na,
         password: CashHelper.getData(key: 'user_password') ?? Strings.na,
-        crNumber: CashHelper.getData(key: 'user_crNumber') != null
-            ? int.parse(CashHelper.getData(key: 'user_crNumber')!)
-            : 0,
-        cprNumber: CashHelper.getData(key: 'user_cprNumber') != null
-            ? int.parse(CashHelper.getData(key: 'user_cprNumber')!)
-            : 0,
+        crNumber: CashHelper.getData(key: 'user_crNumber'),
+        cprNumber: CashHelper.getData(key: 'user_cprNumber'),
         businessPhone:
             CashHelper.getData(key: 'user_businessPhone') ?? Strings.na,
         mobilePhone: CashHelper.getData(key: 'user_mobilePhone') ?? Strings.na,
@@ -91,20 +83,19 @@ class SessionServices extends GetxService {
             primaryContactId:
                 CashHelper.getData(key: 'user_accountPrimaryContactId') ??
                     Strings.na,
-            accountStatus: CashHelper.getData(key: 'user_accountStatus') != null
-                ? int.parse(CashHelper.getData(key: 'user_accountStatus'))
-                : 0,
+            accountStatus: CashHelper.getData(key: 'user_accountStatus'),
             ownerId: CashHelper.getData(key: 'user_ownerId') ?? Strings.na,
             emailAddress:
                 CashHelper.getData(key: 'user_emailAddress1') ?? Strings.na,
-            crNumber: CashHelper.getData(key: 'user_accountCrNumber') != null
-                ? int.parse(CashHelper.getData(key: 'user_accountCrNumber'))
-                : 0,
-            accountType: CashHelper.getData(key: 'user_accountType') != null
-                ? int.parse(CashHelper.getData(key: 'user_accountType'))
-                : 0,
-            cbrNumber: CashHelper.getData(key: 'user_accountCbrNumber') ?? Strings.na,
-            transactionCurrencyId: CashHelper.getData(key: 'user_accountTransactionCurrencyId') ?? Strings.na));
+            crNumber: CashHelper.getData(key: 'user_accountCrNumber'),
+            accountType: CashHelper.getData(key: 'user_accountType'),
+            cbrNumber:
+                CashHelper.getData(key: 'user_accountCbrNumber') ?? Strings.na,
+            transactionCurrencyId:
+                CashHelper.getData(key: 'user_accountTransactionCurrencyId') ??
+                    Strings.na));
+    Get.log(
+        '======================== user data is get Successfully ========================');
     return currentUser;
   }
 }

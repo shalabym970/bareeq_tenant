@@ -12,26 +12,20 @@ class CaseDescription extends GetView<CaseDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        padding: EdgeInsets.all(10.h),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(Strings.description,
               style: TextStyle(
                   fontSize: 14.sp,
                   color: Colors.black,
                   fontWeight: FontWeight.w400)),
           SizedBox(height: 20.h),
-          Text(
-            controller.cases.description.toString(),
-            style: TextStyle(
-                fontSize: 12.sp,
-                color: ColorManager.black,
-                fontWeight: FontWeight.w400,
-                height: 1.5.h),
-          ),
-        ],
-      ),
-    );
+          Text(controller.cases.description ?? Strings.na,
+              style: TextStyle(
+                  fontSize: 12.sp,
+                  color: ColorManager.black,
+                  fontWeight: FontWeight.w400,
+                  height: 1.5.h))
+        ]));
   }
 }

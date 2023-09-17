@@ -53,6 +53,8 @@ class CreateWorkPermitController extends GetxController {
 
   @override
   onInit() async {
+    contractorValue.value = null;
+    relatedUnitValue.value = null;
     getRelatedUnits();
     getContractors();
     super.onInit();

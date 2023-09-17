@@ -10,6 +10,7 @@ import '../modules/activity_details/bindings/activity_details_binding.dart';
 import '../modules/activity_details/views/activity_details_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/login_view.dart';
+import '../modules/auth/views/recover_account_view.dart';
 import '../modules/case_details/bindings/case_details_binding.dart';
 import '../modules/case_details/views/case_details_view.dart';
 import '../modules/cases/bindings/cases_binding.dart';
@@ -75,6 +76,10 @@ class ThemeAppPages {
         name: Routes.invoiceDetails,
         page: () => const InvoiceDetailsView(),
         binding: InvoiceDetailsBinding()),
+    GetPage(
+        name: Routes.passwordRecovering,
+        page: () => const RecoverAccountView(),
+        binding: AuthBinding()),
     GetPage(
         name: Routes.leaseDetails,
         page: () => const LeaseDetailsView(),

@@ -41,7 +41,7 @@ class MessageCard extends StatelessWidget {
                         children: [
                           MessageCardItem(
                               label: Strings.subject,
-                              value: message.subject.toString()),
+                              value: message.subject ?? Strings.na),
                           SizedBox(height: 3.h),
                           MessageCardItem(
                               label: Strings.priority,
@@ -53,9 +53,10 @@ class MessageCard extends StatelessWidget {
                               label: Strings.from,
                               value: message.direction == true
                                   ? Get.find<DashboardController>()
-                                      .currentUser
-                                      .account!
-                                      .name!
+                                          .currentUser
+                                          .account!
+                                          .name ??
+                                      Strings.na
                                   : Constants.environmentName),
                           SizedBox(height: 5.h),
                           Expanded(
@@ -71,7 +72,7 @@ class MessageCard extends StatelessWidget {
                               children: [
                                 Align(
                                     alignment: Alignment.centerLeft,
-                                    child: Text(message.createdOn.toString(),
+                                    child: Text(message.createdOn ?? Strings.na,
                                         style: TextStyle(
                                             color: Colors.grey[800],
                                             fontSize: 9.sp))),

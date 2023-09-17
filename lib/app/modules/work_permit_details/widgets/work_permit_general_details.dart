@@ -15,65 +15,51 @@ class WorkPermitGeneralDetailsWidget
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            Strings.generalDetails,
-            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
+        padding: EdgeInsets.all(10.h),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(Strings.generalDetails,
+              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400)),
+          SizedBox(height: 20.h),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Expanded(
                 flex: 1,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    customDetailsItem(
-                        icon: ImagePaths.group42,
-                        title: Strings.unit,
-                        value:
-                            controller.workPermit.relatedUnit!.name.toString()),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    customDetailsItem(
-                        icon: ImagePaths.documentLayout,
-                        title: Strings.type,
-                        value: controller.workPermit.type == true
-                            ? Constants.emergency
-                            : Constants.standard)
-                  ],
-                ),
-              ),
-              Expanded(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      customDetailsItem(
+                          icon: ImagePaths.group42,
+                          title: Strings.unit,
+                          value: controller.workPermit.relatedUnit!.name ??
+                              Strings.na),
+                      SizedBox(height: 20.h),
+                      customDetailsItem(
+                          icon: ImagePaths.documentLayout,
+                          title: Strings.type,
+                          value: controller.workPermit.type == true
+                              ? Constants.emergency
+                              : Constants.standard)
+                    ])),
+            Expanded(
                 flex: 1,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    customDetailsItem(
-                        icon: ImagePaths.manager,
-                        title: Strings.contractor,
-                        value:  controller.workPermit.contractor!.name.toString()),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    customDetailsItem(
-                        icon: ImagePaths.shirt,
-                        title: Strings.customer,
-                        value: Get.find<DashboardController>().currentUser.account!.name.toString())
-                  ],
-                ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      customDetailsItem(
+                          icon: ImagePaths.manager,
+                          title: Strings.contractor,
+                          value: controller.workPermit.contractor!.name ??
+                              Strings.na),
+                      SizedBox(height: 20.h),
+                      customDetailsItem(
+                          icon: ImagePaths.shirt,
+                          title: Strings.customer,
+                          value: Get.find<DashboardController>()
+                                  .currentUser
+                                  .account!
+                                  .name ??
+                              Strings.na)
+                    ]))
+          ])
+        ]));
   }
 }

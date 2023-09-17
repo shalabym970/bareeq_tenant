@@ -30,7 +30,7 @@ class FitOutProcessGeneralDetailsWidget
                 child: customDetailsItem(
                     icon: ImagePaths.office,
                     title: Strings.property,
-                    value: controller.fitOut.property!.name.toString())),
+                    value: controller.fitOut.property!.name ?? Strings.na)),
             Expanded(
                 flex: 1,
                 child: Column(
@@ -39,14 +39,14 @@ class FitOutProcessGeneralDetailsWidget
                       customDetailsItem(
                           icon: ImagePaths.group42,
                           title: Strings.unit,
-                          value: controller.fitOut.unit!.name.toString()),
+                          value: controller.fitOut.unit!.name ?? Strings.na),
                       SizedBox(height: 10.h),
                       customDetailsItem(
                           icon: ImagePaths.pylon,
                           title: Strings.status,
                           value: GeneralServices.getKeyFromValue(
                               Constants.fitOuTTypesMap,
-                              controller.fitOut.status!))
+                              controller.fitOut.status ?? 0))
                     ]))
           ])
         ]));

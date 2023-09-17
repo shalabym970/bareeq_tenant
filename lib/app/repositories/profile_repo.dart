@@ -6,6 +6,7 @@ class ProfileRepo {
   Future postContact({required Contact request}) async {
     return await ContactApi.postContact(request: request);
   }
+
   Future updateProfile({required Contact request}) async {
     return await ContactApi.updateProfile(request: request);
   }

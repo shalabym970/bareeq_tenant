@@ -13,17 +13,13 @@ class FitOutProcessDatesWidget extends GetView<FitOutProcessDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
-            padding: EdgeInsets.all(6.h),
-            child: Text(
-              Strings.dates,
-              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
-            ),
-          ),
+              padding: EdgeInsets.all(6.h),
+              child: Text(Strings.dates,
+                  style:
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400))),
           customDetailsItem(
               icon: ImagePaths.filingTime,
               title: Strings.startDate,
@@ -31,9 +27,7 @@ class FitOutProcessDatesWidget extends GetView<FitOutProcessDetailsController> {
                   ? Strings.na
                   : DateFormat("EEE d MMM y")
                       .format(controller.fitOut.startDate!)),
-          SizedBox(
-            height: 20.h,
-          ),
+          SizedBox(height: 20.h),
           customDetailsItem(
               icon: ImagePaths.filingTime,
               title: Strings.completionDate,
@@ -41,9 +35,7 @@ class FitOutProcessDatesWidget extends GetView<FitOutProcessDetailsController> {
                   ? Strings.na
                   : DateFormat("EEE d MMM y")
                       .format(controller.fitOut.completedDate!)),
-          SizedBox(
-            height: 20.h,
-          ),
+          SizedBox(height: 20.h),
           customDetailsItem(
               icon: ImagePaths.filingTime,
               title: Strings.expectedOpeningDate,
@@ -51,8 +43,6 @@ class FitOutProcessDatesWidget extends GetView<FitOutProcessDetailsController> {
                   ? Strings.na
                   : DateFormat("EEE d MMM y")
                       .format(controller.fitOut.expectedOpeningDate!)),
-        ],
-      ),
-    );
+        ]));
   }
 }

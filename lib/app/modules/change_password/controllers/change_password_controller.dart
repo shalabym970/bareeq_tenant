@@ -17,6 +17,9 @@ class ChangePasswordController extends GetxController {
   final currentPassController = TextEditingController();
   final newPassController = TextEditingController();
   final confirmPassController = TextEditingController();
+  final currentPasswordVisible = true.obs;
+  final newPasswordVisible = true.obs;
+
 
   changePassword() async {
     try {

@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:equatable/equatable.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'account_model.dart';
 
 class Contact extends Equatable {
@@ -72,7 +70,7 @@ class Contact extends Equatable {
   }
 
   Map<String, dynamic> toJson() => {
-        if (lastName != null) "emailAddress": emailAddress,
+        if (emailAddress != null) "emailaddress1": emailAddress,
         if (accountCustomerId != null)
           "parentcustomerid_account@odata.bind":
               "/accounts($accountCustomerId)",

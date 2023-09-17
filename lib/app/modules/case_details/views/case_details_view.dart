@@ -83,12 +83,10 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                                                     fontSize: 10.sp,
                                                     color: ColorManager
                                                         .mainColor)),
-                                            SizedBox(
-                                              height: 5.h,
-                                            ),
+                                            SizedBox(height: 5.h),
                                             Text(
-                                                controller.cases.title
-                                                    .toString(),
+                                                controller.cases.title ??
+                                                    Strings.na,
                                                 style: TextStyle(
                                                     fontSize: 15.sp,
                                                     color: ColorManager.black))

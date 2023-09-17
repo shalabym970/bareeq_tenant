@@ -55,7 +55,6 @@ class ContactApi extends GetxService {
             '_primarycontactid_value,bls_accountstatus,_ownerid_value,accountnumber,emailaddress1,'
             'new_registrationnumbercr,blser_accounttype,new_cbrnumber)'
             '&\$filter=(parentcustomerid_account/accountid eq $accountId)';
-    Get.log('=============== All Contacts url :  $url ==========');
     var response = await ApiHelper.getData(url: url);
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
@@ -74,10 +73,10 @@ class ContactApi extends GetxService {
   /// Post Contact
   static Future postContact({required Contact request}) async {
     String url = "contacts";
-    Get.log("========== post contact url : $url ==========");
     var response = await ApiHelper.postData(body: request.toJson(), url: url);
     var decodeResponse = await TokenHelper.decodeResponse(response: response);
     Get.log('========== post contact response : $decodeResponse ==========');
+    Get.log('========== post contact request : ${request.toJson()} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
@@ -90,16 +89,6 @@ class ContactApi extends GetxService {
   static Future updateProfile({required Contact request}) async {
     String url =
         "contacts(${Get.find<SessionServices>().currentUser.value.id})";
-    Get.log("========== update contact url : $url ==========");
-    var response = await ApiHelper.postData(body: request.toJson(), url: url);
-    var decodeResponse = await TokenHelper.decodeResponse(response: response);
-    if (response.statusCode == 200 ||
-        response.statusCode == 201 ||
-        response.statusCode == 204) {
-      Get.log(
-          '========== update contact response : $decodeResponse ==========');
-    } else {
-      throw Exception();
-    }
+    await ApiHelper.patchData(body: request.toJson(), url: url);
   }
 }

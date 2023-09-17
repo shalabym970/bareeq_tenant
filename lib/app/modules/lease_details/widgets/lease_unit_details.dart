@@ -34,14 +34,14 @@ class LeaseUnitDetailsWidget extends GetView<LeaseDetailsController> {
                     customDetailsItem(
                         icon: ImagePaths.office,
                         title: Strings.property,
-                        value: controller.lease.property!.name.toString()),
+                        value: controller.lease.property!.name ?? Strings.na),
                     SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.priceTage,
                         title: Strings.brand,
-                        value: controller.lease.brand!.name.toString())
+                        value: controller.lease.brand!.name ?? Strings.na)
                   ],
                 ),
               ),
@@ -53,14 +53,16 @@ class LeaseUnitDetailsWidget extends GetView<LeaseDetailsController> {
                     customDetailsItem(
                         icon: ImagePaths.group42,
                         title: Strings.unit,
-                        value: controller.lease.unit!.name.toString()),
+                        value: controller.lease.unit!.name ?? Strings.na),
                     SizedBox(
                       height: 20.h,
                     ),
                     customDetailsItem(
                         icon: ImagePaths.path79,
                         title: Strings.leaseERPNumber,
-                        value: controller.lease.erpLeaseNumber.toString()),
+                        value: controller.lease.erpLeaseNumber != null
+                            ? controller.lease.erpLeaseNumber.toString()
+                            : Strings.na),
                   ],
                 ),
               ),

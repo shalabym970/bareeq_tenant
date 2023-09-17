@@ -52,9 +52,7 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                                               fontWeight: FontWeight.bold,
                                               fontSize: 10.sp,
                                               color: ColorManager.mainColor)),
-                                      SizedBox(
-                                        height: 3.h,
-                                      ),
+                                      SizedBox(height: 3.h),
                                       Text(fitOut.name.toString(),
                                           style: TextStyle(
                                               fontSize: 10.sp,
@@ -114,8 +112,9 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                                       SizedBox(height: 3.h),
                                       Text(
                                           GeneralServices.getKeyFromValue(
-                                              Constants.fitOuTTypesMap,
-                                              fitOut.status!).toString(),
+                                                  Constants.fitOuTTypesMap,
+                                                  fitOut.status ?? 0)
+                                              .toString(),
                                           style: TextStyle(
                                               fontSize: 10.sp,
                                               color: ColorManager.black))
