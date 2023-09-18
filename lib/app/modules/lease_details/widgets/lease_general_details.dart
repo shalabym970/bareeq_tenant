@@ -27,7 +27,7 @@ class LeaseGeneralDetailsWidget extends GetView<LeaseDetailsController> {
                     children: [
                       customDetailsItem(
                           icon: ImagePaths.path79,
-                          title: Strings.leaseCRMNumber,
+                          title: Strings.propertyCRMNumber,
                           value: controller.lease.crmLeaseNumber ?? Strings.na),
                       SizedBox(height: 20.h),
                       customDetailsItem(

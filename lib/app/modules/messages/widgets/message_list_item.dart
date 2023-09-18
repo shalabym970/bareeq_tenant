@@ -1,4 +1,3 @@
-import 'package:bareeq/app/modules/messages/controllers/messages_controller.dart';
 import 'package:bareeq/app/services/session_services.dart';
 import 'package:bareeq/common/strings/strings.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,6 @@ import 'package:get/get.dart';
 import '../../../../common/color_manager.dart';
 import '../../../../common/constants.dart';
 import '../../../models/message.dart';
-import '../../../routes/app_routes.dart';
 
 class MessageListItem extends StatelessWidget {
   const MessageListItem({Key? key, required this.message}) : super(key: key);
@@ -119,7 +117,7 @@ class MessageListItem extends StatelessWidget {
                                                   : message.regardingName
                                                               .toString() ==
                                                           Constants.leaseKey
-                                                      ? Strings.lease
+                                                      ? Strings.property
                                                       : message.regardingName
                                                                   .toString() ==
                                                               Constants

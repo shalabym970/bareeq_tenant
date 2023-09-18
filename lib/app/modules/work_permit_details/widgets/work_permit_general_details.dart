@@ -29,7 +29,7 @@ class WorkPermitGeneralDetailsWidget
                       customDetailsItem(
                           icon: ImagePaths.group42,
                           title: Strings.unit,
-                          value: controller.workPermit.relatedUnit!.name ??
+                          value: controller.workPermit.relatedUnit?.name ??
                               Strings.na),
                       SizedBox(height: 20.h),
                       customDetailsItem(
@@ -47,7 +47,7 @@ class WorkPermitGeneralDetailsWidget
                       customDetailsItem(
                           icon: ImagePaths.manager,
                           title: Strings.contractor,
-                          value: controller.workPermit.contractor!.name ??
+                          value: controller.workPermit.contractor?.name ??
                               Strings.na),
                       SizedBox(height: 20.h),
                       customDetailsItem(
@@ -55,8 +55,8 @@ class WorkPermitGeneralDetailsWidget
                           title: Strings.customer,
                           value: Get.find<DashboardController>()
                                   .currentUser
-                                  .account!
-                                  .name ??
+                                  .account
+                                  ?.name ??
                               Strings.na)
                     ]))
           ])

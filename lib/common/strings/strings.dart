@@ -29,10 +29,10 @@ class Strings {
   static const String regarding = 'Regarding';
   static const String amount = 'Amount';
   static const String submitDate = 'Submit Date';
-  static const String recentLeases = 'Recent Leases';
-  static const String leaseCRMNumber = 'Lease CRM Number';
-  static const String leaseERPNumber = 'Lease ERP Number';
-  static const String leaseName = 'Lease Name';
+  static const String recentProperties = 'Recent Properties';
+  static const String propertyCRMNumber = 'Property CRM Number';
+  static const String propertyERPNumber = 'Property ERP Number';
+  static const String propertyName = 'Property Name';
   static const String recentFitOutProcesses = 'Recent Fit Out Processes';
   static const String name = 'Name';
   static const String completeDate = 'Complete Date';
@@ -63,21 +63,20 @@ class Strings {
   static const String dateSubmitted = 'Date Submitted';
   static const String unitDetails = 'Unit Details';
   static const String property = 'Property';
-  static const String relatedLease = 'Related Lease';
+  static const String relatedProperty = 'Related Property';
   static const String invoice = 'Invoice';
   static const String invoices = 'Invoices';
   static const String invoiceTitle = 'Invoice Title';
-  static const String propertyLeaseDetails = 'Property Lease Details';
+  static const String propertyDetails = 'Property Details';
   static const String invoiceItems = 'Invoice Items';
   static const String productName = 'Product Name';
   static const String pricePerUnit = 'Price Per Unit';
   static const String quantity = 'Quantity';
   static const String discount = 'Discount';
   static const String totalAmount = 'Total Amount';
-  static const String lease = 'Lease';
-  static const String leases = 'Leases';
+  static const String properties = 'Properties';
   static const String logout = 'Logout';
-  static const String leaseTitle = 'Lease Title';
+  static const String propertyTitle = 'Property Title';
   static const String communicationDate = 'Communication Date';
   static const String contractPeriod = 'Contract Period';
   static const String brand = 'Brand';
@@ -142,7 +141,7 @@ class Strings {
   static const String addCase = "Add Case";
   static const String caseType = "Case Type";
   static const String selectCase = "Select Case";
-  static const String selectNatureOfComplaint = "Nature of Complaint";
+  static const String selectNatureOfComplaint = "Select Nature of Complaint";
   static const String selectPriority = "Select Priority";
   static const String recoverAccountTitle =
       "You are about to Recover your Account's Password";
@@ -184,7 +183,7 @@ class Strings {
   static const String createItem = 'Create Item';
   static const String workPermitsEmpty = 'Work Permits List is Empty';
   static const String invoicesEmpty = 'Invoices List is Empty';
-  static const String leasesEmpty = 'Leases List is Empty';
+  static const String propertiesEmpty = 'Properties List is Empty';
   static const String casesEmpty = 'Cases List is Empty';
   static const String fitOutsEmpty = 'Fit Outs List is Empty';
   static const String contactsEmpty = 'Contacts List is Empty';
@@ -228,7 +227,8 @@ class Strings {
   static const String workPermitUpdatedSuccessfully =
       'Work Permit Updated Successfully ';
   static const String caseUpdatedSuccessfully = 'Case Updated Successfully ';
-  static const String fitOutStepUpdatedSuccessfully = 'Fit out step Updated Successfully ';
+  static const String fitOutStepUpdatedSuccessfully =
+      'Fit out step Updated Successfully ';
   static const String hasBeenDeleted = ' has been deleted';
   static const String contactAddedSuccessfully =
       'Contact is Added Successfully ';
@@ -248,5 +248,6 @@ class Strings {
   static const String workPermitTermsSecondDialog =
       "The authorised tenant and/or contractor are responsible for taking all necessary actions to protect their workers from the work environment risks, "
       "and meet all the legal requirements in the field of occupational safety and health as per Bahrain Ministry of Labour, Health & Safety regulations.";
-  static const String dontChangedAnyThing = "You don't make any change to save it";
+  static const String dontChangedAnyThing =
+      "You don't make any change to save it";
 }

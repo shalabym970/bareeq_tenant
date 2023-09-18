@@ -153,7 +153,7 @@ class ProfileView extends GetView<ProfileController> {
                                       SizedBox(height: 20.h),
                                       CustomTextField(
                                           hint: controller
-                                              .currentUser.account!.name
+                                              .currentUser.account?.name
                                               .toString(),
                                           backgroundColor: Colors.grey[400],
                                           labelWidget: const LabelTextField(

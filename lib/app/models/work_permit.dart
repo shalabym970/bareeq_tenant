@@ -63,7 +63,9 @@ class WorkPermit {
         relatedUnit: json["blser_RelatedUnit"] == null
             ? null
             : Unit.fromJson(json["blser_RelatedUnit"]),
-        contractor: Account.fromJson(json["blser_Contractor"]),
+        contractor: json["blser_Contractor"] != null
+            ? Account.fromJson(json["blser_Contractor"])
+            : null,
       );
 
   Map<String, dynamic> toJson() => {

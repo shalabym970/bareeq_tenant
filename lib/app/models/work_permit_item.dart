@@ -26,7 +26,7 @@ class WorkPermitItem {
   factory WorkPermitItem.fromJson(Map<String, dynamic> json) => WorkPermitItem(
         workPermitItemId: json["blser_workpermititemid"],
         id: json["blser_id"],
-        createdOn: json["createdon"] == null
+        createdOn:json["createdon"] == null
             ? DateTime(0000, 00, 00)
             : DateTime.parse(json["createdon"]),
         workPermitId: json["_blser_workpermit_value"],

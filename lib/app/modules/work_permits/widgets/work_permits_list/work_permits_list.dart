@@ -28,7 +28,10 @@ class WorkPermitsList extends GetView<DashboardController> {
                     fontSize: 15.sp,
                   )
                 : controller.workPermits.isEmpty
-                    ? const EmptyListWidget(message: Strings.workPermitsEmpty)
+                    ? SizedBox(
+                        height: 0.5.sh,
+                        child: const EmptyListWidget(
+                            message: Strings.workPermitsEmpty))
                     : Scrollbar(
                         child: ListView.builder(
                             padding: EdgeInsets.symmetric(vertical: 10.h),

@@ -44,7 +44,7 @@ class LeasesListItem extends GetView<DashboardController> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Column(children: [
-                                      Text(Strings.leaseCRMNumber,
+                                      Text(Strings.propertyCRMNumber,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 10.sp,
@@ -81,7 +81,7 @@ class LeasesListItem extends GetView<DashboardController> {
                                   children: [
                                     Column(children: [
                                       Text(
-                                        Strings.leaseName,
+                                        Strings.propertyName,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 10.sp,
@@ -90,7 +90,7 @@ class LeasesListItem extends GetView<DashboardController> {
                                       SizedBox(height: 3.h),
                                       Text(
                                           controller
-                                                  .currentUser.account!.name ??
+                                                  .currentUser.account?.name ??
                                               Strings.na,
                                           style: TextStyle(
                                               fontSize: 10.sp,

@@ -3,11 +3,11 @@ class ErrorStrings {
   static const String publicErrorMessage = "An error has occurred";
   static const String pleaseAcceptResponsibility =
       'Please Accept the Responsibility';
-  static const String pleaseSelectRelatedUnit = 'Please Select Related Unit';
+  static const String pleaseSelectRelatedUnit = 'Select Related Unit';
   static const String pleaseFillFields = 'Please fill out the fields';
   static const String pleaseSelectContractor = 'Please Select Contractor';
   static const String pleaseSelectItemType = 'Please Select Item Type';
-  static const String pleaseSelectCaseType = 'Please Select Case Type';
+  static const String pleaseSelectCaseType = 'Select Case Type';
   static const String enterSubject = 'Enter Subject';
   static const String enterTitle = 'Enter Tilte';
   static const String enterWorkerNumber = 'Enter workers number';

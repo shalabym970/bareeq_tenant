@@ -23,10 +23,13 @@ class LeasesList extends GetView<DashboardController> {
                   ? CustomErrorWidget(
                       iconWidth: 20.w,
                       iconHeight: 20.h,
-                      fontSize: 15.sp,
+                      fontSize: 15.sp
                     )
                   : controller.leases.isEmpty
-                      ? const EmptyListWidget(message: Strings.leasesEmpty)
+                      ? SizedBox(
+                          height: 0.5.sh,
+                          child: const EmptyListWidget(
+                              message: Strings.propertiesEmpty))
                       : ListView.builder(
                           padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
                           primary: false,
@@ -36,8 +39,8 @@ class LeasesList extends GetView<DashboardController> {
                             LeaseModel lease =
                                 controller.leases.elementAt(index);
                             return LeasesListItem(lease: lease);
-                          }),
-                        ),
+                          })
+                        )
         ));
   }
 }

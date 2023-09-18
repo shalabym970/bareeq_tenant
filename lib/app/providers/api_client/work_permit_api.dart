@@ -22,8 +22,7 @@ class WorkPermitApi extends GetxService {
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      var decodeResponse =
-          await TokenHelper.decodeResponse(response: response);
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<WorkPermit>((obj) => WorkPermit.fromJson(obj))
           .toList();
@@ -47,8 +46,7 @@ class WorkPermitApi extends GetxService {
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      var decodeResponse =
-          await TokenHelper.decodeResponse(response: response);
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
 
       return decodeResponse['value']
           .map<WorkPermitItem>((obj) => WorkPermitItem.fromJson(obj))
@@ -61,20 +59,20 @@ class WorkPermitApi extends GetxService {
   /// Get work permit items
   static Future<List<Unit>> getRelatedUnits() async {
     String url =
-        "advanced_units?\$select=advanced_name&\$expand=advanced_advanced_unit_advanced_propertycontract"
+        "advanced_units?\$select=advanced_name,blser_handoverdate&\$expand=advanced_advanced_unit_advanced_propertycontract"
         "(\$select=advanced_propertycontractid,_blser_property_value;\$expand=advanced_contactid(\$select=contactid;"
         "\$filter=(contactid eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId})))&"
         "\$filter=(advanced_advanced_unit_advanced_propertycontract/any(o1:(o1/advanced_propertycontractid ne null)))";
     var response = await ApiHelper.getData(url: url);
     Get.log('=============== related units url :  $url ==========');
     Get.log(
-        '=============== related response url :  ${response.body} ==========');
+        '=============== related units response url :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      var decodeResponse =
-          await TokenHelper.decodeResponse(response: response);
-
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
+      Get.log(
+          '=============== related units reason :  ${response.reasonPhrase} ==========');
       return decodeResponse['value']
           .map<Unit>((obj) => Unit.fromJson(obj))
           .toList();
@@ -93,8 +91,7 @@ class WorkPermitApi extends GetxService {
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      var decodeResponse =
-          await TokenHelper.decodeResponse(response: response);
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
 
       return decodeResponse['value']
           .map<Account>((obj) => Account.fromJson(obj))
@@ -109,15 +106,19 @@ class WorkPermitApi extends GetxService {
     String url = "blser_workpermits";
     Get.log("========== post Work permit url :: $url ==========");
     var response = await ApiHelper.postData(body: request.toJson(), url: url);
-    var decodeResponse = await TokenHelper.decodeResponse(response: response);
+    Get.log(
+        '=============== post work permit profile :  ${response.body} ==========');
+    Get.log(
+        '=============== update user profile response :  ${response.reasonPhrase} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      Map<String, dynamic> responseMap = decodeResponse;
-      String workPermitId = responseMap['blser_workpermitid'];
+      String workPermitId = response['blser_workpermitid'];
       return workPermitId;
     } else {
-      throw Exception(decodeResponse['message']);
+      Get.log(
+          '=============== update user profile response :  ${response.reasonPhrase} ==========');
+      throw Exception(response.reasonPhrase);
     }
   }
 

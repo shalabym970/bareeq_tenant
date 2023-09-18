@@ -15,7 +15,7 @@ class InvoicePropertyLeaseDetailsWidget
     return Padding(
         padding: EdgeInsets.all(10.h),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(Strings.propertyLeaseDetails,
+          Text(Strings.propertyDetails,
               style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400)),
           SizedBox(height: 20.h),
           Row(mainAxisAlignment: MainAxisAlignment.start, children: [

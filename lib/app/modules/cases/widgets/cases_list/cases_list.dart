@@ -26,7 +26,10 @@ class CasesList extends GetView<DashboardController> {
                       fontSize: 15.sp,
                     )
                   : controller.cases.isEmpty
-                      ? const EmptyListWidget(message: Strings.casesEmpty)
+                      ? SizedBox(
+                          height: 0.5.sh,
+                          child: const EmptyListWidget(
+                              message: Strings.casesEmpty))
                       : ListView.builder(
                           padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
                           primary: false,

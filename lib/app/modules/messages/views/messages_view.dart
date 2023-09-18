@@ -23,28 +23,26 @@ class MessagesView extends GetView<MessagesController> {
           return false;
         },
         child: RefreshIndicator(
-          color: ColorManager.mainColor,
-          onRefresh: () async {
-            controller.onInit();
-          },
-          child: Scaffold(
-            appBar: customAppBar(
-                title: Strings.messages, svgEmailIcon: ImagePaths.emailBrown),
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const MessagesSwitcherBTN(),
-                const MessageDropDownList(),
-                Obx(() => controller.selectInboxMessages.isTrue
-                    ? const Expanded(child: InboxMessagesList())
-                    : const Expanded(child: SentMessagesList()))
-              ],
-            ),
-
-            drawer:
-                customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
-          ),
-        ));
+            color: ColorManager.mainColor,
+            onRefresh: () async {
+              controller.onInit();
+            },
+            child: Scaffold(
+                appBar: customAppBar(
+                    title: Strings.messages,
+                    svgEmailIcon: ImagePaths.emailBrown),
+                body: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const MessagesSwitcherBTN(),
+                      const MessageDropDownList(),
+                      Obx(() => controller.selectInboxMessages.isTrue
+                          ? const Expanded(child: InboxMessagesList())
+                          : const Expanded(child: SentMessagesList()))
+                    ]),
+                drawer:
+                    customDrawer() // This trailing comma makes auto-formatting nicer for build methods.
+                )));
   }
 }

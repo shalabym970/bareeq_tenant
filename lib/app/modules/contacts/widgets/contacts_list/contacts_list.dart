@@ -23,7 +23,10 @@ class ContactsList2 extends GetView<ProfileController> {
                 fontSize: 15.sp,
               )
             : controller.contacts.isEmpty
-                ? const EmptyListWidget(message: Strings.contactsEmpty)
+                ? SizedBox(
+                    height: 0.5.sh,
+                    child:
+                        const EmptyListWidget(message: Strings.contactsEmpty))
                 : Scrollbar(
                     child: ListView.builder(
                         padding: EdgeInsets.only(bottom: 10.h, top: 10.h),

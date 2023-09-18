@@ -15,15 +15,42 @@ class SelectCaseTypesWidget extends GetView<AddCaseController> {
         onChange: (newValue) async {
           controller.selectedType.value = newValue;
         },
-        items: Constants.caseTypesMap.keys
-            .map<DropdownMenuItem<String>>(
-              (String key) => DropdownMenuItem<String>(
-                value: key,
-                child: Text(key),
-              ),
-            )
-            .toList(),
+        items: getDropdownItems(),
         label: Strings.caseType,
         hint: Strings.selectCase));
+  }
+
+  List<DropdownMenuItem<String>> getDropdownItems() {
+    final handOverDate = controller.relatedUnitValue.value?.handOverDate != null
+        ? DateTime.parse(controller.relatedUnitValue.value!.handOverDate!)
+        : DateTime(0000, 00, 00);
+
+    final daysPassed = DateTime.now().difference(handOverDate).inDays;
+    if (daysPassed >= 365) {
+      // If handOverDate has passed from 365 days ago, exclude certain keys
+      final excludedKeys = ['Warranty']; // Replace with your keys
+      final filteredKeys = Constants.caseTypesMap.keys
+          .where((key) => !excludedKeys.contains(key))
+          .toList();
+
+      return filteredKeys
+          .map<DropdownMenuItem<String>>(
+            (String key) => DropdownMenuItem<String>(
+              value: key,
+              child: Text(key),
+            ),
+          )
+          .toList();
+    }
+
+    // Default case or if handOverDate hasn't passed from 365 days ago
+    return Constants.caseTypesMap.keys
+        .map<DropdownMenuItem<String>>(
+          (String key) => DropdownMenuItem<String>(
+            value: key,
+            child: Text(key),
+          ),
+        )
+        .toList();
   }
 }

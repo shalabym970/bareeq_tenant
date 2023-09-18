@@ -20,7 +20,7 @@ class CashHelper {
   static dynamic getData({
     required String key,
   }) {
-    return sharedPref?.get(key);
+    return sharedPref!.get(key);
   }
 
   static Future<bool> removeData({

@@ -26,7 +26,7 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
           controller.onInit();
         },
         child: Scaffold(
-          appBar: customAppBar(title: Strings.lease),
+          appBar: customAppBar(title: Strings.property),
 
           body: Padding(
             padding: EdgeInsets.only(right: 10.w, left: 10.w),
@@ -52,7 +52,7 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(Strings.leaseTitle,
+                            Text(Strings.propertyTitle,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 10.sp,
@@ -90,9 +90,9 @@ class LeaseDetailsView extends GetView<LeaseDetailsController> {
                   SizedBox(height: 10.h),
                   const LeaseAttachmentsList(),
                   SizedBox(height: 100.h),
-                ],
-              ),
-            ),
+                ]
+              )
+            )
           ),
           drawer:
               customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.

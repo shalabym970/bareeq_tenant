@@ -44,7 +44,7 @@ class Invoice {
   DateTime? createdOn;
   String? deliveredDate;
   String? ownerId;
-  dynamic amountDueRemaining;
+  double? amountDueRemaining;
   String? customerIdValue;
   int? stateCode;
   double? totalDiscountAmount;

@@ -19,21 +19,21 @@ class LeasesListWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(6.h),
                 child: SvgPicture.asset(ImagePaths.houseDoor,
-                    height: 20.h, width: 20.w),
+                    height: 20.h, width: 20.w)
               ),
               Padding(
                 padding: EdgeInsets.all(6.h),
                 child: Text(
-                  Strings.leases,
+                  Strings.properties,
                   style:
-                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
-                ),
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold)
+                )
               )
-            ],
+            ]
           ),
           const LeasesList()
-        ],
-      ),
+        ]
+      )
     );
   }
 }

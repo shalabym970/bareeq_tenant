@@ -22,7 +22,7 @@ class Account {
   final String? accountNumber;
   final String? emailAddress;
   final int? accountType;
-  final int? crNumber;
+  final String? crNumber;
   final String? cbrNumber;
 
   factory Account.fromJson(Map<String, dynamic> json) => Account(

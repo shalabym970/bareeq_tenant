@@ -29,11 +29,11 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                       customDetailsItem(
                           icon: ImagePaths.office,
                           title: Strings.property,
-                          value: controller.cases.property!.name ?? Strings.na),
+                          value: controller.cases.property?.name ?? Strings.na),
                       SizedBox(height: 20.h),
                       customDetailsItem(
                           icon: ImagePaths.group77,
-                          title: Strings.relatedLease,
+                          title: Strings.relatedProperty,
                           // TODO: must get the lease name by this id when back at project any more
                           value: controller.cases.propertyLeaseId.toString())
                     ])),
@@ -45,7 +45,7 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                       customDetailsItem(
                           icon: ImagePaths.group42,
                           title: Strings.unit,
-                          value: controller.cases.unit!.name ?? Strings.na),
+                          value: controller.cases.unit?.name ?? Strings.na),
                       SizedBox(height: 20.h),
                       customDetailsItem(
                           icon: ImagePaths.pylon,

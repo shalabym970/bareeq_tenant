@@ -86,4 +86,20 @@ class Contact extends Equatable {
 
   @override
   List<Object?> get props => [emailAddress, password];
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other.runtimeType != runtimeType) return false;
+    if (other is! Contact) return false;
+
+    return emailAddress?.toLowerCase() == (other).emailAddress?.toLowerCase() &&
+        password?.toLowerCase() == (other).password?.toLowerCase();
+  }
+
+  @override
+  int get hashCode {
+    return emailAddress!.toLowerCase().hashCode ^ password!.toLowerCase().hashCode;
+  }
+
 }

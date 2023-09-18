@@ -70,6 +70,8 @@ class LeaseModel {
             ? null
             : Unit.fromJson(json["advanced_unitid"]),
         brand: Brand.fromJson(json["blser_BrandShop"]),
-        property: Project.fromJson(json["blser_Property"]),
+        property: json["blser_Property"] != null
+            ? Project.fromJson(json["blser_Property"])
+            : null,
       );
 }

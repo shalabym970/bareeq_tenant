@@ -14,15 +14,16 @@ class CasesApi {
         'blser_caseid,blser_description,_blser_account_value&'
         '\$expand=blser_case_blser_portalmessageses(\$select=subject,blser_messagetext,activityid,createdon)'
         ',blser_LeaseUnit(\$select=advanced_name,_bls_relatedleasecontract_value,statecode),blser_RelatedProject'
-        '(\$select=advanced_name,advanced_buildingno)&\$filter=(_blser_contact_value eq ${Get.find<SessionServices>().currentUser.value.id}) ';
+        '(\$select=advanced_name,advanced_buildingno)&\$filter=(_blser_contact_value eq ${Get.find<SessionServices>().currentUser.value.id})'
+        '&\$orderby=createdon desc';
     Get.log('=============== Cases url :  $url ==========');
+
     var response = await ApiHelper.getData(url: url);
     Get.log('=============== Cases response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      var decodeResponse =
-          await TokenHelper.decodeResponse(response: response);
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<Case>((obj) => Case.fromJson(obj))
           .toList();
@@ -32,18 +33,21 @@ class CasesApi {
   }
 
   /// Post case
-  static Future postCase({required Case request}) async {
+  static postCase({required Case request}) async {
     String url = "blser_cases";
     Get.log("========== post case url :: $url ==========");
     var response = await ApiHelper.postData(body: request.toJson(), url: url);
-    var decodeResponse = await TokenHelper.decodeResponse(response: response);
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       Get.log(
           '=============== post Case response :  ${response.body} ==========');
+      Get.log(
+          '=============== post Case reasonPhrase :  ${response.reasonPhrase} ==========');
     } else {
-      throw Exception(decodeResponse['message']);
+      Get.log(
+          '=============== post Case reasonPhrase :  ${response.reasonPhrase} ==========');
+      throw Exception(response.reasonPhrase);
     }
   }
 }

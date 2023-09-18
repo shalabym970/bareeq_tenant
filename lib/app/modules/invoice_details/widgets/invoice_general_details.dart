@@ -55,8 +55,9 @@ class InvoiceGeneralDetailsWidget extends GetView<InvoiceDetailsController> {
                       customDetailsItem(
                           icon: ImagePaths.deleteCalendar,
                           title: Strings.amount,
-                          value: controller.invoice.amountDueRemaining ??
-                              Strings.na),
+                          value: controller.invoice.amountDueRemaining != null
+                              ? controller.invoice.amountDueRemaining.toString()
+                              : Strings.na),
                       SizedBox(height: 20.h),
                       customDetailsItem(
                           icon: ImagePaths.filingTime,

@@ -34,7 +34,7 @@ class LeasesView extends GetView<LeasesController> {
                   controller.focusNode.unfocus();
                 },
                 child: Scaffold(
-                    appBar: customAppBar(title: Strings.leases),
+                    appBar: customAppBar(title: Strings.properties),
                     body: Padding(
                       padding:
                       EdgeInsets.only(right: 10.w, left: 10.w, top: 20.h),
@@ -63,7 +63,7 @@ class LeasesView extends GetView<LeasesController> {
                                               child: Icon(
                                                 Icons.clear,
                                                 color: ColorManager.black,
-                                                size: 25.sp,
+                                                size: 25.sp
                                               ),
                                             )
                                           : null,
@@ -92,7 +92,7 @@ class LeasesView extends GetView<LeasesController> {
                                                       lease: lease);
                                                 }))
                                         : const LeasesListWidget()
-                                  ]))),
+                                  ])))
                     ),
                     drawer:
                         customDrawer() // This trailing comma makes auto-formatting nicer for build methods.

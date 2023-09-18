@@ -19,9 +19,9 @@ class RecentLeasesList extends GetView<DashboardController> {
         child: Obx(
           () => controller.loadingLeases.isTrue
               ? Padding(
-            padding: EdgeInsets.symmetric(vertical: 5.h),
-            child: ShimmerWidget.rectangular(height: 100.h),
-          )
+                  padding: EdgeInsets.symmetric(vertical: 5.h),
+                  child: ShimmerWidget.rectangular(height: 100.h),
+                )
               : controller.errorLeases.isTrue
                   ? CustomErrorWidget(
                       iconWidth: 20.w,
@@ -29,8 +29,10 @@ class RecentLeasesList extends GetView<DashboardController> {
                       fontSize: 15.sp,
                     )
                   : controller.leases.isEmpty
-                      ? const EmptyListWidget(
-                          message: Strings.leasesEmpty)
+                      ? SizedBox(
+                          height: 0.1.sh,
+                          child: const EmptyListWidget(
+                              message: Strings.propertiesEmpty))
                       : ListView.builder(
                           padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
                           primary: false,

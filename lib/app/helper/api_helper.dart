@@ -9,25 +9,26 @@ import '../../main.dart';
 
 class ApiHelper {
   ///Post
-  static Future<http.Response> postData({
+  static postData({
     required String url,
     required Map<String, dynamic> body,
   }) async {
-    if (TokenHelper.accessTokenIsExpired()) {
-      await TokenHelper.refreshToken();
+    try {
+      if (TokenHelper.accessTokenIsExpired()) {
+        await TokenHelper.refreshToken();
+      }
+      var token = CashHelper.getData(key: 'access_token');
+      Constants.headers['Authorization'] = 'Bearer $token';
+      var response = await http.post(
+        Uri.parse(Constants.baseUrl + url),
+        body: json.encode(body),
+        headers: Constants.headers,
+      );
+      return response;
+    } catch (e) {
+      Get.log('========== Error occurred : $e ==========');
+      return http.Response('Error occurred', 500);
     }
-    var token = CashHelper.getData(key: 'access_token');
-    Constants.headers['Authorization'] = 'Bearer $token';
-
-    return await http
-        .post(
-      Uri.parse(Constants.baseUrl + url),
-      body: jsonEncode(body),
-      headers: Constants.headers,
-    )
-        .catchError((error) {
-      return error;
-    });
   }
 
   ///Get
@@ -44,12 +45,12 @@ class ApiHelper {
         .catchError((error) {
       return error;
     });
-
+    Get.log('========== get Response : ${response.body} ==========');
     return response;
   }
 
   ///Patch
-  static Future patchData({
+  static patchData({
     required String url,
     required Map<String, dynamic> body,
   }) async {
@@ -59,18 +60,15 @@ class ApiHelper {
       }
       var token = CashHelper.getData(key: 'access_token');
       Constants.headers['Authorization'] = 'Bearer $token';
-      Get.log("========== url : ${Constants.baseUrl + url} ==========");
-      Get.log("========== header : ${Constants.headers} ==========");
-      Get.log("========== body : ${body.toString()} ==========");
-
       var response = await http.patch(
         Uri.parse(Constants.baseUrl + url),
-        body: body,
+        body: json.encode(body),
         headers: Constants.headers,
       );
       return response;
     } catch (e) {
-      return;
+      Get.log('========== Error occurred : $e ==========');
+      return http.Response('Error occurred', 500);
     }
   }
 

@@ -26,7 +26,7 @@ class RecentLeasesWidget extends StatelessWidget {
                         height: 20.h, width: 20.w)),
                 Padding(
                     padding: EdgeInsets.all(6.h),
-                    child: Text(Strings.recentLeases,
+                    child: Text(Strings.recentProperties,
                         style: TextStyle(
                             fontSize: 14.sp, fontWeight: FontWeight.bold)))
               ])),

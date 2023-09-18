@@ -107,8 +107,10 @@ class InvoicesListItem extends StatelessWidget {
                                       ),
                                       SizedBox(height: 3.h),
                                       Text(
-                                          invoice.amountDueRemaining ??
-                                              Strings.na,
+                                          invoice.amountDueRemaining != null
+                                              ? invoice.amountDueRemaining
+                                                  .toString()
+                                              : Strings.na,
                                           style: TextStyle(
                                               fontSize: 10.sp,
                                               color: ColorManager.black))

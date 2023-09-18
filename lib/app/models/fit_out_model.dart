@@ -62,7 +62,9 @@ class FitOutModel {
         reviewed: json["blser_reviewed"],
         relatedContractId: json["_blser_relatedcontract_value"],
         status: json["blser_processstatus"],
-        property: Project.fromJson(json["blser_RelatedProperty"]),
+        property: json["blser_RelatedProperty"] != null
+            ? Project.fromJson(json["blser_RelatedProperty"])
+            : null,
         unit: json["blser_RelatedUnit"] == null
             ? null
             : Unit.fromJson(json["blser_RelatedUnit"]),

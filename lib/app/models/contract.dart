@@ -1,4 +1,4 @@
-class Contract{
+class Contract {
   String? id;
   String? propertyID;
   String? unitId;
@@ -12,16 +12,9 @@ class Contract{
   });
 
   factory Contract.fromJson(Map<String, dynamic> json) => Contract(
-    id: json["advanced_propertycontractid"],
-    propertyID: json["_blser_property_value"],
-    unitId: json["_advanced_unitid_value"],
-    contactId: json["advanced_contactid"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "advanced_propertycontractid": id,
-    "_blser_property_value": propertyID,
-    "_advanced_unitid_value": unitId,
-    "advanced_contactid": contactId,
-  };
+        id: json["advanced_propertycontractid"],
+        propertyID: json["_blser_property_value"],
+        unitId: json["_advanced_unitid_value"],
+        contactId: json["advanced_contactid"],
+      );
 }

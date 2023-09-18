@@ -35,7 +35,6 @@ class Case {
   String? description;
   String? accountId;
   List<MessageModel>? messages;
-
   Unit? unit;
   Project? property;
 
@@ -60,8 +59,12 @@ class Case {
             ? []
             : List<MessageModel>.from(json["blser_case_blser_portalmessageses"]
                 .map((x) => MessageModel.fromJson(x))),
-        unit: Unit.fromJson(json["blser_LeaseUnit"]),
-        property: Project.fromJson(json["blser_RelatedProject"]),
+        unit: json["blser_LeaseUnit"] != null
+            ? Unit.fromJson(json["blser_LeaseUnit"])
+            : null,
+        property: json["blser_RelatedProject"] != null
+            ? Project.fromJson(json["blser_RelatedProject"])
+            : null,
       );
 
   Map<String, dynamic> toJson() => {

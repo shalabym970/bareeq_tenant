@@ -20,24 +20,26 @@ Widget customDetailsItem(
           color: color,
         ),
       ),
-      Padding(
-        padding: EdgeInsets.all(5.h),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(title,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.sp,
-                    color: ColorManager.mainColor)),
-            SizedBox(
-              height: 5.h,
-            ),
-            Text(value,
-                style: TextStyle(fontSize: 12.sp, color: ColorManager.black))
-          ],
-        ),
+      Expanded(
+        child: Padding(
+            padding: EdgeInsets.all(5.h),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.sp,
+                        color: ColorManager.mainColor)),
+                SizedBox(
+                  height: 5.h,
+                ),
+                Text(value,
+                    style:
+                        TextStyle(fontSize: 12.sp, color: ColorManager.black))
+              ],
+            )),
       )
     ],
   );

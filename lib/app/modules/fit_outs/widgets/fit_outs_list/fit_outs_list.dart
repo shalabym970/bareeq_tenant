@@ -16,31 +16,26 @@ class FitOutsList extends GetView<DashboardController> {
   Widget build(BuildContext context) {
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 8.h),
-        child: Obx(
-          () => controller.loadingOutProcess.isTrue
-              ? VerticalListLoading(height: 100.h)
-              : controller.errorOutProcess.isTrue
-                  ? CustomErrorWidget(
-                      iconWidth: 20.w,
-                      iconHeight: 20.h,
-                      fontSize: 15.sp,
-                    )
-                  : controller.fitOuts.isEmpty
-                      ? const EmptyListWidget(message: Strings.fitOutsEmpty)
-                      : ListView.builder(
-                          padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
-                          primary: false,
-                          shrinkWrap: true,
-                          itemCount: controller.fitOuts.length,
-                          itemBuilder: ((_, index) {
-                            FitOutModel fitOut =
-                                controller.fitOuts.elementAt(index);
+        child: Obx(() => controller.loadingOutProcess.isTrue
+            ? VerticalListLoading(height: 100.h)
+            : controller.errorOutProcess.isTrue
+                ? CustomErrorWidget(
+                    iconWidth: 20.w, iconHeight: 20.h, fontSize: 15.sp)
+                : controller.fitOuts.isEmpty
+                    ? SizedBox(
+                        height: 0.5.sh,
+                        child: const EmptyListWidget(
+                            message: Strings.fitOutsEmpty))
+                    : ListView.builder(
+                        padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
+                        primary: false,
+                        shrinkWrap: true,
+                        itemCount: controller.fitOuts.length,
+                        itemBuilder: ((_, index) {
+                          FitOutModel fitOut =
+                              controller.fitOuts.elementAt(index);
 
-                            return FitOutProcessesListItem(
-                              fitOut: fitOut,
-                            );
-                          }),
-                        ),
-        ));
+                          return FitOutProcessesListItem(fitOut: fitOut);
+                        }))));
   }
 }

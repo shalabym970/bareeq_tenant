@@ -44,7 +44,7 @@ class CaseAttachmentsList extends GetView<CaseDetailsController> {
                                     controller.attachments.elementAt(index);
                                 return DynamicAttachmentWidget(
                                     attachment: attachment, onDelete:  () {
-                                  controller.deleteAttachment(attachment: attachment!);
+                                  controller.deleteAttachment(attachment: attachment);
                                 });
                               }))),
               Obx(

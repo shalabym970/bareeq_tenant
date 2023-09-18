@@ -6,7 +6,7 @@ class Constants {
   static const String password = 'pass@T1#22';
   static const String standard = 'Standard';
   static const String emergency = 'Emergency';
-  static const String baseUrl =  "https://bar.crm4.dynamics.com/api/data/v9.2/";
+  static const String baseUrl =  "https://bartest.crm4.dynamics.com/api/data/v9.2/";
       // 'http://d365.blive.me/bar/api/data/v9.1/';
   static const String environmentName = "Bareeq";
   static const String workPermitKey = "blser_workpermit";
