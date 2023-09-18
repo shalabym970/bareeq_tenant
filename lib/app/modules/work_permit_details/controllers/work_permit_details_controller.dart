@@ -1,8 +1,8 @@
-import 'package:Bareeq/app/models/attachment.dart';
-import 'package:Bareeq/app/models/work_permit_item.dart';
-import 'package:Bareeq/app/repositories/attachment_repo.dart';
-import 'package:Bareeq/app/repositories/messages_repo.dart';
-import 'package:Bareeq/common/constants.dart';
+import 'package:bareeq/app/models/attachment.dart';
+import 'package:bareeq/app/models/work_permit_item.dart';
+import 'package:bareeq/app/repositories/attachment_repo.dart';
+import 'package:bareeq/app/repositories/messages_repo.dart';
+import 'package:bareeq/common/constants.dart';
 import 'package:get/get.dart';
 import 'package:mime/mime.dart';
 import '../../../../common/strings/error_strings.dart';

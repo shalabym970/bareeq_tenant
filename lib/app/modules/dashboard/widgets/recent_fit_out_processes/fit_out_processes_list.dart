@@ -1,5 +1,5 @@
-import 'package:Bareeq/app/models/fit_out_model.dart';
-import 'package:Bareeq/app/modules/dashboard/widgets/recent_fit_out_processes/fit_out_processes_list_item.dart';
+import 'package:bareeq/app/models/fit_out_model.dart';
+import 'package:bareeq/app/modules/dashboard/widgets/recent_fit_out_processes/fit_out_processes_list_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

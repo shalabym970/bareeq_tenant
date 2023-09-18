@@ -1,5 +1,5 @@
-import 'package:Bareeq/app/services/general_services.dart';
-import 'package:Bareeq/common/constants.dart';
+import 'package:bareeq/app/services/general_services.dart';
+import 'package:bareeq/common/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

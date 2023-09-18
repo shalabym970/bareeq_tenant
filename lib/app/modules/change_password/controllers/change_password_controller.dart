@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/repositories/profile_repo.dart';
+import 'package:bareeq/app/repositories/profile_repo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';

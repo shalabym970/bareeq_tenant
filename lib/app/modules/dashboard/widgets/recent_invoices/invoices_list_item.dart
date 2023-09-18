@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/models/invoice.dart';
+import 'package:bareeq/app/models/invoice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

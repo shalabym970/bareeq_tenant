@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/models/fit_out_step_model.dart';
+import 'package:bareeq/app/models/fit_out_step_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

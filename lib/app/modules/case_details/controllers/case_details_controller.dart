@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:Bareeq/app/models/case_model.dart';
-import 'package:Bareeq/app/models/message.dart';
-import 'package:Bareeq/common/constants.dart';
+import 'package:bareeq/app/models/case_model.dart';
+import 'package:bareeq/app/models/message.dart';
+import 'package:bareeq/common/constants.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';

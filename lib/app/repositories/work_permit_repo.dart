@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/models/work_permit.dart';
+import 'package:bareeq/app/models/work_permit.dart';
 import '../models/account_model.dart';
 import '../models/unit.dart';
 import '../models/work_permit_item.dart';

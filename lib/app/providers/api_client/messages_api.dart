@@ -1,5 +1,5 @@
-import 'package:Bareeq/app/models/message.dart';
-import 'package:Bareeq/app/services/session_services.dart';
+import 'package:bareeq/app/models/message.dart';
+import 'package:bareeq/app/services/session_services.dart';
 import 'package:get/get.dart';
 import '../../helper/api_helper.dart';
 import '../../helper/token_helper.dart';

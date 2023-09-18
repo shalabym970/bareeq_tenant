@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/providers/api_client/fit_out_api.dart';
+import 'package:bareeq/app/providers/api_client/fit_out_api.dart';
 import '../models/fit_out_model.dart';
 import '../models/fit_out_step_model.dart';
 

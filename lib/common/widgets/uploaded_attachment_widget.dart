@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:Bareeq/app/services/attachment_services.dart';
+import 'package:bareeq/app/services/attachment_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

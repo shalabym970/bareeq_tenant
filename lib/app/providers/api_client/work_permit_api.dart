@@ -1,6 +1,6 @@
-import 'package:Bareeq/app/models/account_model.dart';
-import 'package:Bareeq/app/models/unit.dart';
-import 'package:Bareeq/app/models/work_permit.dart';
+import 'package:bareeq/app/models/account_model.dart';
+import 'package:bareeq/app/models/unit.dart';
+import 'package:bareeq/app/models/work_permit.dart';
 import 'package:get/get.dart';
 import '../../models/work_permit_item.dart';
 import '../../helper/api_helper.dart';

@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/models/lease_model.dart';
+import 'package:bareeq/app/models/lease_model.dart';
 import 'package:get/get.dart';
 import '../../helper/api_helper.dart';
 import '../../services/session_services.dart';

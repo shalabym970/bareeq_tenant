@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/models/invoice_item.dart';
+import 'package:bareeq/app/models/invoice_item.dart';
 
 import '../models/invoice.dart';
 import '../providers/api_client/invoice_api.dart';

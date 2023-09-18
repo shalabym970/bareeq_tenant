@@ -1,5 +1,5 @@
-import 'package:Bareeq/app/helper/cash_helper.dart';
-import 'package:Bareeq/main.dart';
+import 'package:bareeq/app/helper/cash_helper.dart';
+import 'package:bareeq/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

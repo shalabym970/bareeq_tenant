@@ -1,8 +1,8 @@
-import 'package:Bareeq/app/modules/cases/views/cases_view.dart';
-import 'package:Bareeq/app/modules/contacts/bindings/contacts_binding.dart';
-import 'package:Bareeq/app/modules/create_work_permit_item/views/create_work_permit_item_view.dart';
-import 'package:Bareeq/app/modules/change_password/bindings/change_password_binding.dart';
-import 'package:Bareeq/app/modules/work_permits/views/work_permits_view.dart';
+import 'package:bareeq/app/modules/cases/views/cases_view.dart';
+import 'package:bareeq/app/modules/contacts/bindings/contacts_binding.dart';
+import 'package:bareeq/app/modules/create_work_permit_item/views/create_work_permit_item_view.dart';
+import 'package:bareeq/app/modules/change_password/bindings/change_password_binding.dart';
+import 'package:bareeq/app/modules/work_permits/views/work_permits_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import '../middleware/auth_middleware.dart';

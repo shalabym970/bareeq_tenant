@@ -1,6 +1,6 @@
-import 'package:Bareeq/app/models/account_model.dart';
-import 'package:Bareeq/app/models/contact_model.dart';
-import 'package:Bareeq/common/strings/strings.dart';
+import 'package:bareeq/app/models/account_model.dart';
+import 'package:bareeq/app/models/contact_model.dart';
+import 'package:bareeq/common/strings/strings.dart';
 import 'package:get/get.dart';
 import '../../main.dart';
 import '../helper/cash_helper.dart';

@@ -1,5 +1,5 @@
-import 'package:Bareeq/common/widgets/custom_checkbox.dart';
-import 'package:Bareeq/common/widgets/label_text_field.dart';
+import 'package:bareeq/common/widgets/custom_checkbox.dart';
+import 'package:bareeq/common/widgets/label_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

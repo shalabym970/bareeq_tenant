@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:Bareeq/app/providers/api_client/contact_api.dart';
+import 'package:bareeq/app/providers/api_client/contact_api.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get_core/src/get_main.dart';
 import 'cash_helper.dart';

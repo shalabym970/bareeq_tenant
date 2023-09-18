@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/models/invoice_item.dart';
+import 'package:bareeq/app/models/invoice_item.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';

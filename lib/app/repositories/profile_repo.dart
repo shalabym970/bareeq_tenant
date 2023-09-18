@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/providers/api_client/contact_api.dart';
+import 'package:bareeq/app/providers/api_client/contact_api.dart';
 
 import '../models/contact_model.dart';
 

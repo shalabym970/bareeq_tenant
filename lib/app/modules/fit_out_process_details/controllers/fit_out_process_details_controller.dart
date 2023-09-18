@@ -1,6 +1,6 @@
-import 'package:Bareeq/app/models/fit_out_model.dart';
-import 'package:Bareeq/app/models/fit_out_step_model.dart';
-import 'package:Bareeq/app/repositories/fit_out_repo.dart';
+import 'package:bareeq/app/models/fit_out_model.dart';
+import 'package:bareeq/app/models/fit_out_step_model.dart';
+import 'package:bareeq/app/repositories/fit_out_repo.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';

@@ -1,5 +1,5 @@
-import 'package:Bareeq/app/models/invoice.dart';
-import 'package:Bareeq/app/modules/searching/abstract_searching.dart';
+import 'package:bareeq/app/models/invoice.dart';
+import 'package:bareeq/app/modules/searching/abstract_searching.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 

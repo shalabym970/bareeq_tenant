@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/models/case_model.dart';
+import 'package:bareeq/app/models/case_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common/constants.dart';

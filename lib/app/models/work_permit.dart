@@ -1,5 +1,5 @@
-import 'package:Bareeq/app/models/unit.dart';
-import 'package:Bareeq/app/models/work_permit_item.dart';
+import 'package:bareeq/app/models/unit.dart';
+import 'package:bareeq/app/models/work_permit_item.dart';
 
 import 'account_model.dart';
 import 'contract.dart';

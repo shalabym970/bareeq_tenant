@@ -1,6 +1,6 @@
-import 'package:Bareeq/app/models/project.dart';
-import 'package:Bareeq/app/models/unit.dart';
-import 'package:Bareeq/app/services/session_services.dart';
+import 'package:bareeq/app/models/project.dart';
+import 'package:bareeq/app/models/unit.dart';
+import 'package:bareeq/app/services/session_services.dart';
 import 'package:get/get.dart';
 import 'message.dart';
 

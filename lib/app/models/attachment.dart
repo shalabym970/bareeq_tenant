@@ -1,4 +1,4 @@
-import 'package:Bareeq/common/constants.dart';
+import 'package:bareeq/common/constants.dart';
 
 class Attachment {
   String? noteText;

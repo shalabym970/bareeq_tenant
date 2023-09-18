@@ -1,6 +1,6 @@
-import 'package:Bareeq/app/models/work_permit_item.dart';
-import 'package:Bareeq/app/services/general_services.dart';
-import 'package:Bareeq/common/constants.dart';
+import 'package:bareeq/app/models/work_permit_item.dart';
+import 'package:bareeq/app/services/general_services.dart';
+import 'package:bareeq/common/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../common/color_manager.dart';

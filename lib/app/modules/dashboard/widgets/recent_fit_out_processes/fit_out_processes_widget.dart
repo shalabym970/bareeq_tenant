@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/modules/dashboard/widgets/recent_fit_out_processes/fit_out_processes_list.dart';
+import 'package:bareeq/app/modules/dashboard/widgets/recent_fit_out_processes/fit_out_processes_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

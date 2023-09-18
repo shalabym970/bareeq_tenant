@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:Bareeq/app/services/session_services.dart';
+import 'package:bareeq/app/services/session_services.dart';
 import 'package:get/get.dart';
 import '../../helper/cash_helper.dart';
 import '../../models/contact_model.dart';

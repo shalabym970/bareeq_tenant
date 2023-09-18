@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/modules/work_permit_details/widgets/attachments/work_permit_attachment_widget.dart';
+import 'package:bareeq/app/modules/work_permit_details/widgets/attachments/work_permit_attachment_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,6 +1,6 @@
-import 'package:Bareeq/app/models/contact_model.dart';
-import 'package:Bareeq/app/modules/profile/controllers/profile_controller.dart';
-import 'package:Bareeq/app/services/session_services.dart';
+import 'package:bareeq/app/models/contact_model.dart';
+import 'package:bareeq/app/modules/profile/controllers/profile_controller.dart';
+import 'package:bareeq/app/services/session_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';

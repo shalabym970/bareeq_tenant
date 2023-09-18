@@ -1,6 +1,6 @@
-import 'package:Bareeq/app/services/attachment_services.dart';
-import 'package:Bareeq/common/color_manager.dart';
-import 'package:Bareeq/common/strings/strings.dart';
+import 'package:bareeq/app/services/attachment_services.dart';
+import 'package:bareeq/common/color_manager.dart';
+import 'package:bareeq/common/strings/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

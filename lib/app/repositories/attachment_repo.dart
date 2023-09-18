@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/providers/api_client/attachmentApi.dart';
+import 'package:bareeq/app/providers/api_client/attachmentApi.dart';
 
 import '../models/attachment.dart';
 

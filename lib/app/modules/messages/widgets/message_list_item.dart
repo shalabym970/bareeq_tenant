@@ -1,6 +1,6 @@
-import 'package:Bareeq/app/modules/messages/controllers/messages_controller.dart';
-import 'package:Bareeq/app/services/session_services.dart';
-import 'package:Bareeq/common/strings/strings.dart';
+import 'package:bareeq/app/modules/messages/controllers/messages_controller.dart';
+import 'package:bareeq/app/services/session_services.dart';
+import 'package:bareeq/common/strings/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

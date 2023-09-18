@@ -1,4 +1,4 @@
-import 'package:Bareeq/app/models/unit.dart';
+import 'package:bareeq/app/models/unit.dart';
 
 class Project {
   int? type;

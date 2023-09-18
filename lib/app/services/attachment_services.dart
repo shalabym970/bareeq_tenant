@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:typed_data';
-import 'package:Bareeq/common/constants.dart';
-import 'package:Bareeq/common/strings/strings.dart';
-import 'package:Bareeq/common/widgets/ui.dart';
+import 'package:bareeq/common/constants.dart';
+import 'package:bareeq/common/strings/strings.dart';
+import 'package:bareeq/common/widgets/ui.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mime/mime.dart';
