@@ -21,9 +21,11 @@ class MessagesSwitcherBTN extends GetView<MessagesController> {
               flex: 1,
               child: GestureDetector(
                   onTap: () {
-                    controller.selectInboxMessages.value =
-                        !controller.selectInboxMessages.value;
-                    controller.getMessages();
+                    if (controller.selectInboxMessages.isFalse) {
+                      controller.selectInboxMessages.value =
+                          !controller.selectInboxMessages.value;
+                      controller.getMessages();
+                    }
                   },
                   child: Container(
                       color: controller.selectInboxMessages.isTrue
@@ -42,9 +44,11 @@ class MessagesSwitcherBTN extends GetView<MessagesController> {
               flex: 1,
               child: GestureDetector(
                   onTap: () {
-                    controller.selectInboxMessages.value =
-                        !controller.selectInboxMessages.value;
-                    controller.getMessages();
+                    if (controller.selectInboxMessages.isTrue) {
+                      controller.selectInboxMessages.value =
+                          !controller.selectInboxMessages.value;
+                      controller.getMessages();
+                    }
                   },
                   child: Container(
                       color: controller.selectInboxMessages.isTrue

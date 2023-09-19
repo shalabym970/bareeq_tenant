@@ -36,9 +36,11 @@ class CaseGeneralDetailsWidget extends GetView<CaseDetailsController> {
                       customDetailsItem(
                           icon: ImagePaths.documentLayout,
                           title: Strings.type,
-                          value: GeneralServices.getKeyFromValue(
-                              Constants.caseTypesMap,
-                              controller.cases.type ?? 0))
+                          value: controller.cases.type != null
+                              ? GeneralServices.getKeyFromValue(
+                                  Constants.caseTypesMap,
+                                  controller.cases.type!)
+                              : Strings.na)
                     ])),
             Expanded(
                 flex: 1,
@@ -57,9 +59,11 @@ class CaseGeneralDetailsWidget extends GetView<CaseDetailsController> {
                       customDetailsItem(
                           icon: ImagePaths.import,
                           title: Strings.priority,
-                          value: GeneralServices.getKeyFromValue(
-                              Constants.casePriorityMap,
-                              controller.cases.priority ?? 0))
+                          value: controller.cases.priority != null
+                              ? GeneralServices.getKeyFromValue(
+                                  Constants.casePriorityMap,
+                                  controller.cases.priority!)
+                              : Strings.na)
                     ]))
           ])
         ]));

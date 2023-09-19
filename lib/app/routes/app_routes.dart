@@ -5,7 +5,8 @@ class Routes {
   static const String workPermitDetails = "/work_permit_details";
   static const String caseDetails = "/case_details";
   static const String invoiceDetails = "/invoice_details";
-  static const String leaseDetails = "/lease_details";
+  static const String leasedPropertyDetails = "/leased_details";
+  static const String soldPropertyDetails = "/sold_details";
   static const String fitOutDetails = "/fitOut_details";
   static const String messages = "/messages";
   static const String messagesDetails = "/message_details";
@@ -16,7 +17,7 @@ class Routes {
   static const String cases = "/cases";
   static const String fitOuts = "/fitOuts";
   static const String invoices = "/invoices";
-  static const String leases = "/leases";
+  static const String properties = "/properties";
   static const String addWorkPermit = "/add_work_permit";
   static const String addContractor = "/add_contractor";
   static const String addCase = "/add_case";
@@ -24,5 +25,4 @@ class Routes {
   static const String activity = "/activity";
   static const String createWorkPermitItem = "/create_work_permit_item";
   static const String contacts = "/contacts";
-
 }

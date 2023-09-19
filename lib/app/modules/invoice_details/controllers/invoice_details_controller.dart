@@ -58,11 +58,8 @@ class InvoiceDetailsController extends GetxController {
     try {
       errorInvoiceItems.value = false;
       loadingInvoiceItems.value = true;
-
       invoiceItems
           .assignAll(await invoiceRepo.getInvoiceItems(invoiceId: invoice.id!));
-      Get.log(
-          '=========== invoice Item list : ${invoiceItems.first.invoiceDetailsId} ==========');
     } catch (e) {
       errorInvoiceItems.value = true;
       Get.showSnackbar(

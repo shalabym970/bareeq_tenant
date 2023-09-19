@@ -40,7 +40,9 @@ class FitOutApi extends GetxService {
   static Future<List<FitOutStepModel>> getFitOutsSteps(
       {required String fitOutId}) async {
     String url =
-        'blser_fitoutsteps?\$select=blser_description,blser_stepstatus,statuscode,_blser_relatedprocess_value,createdon,blser_name&\$expand=blser_fitoutstep_Tasks(\$select=subject)&\$filter=(_blser_relatedprocess_value%20eq $fitOutId)';
+        'blser_fitoutsteps?\$select=blser_description,blser_stepstatus,statuscode,_blser_relatedprocess_value,'
+        'createdon,blser_name&\$expand=blser_fitoutstep_Tasks(\$select=subject)'
+        '&\$filter=(_blser_relatedprocess_value%20eq $fitOutId)';
     Get.log('===============  fit out steps url :  $url ==========');
     var response = await ApiHelper.getData(url: url);
     Get.log(

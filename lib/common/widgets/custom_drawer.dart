@@ -92,7 +92,7 @@ Drawer customDrawer() {
                                 text: Strings.properties,
                                 svgIconPath: ImagePaths.whiteHouse,
                                 onTap: () {
-                                  Get.toNamed(Routes.leases);
+                                  Get.toNamed(Routes.properties);
                                 }),
                             // SizedBox(height: 20.h),
                             // DrawerItemWidget(
@@ -108,8 +108,8 @@ Drawer customDrawer() {
                             DrawerItemWidget(
                                 text: Strings.logout,
                                 svgIconPath: ImagePaths.whiteLogout,
-                                onTap: () {
-                                  CashHelper.clearData();
+                                onTap: () async {
+                                  await CashHelper.clearData();
                                   Get.offAllNamed(Routes.login);
                                 })
                           ]))

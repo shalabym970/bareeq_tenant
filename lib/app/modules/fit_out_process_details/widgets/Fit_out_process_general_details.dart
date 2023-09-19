@@ -44,9 +44,11 @@ class FitOutProcessGeneralDetailsWidget
                       customDetailsItem(
                           icon: ImagePaths.pylon,
                           title: Strings.status,
-                          value: GeneralServices.getKeyFromValue(
-                              Constants.fitOuTTypesMap,
-                              controller.fitOut.status ?? 0))
+                          value: controller.fitOut.status != null
+                              ? GeneralServices.getKeyFromValue(
+                                  Constants.fitOuTTypesMap,
+                                  controller.fitOut.status!)
+                              : Strings.na)
                     ]))
           ])
         ]));

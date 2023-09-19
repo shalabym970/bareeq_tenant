@@ -71,7 +71,7 @@ class WorkPermit {
   Map<String, dynamic> toJson() => {
         "blser_subject": subject,
         "new_type": type,
-        "blser_Contractor@odata.bind": "accounts(${contractor!.id})",
+        "blser_Contractor@odata.bind": "accounts(${contractor?.id})",
         "blser_Customer_account@odata.bind": "/accounts($customerId)",
         "blser_startdate": startDate?.toIso8601String(),
         "blser_enddate": endDate?.toIso8601String(),
@@ -79,9 +79,9 @@ class WorkPermit {
         "blser_descriptionofwork": description,
         "blser_numberofworkers": numberOfWorkers,
         "blser_PropertyContract@odata.bind":
-            "advanced_propertycontracts(${contract!.id})",
+            "advanced_propertycontracts(${contract?.id})",
         "blser_RelatedProject@odata.bind":
-            "advanced_projects(${contract!.propertyID})",
-        "blser_RelatedUnit@odata.bind": "advanced_units(${relatedUnit!.id})",
+            "advanced_projects(${contract?.propertyID})",
+        "blser_RelatedUnit@odata.bind": "advanced_units(${relatedUnit?.id})",
       };
 }

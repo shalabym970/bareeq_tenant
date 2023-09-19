@@ -13,7 +13,6 @@ class MessagesController extends GetxController {
   final sentMessages = <MessageModel>[].obs;
   final loading = false.obs;
   final error = false.obs;
-
   final messagesRepo = MessagesRepo();
 
   Map<String, String> messageType = {
@@ -23,6 +22,7 @@ class MessagesController extends GetxController {
     Constants.invoiceKey: 'Invoices',
     Constants.leaseKey: 'Leases',
     Constants.fitOutKey: 'Fit Out Process',
+    Constants.fitOutStepsKey: 'Fit Out Process Steps',
   };
 
   @override

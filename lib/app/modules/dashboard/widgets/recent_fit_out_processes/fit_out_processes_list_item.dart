@@ -111,10 +111,11 @@ class FitOutProcessesListItem extends GetView<DashboardController> {
                                       ),
                                       SizedBox(height: 3.h),
                                       Text(
-                                          GeneralServices.getKeyFromValue(
+                                          fitOut.status != null
+                                              ? GeneralServices.getKeyFromValue(
                                                   Constants.fitOuTTypesMap,
-                                                  fitOut.status ?? 0)
-                                              .toString(),
+                                                  fitOut.status!)
+                                              : Strings.na,
                                           style: TextStyle(
                                               fontSize: 10.sp,
                                               color: ColorManager.black))

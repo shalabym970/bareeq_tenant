@@ -24,7 +24,10 @@ class SentMessagesList extends GetView<MessagesController> {
                 ? CustomErrorWidget(
                     iconWidth: 20.w, iconHeight: 20.h, fontSize: 15.sp)
                 : controller.sentMessages.isEmpty
-                    ? const EmptyListWidget(message: Strings.nothingMessages)
+                    ? SizedBox(
+                        height: 0.5.sh,
+                        child: const EmptyListWidget(
+                            message: Strings.nothingMessages))
                     : ListView.builder(
                         padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
                         primary: false,

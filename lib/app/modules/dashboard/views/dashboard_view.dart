@@ -1,3 +1,4 @@
+import 'package:bareeq/app/modules/dashboard/widgets/recent_properties/properties_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
@@ -9,7 +10,7 @@ import '../controllers/dashboard_controller.dart';
 import '../widgets/recent_cases/recent_cases_widget.dart';
 import '../widgets/recent_fit_out_processes/fit_out_processes_widget.dart';
 import '../widgets/recent_invoices/recent_invoices_widget.dart';
-import '../widgets/recent_leases/recent_leases_widget.dart';
+import '../widgets/recent_properties/recent_properties_widget.dart';
 import '../widgets/recent_work_permits/recent_work_permits_widget.dart';
 
 class DashboardView extends GetView<DashboardController> {
@@ -61,7 +62,7 @@ class DashboardView extends GetView<DashboardController> {
                   const RecentWorkPermitWidget(),
                   const RecentCasesWidget(),
                   const RecentInvoicesWidget(),
-                  const RecentLeasesWidget(),
+                  const RecentPropertiesWidget(),
                   const RecentFitOutProcessesWidget()
                 ],
               ),

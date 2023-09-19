@@ -34,10 +34,8 @@ import '../modules/invoice_details/bindings/invoice_details_binding.dart';
 import '../modules/invoice_details/views/invoice_details_view.dart';
 import '../modules/invoices/bindings/invoices_binding.dart';
 import '../modules/invoices/views/invoices_view.dart';
-import '../modules/lease_details/bindings/lease_details_binding.dart';
-import '../modules/lease_details/views/lease_details_view.dart';
-import '../modules/leases/bindings/leases_binding.dart';
-import '../modules/leases/views/leases_view.dart';
+import '../modules/leased_property_details/bindings/leased_property_details_binding.dart';
+import '../modules/leased_property_details/views/leased_property_details_view.dart';
 import '../modules/messages/bindings/message_details_binding.dart';
 import '../modules/messages/bindings/messages_binding.dart';
 import '../modules/messages/views/message_details_view.dart';
@@ -45,6 +43,10 @@ import '../modules/messages/views/messages_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/change_password/views/change_password_view.dart';
 import '../modules/profile/views/profile_view.dart';
+import '../modules/properties/bindings/properties_binding.dart';
+import '../modules/properties/views/properties_view.dart';
+import '../modules/sold_property_details/bindings/sold_property_details_binding.dart';
+import '../modules/sold_property_details/views/sold_property_details_view.dart';
 import '../modules/work_permit_details/bindings/work_permit_details_binding.dart';
 import '../modules/work_permit_details/views/work_permit_details_view.dart';
 import '../modules/work_permits/bindings/work_permits_binding.dart';
@@ -81,9 +83,13 @@ class ThemeAppPages {
         page: () => const RecoverAccountView(),
         binding: AuthBinding()),
     GetPage(
-        name: Routes.leaseDetails,
-        page: () => const LeaseDetailsView(),
-        binding: LeaseDetailsBinding()),
+        name: Routes.leasedPropertyDetails,
+        page: () => const LeasedPropertyDetailsView(),
+        binding: LeasedPropertyDetailsBinding()),
+    GetPage(
+        name: Routes.soldPropertyDetails,
+        page: () => const SoldPropertyDetailsView(),
+        binding: SoldPropertyDetailsBinding()),
     GetPage(
         name: Routes.fitOutDetails,
         page: () => const FitOutProcessDetailsView(),
@@ -125,9 +131,9 @@ class ThemeAppPages {
         page: () => const InvoicesView(),
         binding: InvoicesBinding()),
     GetPage(
-        name: Routes.leases,
-        page: () => const LeasesView(),
-        binding: LeasesBinding()),
+        name: Routes.properties,
+        page: () => const PropertiesView(),
+        binding: PropertiesBinding()),
     GetPage(
         name: Routes.activity,
         page: () => const ActivityDetailsView(),

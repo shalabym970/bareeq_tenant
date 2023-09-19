@@ -1,9 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../common/color_manager.dart';
+import '../../../../common/constants.dart';
 import '../controllers/messages_controller.dart';
 
 class MessageDropDownList extends GetView<MessagesController> {
@@ -29,7 +28,7 @@ class MessageDropDownList extends GetView<MessagesController> {
                       value: controller.selectedValue.value,
                       style: TextStyle(
                           color: ColorManager.mainColor,
-                          fontSize: 14.sp,
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.w400),
                       dropdownColor: ColorManager.white,
                       icon: Icon(Icons.keyboard_arrow_down,
@@ -38,7 +37,31 @@ class MessageDropDownList extends GetView<MessagesController> {
                           .map((MapEntry<String, String> entry) {
                         return DropdownMenuItem<String>(
                           value: entry.key,
-                          child: Text(entry.value),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(entry.value),
+                                Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(10.h),
+                                        ),
+                                        color: entry.key == Constants.caseKey
+                                            ? ColorManager.yellow
+                                            : entry.key ==
+                                                    Constants.workPermitKey
+                                                ? ColorManager.mainColor
+                                                : entry.key ==
+                                                        Constants.leaseKey
+                                                    ? ColorManager.purple
+                                                    : entry.key ==
+                                                            Constants.invoiceKey
+                                                        ? ColorManager.lightBlue
+                                                        : ColorManager
+                                                            .white),
+                                    height: 10.h,
+                                    width: 10.w)
+                              ]),
                         );
                       }).toList(),
                       onChanged: (String? newValue) async {

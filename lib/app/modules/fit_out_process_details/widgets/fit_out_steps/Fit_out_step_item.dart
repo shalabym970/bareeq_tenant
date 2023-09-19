@@ -50,9 +50,11 @@ class FitOutStepItem extends GetView<FitOutProcessDetailsController> {
                               maxLines: 1),
                           SizedBox(height: 5.h),
                           Text(
-                              GeneralServices.getKeyFromValue(
-                                  Constants.fitOuTStepsTypesMap,
-                                  fitOutStep.status ?? 0),
+                              fitOutStep.status != null
+                                  ? GeneralServices.getKeyFromValue(
+                                      Constants.fitOuTStepsTypesMap,
+                                      fitOutStep.status!)
+                                  : Strings.na,
                               style: TextStyle(
                                   fontSize: 12.sp,
                                   color: ColorManager.mainColor)),

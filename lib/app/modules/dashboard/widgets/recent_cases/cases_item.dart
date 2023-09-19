@@ -65,10 +65,11 @@ class CasesListItem extends GetView<DashboardController> {
                                               color: ColorManager.mainColor)),
                                       SizedBox(height: 3.h),
                                       Text(
-                                          GeneralServices.getKeyFromValue(
+                                          cases.type != null
+                                              ? GeneralServices.getKeyFromValue(
                                                   Constants.caseTypesMap,
-                                                  cases.type ?? 0)
-                                              .toString(),
+                                                  cases.type!)
+                                              : Strings.na,
                                           style: TextStyle(
                                               fontSize: 10.sp,
                                               color: ColorManager.black))
@@ -106,9 +107,11 @@ class CasesListItem extends GetView<DashboardController> {
                                       ),
                                       SizedBox(height: 3.h),
                                       Text(
-                                          GeneralServices.getKeyFromValue(
-                                              Constants.casePriorityMap,
-                                              cases.priority ?? 0),
+                                          cases.priority != null
+                                              ? GeneralServices.getKeyFromValue(
+                                                  Constants.casePriorityMap,
+                                                  cases.priority!)
+                                              : Strings.na,
                                           style: TextStyle(
                                               fontSize: 10.sp,
                                               color: ColorManager.black))

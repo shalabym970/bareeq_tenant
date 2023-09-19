@@ -1,5 +1,5 @@
 import 'package:bareeq/app/models/fit_out_model.dart';
-import 'package:bareeq/app/models/lease_model.dart';
+import 'package:bareeq/app/models/leased_property.dart';
 import 'package:bareeq/app/models/work_permit.dart';
 import 'package:bareeq/app/repositories/fit_out_repo.dart';
 import 'package:bareeq/app/repositories/lease_repo.dart';
@@ -29,13 +29,12 @@ class DashboardController extends GetxController {
   final fitOuts = <FitOutModel>[].obs;
   final invoices = <Invoice>[].obs;
   final cases = <Case>[].obs;
-  final leases = <LeaseModel>[].obs;
-
-  InvoicesRepo invoicesRepo = InvoicesRepo();
-  WorkPermitRepo workPermitRepo = WorkPermitRepo();
-  CasesRepo casesRepo = CasesRepo();
-  FitOutRepo fitOutRepo = FitOutRepo();
-  LeasesRepo leasesRepo = LeasesRepo();
+  final leases = <LeasedProperty>[].obs;
+  final invoicesRepo = InvoicesRepo();
+  final workPermitRepo = WorkPermitRepo();
+  final casesRepo = CasesRepo();
+  final fitOutRepo = FitOutRepo();
+  final leasesRepo = PropertiesRepo();
 
   Contact get currentUser {
     return Get.find<SessionServices>().currentUser.value;
@@ -43,13 +42,13 @@ class DashboardController extends GetxController {
 
   @override
   void onInit() {
-    Get.log(' ============ current user : ${currentUser.accountCustomerId} ========== ');
+    Get.log(
+        ' ============ current user : ${currentUser.accountCustomerId} ========== ');
     getWorkPermits();
     getInvoices();
     getCases();
     getFitOuts();
     getLeases();
-
     super.onInit();
   }
 
@@ -117,7 +116,7 @@ class DashboardController extends GetxController {
     try {
       errorLeases.value = false;
       loadingLeases.value = true;
-      leases.assignAll(await leasesRepo.getLeases());
+      leases.assignAll(await leasesRepo.getLeasedProperties());
     } catch (e) {
       errorLeases.value = true;
       Get.showSnackbar(

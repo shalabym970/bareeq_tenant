@@ -45,9 +45,11 @@ class WorkPermitItemCard extends StatelessWidget {
                                   color: ColorManager.mainColor)),
                           SizedBox(height: 3.h),
                           Text(
-                              GeneralServices.getKeyFromValue(
-                                  Constants.workPermitItemTypesMap,
-                                  workPermitItem.type ?? 0),
+                              workPermitItem.type != null
+                                  ? GeneralServices.getKeyFromValue(
+                                      Constants.workPermitItemTypesMap,
+                                      workPermitItem!.type!)
+                                  : Strings.na,
                               style: TextStyle(
                                   fontSize: 10.sp,
                                   color: Colors.black.withOpacity(0.7))),

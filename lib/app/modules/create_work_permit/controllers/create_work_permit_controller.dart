@@ -159,9 +159,7 @@ class CreateWorkPermitController extends GetxController {
                   contract: relatedUnitValue.value?.contract?.first,
                   customerId: Get.find<SessionServices>()
                       .currentUser
-                      .value
-                      .account!
-                      .id);
+                      .value.accountCustomerId);
               String workPermitId = await workPermitRepo.postWorkPermit(
                   request: _workPermit.value);
               Get.log(

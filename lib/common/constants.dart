@@ -6,8 +6,10 @@ class Constants {
   static const String password = 'pass@T1#22';
   static const String standard = 'Standard';
   static const String emergency = 'Emergency';
-  static const String baseUrl =  "https://bartest.crm4.dynamics.com/api/data/v9.2/";
-      // 'http://d365.blive.me/bar/api/data/v9.1/';
+  static const String baseUrl =
+      "https://bartest.crm4.dynamics.com/api/data/v9.2/";
+
+  // 'http://d365.blive.me/bar/api/data/v9.1/';
   static const String environmentName = "Bareeq";
   static const String workPermitKey = "blser_workpermit";
   static const String messageKey = "blser_portalmessages";
@@ -15,6 +17,7 @@ class Constants {
   static const String invoiceKey = "blser_invoice";
   static const String leaseKey = "advanced_propertycontract";
   static const String fitOutKey = "blser_fitoutprocess";
+  static const String fitOutStepsKey = " blser_fitoutstep";
   static const String allKey = "all";
   static const String workPermitInsuranceAttachment = "Insurance Attachment";
   static const String workPermitCprCardsAttachment = "CPR Cards Attachment";
@@ -31,8 +34,7 @@ class Constants {
   static const String methodFile = "methodAttach";
   static const String riskFile = "riskAttach";
 
-
-  static  Map<String, String> headers = {
+  static Map<String, String> headers = {
     "Content-Type": "application/json",
     "Prefer": "return=representation"
   };
@@ -90,8 +92,8 @@ class Constants {
   /// CASES STATE
   static const Map<String, int> caseStatesMap = {"Active": 1, "InActive": 0};
 
-  /// LEASES STATUS
-  static const Map<String, int> leaseStatusMap = {
+  /// LEASED PROPERTIES STATUS
+  static const Map<String, int> leasedPropertyStatusMap = {
     "Draft": 153160000,
     "Pending for Mgmt Signature": 153160001,
     "Pending for Tenant Signature": 153160002,
@@ -101,6 +103,22 @@ class Constants {
     "Expired": 100000000,
     "Terminated": 858870000,
     "Hold Over": 550220000
+  };
+
+  /// SOLD PROPERTIES STATUS
+  static const Map<String, int> soldPropertyStatusMap = {
+    "Cancelled": 550220006,
+    "Active": 550220000,
+    "Inactive": 550220001,
+    "Available": 153160000,
+    "Booked": 550220004,
+    "Reserved": 153160001,
+    "Registered": 550220005,
+    "Occupied": 153160002,
+    "Under Maintenance": 153160003,
+    "Move In": 550220002,
+    "Move Out": 858870000,
+    "Blocked": 100000001
   };
 
   /// LEASES TYPE

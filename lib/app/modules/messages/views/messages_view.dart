@@ -31,16 +31,18 @@ class MessagesView extends GetView<MessagesController> {
                 appBar: customAppBar(
                     title: Strings.messages,
                     svgEmailIcon: ImagePaths.emailBrown),
-                body: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const MessagesSwitcherBTN(),
-                      const MessageDropDownList(),
-                      Obx(() => controller.selectInboxMessages.isTrue
-                          ? const Expanded(child: InboxMessagesList())
-                          : const Expanded(child: SentMessagesList()))
-                    ]),
+                body: SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const MessagesSwitcherBTN(),
+                          const MessageDropDownList(),
+                          Obx(() => controller.selectInboxMessages.isTrue
+                              ? const InboxMessagesList()
+                              : const SentMessagesList())
+                        ])),
                 drawer:
                     customDrawer() // This trailing comma makes auto-formatting nicer for build methods.
                 )));

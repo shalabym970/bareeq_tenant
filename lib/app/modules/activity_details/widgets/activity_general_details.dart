@@ -36,9 +36,11 @@ class ActivityGeneralDetailsWidget extends GetView<ActivityDetailsController> {
                 child: customDetailsItem(
                     icon: ImagePaths.pylon,
                     title: Strings.status,
-                    value: GeneralServices.getKeyFromValue(
-                        Constants.fitOuTStepsTypesMap,
-                        controller.fitOutStep.status ?? 0)))
+                    value: controller.fitOutStep.status != null
+                        ? GeneralServices.getKeyFromValue(
+                            Constants.fitOuTStepsTypesMap,
+                            controller.fitOutStep.status!)
+                        : Strings.na))
           ])
         ]));
   }

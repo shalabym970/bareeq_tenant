@@ -50,9 +50,11 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                       customDetailsItem(
                           icon: ImagePaths.pylon,
                           title: Strings.natureOfComplaint,
-                          value: GeneralServices.getKeyFromValue(
-                              Constants.natureOfComplaints,
-                              controller.cases.natureOfComplaint ?? 0))
+                          value: controller.cases.natureOfComplaint != null
+                              ? GeneralServices.getKeyFromValue(
+                                  Constants.natureOfComplaints,
+                                  controller.cases.natureOfComplaint!)
+                              : Strings.na)
                     ]))
           ])
         ]));

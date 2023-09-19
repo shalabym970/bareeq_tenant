@@ -8,8 +8,9 @@ import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
 import '../../../../../common/strings/strings.dart';
 import '../../../../routes/app_routes.dart';
+import '../../controllers/dashboard_controller.dart';
 
-class RecentWorkPermitWidget extends StatelessWidget {
+class RecentWorkPermitWidget extends GetView<DashboardController> {
   const RecentWorkPermitWidget({Key? key}) : super(key: key);
 
   @override
@@ -23,7 +24,8 @@ class RecentWorkPermitWidget extends StatelessWidget {
             children: [
               InkWell(
                   onTap: () {
-                    Get.toNamed(Routes.workPermits);
+                    Get.toNamed(Routes.workPermits)
+                        ?.then((value) => controller.getWorkPermits());
                   },
                   child: Row(
                     children: [

@@ -47,10 +47,10 @@ class ProfileController extends GetxController {
       loadingContacts.value = true;
 
       contacts.assignAll(
-          await profileRepo.getContacts(accountId: currentUser.account!.id!));
+          await profileRepo.getContacts(accountId: Get.find<SessionServices>().currentUser.value.accountCustomerId!));
     } catch (e) {
       errorContacts.value = true;
-      Get.log(' ========== error : $e ==========');
+      Get.log(' ========== error contacts : $e ==========');
     } finally {
       loadingContacts.value = false;
     }

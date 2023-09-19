@@ -45,9 +45,11 @@ class MessageCard extends StatelessWidget {
                           SizedBox(height: 3.h),
                           MessageCardItem(
                               label: Strings.priority,
-                              value: GeneralServices.getKeyFromValue(
-                                  Constants.messagePriorityMap,
-                                  message.priorityCode!)),
+                              value: message.priorityCode != null
+                                  ? GeneralServices.getKeyFromValue(
+                                      Constants.messagePriorityMap,
+                                      message.priorityCode!)
+                                  : Strings.na),
                           SizedBox(height: 3.h),
                           MessageCardItem(
                               label: Strings.from,

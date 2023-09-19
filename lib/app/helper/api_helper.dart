@@ -17,8 +17,10 @@ class ApiHelper {
       if (TokenHelper.accessTokenIsExpired()) {
         await TokenHelper.refreshToken();
       }
+      Get.log('========== post body : $body ==========');
       var token = CashHelper.getData(key: 'access_token');
       Constants.headers['Authorization'] = 'Bearer $token';
+      Get.log('========== post url : ${Constants.baseUrl + url} ==========');
       var response = await http.post(
         Uri.parse(Constants.baseUrl + url),
         body: json.encode(body),

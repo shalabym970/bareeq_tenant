@@ -26,9 +26,11 @@ class Strings {
   static const String recentInvoices = 'Recent Invoices';
   static const String invoiceNumber = 'Invoice Number';
   static const String dueDate = 'Due Date';
+  static const String agreemntDate = 'Agreement Date';
   static const String regarding = 'Regarding';
   static const String amount = 'Amount';
   static const String submitDate = 'Submit Date';
+  static const String transferDate = 'Transfer Date';
   static const String recentProperties = 'Recent Properties';
   static const String propertyCRMNumber = 'Property CRM Number';
   static const String propertyERPNumber = 'Property ERP Number';
@@ -91,6 +93,8 @@ class Strings {
   static const String gettingStarted = 'Getting Started';
   static const String designPhase = 'Design Phase';
   static const String sent = 'Sent';
+  static const String leasedPropeties = 'Leased Propeties';
+  static const String soldPropeties = 'Sold Propeties';
   static const String inbox = 'Inbox';
   static const String sendReply = 'Send Reply';
   static const String reply = 'Reply';
@@ -103,6 +107,7 @@ class Strings {
   static const String businessPhone = 'Business Phone';
   static const String mobileNumber = 'Mobile Number';
   static const String accountName = 'Account Name';
+  static const String agreementRef = 'Aagreement Refrence';
   static const String crNumber = 'CR Number';
   static const String cprNumber = 'CPR Number';
   static const String yourProfileData = 'Your Profile Data';

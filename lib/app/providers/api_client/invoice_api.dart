@@ -21,8 +21,7 @@ class InvoiceApi {
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      var decodeResponse =
-          await TokenHelper.decodeResponse(response: response);
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<Invoice>((obj) => Invoice.fromJson(obj))
           .toList();
@@ -38,17 +37,18 @@ class InvoiceApi {
         '&\$filter=(_invoiceid_value eq $invoiceId)&\$orderby=createdon desc';
     Get.log('=============== Invoices Items url :  $url ==========');
     var response = await ApiHelper.getData(url: url);
-    Get.log(
-        '=============== Invoices Items response :  ${response.body} ==========');
+
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      var decodeResponse =
-          await TokenHelper.decodeResponse(response: response);
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
+      Get.log(
+          '=============== Invoices Items response :  ${response.body} ==========');
       return decodeResponse['value']
           .map<InvoiceItem>((obj) => InvoiceItem.fromJson(obj))
           .toList();
     } else {
+      Get.log('=============== Invoices reason Phrase :  ${response.reasonPhrase} ==========');
       throw Exception(response.reasonPhrase.toString());
     }
   }
