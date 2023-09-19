@@ -208,7 +208,7 @@ class WorkPermitDetailsController extends GetxController {
       try {
         submitLoading.value = true;
         await addAllFilesToAttachmentList(workPermitId: workPermit.id!);
-        await postAttachments();
+
         Ui.showToast(content: Strings.workPermitUpdatedSuccessfully);
         Get.back(result: Get.find<DashboardController>().getWorkPermits());
       } catch (e) {
@@ -280,6 +280,7 @@ class WorkPermitDetailsController extends GetxController {
           documentBody: base64Body,
           mimeType: mimeType,
         ));
+        await postAttachments();
       } else {
         insuranceAttach.first.mimeType = mimeType;
         insuranceAttach.first.documentBody = base64Body;

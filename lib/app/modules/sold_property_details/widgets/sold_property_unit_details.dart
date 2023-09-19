@@ -6,7 +6,8 @@ import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/custom_details_item.dart';
 import '../controllers/sold_property_details_controller.dart';
 
-class LeasedPropertyUnitDetailsWidget extends GetView<SoldPropertyDetailsController> {
+class LeasedPropertyUnitDetailsWidget
+    extends GetView<SoldPropertyDetailsController> {
   const LeasedPropertyUnitDetailsWidget({Key? key}) : super(key: key);
 
   @override
@@ -19,41 +20,19 @@ class LeasedPropertyUnitDetailsWidget extends GetView<SoldPropertyDetailsControl
           SizedBox(height: 20.h),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Expanded(
-                flex: 1,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // customDetailsItem(
-                      //     icon: ImagePaths.office,
-                      //     title: Strings.property,
-                      //     value: controller.soldProperty.property?.name ?? Strings.na),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      // customDetailsItem(
-                      //     icon: ImagePaths.priceTage,
-                      //     title: Strings.brand,
-                      //     value: controller.soldProperty.brand?.name ?? Strings.na)
-                    ])),
+              flex: 1,
+              child: customDetailsItem(
+                  icon: ImagePaths.office,
+                  title: Strings.property,
+                  value: controller.soldProperty.property?.name ?? Strings.na),
+            ),
             Expanded(
-                flex: 1,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // customDetailsItem(
-                      //     icon: ImagePaths.group42,
-                      //     title: Strings.unit,
-                      //     value: controller.soldProperty.unit?.name ?? Strings.na),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      // customDetailsItem(
-                      //     icon: ImagePaths.path79,
-                      //     title: Strings.propertyERPNumber,
-                      //     value: controller.soldProperty.erpLeaseNumber != null
-                      //         ? controller.soldProperty.erpLeaseNumber.toString()
-                      //         : Strings.na)
-                    ]))
+              flex: 1,
+              child: customDetailsItem(
+                  icon: ImagePaths.group42,
+                  title: Strings.unit,
+                  value: controller.soldProperty.unit?.name ?? Strings.na),
+            )
           ])
         ]));
   }

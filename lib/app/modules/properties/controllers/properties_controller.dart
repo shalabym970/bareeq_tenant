@@ -49,7 +49,7 @@ class PropertiesController extends GetxController with Searching {
     }
   }
 
-  void getSoldProperties() async {
+   getSoldProperties() async {
     try {
       error.value = false;
       loading.value = true;

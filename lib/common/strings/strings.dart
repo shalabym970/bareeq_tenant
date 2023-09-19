@@ -95,6 +95,7 @@ class Strings {
   static const String sent = 'Sent';
   static const String leasedPropeties = 'Leased Propeties';
   static const String soldPropeties = 'Sold Propeties';
+  static const String sold = 'Sold';
   static const String inbox = 'Inbox';
   static const String sendReply = 'Send Reply';
   static const String reply = 'Reply';

@@ -26,7 +26,7 @@ class MessageAttachmentsList extends GetView<MessageDetailsController> {
                       child: ShimmerWidget.rectangular(height: 50.h))
                   : controller.errorAttachments.isTrue
                       ? CustomErrorWidget(iconWidth: 20.w, iconHeight: 20.h)
-                      : controller.attachments.isEmpty
+                      : controller.downloadedAttachments.isEmpty
                           ? const Center(
                               child: EmptyListWidget(
                                   message: Strings.nothingAttachments))
@@ -34,10 +34,10 @@ class MessageAttachmentsList extends GetView<MessageDetailsController> {
                               padding: EdgeInsets.symmetric(horizontal: 5.w),
                               primary: false,
                               shrinkWrap: true,
-                              itemCount: controller.attachments.length,
+                              itemCount: controller.downloadedAttachments.length,
                               itemBuilder: ((_, index) {
                                 Attachment attachment =
-                                    controller.attachments.elementAt(index);
+                                    controller.downloadedAttachments.elementAt(index);
                                 return CustomAttachmentWidget(
                                     attachment: attachment);
                               })))

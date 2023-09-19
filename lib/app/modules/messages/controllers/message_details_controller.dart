@@ -18,7 +18,7 @@ class MessageDetailsController extends GetxController {
   final replyLoading = false.obs;
   final errorAttachments = false.obs;
   final loadingAttachments = false.obs;
-  final attachments = <Attachment>[].obs;
+  final downloadedAttachments = <Attachment>[].obs;
   final attachmentRepo = AttachmentRepo();
   final uploadedFiles = <File>[].obs;
   final uploadedAttachments = <Attachment>[].obs;
@@ -37,7 +37,7 @@ class MessageDetailsController extends GetxController {
     try {
       errorAttachments.value = false;
       loadingAttachments.value = true;
-      attachments.assignAll(
+      downloadedAttachments.assignAll(
           await attachmentRepo.getAttachments(recordId: message.activityId!));
     } catch (e) {
       errorAttachments.value = true;

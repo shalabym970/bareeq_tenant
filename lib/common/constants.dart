@@ -26,6 +26,8 @@ class Constants {
   static const String workPermitRiskAssessmentAttachment =
       "Risk Assessment Attachment";
   static const String workPermitTableName = "blser_workpermit";
+  static const String soldPropertyTableName = "  blser_propertyagreement";
+
   static const String caseTableName = "blser_case";
   static const String fitOutStepTableName = "blser_fitoutstep";
   static const String downloadPath = "/storage/emulated/0/Download/";

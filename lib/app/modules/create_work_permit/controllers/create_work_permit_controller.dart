@@ -45,10 +45,10 @@ class CreateWorkPermitController extends GetxController {
   final detailsController = TextEditingController();
   final subjectController = TextEditingController();
   final _workPermit = WorkPermit().obs;
-  TextEditingController startDateController = TextEditingController();
-  TextEditingController endDateController = TextEditingController();
-  WorkPermitRepo workPermitRepo = WorkPermitRepo();
-  AttachmentRepo attachmentRepo = AttachmentRepo();
+  final startDateController = TextEditingController();
+  final endDateController = TextEditingController();
+  final workPermitRepo = WorkPermitRepo();
+  final attachmentRepo = AttachmentRepo();
   File? file;
 
   @override
@@ -159,7 +159,8 @@ class CreateWorkPermitController extends GetxController {
                   contract: relatedUnitValue.value?.contract?.first,
                   customerId: Get.find<SessionServices>()
                       .currentUser
-                      .value.accountCustomerId);
+                      .value
+                      .accountCustomerId);
               String workPermitId = await workPermitRepo.postWorkPermit(
                   request: _workPermit.value);
               Get.log(

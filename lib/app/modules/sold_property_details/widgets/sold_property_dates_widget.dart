@@ -16,43 +16,29 @@ class SoldPropertyDatesWidget extends GetView<SoldPropertyDetailsController> {
         padding: EdgeInsets.symmetric(horizontal: 8.w),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
-            padding: EdgeInsets.all(6.h),
-            child: Text(
-              Strings.dates,
-              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
-            ),
-          ),
-          // customDetailsItem(
-          //     icon: ImagePaths.filingTime,
-          //     title: Strings.communicationDate,
-          //     value: intl.DateFormat('EEE d MMM y')
-          //         .format(controller.soldProperty.commencementDate!)
-          //         .toString()),
-          // SizedBox(
-          //   height: 20.h,
-          // ),
-          // customDetailsItem(
-          //     icon: ImagePaths.filingTime,
-          //     title: Strings.startDate,
-          //     value: intl.DateFormat('EEE d MMM y')
-          //         .format(controller.soldProperty.commencementDate!)
-          //         .toString()),
+              padding: EdgeInsets.all(6.h),
+              child: Text(Strings.dates,
+                  style:
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400))),
+          customDetailsItem(
+              icon: ImagePaths.filingTime,
+              title: Strings.agreemntDate,
+              value: controller.soldProperty.agreementDate != null
+                  ? intl.DateFormat('EEE d MMM y')
+                      .format(controller.soldProperty.agreementDate!)
+                      .toString()
+                  : Strings.na),
           SizedBox(
             height: 20.h,
           ),
-          // customDetailsItem(
-          //     icon: ImagePaths.filingTime,
-          //     title: Strings.terminationDate,
-          //     value: intl.DateFormat('EEE d MMM y')
-          //         .format(controller.soldProperty.terminationDate!)
-          //         .toString()),
-          // SizedBox(height: 20.h),
-          // customDetailsItem(
-          //     icon: ImagePaths.filingTime,
-          //     title: Strings.endDate,
-          //     value: intl.DateFormat('EEE d MMM y')
-          //         .format(controller.soldProperty.endDate!)
-                 // .toString())
+          customDetailsItem(
+              icon: ImagePaths.filingTime,
+              title: Strings.agreementRef,
+              value: controller.soldProperty.transferDate != null
+                  ? intl.DateFormat('EEE d MMM y')
+                      .format(controller.soldProperty.transferDate!)
+                      .toString()
+                  : Strings.na)
         ]));
   }
 }
