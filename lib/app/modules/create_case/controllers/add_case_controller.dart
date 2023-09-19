@@ -18,7 +18,7 @@ class AddCaseController extends GetxController {
   final _case = Case().obs;
   final errorRelatedUnits = false.obs;
   final loadingRelatedUnits = false.obs;
-  final relatedUnitsList = <Unit>[].obs;
+  final relatedUnitsList = <dynamic>[].obs;
   final relatedUnitValue = Rxn<Unit>();
   final selectedType = Rxn<String>();
   final selectedNatureOfComplaint = Rxn<String>();
