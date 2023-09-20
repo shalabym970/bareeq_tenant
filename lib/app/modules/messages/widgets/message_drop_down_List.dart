@@ -57,8 +57,18 @@ class MessageDropDownList extends GetView<MessagesController> {
                                                     : entry.key ==
                                                             Constants.invoiceKey
                                                         ? ColorManager.lightBlue
-                                                        : ColorManager
-                                                            .white),
+                                                        : entry.key ==
+                                                                Constants
+                                                                    .fitOutKey
+                                                            ? ColorManager
+                                                                .orange
+                                                            : entry.key ==
+                                                                    Constants
+                                                                        .fitOutStepsKey
+                                                                ? ColorManager
+                                                                    .grey
+                                                                : ColorManager
+                                                                    .darkGrey),
                                     height: 10.h,
                                     width: 10.w)
                               ]),

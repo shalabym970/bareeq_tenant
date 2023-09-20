@@ -26,6 +26,7 @@ class ApiHelper {
         body: json.encode(body),
         headers: Constants.headers,
       );
+      Get.log('========== post response : ${response.body} ==========');
       return response;
     } catch (e) {
       Get.log('========== Error occurred : $e ==========');

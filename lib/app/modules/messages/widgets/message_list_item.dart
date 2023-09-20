@@ -16,157 +16,160 @@ class MessageListItem extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.symmetric(vertical: 5.h),
         child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10.h)),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          spreadRadius: 1.h,
-                          blurRadius: 3.h,
-                          offset: Offset(0, 3.h) // changes position of shadow
-                          )
-                    ]),
-                height: 150.h,
-                child: Card(
-                    color: ColorManager.textFieldBg,
-                    child: Padding(
-                        padding: EdgeInsets.all(15.w),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(children: [
-                                            Text(
-                                                message.direction == true
-                                                    ? Get.find<
-                                                            SessionServices>()
-                                                        .currentUser
-                                                        .value
-                                                        .fullName
-                                                        .toString()
-                                                    : Constants.environmentName,
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 12.sp,
-                                                    color: ColorManager
-                                                        .mainColor)),
-                                            SizedBox(width: 10.w),
-                                            Text(message.createdOn.toString(),
-                                                style: TextStyle(
-                                                    color: Colors.grey[800],
-                                                    fontSize: 10.sp))
-                                          ]),
-                                          SizedBox(
-                                            height: 5.h,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10.h)),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      spreadRadius: 1.h,
+                      blurRadius: 3.h,
+                      offset: Offset(0, 3.h) // changes position of shadow
+                      )
+                ]),
+            height: 150.h,
+            child: Card(
+                color: ColorManager.textFieldBg,
+                child: Padding(
+                    padding: EdgeInsets.all(15.w),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(children: [
+                                        Text(
+                                            message.direction == true
+                                                ? Get.find<SessionServices>()
+                                                    .currentUser
+                                                    .value
+                                                    .fullName
+                                                    .toString()
+                                                : Constants.environmentName,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 12.sp,
+                                                color: ColorManager.mainColor)),
+                                        SizedBox(width: 10.w),
+                                        Text(message.createdOn.toString(),
+                                            style: TextStyle(
+                                                color: Colors.grey[800],
+                                                fontSize: 10.sp))
+                                      ]),
+                                      SizedBox(
+                                        height: 5.h,
+                                      ),
+                                      Text(message.subject.toString(),
+                                          style: TextStyle(
+                                              fontSize: 12.sp,
+                                              color: ColorManager.black
+                                                  .withOpacity(0.7),
+                                              fontWeight: FontWeight.w500))
+                                    ]),
+                                Row(children: [
+                                  Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(10.h),
                                           ),
-                                          Text(message.subject.toString(),
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: ColorManager.black
-                                                      .withOpacity(0.7),
-                                                  fontWeight: FontWeight.w500))
-                                        ]),
-                                    Row(children: [
-                                      Container(
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(10.h),
-                                              ),
-                                              color: message.regardingName
-                                                          .toString() ==
-                                                      Constants.caseKey
-                                                  ? ColorManager.yellow
-                                                  : message.regardingName
-                                                              .toString() ==
-                                                          Constants
-                                                              .workPermitKey
-                                                      ? ColorManager.mainColor
-                                                      : message.regardingName
-                                                                  .toString() ==
-                                                              Constants.leaseKey
-                                                          ? ColorManager.purple
-                                                          : message.regardingName
-                                                                      .toString() ==
-                                                                  Constants
-                                                                      .invoiceKey
-                                                              ? ColorManager
-                                                                  .lightBlue
-                                                              : ColorManager
-                                                                  .severityColor),
-                                          height: 8.h,
-                                          width: 8.w),
-                                      SizedBox(width: 5.w),
-                                      Text(
-                                          message.regardingName.toString() ==
+                                          color: message.regardingName
+                                                      .toString() ==
                                                   Constants.caseKey
-                                              ? Strings.case_
+                                              ? ColorManager.yellow
                                               : message.regardingName
                                                           .toString() ==
                                                       Constants.workPermitKey
-                                                  ? Strings.workPermit
+                                                  ? ColorManager.mainColor
                                                   : message.regardingName
                                                               .toString() ==
                                                           Constants.leaseKey
-                                                      ? Strings.property
+                                                      ? ColorManager.purple
                                                       : message.regardingName
                                                                   .toString() ==
                                                               Constants
                                                                   .invoiceKey
-                                                          ? Strings.invoice
-                                                          : Strings
-                                                              .fitOutProcess,
-                                          style: TextStyle(
-                                              fontSize: 10.sp,
-                                              color: message.regardingName
-                                                          .toString() ==
-                                                      Constants.caseKey
-                                                  ? ColorManager.yellow
-                                                  : message.regardingName
-                                                              .toString() ==
-                                                          Constants
-                                                              .workPermitKey
-                                                      ? ColorManager.mainColor
-                                                      : message.regardingName
-                                                                  .toString() ==
-                                                              Constants.leaseKey
-                                                          ? ColorManager.purple
+                                                          ? ColorManager
+                                                              .lightBlue
                                                           : message.regardingName
                                                                       .toString() ==
                                                                   Constants
-                                                                      .invoiceKey
+                                                                      .fitOutKey
                                                               ? ColorManager
-                                                                  .lightBlue
-                                                              : ColorManager
-                                                                  .severityColor,
-                                              fontWeight: FontWeight.w500))
-                                    ])
-                                  ]),
-                              SizedBox(height: 5.h),
-                              Text(message.messageBody.toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12.sp,
-                                      color: ColorManager.black,
-                                      height: 1.5.h),
-                                  maxLines: 1),
-                              if (message.direction == true)
-                                Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Icon(Icons.done_all,
-                                        size: 15.sp,
-                                        color: message.readStatus == false
-                                            ? Colors.green
-                                            : Colors.grey[800]))
-                            ])))));
+                                                                  .orange
+                                                              : message.regardingName
+                                                                          .toString() ==
+                                                                      Constants
+                                                                          .fitOutStepsKey
+                                                                  ? ColorManager
+                                                                      .grey
+                                                                  : ColorManager
+                                                                      .darkGrey),
+                                      height: 8.h,
+                                      width: 8.w),
+                                  SizedBox(width: 5.w),
+                                  Text(
+                                      message.regardingName.toString() ==
+                                              Constants.caseKey
+                                          ? Strings.case_
+                                          : message.regardingName.toString() ==
+                                                  Constants.workPermitKey
+                                              ? Strings.workPermit
+                                              : message.regardingName
+                                                          .toString() ==
+                                                      Constants.leaseKey
+                                                  ? Strings.property
+                                                  : message.regardingName
+                                                              .toString() ==
+                                                          Constants.invoiceKey
+                                                      ? Strings.invoice
+                                                      : Strings.fitOutProcess,
+                                      style: TextStyle(
+                                          fontSize: 10.sp,
+                                          color: message.regardingName
+                                                      .toString() ==
+                                                  Constants.caseKey
+                                              ? ColorManager.yellow
+                                              : message.regardingName
+                                                          .toString() ==
+                                                      Constants.workPermitKey
+                                                  ? ColorManager.mainColor
+                                                  : message.regardingName
+                                                              .toString() ==
+                                                          Constants.leaseKey
+                                                      ? ColorManager.purple
+                                                      : message.regardingName
+                                                                  .toString() ==
+                                                              Constants
+                                                                  .invoiceKey
+                                                          ? ColorManager
+                                                              .lightBlue
+                                                          : ColorManager
+                                                              .severityColor,
+                                          fontWeight: FontWeight.w500))
+                                ])
+                              ]),
+                          SizedBox(height: 5.h),
+                          Text(message.messageBody.toString(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12.sp,
+                                  color: ColorManager.black,
+                                  height: 1.5.h),
+                              maxLines: 1),
+                          if (message.direction == true)
+                            Align(
+                                alignment: Alignment.centerRight,
+                                child: Icon(Icons.done_all,
+                                    size: 15.sp,
+                                    color: message.readStatus == false
+                                        ? Colors.green
+                                        : Colors.grey[800]))
+                        ])))));
   }
 }
