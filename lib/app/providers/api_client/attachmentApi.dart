@@ -13,7 +13,6 @@ class AttachmentApi {
             ' and (notetext eq \'$attachmentType\')'
         : 'annotations?\$select=notetext,objecttypecode,mimetype,filename,_objectid_value,'
             'filesize,createdon,objecttypecode,documentbody&\$filter=(_objectid_value eq $workPermitId)';
-    Get.log('===============  attachment url :  $url ==========');
     var response = await ApiHelper.getData(url: url);
     Get.log(
         '===============  attachment response :  ${response.body} ==========');
@@ -54,12 +53,13 @@ class AttachmentApi {
       url: url,
       body: attachment.toJson(),
     );
-    var decodeResponse = await TokenHelper.decodeResponse(response: response);
-    Get.log(
-        '========== update attachment response : $decodeResponse ==========');
+
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
+      Get.log(
+          '========== update attachment response : $decodeResponse ==========');
     } else {
       throw Exception();
     }

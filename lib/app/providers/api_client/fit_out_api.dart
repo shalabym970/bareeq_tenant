@@ -20,19 +20,20 @@ class FitOutApi extends GetxService {
         '&\$filter=(_blser_relatedtenant_value eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId})'
         ' and (blser_RelatedProperty/advanced_projectid ne null) and (blser_RelatedUnit/advanced_unitid ne null)'
         '&\$orderby=createdon desc';
-    Get.log('===============  fit outs url :  $url ==========');
     var response = await ApiHelper.getData(url: url);
-    var decodeResponse = await TokenHelper.decodeResponse(response: response);
-    Get.log('=============== fit outs response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
+      Get.log(
+          '=============== fit outs response :  $decodeResponse ==========');
       return decodeResponse['value']
           .map<FitOutModel>((obj) => FitOutModel.fromJson(obj))
           .toList();
     } else {
-      Get.showSnackbar(Ui.errorSnackBar(message: decodeResponse['message']));
-      throw Exception(decodeResponse['message']);
+      Get.showSnackbar(
+          Ui.errorSnackBar(message: response.reasonPhrase.toString()));
+      throw Exception(response.reasonPhrase);
     }
   }
 
@@ -50,8 +51,7 @@ class FitOutApi extends GetxService {
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      var decodeResponse =
-          await TokenHelper.decodeResponse(response: response);
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<FitOutStepModel>((obj) => FitOutStepModel.fromJson(obj))
           .toList();

@@ -16,7 +16,6 @@ class CasesApi {
         ',blser_LeaseUnit(\$select=advanced_name,_bls_relatedleasecontract_value,statecode),blser_RelatedProject'
         '(\$select=advanced_name,advanced_buildingno)&\$filter=(_blser_contact_value eq ${Get.find<SessionServices>().currentUser.value.id})'
         '&\$orderby=createdon desc';
-    Get.log('=============== Cases url :  $url ==========');
 
     var response = await ApiHelper.getData(url: url);
     Get.log('=============== Cases response :  ${response.body} ==========');

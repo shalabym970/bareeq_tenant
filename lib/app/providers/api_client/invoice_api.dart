@@ -15,13 +15,14 @@ class InvoiceApi {
         'statecode,totaldiscountamount,modifiedon,totaltax,statuscode,blser_paymentmethod,blser_erpinvoicetype,'
         'description,discountamount,discountpercentage,duedate,_advanced_propertycontractid_value&'
         '\$filter=(_customerid_value eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId})&\$orderby=createdon desc';
-    Get.log('=============== Invoices url :  $url ==========');
     var response = await ApiHelper.getData(url: url);
-    Get.log('=============== Invoices response :  ${response.body} ==========');
+
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse = await TokenHelper.decodeResponse(response: response);
+      Get.log(
+          '=============== Invoices response :  $decodeResponse ==========');
       return decodeResponse['value']
           .map<Invoice>((obj) => Invoice.fromJson(obj))
           .toList();
@@ -43,12 +44,13 @@ class InvoiceApi {
         response.statusCode == 204) {
       var decodeResponse = await TokenHelper.decodeResponse(response: response);
       Get.log(
-          '=============== Invoices Items response :  ${response.body} ==========');
+          '=============== Invoices Items response :  $decodeResponse ==========');
       return decodeResponse['value']
           .map<InvoiceItem>((obj) => InvoiceItem.fromJson(obj))
           .toList();
     } else {
-      Get.log('=============== Invoices reason Phrase :  ${response.reasonPhrase} ==========');
+      Get.log(
+          '=============== Invoices reason Phrase :  ${response.reasonPhrase} ==========');
       throw Exception(response.reasonPhrase.toString());
     }
   }

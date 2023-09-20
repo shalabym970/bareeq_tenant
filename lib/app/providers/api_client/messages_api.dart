@@ -12,14 +12,14 @@ class MessagesApi extends GetxService {
         '\$select=blser_readstatus,_blser_account_value,statuscode,subject,blser_messagetext,_blser_contact_value,blser_direction,createdon,_regardingobjectid_value'
         ',_createdby_value,prioritycode&\$filter=(_regardingobjectid_value eq $regardingId)'
         '&\$orderby=createdon desc';
-    Get.log('===============  Messages url :  $url ==========');
     var response = await ApiHelper.getData(url: url);
-    Get.log('=============== Messages response :  ${response.body} ==========');
+
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      var decodeResponse =
-          await TokenHelper.decodeResponse(response: response);
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
+      Get.log(
+          '=============== Messages response :  $decodeResponse ==========');
       return decodeResponse['value']
           .map<MessageModel>((obj) => MessageModel.fromJson(obj))
           .toList();
@@ -42,14 +42,13 @@ class MessagesApi extends GetxService {
             '_createdby_value,prioritycode&'
             '\$filter=(_blser_account_value eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId}) '
             'and (blser_direction eq true) &\$orderby=createdon desc';
-    Get.log('===============  Messages url :  $url ==========');
     var response = await ApiHelper.getData(url: url);
-    Get.log('=============== Messages response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      var decodeResponse =
-          await TokenHelper.decodeResponse(response: response);
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
+      Get.log(
+          '=============== Messages response :  $decodeResponse ==========');
       return decodeResponse['value']
           .map<MessageModel>((obj) => MessageModel.fromJson(obj))
           .toList();
@@ -63,19 +62,20 @@ class MessagesApi extends GetxService {
     String url = "blser_portalmessageses";
     Get.log("========== reply message url :: $url ==========");
     var response = await ApiHelper.postData(body: request.toJson(), url: url);
-    var decodeResponse = await TokenHelper.decodeResponse(response: response);
-    Get.log(
-        '=============== reply message response :  ${response.body} ==========');
+
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
+      Get.log(
+          '=============== reply message response :  $decodeResponse ==========');
       Map<String, dynamic> responseMap = decodeResponse;
       String messageId = responseMap['activityid'];
       Get.log(
-          '=============== reply message id :  ${ responseMap['activityid']} ==========');
+          '=============== reply message id :  ${responseMap['activityid']} ==========');
       return messageId;
     } else {
-      throw Exception(decodeResponse['message']);
+      throw Exception(response.reasonPhrase);
     }
   }
 }

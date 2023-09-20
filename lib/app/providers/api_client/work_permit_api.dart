@@ -18,15 +18,19 @@ class WorkPermitApi extends GetxService {
         'blser_erp_end_date,blser_erp_start_date),blser_Contractor(\$select=bls_accountstatus,name,accountid,blser_accounttype)'
         '&\$filter=(_blser_customer_value%20eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId})&\$orderby=createdon desc';
     var response = await ApiHelper.getData(url: url);
-    Get.log('=============== Work Permit url :  $url ==========');
+
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse = await TokenHelper.decodeResponse(response: response);
+      Get.log(
+          '=============== Work Permits response :  $decodeResponse ==========');
       return decodeResponse['value']
           .map<WorkPermit>((obj) => WorkPermit.fromJson(obj))
           .toList();
     } else {
+      Get.log(
+          '=============== Work Permits reason phrase:  ${response.reasonPhrase} ==========');
       throw Exception(response.reasonPhrase.toString());
     }
   }
@@ -40,18 +44,19 @@ class WorkPermitApi extends GetxService {
         'blser_workdescription,blser_worktype&\$filter=(_blser_workpermit_value eq $workPermitId)'
         '&\$orderby=createdon desc';
     var response = await ApiHelper.getData(url: url);
-    Get.log('=============== Work Permit items url :  $url ==========');
-    Get.log(
-        '=============== Work Permit items response :  ${response.body} ==========');
+
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse = await TokenHelper.decodeResponse(response: response);
-
+      Get.log(
+          '=============== Work Permit items response :  $decodeResponse ==========');
       return decodeResponse['value']
           .map<WorkPermitItem>((obj) => WorkPermitItem.fromJson(obj))
           .toList();
     } else {
+      Get.log(
+          '=============== Work Permit items reason phrase:  ${response.reasonPhrase} ==========');
       throw Exception(response.reasonPhrase.toString());
     }
   }
@@ -64,19 +69,19 @@ class WorkPermitApi extends GetxService {
         "\$filter=(contactid eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId})))&"
         "\$filter=(advanced_advanced_unit_advanced_propertycontract/any(o1:(o1/advanced_propertycontractid ne null)))";
     var response = await ApiHelper.getData(url: url);
-    Get.log('=============== related units url :  $url ==========');
-    Get.log(
-        '=============== related units response url :  ${response.body} ==========');
+
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse = await TokenHelper.decodeResponse(response: response);
       Get.log(
-          '=============== related units reason :  ${response.reasonPhrase} ==========');
+          '=============== related units response  :  $decodeResponse ==========');
       return decodeResponse['value']
           .map<Unit>((obj) => Unit.fromJson(obj))
           .toList();
     } else {
+      Get.log(
+          '=============== related units reason phrase :  ${response.reasonPhrase} ==========');
       throw Exception(response.reasonPhrase.toString());
     }
   }
@@ -85,18 +90,19 @@ class WorkPermitApi extends GetxService {
   static Future<List<Account>> getContractors() async {
     String url = "accounts?\$select=name";
     var response = await ApiHelper.getData(url: url);
-    Get.log('=============== Contractors url :  $url ==========');
-    Get.log(
-        '=============== Contractors response url :  ${response.body} ==========');
+
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse = await TokenHelper.decodeResponse(response: response);
-
+      Get.log(
+          '=============== Contractors response  :  $decodeResponse ==========');
       return decodeResponse['value']
           .map<Account>((obj) => Account.fromJson(obj))
           .toList();
     } else {
+      Get.log(
+          '=============== Contractors reason phrase :  ${response.reasonPhrase} ==========');
       throw Exception(response.reasonPhrase.toString());
     }
   }
@@ -107,20 +113,20 @@ class WorkPermitApi extends GetxService {
     Get.log("========== post Work permit url :: $url ==========");
 
     var response = await ApiHelper.postData(body: request.toJson(), url: url);
-    var decodeResponse = await TokenHelper.decodeResponse(response: response);
-    Get.log(
-        '=============== post work permit profile :  ${response.body} ==========');
-    Get.log(
-        '=============== update user profile response :  ${response.reasonPhrase} ==========');
+
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
+      Get.log(
+          '=============== update user profile response :  $decodeResponse ==========');
       Map<String, dynamic> responseMap = decodeResponse;
+
       String workPermitId = responseMap['blser_workpermitid'];
       return workPermitId;
     } else {
       Get.log(
-          '=============== update user profile response :  ${response.reasonPhrase} ==========');
+          '=============== update user profile reason phrase :  ${response.reasonPhrase} ==========');
       throw Exception(response.reasonPhrase);
     }
   }
@@ -130,14 +136,17 @@ class WorkPermitApi extends GetxService {
     String url = "blser_workpermititems";
     Get.log("========== post Work permit Item url : $url ==========");
     var response = await ApiHelper.postData(body: request.toJson(), url: url);
-    var decodeResponse = await TokenHelper.decodeResponse(response: response);
+
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
       Get.log(
           '========== post Work permit Item  response : $decodeResponse ==========');
     } else {
-      throw Exception(decodeResponse['message']);
+      Get.log(
+          '=============== update user profile reason phrase :  ${response.reasonPhrase} ==========');
+      throw Exception(response.reasonPhrase);
     }
   }
 }

@@ -17,12 +17,11 @@ class PropertiesApi {
         '&\$filter=(_bls_customeraccount_value eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId}) '
         '&\$orderby=createdon desc';
     var response = await ApiHelper.getData(url: url);
-    Get.log('=============== Leases url :  $url ==========');
-    Get.log('=============== Leases response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse = await TokenHelper.decodeResponse(response: response);
+      Get.log('=============== Leases response :  $decodeResponse ==========');
       return decodeResponse['value']
           .map<LeasedProperty>((obj) => LeasedProperty.fromJson(obj))
           .toList();
@@ -39,15 +38,13 @@ class PropertiesApi {
         "blser_Property(\$select=advanced_name)&\$filter=(_blser_customeraccount_value eq ${Get.find<SessionServices>().currentUser.value.accountCustomerId}) "
         "and (blser_agreementtype eq 550220000) &\$orderby=createdon desc";
     var response = await ApiHelper.getData(url: url);
-    Get.log('=============== sold properties url :  $url ==========');
-    Get.log(
-        '=============== sold properties response :  ${response.body} ==========');
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
       var decodeResponse = await TokenHelper.decodeResponse(response: response);
       Get.log(
-          '=============== sold properties reason Phrase :  ${response.reasonPhrase} ==========');
+          '=============== sold properties response :  $decodeResponse ==========');
+
       return decodeResponse['value']
           .map<SoldProperty>((obj) => SoldProperty.fromJson(obj))
           .toList();

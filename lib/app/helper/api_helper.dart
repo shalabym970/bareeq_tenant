@@ -34,21 +34,23 @@ class ApiHelper {
   }
 
   ///Get
-  static Future<http.Response> getData({
+  static getData({
     required String url,
   }) async {
-    if (TokenHelper.accessTokenIsExpired()) {
-      await TokenHelper.refreshToken();
+    try {
+      if (TokenHelper.accessTokenIsExpired()) {
+        await TokenHelper.refreshToken();
+      }
+      var token = CashHelper.getData(key: 'access_token');
+      Constants.headers['Authorization'] = 'Bearer $token';
+      Get.log('========== get url : ${Constants.baseUrl + url} ==========');
+      var response = await http.get(Uri.parse(Constants.baseUrl + url),
+          headers: Constants.headers);
+      return response;
+    } catch (e) {
+      Get.log('========== Error occurred : $e ==========');
+      return http.Response('Error occurred', 500);
     }
-    var token = CashHelper.getData(key: 'access_token');
-    Constants.headers['Authorization'] = 'Bearer $token';
-    var response = await http
-        .get(Uri.parse(Constants.baseUrl + url), headers: Constants.headers)
-        .catchError((error) {
-      return error;
-    });
-    Get.log('========== get Response : ${response.body} ==========');
-    return response;
   }
 
   ///Patch
@@ -62,6 +64,7 @@ class ApiHelper {
       }
       var token = CashHelper.getData(key: 'access_token');
       Constants.headers['Authorization'] = 'Bearer $token';
+      Get.log('========== patch url : ${Constants.baseUrl + url} ==========');
       var response = await http.patch(
         Uri.parse(Constants.baseUrl + url),
         body: json.encode(body),
@@ -83,7 +86,7 @@ class ApiHelper {
     }
     var token = CashHelper.getData(key: 'access_token');
     Constants.headers['Authorization'] = 'Bearer $token';
-
+    Get.log('========== delete url : ${Constants.baseUrl + url} ==========');
     return await http
         .delete(Uri.parse(Constants.baseUrl + url),
             encoding: encoding, headers: Constants.headers)

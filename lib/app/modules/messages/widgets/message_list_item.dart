@@ -164,7 +164,7 @@ class MessageListItem extends StatelessWidget {
                                     alignment: Alignment.centerRight,
                                     child: Icon(Icons.done_all,
                                         size: 15.sp,
-                                        color: message.readStatus == true
+                                        color: message.readStatus == false
                                             ? Colors.green
                                             : Colors.grey[800]))
                             ])))));
