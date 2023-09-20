@@ -1,3 +1,4 @@
+import 'package:bareeq/app/models/sold_property.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,8 @@ import '../../../routes/app_routes.dart';
 import '../../dashboard/widgets/recent_properties/leases_list_item.dart';
 import '../controllers/properties_controller.dart';
 import '../widgets/properties_list/properties_list_widget.dart';
+import '../widgets/properties_list/sold_property_item.dart';
+import '../widgets/properties_switcher_btn.dart';
 
 class PropertiesView extends GetView<PropertiesController> {
   const PropertiesView({super.key});
@@ -36,42 +39,42 @@ class PropertiesView extends GetView<PropertiesController> {
                 },
                 child: Scaffold(
                     appBar: customAppBar(title: Strings.properties),
-                    body: Padding(
-                        padding:
-                            EdgeInsets.only(right: 10.w, left: 10.w, top: 20.h),
-                        child: SingleChildScrollView(
-                            primary: false,
-                            physics: const AlwaysScrollableScrollPhysics(),
-                            child: Obx(() => Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      CustomTextField(
-                                        hint: Strings.search,
-                                        controller: controller.searchController,
-                                        height: 50.h,
-                                        width: 10.sw,
-                                        focusNode: controller.focusNode,
-                                        onChanged: (value) {
-                                          controller.onChangeSearching(
-                                              searchString: value);
-                                        },
-                                        suffixIcon: controller
-                                                .isSearching.isTrue
-                                            ? GestureDetector(
-                                                onTap: () {
-                                                  controller.stopSearch();
-                                                },
-                                                child: Icon(Icons.clear,
-                                                    color: ColorManager.black,
-                                                    size: 25.sp),
-                                              )
-                                            : null,
-                                      ),
-                                      SizedBox(height: 10.h),
-                                      controller.isSearching.isTrue
-                                          ? controller.searchingList.isEmpty
+                    body: SingleChildScrollView(
+                        primary: false,
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        child: Obx(() => Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const PropertiesSwitcherBTN(),
+                                  SizedBox(height: 20.h),
+                                  CustomTextField(
+                                    hint: Strings.search,
+                                    controller: controller.searchController,
+                                    height: 50.h,
+                                    width: 10.sw,
+                                    focusNode: controller.focusNode,
+                                    onChanged: (value) {
+                                      controller.onChangeSearching(
+                                          searchString: value);
+                                    },
+                                    suffixIcon: controller.isSearching.isTrue
+                                        ? GestureDetector(
+                                            onTap: () {
+                                              controller.stopSearch();
+                                            },
+                                            child: Icon(Icons.clear,
+                                                color: ColorManager.black,
+                                                size: 25.sp),
+                                          )
+                                        : null,
+                                  ),
+                                  SizedBox(height: 10.h),
+                                  controller.isSearching.isTrue
+                                      ? controller.selectLeasedProperties.isTrue
+                                          ? controller
+                                                  .searchingLeasedPropertyList
+                                                  .isEmpty
                                               ? Padding(
                                                   padding: EdgeInsets.only(
                                                       top: 0.3.sh),
@@ -84,16 +87,42 @@ class PropertiesView extends GetView<PropertiesController> {
                                                   primary: false,
                                                   shrinkWrap: true,
                                                   itemCount: controller
-                                                      .searchingList.length,
+                                                      .searchingLeasedPropertyList
+                                                      .length,
                                                   itemBuilder: ((_, index) {
-                                                    LeasedProperty lease = controller
-                                                        .searchingList
-                                                        .elementAt(index);
+                                                    LeasedProperty property =
+                                                        controller
+                                                            .searchingLeasedPropertyList
+                                                            .elementAt(index);
                                                     return PropertyListItem(
-                                                        lease: lease);
+                                                        lease: property);
                                                   }))
-                                          : const PropertiesListWidget()
-                                    ])))),
+                                          : controller.searchingSoldPropertyList
+                                                  .isEmpty
+                                              ? Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: 0.3.sh),
+                                                  child: const EmptyListWidget(
+                                                      message: Strings
+                                                          .noSearchResult))
+                                              : ListView.builder(
+                                                  padding: EdgeInsets.only(
+                                                      bottom: 10.h, top: 10.h),
+                                                  primary: false,
+                                                  shrinkWrap: true,
+                                                  itemCount: controller
+                                                      .searchingSoldPropertyList
+                                                      .length,
+                                                  itemBuilder: ((_, index) {
+                                                    SoldProperty property =
+                                                        controller
+                                                            .searchingSoldPropertyList
+                                                            .elementAt(index);
+                                                    return SoldPropertyItem(
+                                                        soldProperty: property);
+                                                  }))
+                                      : const PropertiesListWidget()
+                                ]))),
                     drawer:
                         customDrawer() // This trailing comma makes auto-formatting nicer for build methods.
                     ))));

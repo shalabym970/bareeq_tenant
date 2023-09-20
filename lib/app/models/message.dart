@@ -20,7 +20,7 @@ class MessageModel {
   String? subject;
   String? messageBody;
   String? activityId;
-  String? createdOn;
+  DateTime? createdOn;
   String? regardingId;
   bool? readStatus;
   String? accountId;
@@ -35,7 +35,8 @@ class MessageModel {
       subject: json["subject"],
       messageBody: json["blser_messagetext"],
       activityId: json["activityid"],
-      createdOn: json["createdon@OData.Community.Display.V1.FormattedValue"],
+      createdOn:
+          json["createdon"] != null ? DateTime.parse(json["createdon"]) : null,
       regardingId: json["_regardingobjectid_value"],
       readStatus: json["blser_readstatus"],
       accountId: json["_blser_account_value"],
@@ -52,7 +53,7 @@ class MessageModel {
             "/accounts(${Get.find<SessionServices>().currentUser.value.accountCustomerId})",
         "blser_Contact_blser_portalmessages@odata.bind":
             "/contacts(${Get.find<SessionServices>().currentUser.value.id})",
-        "regardingobjectid_blser_workpermit_blser_portalmessages@odata.bind":
+        "regardingobjectid_${regardingName}_blser_portalmessages@odata.bind":
             "/${regardingName}s($regardingId)",
         "blser_messagetext": messageBody,
         "blser_readstatus": readStatus,

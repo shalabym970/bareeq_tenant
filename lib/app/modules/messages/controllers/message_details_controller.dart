@@ -26,7 +26,6 @@ class MessageDetailsController extends GetxController {
   final _replyMessage = MessageModel().obs;
   MessageModel message = Get.arguments[1];
 
-
   @override
   void onInit() async {
     getAttachments();

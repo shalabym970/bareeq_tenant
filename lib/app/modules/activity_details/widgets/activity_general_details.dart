@@ -28,9 +28,11 @@ class ActivityGeneralDetailsWidget extends GetView<ActivityDetailsController> {
                 child: customDetailsItem(
                     icon: ImagePaths.deleteCalendar,
                     title: Strings.date,
-                    value: intl.DateFormat('EEE d MMM y')
-                        .format(controller.fitOutStep.createdOn!)
-                        .toString())),
+                    value: controller.fitOutStep.createdOn != null
+                        ? intl.DateFormat('EEE d MMM y')
+                            .format(controller.fitOutStep.createdOn!)
+                            .toString()
+                        : Strings.na)),
             Expanded(
                 flex: 1,
                 child: customDetailsItem(

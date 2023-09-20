@@ -20,8 +20,7 @@ class AttachmentApi {
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      var decodeResponse =
-          await TokenHelper.decodeResponse(response: response);
+      var decodeResponse = await TokenHelper.decodeResponse(response: response);
       return decodeResponse['value']
           .map<Attachment>((obj) => Attachment.fromJson(obj))
           .toList();
@@ -35,17 +34,14 @@ class AttachmentApi {
     String url = "annotations";
     Get.log("========== post Attachments url :: $url ==========");
     for (var request in requests) {
-      var response =
-          await ApiHelper.postData(body: request.toJson(), url: url);
-      var decodeResponse =
-          await TokenHelper.decodeResponse(response: response);
-      Get.log(
-          '========== post Attachments response :: $decodeResponse ==========');
+      var response = await ApiHelper.postData(body: request.toJson(), url: url);
+
+      Get.log('========== post Attachments response :: $response ==========');
       if (response.statusCode == 200 ||
           response.statusCode == 201 ||
           response.statusCode == 204) {
       } else {
-        throw Exception(decodeResponse['message']);
+        throw Exception(response.toString());
       }
     }
   }

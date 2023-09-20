@@ -15,6 +15,7 @@ import '../../../services/general_services.dart';
 import '../controllers/message_details_controller.dart';
 import '../widgets/attachments/message_attachments_list.dart';
 import '../widgets/attachments/message_uploaded_attachment_list.dart';
+import 'package:intl/intl.dart' as intl;
 
 class MessageDetailsView extends GetView<MessageDetailsController> {
   const MessageDetailsView({Key? key}) : super(key: key);
@@ -148,11 +149,18 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                                         Expanded(
                                             flex: 1,
                                             child: customDetailsItem(
-                                                icon: ImagePaths.deleteCalendar,
-                                                title: Strings.sent,
-                                                value: controller
-                                                    .message.createdOn
-                                                    .toString()))
+                                              icon: ImagePaths.deleteCalendar,
+                                              title: Strings.sent,
+                                              value: controller
+                                                          .message.createdOn !=
+                                                      null
+                                                  ? intl.DateFormat(
+                                                          'EEE d MMM y')
+                                                      .format(controller
+                                                          .message.createdOn!)
+                                                      .toString()
+                                                  : Strings.na,
+                                            ))
                                       ]),
                                   SizedBox(height: 20.h),
                                   Text(
@@ -170,120 +178,119 @@ class MessageDetailsView extends GetView<MessageDetailsController> {
                                   SizedBox(height: 10.h),
                                   const MessageAttachmentsList(),
                                   SizedBox(height: 20.h),
-                                    Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Divider(
-                                              color: ColorManager.mainColor,
-                                              height: 3),
-                                          SizedBox(height: 20.h),
-                                          const LabelTextField(
-                                              label: Strings.reply,
-                                              isRequired: true),
-                                          SizedBox(height: 20.h),
-                                          Form(
-                                              key: controller.replyKey,
-                                              child: Container(
-                                                  decoration: BoxDecoration(
-                                                      color: ColorManager
-                                                          .lightGrey,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.h)),
-                                                  height: 142.h,
-                                                  child: Padding(
-                                                      padding:
-                                                          EdgeInsets.all(8.h),
-                                                      child: TextFormField(
-                                                        maxLines: 7,
-                                                        style: TextStyle(
-                                                            color: ColorManager
-                                                                .black,
-                                                            fontSize: 13.sp),
-                                                        cursorColor:
-                                                            ColorManager
-                                                                .mainColor,
-                                                        decoration: InputDecoration(
-                                                            hintText: Strings
-                                                                .replyHint,
-                                                            hintStyle: TextStyle(
-                                                                color: Colors
-                                                                    .black
-                                                                    .withOpacity(
-                                                                        0.7),
-                                                                fontSize: 12.sp,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
-                                                            contentPadding:
-                                                                EdgeInsets.symmetric(
-                                                                    vertical:
-                                                                        5.h,
-                                                                    horizontal:
-                                                                        5.w),
-                                                            border: InputBorder
-                                                                .none),
-                                                        controller: controller
-                                                            .replyController,
-                                                        validator: (value) =>
-                                                            value!.isEmpty
-                                                                ? ErrorStrings
-                                                                    .enterReply
-                                                                : null,
-                                                      )))),
-                                          SizedBox(height: 30.h),
-                                          Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 10.h),
-                                              child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Text(Strings.attachments,
-                                                        style: TextStyle(
-                                                            fontSize: 14.sp,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w400)),
-                                                    SizedBox(
-                                                        height: 32.h,
-                                                        width: 32.w,
-                                                        child:
-                                                            FloatingActionButton(
-                                                                onPressed: () {
-                                                                  controller
-                                                                      .selectFiles();
-                                                                },
-                                                                heroTag: null,
-                                                                backgroundColor:
-                                                                    ColorManager
-                                                                        .mainColor,
-                                                                child: Icon(
-                                                                    Icons.add,
-                                                                    color: ColorManager
-                                                                        .white,
-                                                                    size:
-                                                                        20.sp)))
-                                                  ])),
-                                          SizedBox(height: 10.h),
-                                          const MessageUploadedAttachmentsList(),
-                                          SizedBox(height: 10.h),
-                                          PrimaryButton(
-                                              title: Strings.sendReply,
-                                              onPressed: () {
-                                                controller.reply();
-                                              },
-                                              height: 40.h,
-                                              backgroundColor:
-                                                  ColorManager.mainColor,
-                                              textAndIconColor:
-                                                  ColorManager.white),
-                                          SizedBox(height: 20.h)
-                                        ])
+                                  Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Divider(
+                                            color: ColorManager.mainColor,
+                                            height: 3),
+                                        SizedBox(height: 20.h),
+                                        const LabelTextField(
+                                            label: Strings.reply,
+                                            isRequired: true),
+                                        SizedBox(height: 20.h),
+                                        Form(
+                                            key: controller.replyKey,
+                                            child: Container(
+                                                decoration: BoxDecoration(
+                                                    color:
+                                                        ColorManager.lightGrey,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.h)),
+                                                height: 142.h,
+                                                child: Padding(
+                                                    padding:
+                                                        EdgeInsets.all(8.h),
+                                                    child: TextFormField(
+                                                      maxLines: 7,
+                                                      style: TextStyle(
+                                                          color: ColorManager
+                                                              .black,
+                                                          fontSize: 13.sp),
+                                                      cursorColor: ColorManager
+                                                          .mainColor,
+                                                      decoration: InputDecoration(
+                                                          hintText: Strings
+                                                              .replyHint,
+                                                          hintStyle: TextStyle(
+                                                              color: Colors
+                                                                  .black
+                                                                  .withOpacity(
+                                                                      0.7),
+                                                              fontSize: 12.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500),
+                                                          contentPadding:
+                                                              EdgeInsets
+                                                                  .symmetric(
+                                                                      vertical:
+                                                                          5.h,
+                                                                      horizontal:
+                                                                          5.w),
+                                                          border:
+                                                              InputBorder.none),
+                                                      controller: controller
+                                                          .replyController,
+                                                      validator: (value) =>
+                                                          value!.isEmpty
+                                                              ? ErrorStrings
+                                                                  .enterReply
+                                                              : null,
+                                                    )))),
+                                        SizedBox(height: 30.h),
+                                        Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 10.h),
+                                            child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(Strings.attachments,
+                                                      style: TextStyle(
+                                                          fontSize: 14.sp,
+                                                          fontWeight:
+                                                              FontWeight.w400)),
+                                                  SizedBox(
+                                                      height: 32.h,
+                                                      width: 32.w,
+                                                      child:
+                                                          FloatingActionButton(
+                                                              onPressed: () {
+                                                                controller
+                                                                    .selectFiles();
+                                                              },
+                                                              heroTag: null,
+                                                              backgroundColor:
+                                                                  ColorManager
+                                                                      .mainColor,
+                                                              child: Icon(
+                                                                  Icons.add,
+                                                                  color:
+                                                                      ColorManager
+                                                                          .white,
+                                                                  size: 20.sp)))
+                                                ])),
+                                        SizedBox(height: 10.h),
+                                        const MessageUploadedAttachmentsList(),
+                                        SizedBox(height: 10.h),
+                                        PrimaryButton(
+                                            title: Strings.sendReply,
+                                            onPressed: () {
+                                              controller.reply();
+                                            },
+                                            height: 40.h,
+                                            backgroundColor:
+                                                ColorManager.mainColor,
+                                            textAndIconColor:
+                                                ColorManager.white),
+                                        SizedBox(height: 20.h)
+                                      ])
                                 ]))))
               ])),
       Obx(() => Visibility(

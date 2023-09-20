@@ -8,6 +8,8 @@ import '../../../../../common/strings/strings.dart';
 import '../../../app/models/message.dart';
 import '../../../app/services/general_services.dart';
 import 'message_card_item.dart';
+import 'package:intl/intl.dart' as intl;
+
 
 class MessageCard extends StatelessWidget {
   const MessageCard({Key? key, required this.message}) : super(key: key);
@@ -74,7 +76,12 @@ class MessageCard extends StatelessWidget {
                               children: [
                                 Align(
                                     alignment: Alignment.centerLeft,
-                                    child: Text(message.createdOn ?? Strings.na,
+                                    child: Text(
+                                        message.createdOn != null
+                                            ? intl.DateFormat('EEE d MMM y')
+                                                .format(message.createdOn!)
+                                                .toString()
+                                            : Strings.na,
                                         style: TextStyle(
                                             color: Colors.grey[800],
                                             fontSize: 9.sp))),

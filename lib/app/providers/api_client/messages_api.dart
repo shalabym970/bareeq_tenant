@@ -71,6 +71,8 @@ class MessagesApi extends GetxService {
         response.statusCode == 204) {
       Map<String, dynamic> responseMap = decodeResponse;
       String messageId = responseMap['activityid'];
+      Get.log(
+          '=============== reply message id :  ${ responseMap['activityid']} ==========');
       return messageId;
     } else {
       throw Exception(decodeResponse['message']);

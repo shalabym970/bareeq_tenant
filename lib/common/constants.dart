@@ -38,7 +38,7 @@ class Constants {
 
   static Map<String, String> headers = {
     "Content-Type": "application/json",
-    "Prefer": "return=representation"
+    "Prefer": "odata.include-annotations=*, return=representation"
   };
 
   /// Work Permit Item TYPES

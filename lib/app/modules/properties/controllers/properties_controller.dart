@@ -1,8 +1,6 @@
 import 'package:bareeq/app/models/leased_property.dart';
-import 'package:bareeq/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/contact_model.dart';
@@ -12,7 +10,8 @@ import '../../../services/session_services.dart';
 import '../../searching/abstract_searching.dart';
 
 class PropertiesController extends GetxController with Searching {
-  final searchingList = <LeasedProperty>[].obs;
+  final searchingLeasedPropertyList = <LeasedProperty>[].obs;
+  final searchingSoldPropertyList = <SoldProperty>[].obs;
   final searchController = TextEditingController();
   final isSearching = false.obs;
   final focusNode = FocusNode();
@@ -49,7 +48,7 @@ class PropertiesController extends GetxController with Searching {
     }
   }
 
-   getSoldProperties() async {
+  getSoldProperties() async {
     try {
       error.value = false;
       loading.value = true;
@@ -66,12 +65,15 @@ class PropertiesController extends GetxController with Searching {
 
   @override
   void addSearchedItemsForSearchedList({required String searchString}) {
-    searchingList.value = Get.find<DashboardController>()
-        .leases
-        .where((item) =>
-            item.name!.toLowerCase().contains(searchString) ||
-            item.property!.name!.toLowerCase().contains(searchString))
-        .toList();
+    if (selectLeasedProperties.isTrue) {
+      searchingLeasedPropertyList.value = leasedProperties
+          .where((item) => item.name!.toLowerCase().contains(searchString))
+          .toList();
+    } else {
+      searchingSoldPropertyList.value = soldProperties
+          .where((item) => item.name!.toLowerCase().contains(searchString))
+          .toList();
+    }
   }
 
   @override
@@ -82,7 +84,7 @@ class PropertiesController extends GetxController with Searching {
   @override
   void stopSearch() {
     searchController.clear();
-    searchingList.clear();
+    searchingLeasedPropertyList.clear();
     isSearching.value = false;
   }
 

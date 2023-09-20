@@ -44,9 +44,8 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                     controller.saveWorkPermit();
                   },
                   onDiscard: () {
-                    Get.back();
-                    Get.back();
-                    //   Get.until((route) => route.isFirst);
+
+                      Get.until((route) => route.isFirst);
                   },
                   title: Strings.confirm);
             }

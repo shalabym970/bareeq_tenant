@@ -11,7 +11,7 @@ class PropertiesSwitcherBTN extends GetView<PropertiesController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Container(
-        height: 40.h,
+        height: 48.h,
         width: Get.width,
         decoration: BoxDecoration(color: ColorManager.mainColor),
         child: Row(children: [
@@ -28,7 +28,7 @@ class PropertiesSwitcherBTN extends GetView<PropertiesController> {
                       color: controller.selectLeasedProperties.isTrue
                           ? ColorManager.white
                           : ColorManager.mainColor,
-                      height: 35.h,
+                      height: 43.h,
                       child: Center(
                           child: Text(Strings.leasedPropeties,
                               style: TextStyle(
@@ -51,7 +51,7 @@ class PropertiesSwitcherBTN extends GetView<PropertiesController> {
                       color: controller.selectLeasedProperties.isTrue
                           ? ColorManager.mainColor
                           : ColorManager.white,
-                      height: 35.h,
+                      height: 43.h,
                       child: Center(
                           child: Text(Strings.soldPropeties,
                               style: TextStyle(

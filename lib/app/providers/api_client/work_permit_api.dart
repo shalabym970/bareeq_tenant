@@ -105,7 +105,9 @@ class WorkPermitApi extends GetxService {
   static Future<String> postWorkPermit({required WorkPermit request}) async {
     String url = "blser_workpermits";
     Get.log("========== post Work permit url :: $url ==========");
+
     var response = await ApiHelper.postData(body: request.toJson(), url: url);
+    var decodeResponse = await TokenHelper.decodeResponse(response: response);
     Get.log(
         '=============== post work permit profile :  ${response.body} ==========');
     Get.log(
@@ -113,7 +115,8 @@ class WorkPermitApi extends GetxService {
     if (response.statusCode == 200 ||
         response.statusCode == 201 ||
         response.statusCode == 204) {
-      String workPermitId = response['blser_workpermitid'];
+      Map<String, dynamic> responseMap = decodeResponse;
+      String workPermitId = responseMap['blser_workpermitid'];
       return workPermitId;
     } else {
       Get.log(
