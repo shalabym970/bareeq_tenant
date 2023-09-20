@@ -20,6 +20,7 @@ class PropertiesSwitcherBTN extends GetView<PropertiesController> {
               child: GestureDetector(
                   onTap: () {
                     if (controller.selectLeasedProperties.isFalse) {
+                      controller.searchController.clear();
                       controller.selectLeasedProperties.value = true;
                       controller.getLeasedProperties();
                     }
@@ -32,10 +33,10 @@ class PropertiesSwitcherBTN extends GetView<PropertiesController> {
                       child: Center(
                           child: Text(Strings.leasedPropeties,
                               style: TextStyle(
-                                  color: controller
-                                          .selectLeasedProperties.isTrue
-                                      ? ColorManager.mainColor
-                                      : ColorManager.white,
+                                  color:
+                                      controller.selectLeasedProperties.isTrue
+                                          ? ColorManager.mainColor
+                                          : ColorManager.white,
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w600)))))),
           Expanded(
@@ -43,6 +44,7 @@ class PropertiesSwitcherBTN extends GetView<PropertiesController> {
               child: GestureDetector(
                   onTap: () {
                     if (controller.selectLeasedProperties.isTrue) {
+                      controller.searchController.clear();
                       controller.selectLeasedProperties.value = false;
                       controller.getLeasedProperties();
                     }
@@ -55,10 +57,10 @@ class PropertiesSwitcherBTN extends GetView<PropertiesController> {
                       child: Center(
                           child: Text(Strings.soldPropeties,
                               style: TextStyle(
-                                  color: controller
-                                          .selectLeasedProperties.isTrue
-                                      ? ColorManager.white
-                                      : ColorManager.mainColor,
+                                  color:
+                                      controller.selectLeasedProperties.isTrue
+                                          ? ColorManager.white
+                                          : ColorManager.mainColor,
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w600))))))
         ])));

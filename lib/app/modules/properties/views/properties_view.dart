@@ -48,80 +48,92 @@ class PropertiesView extends GetView<PropertiesController> {
                                 children: [
                                   const PropertiesSwitcherBTN(),
                                   SizedBox(height: 20.h),
-                                  CustomTextField(
-                                    hint: Strings.search,
-                                    controller: controller.searchController,
-                                    height: 50.h,
-                                    width: 10.sw,
-                                    focusNode: controller.focusNode,
-                                    onChanged: (value) {
-                                      controller.onChangeSearching(
-                                          searchString: value);
-                                    },
-                                    suffixIcon: controller.isSearching.isTrue
-                                        ? GestureDetector(
-                                            onTap: () {
-                                              controller.stopSearch();
-                                            },
-                                            child: Icon(Icons.clear,
-                                                color: ColorManager.black,
-                                                size: 25.sp),
-                                          )
-                                        : null,
-                                  ),
-                                  SizedBox(height: 10.h),
-                                  controller.isSearching.isTrue
-                                      ? controller.selectLeasedProperties.isTrue
-                                          ? controller
-                                                  .searchingLeasedPropertyList
-                                                  .isEmpty
-                                              ? Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: 0.3.sh),
-                                                  child: const EmptyListWidget(
-                                                      message: Strings
-                                                          .noSearchResult))
-                                              : ListView.builder(
-                                                  padding: EdgeInsets.only(
-                                                      bottom: 10.h, top: 10.h),
-                                                  primary: false,
-                                                  shrinkWrap: true,
-                                                  itemCount: controller
-                                                      .searchingLeasedPropertyList
-                                                      .length,
-                                                  itemBuilder: ((_, index) {
-                                                    LeasedProperty property =
-                                                        controller
+                                  Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 5.w),
+                                      child: Column(children: [
+                                        CustomTextField(
+                                          hint: Strings.search,
+                                          controller:
+                                              controller.searchController,
+                                          height: 50.h,
+                                          width: 10.sw,
+                                          focusNode: controller.focusNode,
+                                          onChanged: (value) {
+                                            controller.onChangeSearching(
+                                                searchString: value);
+                                          },
+                                          suffixIcon: controller
+                                                  .isSearching.isTrue
+                                              ? GestureDetector(
+                                                  onTap: () {
+                                                    controller.stopSearch();
+                                                  },
+                                                  child: Icon(Icons.clear,
+                                                      color: ColorManager.black,
+                                                      size: 25.sp),
+                                                )
+                                              : null,
+                                        ),
+                                        SizedBox(height: 10.h),
+                                        controller.isSearching.isTrue
+                                            ? controller.selectLeasedProperties
+                                                    .isTrue
+                                                ? controller
+                                                        .searchingLeasedPropertyList
+                                                        .isEmpty
+                                                    ? Padding(
+                                                        padding: EdgeInsets.only(
+                                                            top: 0.3.sh),
+                                                        child: const EmptyListWidget(
+                                                            message: Strings
+                                                                .noSearchResult))
+                                                    : ListView.builder(
+                                                        padding: EdgeInsets.only(
+                                                            bottom: 10.h,
+                                                            top: 10.h),
+                                                        primary: false,
+                                                        shrinkWrap: true,
+                                                        itemCount: controller
                                                             .searchingLeasedPropertyList
-                                                            .elementAt(index);
-                                                    return PropertyListItem(
-                                                        lease: property);
-                                                  }))
-                                          : controller.searchingSoldPropertyList
-                                                  .isEmpty
-                                              ? Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: 0.3.sh),
-                                                  child: const EmptyListWidget(
-                                                      message: Strings
-                                                          .noSearchResult))
-                                              : ListView.builder(
-                                                  padding: EdgeInsets.only(
-                                                      bottom: 10.h, top: 10.h),
-                                                  primary: false,
-                                                  shrinkWrap: true,
-                                                  itemCount: controller
-                                                      .searchingSoldPropertyList
-                                                      .length,
-                                                  itemBuilder: ((_, index) {
-                                                    SoldProperty property =
-                                                        controller
-                                                            .searchingSoldPropertyList
-                                                            .elementAt(index);
-                                                    return SoldPropertyItem(
-                                                        soldProperty: property);
-                                                  }))
-                                      : const PropertiesListWidget()
+                                                            .length,
+                                                        itemBuilder:
+                                                            ((_, index) {
+                                                          LeasedProperty
+                                                              property =
+                                                              controller
+                                                                  .searchingLeasedPropertyList
+                                                                  .elementAt(
+                                                                      index);
+                                                          return PropertyListItem(
+                                                              lease: property);
+                                                        }))
+                                                : controller
+                                                        .searchingSoldPropertyList
+                                                        .isEmpty
+                                                    ? Padding(
+                                                        padding: EdgeInsets.only(
+                                                            top: 0.3.sh),
+                                                        child: const EmptyListWidget(
+                                                            message: Strings.noSearchResult))
+                                                    : ListView.builder(
+                                                        padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
+                                                        primary: false,
+                                                        shrinkWrap: true,
+                                                        itemCount: controller.searchingSoldPropertyList.length,
+                                                        itemBuilder: ((_, index) {
+                                                          SoldProperty
+                                                              property =
+                                                              controller
+                                                                  .searchingSoldPropertyList
+                                                                  .elementAt(
+                                                                      index);
+                                                          return SoldPropertyItem(
+                                                              soldProperty:
+                                                                  property);
+                                                        }))
+                                            : const PropertiesListWidget()
+                                      ])),
                                 ]))),
                     drawer:
                         customDrawer() // This trailing comma makes auto-formatting nicer for build methods.
