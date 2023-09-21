@@ -11,8 +11,9 @@ class CashHelper {
       if (value is List<String>) {
         return await sharedPref!.setStringList(key, value);
       }
-
-      return await sharedPref!.setInt(key, value);
+      if (value is int) {
+        return await sharedPref!.setInt(key, value);
+      }
     }
     return false;
   }

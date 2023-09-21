@@ -14,16 +14,13 @@ class SessionServices extends GetxService {
   setSessionData({required Contact user}) async {
     CashHelper.saveData(key: 'user_fullName', value: user.fullName);
     CashHelper.saveData(key: 'user_email', value: user.emailAddress);
-    CashHelper.saveData(key: 'user_callback', value: user.callback);
     CashHelper.saveData(key: 'user_job_title', value: user.jobTile);
     CashHelper.saveData(
         key: 'user_parentCustomerId', value: user.accountCustomerId);
-    CashHelper.saveData(
-        key: 'user_transactionCurrencyId', value: user.transactionCurrencyId);
+
     CashHelper.saveData(key: 'user_id', value: user.id);
     CashHelper.saveData(key: 'user_company', value: user.company);
     CashHelper.saveData(key: 'user_country', value: user.country);
-    CashHelper.saveData(key: 'user_department', value: user.department);
     CashHelper.saveData(key: 'user_lastName', value: user.lastName);
     CashHelper.saveData(key: 'user_firstName', value: user.firstName);
     CashHelper.saveData(key: 'user_password', value: user.password);
@@ -33,6 +30,7 @@ class SessionServices extends GetxService {
     CashHelper.saveData(key: 'user_mobilePhone', value: user.mobilePhone);
     CashHelper.saveData(key: 'user_accountName', value: user.account?.name);
     CashHelper.saveData(key: 'user_accountId', value: user.account?.id);
+    CashHelper.saveData(key: 'user_currency', value: user.currency);
     CashHelper.saveData(
         key: 'user_accountPrimaryContactId',
         value: user.account?.primaryContactId);
@@ -48,9 +46,6 @@ class SessionServices extends GetxService {
     CashHelper.saveData(
         key: 'user_accountCbrNumber', value: user.account?.cbrNumber);
 
-    CashHelper.saveData(
-        key: 'user_accountTransactionCurrencyId',
-        value: user.account?.transactionCurrencyId);
     Get.log(
         '======================== user data is saved Successfully ========================');
   }
@@ -60,34 +55,30 @@ class SessionServices extends GetxService {
         fullName: CashHelper.getData(key: 'user_fullName'),
         jobTile: CashHelper.getData(key: 'user_job_title'),
         emailAddress: CashHelper.getData(key: 'user_email'),
-        callback: CashHelper.getData(key: 'user_callback'),
         accountCustomerId: CashHelper.getData(key: 'user_parentCustomerId'),
-        transactionCurrencyId:
-            CashHelper.getData(key: 'user_transactionCurrencyId'),
         id: CashHelper.getData(key: 'user_id'),
         company: CashHelper.getData(key: 'user_company'),
         country: CashHelper.getData(key: 'user_country'),
-        department: CashHelper.getData(key: 'user_department'),
         lastName: CashHelper.getData(key: 'user_lastName'),
         firstName: CashHelper.getData(key: 'user_firstName'),
         password: CashHelper.getData(key: 'user_password'),
-        crNumber: int.tryParse(CashHelper.getData(key: 'user_crNumber')),
-        cprNumber: int.tryParse(CashHelper.getData(key: 'user_cprNumber')),
+        currency: CashHelper.getData(key: 'user_currency'),
+        crNumber: CashHelper.getData(key: 'user_crNumber'),
+        cprNumber: CashHelper.getData(key: 'user_cprNumber'),
         businessPhone: CashHelper.getData(key: 'user_businessPhone'),
         mobilePhone: CashHelper.getData(key: 'user_mobilePhone'),
         account: Account(
-            name: CashHelper.getData(key: 'user_accountName'),
-            id: CashHelper.getData(key: 'user_accountId'),
-            primaryContactId:
-                CashHelper.getData(key: 'user_accountPrimaryContactId'),
-            accountStatus: CashHelper.getData(key: 'user_accountStatus'),
-            ownerId: CashHelper.getData(key: 'user_ownerId'),
-            emailAddress: CashHelper.getData(key: 'user_emailAddress1'),
-            crNumber: CashHelper.getData(key: 'user_accountCrNumber'),
-            accountType: CashHelper.getData(key: 'user_accountType'),
-            cbrNumber: CashHelper.getData(key: 'user_accountCbrNumber'),
-            transactionCurrencyId:
-                CashHelper.getData(key: 'user_accountTransactionCurrencyId')));
+          name: CashHelper.getData(key: 'user_accountName'),
+          id: CashHelper.getData(key: 'user_accountId'),
+          primaryContactId:
+              CashHelper.getData(key: 'user_accountPrimaryContactId'),
+          accountStatus: CashHelper.getData(key: 'user_accountStatus'),
+          ownerId: CashHelper.getData(key: 'user_ownerId'),
+          emailAddress: CashHelper.getData(key: 'user_emailAddress1'),
+          crNumber: CashHelper.getData(key: 'user_accountCrNumber'),
+          accountType: CashHelper.getData(key: 'user_accountType'),
+          cbrNumber: CashHelper.getData(key: 'user_accountCbrNumber'),
+        ));
     Get.log(
         '======================== user data is get Successfully ========================');
     return currentUser;

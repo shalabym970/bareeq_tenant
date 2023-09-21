@@ -58,6 +58,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                                               : null,
                                       obscureText: controller
                                           .currentPasswordVisible.value,
+                                      keyboardType: TextInputType.visiblePassword,
                                       suffixIcon: IconButton(
                                         icon: Icon(
                                           controller
@@ -81,6 +82,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                                   Obx(() => CustomTextField(
                                       hint: Strings.enterNewPass,
                                       controller: controller.newPassController,
+                                      keyboardType: TextInputType.visiblePassword,
                                       validator: (value) => value!.isEmpty
                                           ? ErrorStrings.enterNewPassword
                                           : value ==
@@ -127,6 +129,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                                               ? ErrorStrings
                                                   .enterCorrectConfirmationPass
                                               : null,
+                                      keyboardType: TextInputType.visiblePassword,
                                       obscureText:
                                           controller.newPasswordVisible.value,
                                       labelWidget: const LabelTextField(

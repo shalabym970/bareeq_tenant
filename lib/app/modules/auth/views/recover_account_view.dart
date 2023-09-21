@@ -70,6 +70,7 @@ class RecoverAccountView extends GetView<AuthController> {
                                           }
                                           return null; // Return null to indicate no validation error
                                         },
+                                        keyboardType: TextInputType.emailAddress,
                                         maxLines: 1,
                                         labelWidget: Text(Strings.email,
                                             style: TextStyle(

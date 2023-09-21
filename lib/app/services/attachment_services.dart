@@ -6,15 +6,21 @@ import 'package:bareeq/common/widgets/ui.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mime/mime.dart';
+import 'package:path_provider/path_provider.dart';
 import 'dart:io';
-
 import '../../common/strings/error_strings.dart';
 import '../models/attachment.dart';
 
 class AttachmentServices {
   static Future<String> convertBase64ToFile(
       {required String base64String, required String fileName}) async {
-    String filePath = Constants.downloadPath + fileName;
+
+    Directory appDocDir = await getApplicationSupportDirectory();
+    String iosDownloadPath = appDocDir.path;
+    String filePath = Platform.isIOS
+        ? "$iosDownloadPath/$fileName"
+        : Constants.downloadPath + fileName;
+
     // Decode the Base64 string
     if (await File(filePath).exists()) {
       int count = 1;
@@ -23,8 +29,13 @@ class AttachmentServices {
         newFileName =
             '${getFileNameWithoutExtension(fileName)}$count.${getFileExtension(fileName)}';
         count++;
-      } while (await File(Constants.downloadPath + newFileName).exists());
-      filePath = Constants.downloadPath + newFileName;
+      } while (await File(Platform.isIOS
+              ? "$iosDownloadPath/$fileName"
+              : Constants.downloadPath + fileName)
+          .exists());
+      filePath = Platform.isIOS
+          ? "$iosDownloadPath/$newFileName"
+          : Constants.downloadPath + newFileName;
     }
     // Create a new file in the documents directory
     File file = File(filePath);
@@ -135,12 +146,12 @@ class AttachmentServices {
   /// Convert List Of Files To List Of Attachments
   static Future<List<Attachment>> convertListOfFilesToListOfAttachments(
       {required List<File> files,
-        required String objectId,
-        required String objectTypeCode}) async {
+      required String objectId,
+      required String objectTypeCode}) async {
     List<Attachment> attachments = [];
     for (File file in files) {
       String? base64Body =
-      await AttachmentServices.convertFileToBase64(file: file);
+          await AttachmentServices.convertFileToBase64(file: file);
       String? mimeType = lookupMimeType(file.path);
       String fileName = file.path.split('/').last;
       Attachment attachment = Attachment(
@@ -155,4 +166,5 @@ class AttachmentServices {
     }
     return attachments;
   }
+
 }

@@ -7,13 +7,10 @@ class Contact extends Equatable {
   Contact(
       {this.emailAddress,
       this.fullName,
-      this.callback,
       this.accountCustomerId,
-      this.transactionCurrencyId,
       this.id,
       this.company,
       this.country,
-      this.department,
       this.lastName,
       this.firstName,
       this.password,
@@ -22,22 +19,21 @@ class Contact extends Equatable {
       this.cprNumber,
       this.businessPhone,
       this.mobilePhone,
-      this.jobTile});
+      this.jobTile,
+      this.currency});
 
   final String? emailAddress;
   final String? fullName;
-  final String? callback;
   final String? accountCustomerId;
-  final String? transactionCurrencyId;
   final String? id;
   final String? company;
-  final int? country;
-  final String? department;
+  final String? country;
   final String? lastName;
   final String? firstName;
   late String? password;
   late int? crNumber;
   late int? cprNumber;
+  final String? currency;
   final String? businessPhone;
   late String? mobilePhone;
   late String? jobTile;
@@ -48,13 +44,10 @@ class Contact extends Equatable {
     return Contact(
       emailAddress: json["emailaddress1"],
       fullName: json["fullname"],
-      callback: json["callback"],
       accountCustomerId: json["_parentcustomerid_value"],
-      transactionCurrencyId: json["_transactioncurrencyid_value"],
       id: json["contactid"],
       company: json["company"],
-      country: json["blser_country"],
-      department: json["department"],
+      country: json["blser_country@OData.Community.Display.V1.FormattedValue"],
       lastName: json["lastname"],
       firstName: json["firstname"],
       password: json['blser_password'],
@@ -63,6 +56,8 @@ class Contact extends Equatable {
       mobilePhone: json["mobilephone"],
       businessPhone: json["telephone1"],
       jobTile: json["jobtitle"],
+      currency: json[
+          '_transactioncurrencyid_value@Microsoft.Dynamics.CRM.lookuplogicalname'],
       account: json["parentcustomerid_account"] != null
           ? Account.fromJson(json["parentcustomerid_account"])
           : null,
@@ -99,7 +94,7 @@ class Contact extends Equatable {
 
   @override
   int get hashCode {
-    return emailAddress!.toLowerCase().hashCode ^ password!.toLowerCase().hashCode;
+    return emailAddress!.toLowerCase().hashCode ^
+        password!.toLowerCase().hashCode;
   }
-
 }

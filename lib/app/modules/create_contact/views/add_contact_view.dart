@@ -99,6 +99,7 @@ class AddContactView extends GetView<AddContactController> {
                                           }
                                           return null; // Return null to indicate no validation error
                                         },
+                                        keyboardType: TextInputType.emailAddress,
                                         labelWidget: const LabelTextField(
                                             label: Strings.email,
                                             isRequired: true)),

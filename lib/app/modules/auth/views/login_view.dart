@@ -69,6 +69,8 @@ class LoginView extends GetView<AuthController> {
                                           return null; // Return null to indicate no validation error
                                         },
                                         maxLines: 1,
+                                        keyboardType:
+                                            TextInputType.emailAddress,
                                       ),
                                       SizedBox(height: 45.h),
                                       Obx(() => CustomTextField(
@@ -80,6 +82,8 @@ class LoginView extends GetView<AuthController> {
                                             validator: (value) => value!.isEmpty
                                                 ? ErrorStrings.enterPassword
                                                 : null,
+                                            keyboardType:
+                                                TextInputType.visiblePassword,
                                             suffixIcon: IconButton(
                                               icon: Icon(
                                                 controller.passwordVisible.value
