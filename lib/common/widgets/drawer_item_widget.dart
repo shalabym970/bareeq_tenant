@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../color_manager.dart';
 
-
 class DrawerItemWidget extends StatelessWidget {
   const DrawerItemWidget(
       {Key? key,
@@ -18,9 +17,8 @@ class DrawerItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
-      child: Row(
-        children: [
+        onTap: onTap,
+        child: Row(children: [
           SvgPicture.asset(
             svgIconPath,
             alignment: Alignment.center,
@@ -29,15 +27,11 @@ class DrawerItemWidget extends StatelessWidget {
             color: ColorManager.mainColor,
           ),
           SizedBox(width: 20.w),
-          Text(
-            text,
-            style: TextStyle(
-                color: ColorManager.mainColor,
-                fontWeight: FontWeight.w400,
-                fontSize: 13.sp),
-          )
-        ],
-      ),
-    );
+          Text(text,
+              style: TextStyle(
+                  color: ColorManager.mainColor,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 13.sp))
+        ]));
   }
 }

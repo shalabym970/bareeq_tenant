@@ -19,10 +19,10 @@ class HorizontalListLoading extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 5.w),
           child: ShimmerWidget.rectangular(
             height: 100.h,
-            width: 155.w,
-          ),
+            width: 155.w
+          )
         );
-      }),
+      })
     );
   }
 }

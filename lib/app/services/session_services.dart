@@ -71,8 +71,8 @@ class SessionServices extends GetxService {
         lastName: CashHelper.getData(key: 'user_lastName'),
         firstName: CashHelper.getData(key: 'user_firstName'),
         password: CashHelper.getData(key: 'user_password'),
-        crNumber: CashHelper.getData(key: 'user_crNumber'),
-        cprNumber: CashHelper.getData(key: 'user_cprNumber'),
+        crNumber: int.tryParse(CashHelper.getData(key: 'user_crNumber')),
+        cprNumber: int.tryParse(CashHelper.getData(key: 'user_cprNumber')),
         businessPhone: CashHelper.getData(key: 'user_businessPhone'),
         mobilePhone: CashHelper.getData(key: 'user_mobilePhone'),
         account: Account(

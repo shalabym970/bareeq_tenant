@@ -10,6 +10,7 @@ import '../../../models/attachment.dart';
 import '../../../repositories/attachment_repo.dart';
 import '../../../repositories/messages_repo.dart';
 import '../../../services/attachment_services.dart';
+import '../../../services/check_internet_connection_service.dart';
 import '../../dashboard/controllers/dashboard_controller.dart';
 
 class CaseDetailsController extends GetxController {
@@ -25,6 +26,8 @@ class CaseDetailsController extends GetxController {
   final attachmentRepo = AttachmentRepo();
   final deletingLoading = false.obs;
   final submitLoading = false.obs;
+  final connectionController = Get.find<InternetConnectionController>();
+
   Case cases = Get.arguments;
 
   @override

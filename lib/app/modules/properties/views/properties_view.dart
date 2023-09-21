@@ -4,10 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../common/color_manager.dart';
 import '../../../../common/strings/strings.dart';
-import '../../../../common/widgets/custom_appbar.dart';
+import '../../../../common/widgets/custom_main_app_bar.dart';
 import '../../../../common/widgets/custom_drawer.dart';
 import '../../../../common/widgets/custom_text_field.dart';
 import '../../../../common/widgets/empty_list_widget.dart';
+import '../../../../common/widgets/no_internet_connection_widget.dart';
 import '../../../models/leased_property.dart';
 import '../../../routes/app_routes.dart';
 import '../../dashboard/widgets/recent_properties/leases_list_item.dart';
@@ -21,7 +22,8 @@ class PropertiesView extends GetView<PropertiesController> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    return Obx(() => controller.connectionController.isConnected.isTrue
+        ? WillPopScope(
         onWillPop: () async {
           Get.offAllNamed(Routes.dashboard);
           return true;
@@ -38,7 +40,7 @@ class PropertiesView extends GetView<PropertiesController> {
                   controller.focusNode.unfocus();
                 },
                 child: Scaffold(
-                    appBar: customAppBar(title: Strings.properties),
+                    appBar: customMainAppBar(title: Strings.properties),
                     body: SingleChildScrollView(
                         primary: false,
                         physics: const AlwaysScrollableScrollPhysics(),
@@ -137,6 +139,6 @@ class PropertiesView extends GetView<PropertiesController> {
                                 ]))),
                     drawer:
                         customDrawer() // This trailing comma makes auto-formatting nicer for build methods.
-                    ))));
+                    )))): const NoInternetConnectionView());
   }
 }

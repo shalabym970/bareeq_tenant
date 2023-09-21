@@ -30,10 +30,9 @@ class CustomDropDown extends StatelessWidget {
           color: ColorManager.textFieldBg,
           child: InputDecorator(
               decoration: InputDecoration(
-                enabledBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.transparent)),
-                contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
-              ),
+                  enabledBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.transparent)),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 10.w)),
               child: DropdownButtonHideUnderline(
                   child: DropdownButton<dynamic>(
                       value: value,
@@ -42,11 +41,8 @@ class CustomDropDown extends StatelessWidget {
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400),
                       dropdownColor: ColorManager.white,
-                      icon: Icon(
-                        Icons.keyboard_arrow_down,
-                        color: ColorManager.mainColor,
-                        size: 20.sp,
-                      ),
+                      icon: Icon(Icons.keyboard_arrow_down,
+                          color: ColorManager.mainColor, size: 20.sp),
                       items: items,
                       hint: Text(hint,
                           style: TextStyle(

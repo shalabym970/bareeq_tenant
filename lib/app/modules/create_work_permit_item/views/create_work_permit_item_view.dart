@@ -5,10 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../common/color_manager.dart';
 import '../../../../common/strings/strings.dart';
-import '../../../../common/widgets/custom_appbar.dart';
+import '../../../../common/widgets/custom_details_app_bar.dart';
 import '../../../../common/widgets/custom_btn.dart';
-import '../../../../common/widgets/custom_drawer.dart';
 import '../../../../common/widgets/custom_text_field.dart';
+import '../../../../common/widgets/no_internet_connection_widget.dart';
 import '../../../../common/widgets/second_custom_loading.dart';
 import '../controllers/create_work_permit_item_controller.dart';
 import '../widgets/select_item_types_widget.dart';
@@ -18,18 +18,20 @@ class CreateWorkPermitItemView extends GetView<CreateWorkPermitItemController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Obx(() => controller.connectionController.isConnected.isTrue
+        ? Scaffold(
         backgroundColor: ColorManager.white,
-        appBar: customAppBar(title: Strings.newItem),
+        appBar: customDetailsAppBar(title: Strings.newItem),
         body: Stack(children: [
           Padding(
               padding: EdgeInsets.only(
                   top: 30.h, right: 15.w, left: 15.w, bottom: 10.h),
-              child: SingleChildScrollView(child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+              child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
                     Form(
                         key: controller.workItemKey,
                         child: Column(children: [
@@ -68,7 +70,6 @@ class CreateWorkPermitItemView extends GetView<CreateWorkPermitItemController> {
           Obx(() => Visibility(
               visible: controller.submitLoading.isTrue ? true : false,
               child: const Center(child: SecondCustomLoading())))
-        ]),
-        drawer: customDrawer());
+        ])) : const NoInternetConnectionView());
   }
 }

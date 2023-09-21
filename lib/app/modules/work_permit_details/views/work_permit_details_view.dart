@@ -6,8 +6,8 @@ import '../../../../common/color_manager.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/attachament_title_public_widget.dart';
-import '../../../../common/widgets/custom_appbar.dart';
-import '../../../../common/widgets/custom_drawer.dart';
+import '../../../../common/widgets/custom_details_app_bar.dart';
+import '../../../../common/widgets/no_internet_connection_widget.dart';
 import '../../../../common/widgets/second_custom_loading.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../routes/app_routes.dart';
@@ -27,7 +27,8 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    return Obx(() => controller.connectionController.isConnected.isTrue
+        ? WillPopScope(
         onWillPop: () async {
           if (controller.submitLoading.isTrue) {
             return false;
@@ -44,8 +45,7 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                     controller.saveWorkPermit();
                   },
                   onDiscard: () {
-
-                      Get.until((route) => route.isFirst);
+                    Get.until((route) => route.isFirst);
                   },
                   title: Strings.confirm);
             }
@@ -58,7 +58,9 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
               controller.onInit();
             },
             child: Scaffold(
-              appBar: customAppBar(title: Strings.workPermit),
+              appBar: customDetailsAppBar(
+                  title:
+                      "${Strings.workPermit} (${controller.workPermit.subject ?? Strings.na})"),
               floatingActionButton: FloatingActionButton(
                   onPressed: () {
                     controller.saveWorkPermit();
@@ -67,7 +69,6 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                   backgroundColor: ColorManager.mainColor,
                   child: SvgPicture.asset(ImagePaths.save,
                       height: 20.h, width: 20.w)),
-
               body: Stack(children: [
                 Padding(
                   padding: EdgeInsets.only(right: 10.w, left: 10.w),
@@ -189,9 +190,6 @@ class WorkPermitDetailsView extends GetView<WorkPermitDetailsController> {
                         : false,
                     child: const Center(child: SecondCustomLoading())))
               ]),
-
-              drawer:
-                  customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
-            )));
+            ))) : const NoInternetConnectionView());
   }
 }

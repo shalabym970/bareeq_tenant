@@ -12,7 +12,7 @@ class CasesApi {
         'new_prioritycode,blser_title,'
         'blser_caseserial,blser_casetypecode,createdon,blser_datecompleted,_blser_leaseunit_value,'
         'blser_caseid,blser_description,_blser_account_value&'
-        '\$expand=blser_case_blser_portalmessageses(\$select=subject,blser_messagetext,activityid,createdon)'
+        '\$expand=blser_case_blser_portalmessageses(\$select=subject,blser_messagetext,activityid,createdon),blser_PropertyLease(\$select=advanced_name)'
         ',blser_LeaseUnit(\$select=advanced_name,_bls_relatedleasecontract_value,statecode),blser_RelatedProject'
         '(\$select=advanced_name,advanced_buildingno)&\$filter=(_blser_contact_value eq ${Get.find<SessionServices>().currentUser.value.id})'
         '&\$orderby=createdon desc';

@@ -50,12 +50,12 @@ dev_dependencies:
 # flutter_native_splash-development.yaml
 flutter_native_splash:
   color: "#ffffff"
-  image: assets/images/logo_no_bg.png
+  image: assets/images/logo_without_bg.png
   android: true
   ios: true
 
 flutter_icons:
-  image_path: "assets/images/logo_no_bg.png"
+  image_path: "assets/images/logo_with_bg.png"
   android: true
   ios: true
   remove_alpha_ios: true

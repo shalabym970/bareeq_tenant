@@ -8,6 +8,7 @@ import '../../../models/message.dart';
 import '../../../repositories/attachment_repo.dart';
 import '../../../repositories/invoices_repo.dart';
 import '../../../repositories/messages_repo.dart';
+import '../../../services/check_internet_connection_service.dart';
 
 class InvoiceDetailsController extends GetxController {
   final loadingInvoiceItems = false.obs;
@@ -22,6 +23,8 @@ class InvoiceDetailsController extends GetxController {
   final attachmentRepo = AttachmentRepo();
   final messagesRepo = MessagesRepo();
   final invoiceRepo = InvoicesRepo();
+  final connectionController = Get.find<InternetConnectionController>();
+
   Invoice invoice = Get.arguments;
 
   @override

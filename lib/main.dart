@@ -12,7 +12,6 @@ import 'common/constants.dart';
 SharedPreferences? sharedPref;
 final encoding = Encoding.getByName('utf-8');
 
-
 Future initServices() async {
   Get.log('starting services ...');
   sharedPref = await SharedPreferences.getInstance();

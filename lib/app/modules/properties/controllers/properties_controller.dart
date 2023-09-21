@@ -6,6 +6,7 @@ import '../../../../common/widgets/ui.dart';
 import '../../../models/contact_model.dart';
 import '../../../models/sold_property.dart';
 import '../../../repositories/lease_repo.dart';
+import '../../../services/check_internet_connection_service.dart';
 import '../../../services/session_services.dart';
 import '../../searching/abstract_searching.dart';
 
@@ -21,6 +22,8 @@ class PropertiesController extends GetxController with Searching {
   final leasedProperties = <LeasedProperty>[].obs;
   final soldProperties = <SoldProperty>[].obs;
   final propertiesRepo = PropertiesRepo();
+  final connectionController = Get.find<InternetConnectionController>();
+
 
   @override
   void onInit() {

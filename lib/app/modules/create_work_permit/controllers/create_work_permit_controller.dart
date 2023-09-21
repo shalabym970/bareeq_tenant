@@ -16,6 +16,7 @@ import '../../../../common/strings/strings.dart';
 import 'dart:io';
 import '../../../models/unit.dart';
 import '../../../repositories/work_permit_repo.dart';
+import '../../../services/check_internet_connection_service.dart';
 import '../../../services/session_services.dart';
 
 class CreateWorkPermitController extends GetxController {
@@ -49,6 +50,8 @@ class CreateWorkPermitController extends GetxController {
   final endDateController = TextEditingController();
   final workPermitRepo = WorkPermitRepo();
   final attachmentRepo = AttachmentRepo();
+  final connectionController = Get.find<InternetConnectionController>();
+
   File? file;
 
   @override

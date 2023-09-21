@@ -6,6 +6,7 @@ import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/message.dart';
 import '../../../repositories/messages_repo.dart';
+import '../../../services/check_internet_connection_service.dart';
 
 class FitOutProcessDetailsController extends GetxController {
   final errorMessages = false.obs;
@@ -14,6 +15,8 @@ class FitOutProcessDetailsController extends GetxController {
   final loadingFitOutSteps = false.obs;
   final messages = <MessageModel>[].obs;
   final fitOutSteps = <FitOutStepModel>[].obs;
+  final connectionController = Get.find<InternetConnectionController>();
+
   FitOutModel fitOut = Get.arguments;
 
   final messagesRepo = MessagesRepo();

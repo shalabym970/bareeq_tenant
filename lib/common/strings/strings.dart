@@ -41,7 +41,6 @@ class Strings {
   static const String openingDate = 'Opening Date';
   static const String status = 'Status';
   static const String natureOfComplaint = 'Nature Of Complaint';
-
   static const String startDate = 'Start Date';
   static const String workPermit = 'Work Permit';
   static const String workPermits = 'Work Permits';
@@ -49,6 +48,7 @@ class Strings {
   static const String workPermitItems = 'Work Permit Items';
   static const String messages = 'Messages';
   static const String message = 'Message';
+  static const String messageDetails = 'Message Details';
   static const String attachments = 'Attachments';
   static const String generalDetails = 'General Details';
   static const String unit = 'Unit';
@@ -65,7 +65,7 @@ class Strings {
   static const String dateSubmitted = 'Date Submitted';
   static const String unitDetails = 'Unit Details';
   static const String property = 'Property';
-  static const String relatedProperty = 'Related Property';
+  static const String relatedContract = 'Related Contract';
   static const String invoice = 'Invoice';
   static const String invoices = 'Invoices';
   static const String invoiceTitle = 'Invoice Title';
@@ -124,7 +124,6 @@ class Strings {
   static const String enterCurrentPass = 'Enter current password';
   static const String newPass = 'New Password';
   static const String enterNewPass = 'Enter new password';
-
   static const String confirmPassword = 'Confirm New Password';
   static const String enterNewPassAgain = 'Confirm password';
   static const String activity = 'Activity';

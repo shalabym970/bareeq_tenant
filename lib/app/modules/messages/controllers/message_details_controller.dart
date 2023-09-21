@@ -10,6 +10,7 @@ import '../../../repositories/attachment_repo.dart';
 import 'dart:io';
 import '../../../repositories/messages_repo.dart';
 import '../../../services/attachment_services.dart';
+import '../../../services/check_internet_connection_service.dart';
 
 class MessageDetailsController extends GetxController {
   final rout = Get.arguments[0];
@@ -24,6 +25,7 @@ class MessageDetailsController extends GetxController {
   final uploadedAttachments = <Attachment>[].obs;
   final _messagesRepo = MessagesRepo();
   final _replyMessage = MessageModel().obs;
+  final connectionController = Get.find<InternetConnectionController>();
   MessageModel message = Get.arguments[1];
 
   @override

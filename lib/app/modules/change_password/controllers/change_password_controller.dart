@@ -6,6 +6,7 @@ import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../helper/cash_helper.dart';
 import '../../../models/contact_model.dart';
+import '../../../services/check_internet_connection_service.dart';
 import '../../../services/session_services.dart';
 
 class ChangePasswordController extends GetxController {
@@ -19,6 +20,7 @@ class ChangePasswordController extends GetxController {
   final confirmPassController = TextEditingController();
   final currentPasswordVisible = true.obs;
   final newPasswordVisible = true.obs;
+  final connectionController = Get.find<InternetConnectionController>();
 
 
   changePassword() async {

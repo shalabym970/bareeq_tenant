@@ -8,6 +8,7 @@ import '../../../../common/widgets/ui.dart';
 import '../../../models/contact_model.dart';
 import '../../../repositories/login_repo.dart';
 import '../../../routes/app_routes.dart';
+import '../../../services/check_internet_connection_service.dart';
 
 class AuthController extends GetxController {
   final loading = false.obs;
@@ -19,7 +20,8 @@ class AuthController extends GetxController {
   final passwordController = TextEditingController();
   final passwordVisible = true.obs;
   final loadingRecoverAccount = false.obs;
-  LoginRepository loginRepository = LoginRepository();
+  final connectionController = Get.find<InternetConnectionController>();
+  final loginRepository = LoginRepository();
 
   login() async {
     try {
@@ -36,7 +38,8 @@ class AuthController extends GetxController {
           Get.log('=================  authorized =================');
           Get.offAllNamed(Routes.dashboard);
         } else {
-          GlobalWidgets.getToast(msg: ErrorStrings.authWrong, fontSize: 14.sp);
+          GlobalWidgets.getToast(
+              msg: ErrorStrings.publicErrorMessage, fontSize: 14.sp);
           Get.log('================= not authorized =================');
         }
       }

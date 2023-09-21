@@ -8,7 +8,6 @@ class Case {
   Case(
       {this.priority,
       this.title,
-      this.propertyLeaseId,
       this.caseNumber,
       this.type,
       this.submittedOn,
@@ -20,12 +19,12 @@ class Case {
       this.messages,
       this.unit,
       this.property,
-      this.natureOfComplaint});
+      this.natureOfComplaint,
+      this.relatedProperty});
 
   int? priority;
   int? natureOfComplaint;
   String? title;
-  String? propertyLeaseId;
   String? caseNumber;
   int? type;
   DateTime? submittedOn;
@@ -36,12 +35,15 @@ class Case {
   String? accountId;
   List<MessageModel>? messages;
   Unit? unit;
+  Unit? relatedProperty;
   Project? property;
 
   factory Case.fromJson(Map<String, dynamic> json) => Case(
+        relatedProperty: json["blser_PropertyLease"] != null
+            ? Unit.fromJson(json["blser_PropertyLease"])
+            : null,
         priority: json["new_prioritycode"],
         title: json["blser_title"],
-        propertyLeaseId: json["_blser_propertylease_value"],
         caseNumber: json["blser_caseserial"],
         type: json["blser_casetypecode"],
         submittedOn: json["createdon"] == null

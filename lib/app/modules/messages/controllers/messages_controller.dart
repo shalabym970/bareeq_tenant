@@ -4,6 +4,7 @@ import 'package:bareeq/common/constants.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
+import '../../../services/check_internet_connection_service.dart';
 
 class MessagesController extends GetxController {
   final selectInboxMessages = true.obs;
@@ -14,6 +15,8 @@ class MessagesController extends GetxController {
   final loading = false.obs;
   final error = false.obs;
   final messagesRepo = MessagesRepo();
+  final connectionController = Get.find<InternetConnectionController>();
+
 
   Map<String, String> messageType = {
     Constants.allKey: "All",

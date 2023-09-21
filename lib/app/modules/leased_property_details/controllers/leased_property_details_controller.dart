@@ -6,6 +6,7 @@ import '../../../models/leased_property.dart';
 import '../../../models/message.dart';
 import '../../../repositories/attachment_repo.dart';
 import '../../../repositories/messages_repo.dart';
+import '../../../services/check_internet_connection_service.dart';
 
 class LeasedPropertyDetailsController extends GetxController {
   final messages = <MessageModel>[].obs;
@@ -16,6 +17,8 @@ class LeasedPropertyDetailsController extends GetxController {
   final attachments = <Attachment>[].obs;
   final attachmentRepo = AttachmentRepo();
   final messagesRepo = MessagesRepo();
+  final connectionController = Get.find<InternetConnectionController>();
+
   LeasedProperty lease = Get.arguments;
 
   @override

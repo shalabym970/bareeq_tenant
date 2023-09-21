@@ -2,12 +2,12 @@ import 'package:bareeq/app/models/work_permit.dart';
 import 'package:bareeq/common/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/work_permit_item.dart';
 import '../../../repositories/work_permit_repo.dart';
+import '../../../services/check_internet_connection_service.dart';
 import '../../work_permit_details/controllers/work_permit_details_controller.dart';
 
 class CreateWorkPermitItemController extends GetxController {
@@ -18,8 +18,10 @@ class CreateWorkPermitItemController extends GetxController {
   final loadingTypes = false.obs;
   final errorTypes = false.obs;
   final selectedType = Rxn<String>();
+  final connectionController = Get.find<InternetConnectionController>();
+  final workPermitRepo = WorkPermitRepo();
   WorkPermit workPermit = Get.arguments;
-  WorkPermitRepo workPermitRepo = WorkPermitRepo();
+
 
   submitWorkPermitItem() async {
     try {

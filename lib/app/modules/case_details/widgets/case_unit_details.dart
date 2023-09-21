@@ -33,9 +33,9 @@ class CaseUnitDetailsWidget extends GetView<CaseDetailsController> {
                       SizedBox(height: 20.h),
                       customDetailsItem(
                           icon: ImagePaths.group77,
-                          title: Strings.relatedProperty,
-                          // TODO: must get the lease name by this id when back at project any more
-                          value: controller.cases.propertyLeaseId.toString())
+                          title: Strings.relatedContract,
+                          value: controller.cases.relatedProperty?.name ??
+                              Strings.na)
                     ])),
             Expanded(
                 flex: 1,

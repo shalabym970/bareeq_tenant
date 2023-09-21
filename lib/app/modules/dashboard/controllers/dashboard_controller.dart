@@ -13,6 +13,8 @@ import '../../../models/contact_model.dart';
 import '../../../models/invoice.dart';
 import '../../../repositories/cases_repo.dart';
 import '../../../repositories/invoices_repo.dart';
+import '../../../services/check_internet_connection_service.dart';
+import '../../../services/streaming_services.dart';
 
 class DashboardController extends GetxController {
   final loadingWorkPermits = false.obs;
@@ -35,6 +37,8 @@ class DashboardController extends GetxController {
   final casesRepo = CasesRepo();
   final fitOutRepo = FitOutRepo();
   final leasesRepo = PropertiesRepo();
+  final connectionController = Get.find<InternetConnectionController>();
+  final  streamingService = StreamingService();
 
   Contact get currentUser {
     return Get.find<SessionServices>().currentUser.value;

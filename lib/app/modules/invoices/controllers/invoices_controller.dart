@@ -3,6 +3,7 @@ import 'package:bareeq/app/modules/searching/abstract_searching.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../../services/check_internet_connection_service.dart';
 import '../../dashboard/controllers/dashboard_controller.dart';
 
 class InvoicesController extends GetxController with Searching {
@@ -10,6 +11,8 @@ class InvoicesController extends GetxController with Searching {
   final searchController = TextEditingController();
   final isSearching = false.obs;
   final focusNode = FocusNode();
+  final connectionController = Get.find<InternetConnectionController>();
+
 
   @override
   void addSearchedItemsForSearchedList({required String searchString}) {

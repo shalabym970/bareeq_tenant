@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../../models/contact_model.dart';
+import '../../../services/check_internet_connection_service.dart';
 import '../../profile/controllers/profile_controller.dart';
 import '../../searching/abstract_searching.dart';
 
@@ -9,6 +10,7 @@ class ContactsController extends GetxController with Searching {
   final searchController = TextEditingController();
   final isSearching = false.obs;
   final focusNode = FocusNode();
+  final connectionController = Get.find<InternetConnectionController>();
 
   @override
   void addSearchedItemsForSearchedList({required String searchString}) {

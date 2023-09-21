@@ -1,11 +1,9 @@
+import 'package:bareeq/common/widgets/custom_details_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common/color_manager.dart';
-import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
-import '../../../../common/widgets/custom_appbar.dart';
-import '../../../../common/widgets/custom_drawer.dart';
-import '../../../routes/app_routes.dart';
+import '../../../../common/widgets/no_internet_connection_widget.dart';
 import '../controllers/messages_controller.dart';
 import '../widgets/message_drop_down_List.dart';
 import '../widgets/messages_lists/inbox_messages_list.dart';
@@ -17,34 +15,26 @@ class MessagesView extends GetView<MessagesController> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop: () async {
-          Get.offAllNamed(Routes.dashboard);
-          return false;
+    return Obx(() => controller.connectionController.isConnected.isTrue
+        ? RefreshIndicator(
+        color: ColorManager.mainColor,
+        onRefresh: () async {
+          controller.onInit();
         },
-        child: RefreshIndicator(
-            color: ColorManager.mainColor,
-            onRefresh: () async {
-              controller.onInit();
-            },
-            child: Scaffold(
-                appBar: customAppBar(
-                    title: Strings.messages,
-                    svgEmailIcon: ImagePaths.emailBrown),
-                body: SingleChildScrollView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const MessagesSwitcherBTN(),
-                          const MessageDropDownList(),
-                          Obx(() => controller.selectInboxMessages.isTrue
-                              ? const InboxMessagesList()
-                              : const SentMessagesList())
-                        ])),
-                drawer:
-                    customDrawer() // This trailing comma makes auto-formatting nicer for build methods.
-                )));
+        child: Scaffold(
+          appBar: customDetailsAppBar(title: Strings.messages),
+          body: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const MessagesSwitcherBTN(),
+                    const MessageDropDownList(),
+                    Obx(() => controller.selectInboxMessages.isTrue
+                        ? const InboxMessagesList()
+                        : const SentMessagesList())
+                  ])),
+        )) : const NoInternetConnectionView());
   }
 }

@@ -32,7 +32,6 @@ class SoldPropertyGeneralDetailsWidget
                           title: Strings.agreementRef,
                           value: controller.soldProperty.agreementRef ??
                               Strings.na),
-
                       SizedBox(height: 20.h),
                       customDetailsItem(
                           icon: ImagePaths.person,

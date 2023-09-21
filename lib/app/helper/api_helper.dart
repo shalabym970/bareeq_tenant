@@ -79,20 +79,22 @@ class ApiHelper {
   }
 
   ///Delete
-  static Future<Response> deleteData({
+  static deleteData({
     required String url,
   }) async {
-    if (TokenHelper.accessTokenIsExpired()) {
-      await TokenHelper.refreshToken();
+    try {
+      if (TokenHelper.accessTokenIsExpired()) {
+        await TokenHelper.refreshToken();
+      }
+      var token = CashHelper.getData(key: 'access_token');
+      Constants.headers['Authorization'] = 'Bearer $token';
+      Get.log('========== delete url : ${Constants.baseUrl + url} ==========');
+      var response = await http.delete(Uri.parse(Constants.baseUrl + url),
+          encoding: encoding, headers: Constants.headers);
+      return response;
+    } catch (e) {
+      Get.log('========== Error occurred : $e ==========');
+      return http.Response('Error occurred', 500);
     }
-    var token = CashHelper.getData(key: 'access_token');
-    Constants.headers['Authorization'] = 'Bearer $token';
-    Get.log('========== delete url : ${Constants.baseUrl + url} ==========');
-    return await http
-        .delete(Uri.parse(Constants.baseUrl + url),
-            encoding: encoding, headers: Constants.headers)
-        .catchError((error) {
-      return error;
-    }) as Response;
   }
 }

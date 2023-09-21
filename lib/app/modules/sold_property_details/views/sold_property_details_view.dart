@@ -6,8 +6,8 @@ import '../../../../common/color_manager.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/attachament_title_public_widget.dart';
-import '../../../../common/widgets/custom_appbar.dart';
-import '../../../../common/widgets/custom_drawer.dart';
+import '../../../../common/widgets/custom_details_app_bar.dart';
+import '../../../../common/widgets/no_internet_connection_widget.dart';
 import '../../../../common/widgets/second_custom_loading.dart';
 import '../controllers/sold_property_details_controller.dart';
 import '../widgets/sold_property_attachment.dart';
@@ -21,13 +21,16 @@ class SoldPropertyDetailsView extends GetView<SoldPropertyDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
+    return Obx(() => controller.connectionController.isConnected.isTrue
+        ? RefreshIndicator(
         color: ColorManager.mainColor,
         onRefresh: () async {
           controller.onInit();
         },
         child: Scaffold(
-          appBar: customAppBar(title: Strings.property),
+          appBar: customDetailsAppBar(
+              title:
+                  "${Strings.property} (${controller.soldProperty.name ?? Strings.na})"),
           floatingActionButton: FloatingActionButton(
               onPressed: () {
                 controller.saveProperty();
@@ -44,13 +47,10 @@ class SoldPropertyDetailsView extends GetView<SoldPropertyDetailsController> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                      SizedBox(
-                        height: 20.h,
-                      ),
+                      SizedBox(height: 20.h),
                       Padding(
-                        padding: EdgeInsets.all(10.h),
-                        child: Row(
-                          children: [
+                          padding: EdgeInsets.all(10.h),
+                          child: Row(children: [
                             SvgPicture.asset(ImagePaths.group77,
                                 height: 24.h, width: 26.w),
                             SizedBox(
@@ -58,26 +58,24 @@ class SoldPropertyDetailsView extends GetView<SoldPropertyDetailsController> {
                             ),
                             Expanded(
                                 child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(Strings.propertyTitle,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 10.sp,
-                                        color: ColorManager.mainColor)),
-                                SizedBox(
-                                  height: 5.h,
-                                ),
-                                Text(controller.soldProperty.name ?? Strings.na,
-                                    style: TextStyle(
-                                        fontSize: 15.sp,
-                                        color: ColorManager.black))
-                              ],
-                            )),
-                          ],
-                        ),
-                      ),
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                  Text(Strings.propertyTitle,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 10.sp,
+                                          color: ColorManager.mainColor)),
+                                  SizedBox(height: 5.h),
+                                  Text(
+                                      controller.soldProperty.name ??
+                                          Strings.na,
+                                      style: TextStyle(
+                                          fontSize: 15.sp,
+                                          color: ColorManager.black))
+                                ]))
+                          ])),
                       SizedBox(height: 20.h),
                       const SoldPropertyGeneralDetailsWidget(),
                       SizedBox(height: 20.h),
@@ -119,8 +117,6 @@ class SoldPropertyDetailsView extends GetView<SoldPropertyDetailsController> {
                     : false,
                 child: const Center(child: SecondCustomLoading())))
           ]),
-          drawer:
-              customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
-        ));
+        )) : const NoInternetConnectionView());
   }
 }

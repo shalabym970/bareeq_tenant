@@ -9,17 +9,14 @@ class VerticalListLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: EdgeInsets.symmetric(vertical: 5.h),
-      primary: false,
-      shrinkWrap: true,
-      itemCount: 1.sh / 1.5 ~/ height,
-      itemBuilder: ((_, index) {
-        return Padding(
-            padding: EdgeInsets.symmetric(vertical: 5.h),
-            child: ShimmerWidget.rectangular(
-              height: height,
-            ));
-      }),
-    );
+        padding: EdgeInsets.symmetric(vertical: 5.h),
+        primary: false,
+        shrinkWrap: true,
+        itemCount: 1.sh / 1.5 ~/ height,
+        itemBuilder: ((_, index) {
+          return Padding(
+              padding: EdgeInsets.symmetric(vertical: 5.h),
+              child: ShimmerWidget.rectangular(height: height));
+        }));
   }
 }

@@ -7,6 +7,7 @@ import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../repositories/profile_repo.dart';
+import '../../../services/check_internet_connection_service.dart';
 
 class AddContactController extends GetxController {
   final firstNameController = TextEditingController();
@@ -19,6 +20,7 @@ class AddContactController extends GetxController {
   final submitLoading = false.obs;
   final _contact = Contact().obs;
   final profileRepo = ProfileRepo();
+  final connectionController = Get.find<InternetConnectionController>();
 
   submitNewContact() async {
     try {

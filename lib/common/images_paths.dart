@@ -47,12 +47,13 @@ class ImagePaths {
   static const String whiteSettings = "${base}drawer/white_settings.svg";
   static const String drill = "${base}drill.svg";
   static const String upload = "${base}upload.svg";
-  static const String logoWhite = "${base}Logo-white.svg";
   static const String logoWithBg = "${base}logo_with_bg.png";
-  static const String logoWithoutBg = "${base}logo_no_bg.png";
+  static const String logoWithoutBg = "${base}logo_without_bg.png";
   static const String filter = "${base}filter.svg";
   static const String magazin = "${base}inquiry/magazin.svg";
   static const String firstLoading = "${base}animations/first_loading.json";
   static const String error = "${base}error.svg";
   static const String dashboard = "${base}drawer/dashboard.svg";
+  static const String noInternetConnection =
+      '${base}no_internet_connection.json';
 }

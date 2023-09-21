@@ -13,6 +13,7 @@ import '../../../models/work_permit.dart';
 import '../../../repositories/work_permit_repo.dart';
 import 'dart:io';
 import '../../../services/attachment_services.dart';
+import '../../../services/check_internet_connection_service.dart';
 import '../../dashboard/controllers/dashboard_controller.dart';
 
 class WorkPermitDetailsController extends GetxController {
@@ -45,6 +46,8 @@ class WorkPermitDetailsController extends GetxController {
   final workPermitRepo = WorkPermitRepo();
   final messagesRepo = MessagesRepo();
   final attachmentRepo = AttachmentRepo();
+  final connectionController = Get.find<InternetConnectionController>();
+
   WorkPermit workPermit = Get.arguments;
   File? file;
 

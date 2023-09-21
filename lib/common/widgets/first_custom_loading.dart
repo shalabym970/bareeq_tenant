@@ -11,7 +11,7 @@ class FirstCustomLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Lottie.asset(ImagePaths.firstLoading,
-          width: Get.width, height: Get.height/3, alignment: Alignment.center),
+          width: Get.width, height: Get.height/3, alignment: Alignment.center)
     );
   }
 }

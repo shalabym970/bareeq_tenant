@@ -93,8 +93,8 @@ class UploadedAttachmentWidget extends StatelessWidget {
                             fontSize: 12.sp,
                             color: Colors.black.withOpacity(0.7)));
                   }
-                },
-              ),
+                }
+              )
             )
           ])),
       Positioned(
@@ -104,11 +104,11 @@ class UploadedAttachmentWidget extends StatelessWidget {
           icon: Icon(
             Icons.cancel,
             color: Colors.red,
-            size: 20.sp,
+            size: 20.sp
           ),
-          onPressed: onPressedCancel,
-        ),
-      ),
+          onPressed: onPressedCancel
+        )
+      )
     ]);
   }
 }

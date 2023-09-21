@@ -28,16 +28,16 @@ class CustomErrorWidget extends StatelessWidget {
             SvgPicture.asset(ImagePaths.error,
                 height: iconHeight, width: iconWidth),
             SizedBox(
-              width: 10.w,
+              width: 10.w
             ),
             Text(
               ErrorStrings.publicErrorMessage,
               style: TextStyle(
                   fontSize: fontSize ?? 12.sp,
                   color: ColorManager.red,
-                  fontWeight: FontWeight.w500),
+                  fontWeight: FontWeight.w500)
             )
-          ],
+          ]
         ));
   }
 }

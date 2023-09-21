@@ -8,6 +8,7 @@ import '../../../../common/widgets/ui.dart';
 import '../../../models/unit.dart';
 import '../../../repositories/cases_repo.dart';
 import '../../../repositories/work_permit_repo.dart';
+import '../../../services/check_internet_connection_service.dart';
 import '../../dashboard/controllers/dashboard_controller.dart';
 
 class AddCaseController extends GetxController {
@@ -25,6 +26,7 @@ class AddCaseController extends GetxController {
   final selectedPriority = Rxn<String>();
   final workPermitRepo = WorkPermitRepo();
   final casesRepo = CasesRepo();
+  final connectionController = Get.find<InternetConnectionController>();
 
   @override
   onInit() async {

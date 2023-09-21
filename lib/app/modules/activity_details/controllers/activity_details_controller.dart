@@ -10,6 +10,7 @@ import '../../../models/message.dart';
 import '../../../repositories/attachment_repo.dart';
 import '../../../repositories/messages_repo.dart';
 import '../../../services/attachment_services.dart';
+import '../../../services/check_internet_connection_service.dart';
 import '../../fit_out_process_details/controllers/fit_out_process_details_controller.dart';
 
 class ActivityDetailsController extends GetxController {
@@ -25,6 +26,7 @@ class ActivityDetailsController extends GetxController {
   final attachmentRepo = AttachmentRepo();
   final submitLoading = false.obs;
   final deletingLoading = false.obs;
+  final connectionController = Get.find<InternetConnectionController>();
 
   FitOutStepModel fitOutStep = Get.arguments;
 

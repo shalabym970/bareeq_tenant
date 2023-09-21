@@ -10,7 +10,8 @@ class AuthMiddleware extends GetMiddleware {
   RouteSettings? redirect(String? route) {
     if (Get.find<SessionServices>().hasSession()) {
       Get.find<SessionServices>().getSessionUser();
-      Get.log("============= user id  : ${ CashHelper.getData(key: 'user_id')} ===============");
+      Get.log(
+          "============= user id  : ${CashHelper.getData(key: 'user_id')} ===============");
       Get.log("============= initial route is : dashboard ===============");
       return const RouteSettings(name: Routes.dashboard);
     }

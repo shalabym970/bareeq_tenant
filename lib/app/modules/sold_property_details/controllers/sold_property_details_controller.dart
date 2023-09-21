@@ -12,6 +12,7 @@ import '../../../models/message.dart';
 import '../../../repositories/attachment_repo.dart';
 import '../../../repositories/messages_repo.dart';
 import '../../../services/attachment_services.dart';
+import '../../../services/check_internet_connection_service.dart';
 import '../../../services/session_services.dart';
 import '../../properties/controllers/properties_controller.dart';
 
@@ -28,6 +29,8 @@ class SoldPropertyDetailsController extends GetxController {
   final messagesRepo = MessagesRepo();
   final attachFile = Rxn<File>();
   final uploadedAttachments = <Attachment>[].obs;
+  final connectionController = Get.find<InternetConnectionController>();
+
   File? file;
   SoldProperty soldProperty = Get.arguments;
 

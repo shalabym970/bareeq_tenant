@@ -7,6 +7,7 @@ import '../../../helper/cash_helper.dart';
 import '../../../models/contact_model.dart';
 import '../../../repositories/profile_repo.dart';
 import '../../../routes/app_routes.dart';
+import '../../../services/check_internet_connection_service.dart';
 import '../../../services/session_services.dart';
 
 class ProfileController extends GetxController {
@@ -17,7 +18,13 @@ class ProfileController extends GetxController {
   final changeProfileKey = GlobalKey<FormState>();
   final changeProfileLoading = false.obs;
   final _contact = Contact().obs;
+  final connectionController = Get.find<InternetConnectionController>();
+
   bool profileIsChanged = false;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController accountNameController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
   TextEditingController jobTitleController = TextEditingController();
   TextEditingController mobileNumberController = TextEditingController();
   TextEditingController crNumberController = TextEditingController();
@@ -26,13 +33,21 @@ class ProfileController extends GetxController {
   @override
   void onInit() {
     jobTitleController =
-        TextEditingController(text: currentUser.jobTile.toString());
+        TextEditingController(text: currentUser.jobTile ?? Strings.na);
     mobileNumberController =
-        TextEditingController(text: currentUser.mobilePhone.toString());
+        TextEditingController(text: currentUser.mobilePhone ?? Strings.na);
     crNumberController =
         TextEditingController(text: currentUser.crNumber.toString());
     cprNumberController =
         TextEditingController(text: currentUser.cprNumber.toString());
+    firstNameController =
+        TextEditingController(text: currentUser.firstName ?? Strings.na);
+    lastNameController =
+        TextEditingController(text: currentUser.lastName ?? Strings.na);
+    emailController =
+        TextEditingController(text: currentUser.emailAddress ?? Strings.na);
+    accountNameController =
+        TextEditingController(text: currentUser.account?.name ?? Strings.na);
     getContacts();
     super.onInit();
   }
@@ -46,8 +61,11 @@ class ProfileController extends GetxController {
       errorContacts.value = false;
       loadingContacts.value = true;
 
-      contacts.assignAll(
-          await profileRepo.getContacts(accountId: Get.find<SessionServices>().currentUser.value.accountCustomerId!));
+      contacts.assignAll(await profileRepo.getContacts(
+          accountId: Get.find<SessionServices>()
+              .currentUser
+              .value
+              .accountCustomerId!));
     } catch (e) {
       errorContacts.value = true;
       Get.log(' ========== error contacts : $e ==========');

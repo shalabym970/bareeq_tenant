@@ -7,8 +7,8 @@ import '../../../../common/color_manager.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/attachament_title_public_widget.dart';
-import '../../../../common/widgets/custom_appbar.dart';
-import '../../../../common/widgets/custom_drawer.dart';
+import '../../../../common/widgets/custom_details_app_bar.dart';
+import '../../../../common/widgets/no_internet_connection_widget.dart';
 import '../../../../common/widgets/second_custom_loading.dart';
 import '../controllers/case_details_controller.dart';
 import '../widgets/attachments/case_attachments_list.dart';
@@ -22,7 +22,8 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    return  Obx(() => controller.connectionController.isConnected.isTrue
+        ? WillPopScope(
         onWillPop: () async {
           if (controller.uploadedFiles.isNotEmpty) {
             Ui.confirmDialog(
@@ -45,7 +46,9 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
               controller.onInit();
             },
             child: Scaffold(
-                appBar: customAppBar(title: Strings.case_),
+                appBar: customDetailsAppBar(
+                    title:
+                        "${Strings.case_} (${controller.cases.title ?? Strings.na})"),
                 floatingActionButton: FloatingActionButton(
                     onPressed: () {
                       controller.saveCase();
@@ -152,9 +155,6 @@ class CaseDetailsView extends GetView<CaseDetailsController> {
                           ? true
                           : false,
                       child: const Center(child: SecondCustomLoading())))
-                ]),
-                drawer:
-                    customDrawer() // This trailing comma makes auto-formatting nicer for build methods.
-                )));
+                ])))): const NoInternetConnectionView());
   }
 }

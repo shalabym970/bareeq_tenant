@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import '../../../../common/color_manager.dart';
 import '../../../../common/images_paths.dart';
 import '../../../../common/strings/strings.dart';
-import '../../../../common/widgets/custom_appbar.dart';
-import '../../../../common/widgets/custom_drawer.dart';
+import '../../../../common/widgets/custom_details_app_bar.dart';
+import '../../../../common/widgets/no_internet_connection_widget.dart';
 import '../controllers/fit_out_process_details_controller.dart';
 import '../widgets/Fit_out_process_dates_widget.dart';
 import '../widgets/Fit_out_process_general_details.dart';
@@ -18,13 +18,16 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
+    return Obx(() => controller.connectionController.isConnected.isTrue
+        ? RefreshIndicator(
         color: ColorManager.mainColor,
         onRefresh: () async {
           controller.onInit();
         },
         child: Scaffold(
-          appBar: customAppBar(title: Strings.fitOutProcess),
+          appBar: customDetailsAppBar(
+              title:
+                  "${Strings.fitOutProcess} (${controller.fitOut.name ?? Strings.na})"),
           body: Padding(
               padding: EdgeInsets.only(right: 10.w, left: 10.w),
               child: SingleChildScrollView(
@@ -82,8 +85,6 @@ class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
                             height: 185.h, child: const FitOutMessagesList()),
                         SizedBox(height: 50.h)
                       ]))),
-          drawer:
-              customDrawer(), // This trailing comma makes auto-formatting nicer for build methods.
-        ));
+        ))  : const NoInternetConnectionView());
   }
 }
