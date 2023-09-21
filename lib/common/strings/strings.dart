@@ -255,4 +255,6 @@ class Strings {
       "and meet all the legal requirements in the field of occupational safety and health as per Bahrain Ministry of Labour, Health & Safety regulations.";
   static const String dontChangedAnyThing =
       "You don't make any change to save it";
+  static const String notConnectedToInternet =
+      "You are not connected to the Internet";
 }

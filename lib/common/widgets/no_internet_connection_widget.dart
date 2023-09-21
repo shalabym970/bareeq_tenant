@@ -1,3 +1,4 @@
+import 'package:bareeq/common/strings/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
@@ -19,7 +20,7 @@ class NoInternetConnectionView extends StatelessWidget {
                   width: 300.w, height: 300.h, alignment: Alignment.center),
               SizedBox(height: 20.h),
               Center(
-                  child: Text("no_internet_connection",
+                  child: Text(Strings.notConnectedToInternet,
                       style: TextStyle(
                           fontSize: 18.sp, color: ColorManager.white)))
             ]));
