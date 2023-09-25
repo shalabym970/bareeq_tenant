@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:connectivity/connectivity.dart';
 import 'package:get/get.dart';
 import '../../../../common/constants.dart';
 import '../../../../common/strings/error_strings.dart';
@@ -31,10 +32,14 @@ class ActivityDetailsController extends GetxController {
   FitOutStepModel fitOutStep = Get.arguments;
 
   @override
-  onInit() {
-    getAttachments();
-    getMessages();
-    super.onInit();
+  onInit() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      getAttachments();
+      getMessages();
+      super.onInit();
+    }
   }
 
   getMessages() async {

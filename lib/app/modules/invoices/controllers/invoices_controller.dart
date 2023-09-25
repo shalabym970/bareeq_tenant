@@ -21,8 +21,6 @@ class InvoicesController extends GetxController with Searching {
         .where((item) =>
                 item.name!.toLowerCase().contains(searchString) ||
                 item.invoiceNumber!.toLowerCase().contains(searchString)
-            // ||
-            //  item.property!.name!.toLowerCase().contains(searchString)
             )
         .toList();
   }

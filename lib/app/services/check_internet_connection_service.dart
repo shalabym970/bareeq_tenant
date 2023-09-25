@@ -9,10 +9,10 @@ class InternetConnectionController extends GetxController {
   StreamSubscription? connectivityStreamSubscription;
 
   InternetConnectionController({required this.connectivity}) {
-    monitorInternetConnection();
+   monitorInternetConnection();
   }
 
-  StreamSubscription<ConnectivityResult> monitorInternetConnection() {
+   StreamSubscription<ConnectivityResult> monitorInternetConnection() {
     return connectivityStreamSubscription =
         connectivity.onConnectivityChanged.listen((connectionResult) {
       if (connectionResult == ConnectivityResult.wifi) {

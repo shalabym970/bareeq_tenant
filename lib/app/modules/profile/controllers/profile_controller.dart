@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
@@ -31,15 +32,15 @@ class ProfileController extends GetxController {
   TextEditingController cprNumberController = TextEditingController();
 
   @override
-  void onInit() {
+  void onInit() async {
     jobTitleController =
         TextEditingController(text: currentUser.jobTile ?? Strings.na);
     mobileNumberController =
         TextEditingController(text: currentUser.mobilePhone ?? Strings.na);
     crNumberController =
-        TextEditingController(text: currentUser.crNumber.toString());
+        TextEditingController(text: currentUser.crNumber ?? Strings.na);
     cprNumberController =
-        TextEditingController(text: currentUser.cprNumber.toString());
+        TextEditingController(text: currentUser.cprNumber ?? Strings.na);
     firstNameController =
         TextEditingController(text: currentUser.firstName ?? Strings.na);
     lastNameController =
@@ -48,7 +49,12 @@ class ProfileController extends GetxController {
         TextEditingController(text: currentUser.emailAddress ?? Strings.na);
     accountNameController =
         TextEditingController(text: currentUser.account?.name ?? Strings.na);
-    getContacts();
+    var connectivityResult = await (Connectivity().checkConnectivity());
+
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      getContacts();
+    }
     super.onInit();
   }
 
@@ -83,8 +89,8 @@ class ProfileController extends GetxController {
           _contact.value = Contact(
               mobilePhone: mobileNumberController.text,
               jobTile: jobTitleController.text,
-              crNumber: int.tryParse(crNumberController.text),
-              cprNumber: int.tryParse(cprNumberController.text));
+              crNumber: crNumberController.text,
+              cprNumber: cprNumberController.text);
           await profileRepo
               .updateProfile(request: _contact.value)
               .then((value) {
@@ -93,9 +99,9 @@ class ProfileController extends GetxController {
             Get.find<SessionServices>().currentUser.value.mobilePhone =
                 mobileNumberController.text;
             Get.find<SessionServices>().currentUser.value.cprNumber =
-                int.tryParse(cprNumberController.text);
+                cprNumberController.text;
             Get.find<SessionServices>().currentUser.value.crNumber =
-                int.tryParse(crNumberController.text);
+                crNumberController.text;
           }).then((value) => updateSharedUserData());
 
           Ui.showToast(content: Strings.profileChangedSuccessfully);
@@ -117,10 +123,8 @@ class ProfileController extends GetxController {
     CashHelper.saveData(key: 'user_job_title', value: jobTitleController.text);
     CashHelper.saveData(
         key: 'user_mobilePhone', value: mobileNumberController.text);
-    CashHelper.saveData(
-        key: 'user_crNumber', value: crNumberController.text.toString());
-    CashHelper.saveData(
-        key: 'user_cprNumber', value: cprNumberController.text.toString());
+    CashHelper.saveData(key: 'user_crNumber', value: crNumberController.text);
+    CashHelper.saveData(key: 'user_cprNumber', value: cprNumberController.text);
   }
 
   @override

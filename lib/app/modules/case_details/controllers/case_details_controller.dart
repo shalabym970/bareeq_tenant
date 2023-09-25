@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:bareeq/app/models/case_model.dart';
 import 'package:bareeq/app/models/message.dart';
 import 'package:bareeq/common/constants.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/strings/strings.dart';
@@ -32,9 +33,13 @@ class CaseDetailsController extends GetxController {
 
   @override
   void onInit() async {
-    getMessages();
-    getAttachments();
-    super.onInit();
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      getMessages();
+      getAttachments();
+      super.onInit();
+    }
   }
 
   @override

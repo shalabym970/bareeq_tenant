@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../../../common/constants.dart';
@@ -30,8 +31,13 @@ class MessageDetailsController extends GetxController {
 
   @override
   void onInit() async {
-    getAttachments();
-    super.onInit();
+    var connectivityResult = await (Connectivity().checkConnectivity());
+
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      getAttachments();
+      super.onInit();
+    }
   }
 
   getAttachments() async {

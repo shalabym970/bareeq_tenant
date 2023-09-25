@@ -6,6 +6,7 @@ import 'package:bareeq/app/repositories/lease_repo.dart';
 import 'package:bareeq/app/repositories/work_permit_repo.dart';
 import 'package:bareeq/app/services/session_services.dart';
 import 'package:bareeq/common/strings/error_strings.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:get/get.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../models/case_model.dart';
@@ -38,22 +39,27 @@ class DashboardController extends GetxController {
   final fitOutRepo = FitOutRepo();
   final leasesRepo = PropertiesRepo();
   final connectionController = Get.find<InternetConnectionController>();
-  final  streamingService = StreamingService();
+  final streamingService = StreamingService();
 
   Contact get currentUser {
     return Get.find<SessionServices>().currentUser.value;
   }
 
   @override
-  void onInit() {
-    Get.log(
-        ' ============ current user : ${currentUser.accountCustomerId} ========== ');
-    getWorkPermits();
-    getInvoices();
-    getCases();
-    getFitOuts();
-    getLeases();
-    super.onInit();
+  void onInit() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      Get.log(
+          ' ============ current user : ${currentUser.accountCustomerId} ========== ');
+      getWorkPermits();
+      getInvoices();
+      getCases();
+      getFitOuts();
+      getLeases();
+      super.onInit();
+    }
   }
 
   void getInvoices() async {

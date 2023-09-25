@@ -18,56 +18,49 @@ class DashboardView extends GetView<DashboardController> {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-        color: ColorManager.mainColor,
-        onRefresh: () async {
-          controller.onInit();
-        },
-        child: Obx(
-          () => controller.connectionController.isConnected.isTrue
-                ? Scaffold(
-                    appBar: customMainAppBar(title: Strings.dashboard),
-                    body: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10.w),
-                        child: SingleChildScrollView(
-                            physics: const AlwaysScrollableScrollPhysics(),
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(height: 20.h),
-                                  Center(
-                                      child: RichText(
-                                          text: TextSpan(
-                                              text: Strings.welcome,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 17.sp,
-                                                  color:
-                                                      ColorManager.mainColor),
-                                              children: <TextSpan>[
-                                        TextSpan(
-                                            text: controller
-                                                .currentUser.firstName,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 17.sp,
-                                                color: ColorManager.black))
-                                      ]))),
-                                  SizedBox(
-                                    height: 20.h,
-                                  ),
-                                  const RecentWorkPermitWidget(),
-                                  const RecentCasesWidget(),
-                                  const RecentInvoicesWidget(),
-                                  const RecentPropertiesWidget(),
-                                  const RecentFitOutProcessesWidget()
-                                ]))),
-                    drawer: customDrawer())
-                : const NoInternetConnectionView()
-
-
-          // This trailing comma makes auto-formatting nicer for build methods.
-        ));
+    return Obx(() => controller.connectionController.isConnected.isTrue
+        ? RefreshIndicator(
+            color: ColorManager.mainColor,
+            onRefresh: () async {
+              controller.onInit();
+            },
+            child: Scaffold(
+                appBar: customMainAppBar(title: Strings.dashboard),
+                body: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.w),
+                    child: SingleChildScrollView(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(height: 20.h),
+                              Center(
+                                  child: RichText(
+                                      text: TextSpan(
+                                          text: Strings.welcome,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 17.sp,
+                                              color: ColorManager.mainColor),
+                                          children: <TextSpan>[
+                                    TextSpan(
+                                        text: controller.currentUser.firstName,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 17.sp,
+                                            color: ColorManager.black))
+                                  ]))),
+                              SizedBox(
+                                height: 20.h,
+                              ),
+                              const RecentWorkPermitWidget(),
+                              const RecentCasesWidget(),
+                              const RecentInvoicesWidget(),
+                              const RecentPropertiesWidget(),
+                              const RecentFitOutProcessesWidget()
+                            ]))),
+                drawer: customDrawer()))
+        : const NoInternetConnectionView());
   }
 }

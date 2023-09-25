@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:bareeq/app/models/sold_property.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:get/get.dart';
 import 'package:mime/mime.dart';
 import '../../../../common/constants.dart';
@@ -39,10 +40,14 @@ class SoldPropertyDetailsController extends GetxController {
   }
 
   @override
-  onInit() {
-    getMessages();
-    getAttachments();
-    super.onInit();
+  onInit() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      getMessages();
+      getAttachments();
+      super.onInit();
+    }
   }
 
   @override

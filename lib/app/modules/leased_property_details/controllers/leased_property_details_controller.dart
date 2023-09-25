@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
@@ -22,10 +23,15 @@ class LeasedPropertyDetailsController extends GetxController {
   LeasedProperty lease = Get.arguments;
 
   @override
-  onInit() {
-    getMessages();
-    getAttachments();
-    super.onInit();
+  onInit() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      getMessages();
+      getAttachments();
+      super.onInit();
+    }
   }
 
   @override
@@ -54,8 +60,8 @@ class LeasedPropertyDetailsController extends GetxController {
     try {
       errorAttachments.value = false;
       loadingAttachments.value = true;
-      attachments.assignAll(
-          await attachmentRepo.getAttachments(recordId: lease.id!));
+      attachments
+          .assignAll(await attachmentRepo.getAttachments(recordId: lease.id!));
     } catch (e) {
       errorAttachments.value = true;
       Get.showSnackbar(

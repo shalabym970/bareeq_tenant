@@ -19,7 +19,11 @@ class LoginView extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => controller.connectionController.isConnected.isTrue
-        ? Scaffold(
+        ?  GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child:Scaffold(
             backgroundColor: ColorManager.white,
             body: SingleChildScrollView(
                 child: Padding(
@@ -132,7 +136,7 @@ class LoginView extends GetView<AuthController> {
                                           textAndIconColor: ColorManager.white)
                                     ])
                                   ])))
-                        ]))))
+                        ])))))
         : const NoInternetConnectionView());
   }
 }

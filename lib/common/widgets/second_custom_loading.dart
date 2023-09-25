@@ -11,7 +11,7 @@ class SecondCustomLoading extends StatelessWidget {
     return Center(
         child: Lottie.asset(ImagePaths.secondLoading,
             width: Get.width,
-            height: Get.height / 5,
+            height: Get.height / 6,
             alignment: Alignment.center));
   }
 }

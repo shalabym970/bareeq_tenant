@@ -7,6 +7,7 @@ import 'package:bareeq/app/services/attachment_services.dart';
 import 'package:bareeq/common/color_manager.dart';
 import 'package:bareeq/common/constants.dart';
 import 'package:bareeq/common/widgets/ui.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -56,11 +57,16 @@ class CreateWorkPermitController extends GetxController {
 
   @override
   onInit() async {
-    contractorValue.value = null;
-    relatedUnitValue.value = null;
-    getRelatedUnits();
-    getContractors();
-    super.onInit();
+    var connectivityResult = await (Connectivity().checkConnectivity());
+
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      contractorValue.value = null;
+      relatedUnitValue.value = null;
+      getRelatedUnits();
+      getContractors();
+      super.onInit();
+    }
   }
 
   Future<void> selectDate({required bool dateTypeIsStart}) async {

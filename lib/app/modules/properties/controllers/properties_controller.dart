@@ -1,4 +1,5 @@
 import 'package:bareeq/app/models/leased_property.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
@@ -24,12 +25,15 @@ class PropertiesController extends GetxController with Searching {
   final propertiesRepo = PropertiesRepo();
   final connectionController = Get.find<InternetConnectionController>();
 
-
   @override
-  void onInit() {
-    getLeasedProperties();
-    getSoldProperties();
-    super.onInit();
+  void onInit() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      getLeasedProperties();
+      getSoldProperties();
+      super.onInit();
+    }
   }
 
   Contact get currentUser {

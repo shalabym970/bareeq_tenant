@@ -90,8 +90,7 @@ class ContactApi extends GetxService {
 
   /// update user profile
   static Future updateProfile({required Contact request}) async {
-    String url =
-        "contacts(${Get.find<SessionServices>().currentUser.value.id})";
+    String url = "contacts(${request.id})";
     var response = await ApiHelper.patchData(body: request.toJson(), url: url);
     Get.log(
         '=============== update user profile :  ${response.body} ==========');

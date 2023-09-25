@@ -1,6 +1,7 @@
 import 'package:bareeq/app/models/fit_out_model.dart';
 import 'package:bareeq/app/models/fit_out_step_model.dart';
 import 'package:bareeq/app/repositories/fit_out_repo.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
@@ -24,9 +25,13 @@ class FitOutProcessDetailsController extends GetxController {
 
   @override
   void onInit() async {
-    getMessages();
-    getFitOutSteps();
-    super.onInit();
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      getMessages();
+      getFitOutSteps();
+      super.onInit();
+    }
   }
 
   @override
@@ -34,7 +39,6 @@ class FitOutProcessDetailsController extends GetxController {
     Get.log('========== FitOutProcessDetailsController is closed =========');
     Get.delete<FitOutProcessDetailsController>();
   }
-
 
   getMessages() async {
     try {
@@ -67,6 +71,4 @@ class FitOutProcessDetailsController extends GetxController {
       loadingFitOutSteps.value = false;
     }
   }
-
-
 }

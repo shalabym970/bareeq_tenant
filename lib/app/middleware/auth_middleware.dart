@@ -1,8 +1,10 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../helper/cash_helper.dart';
 import '../routes/app_routes.dart';
+import '../services/check_internet_connection_service.dart';
 import '../services/session_services.dart';
 
 class AuthMiddleware extends GetMiddleware {

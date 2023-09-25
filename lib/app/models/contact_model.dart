@@ -20,7 +20,9 @@ class Contact extends Equatable {
       this.businessPhone,
       this.mobilePhone,
       this.jobTile,
-      this.currency});
+      this.currency,
+      this.otp,
+      this.resetPassword});
 
   final String? emailAddress;
   final String? fullName;
@@ -31,12 +33,14 @@ class Contact extends Equatable {
   final String? lastName;
   final String? firstName;
   late String? password;
-  late int? crNumber;
-  late int? cprNumber;
+  late String? crNumber;
+  late String? cprNumber;
   final String? currency;
   final String? businessPhone;
   late String? mobilePhone;
   late String? jobTile;
+  final bool? resetPassword;
+  final String? otp;
   final Account? account;
 
   factory Contact.fromJson(Map<String, dynamic> json) {
@@ -51,8 +55,8 @@ class Contact extends Equatable {
       lastName: json["lastname"],
       firstName: json["firstname"],
       password: json['blser_password'],
-      cprNumber: json["bls_cprnumber"],
-      crNumber: json["bls_crnumber"],
+      cprNumber: json["bls_cprnumber"].toString(),
+      crNumber: json["bls_crnumber"].toString(),
       mobilePhone: json["mobilephone"],
       businessPhone: json["telephone1"],
       jobTile: json["jobtitle"],
@@ -74,9 +78,11 @@ class Contact extends Equatable {
         if (mobilePhone != null) 'mobilephone': mobilePhone,
         if (businessPhone != null) 'telephone1': businessPhone,
         if (jobTile != null) "jobtitle": jobTile,
-        if (crNumber != null) "bls_crnumber": crNumber,
-        if (cprNumber != null) "bls_cprnumber": cprNumber,
-        if (password != null) "blser_password": password
+        if (crNumber != null) "bls_crnumber": int.tryParse(crNumber!),
+        if (cprNumber != null) "bls_cprnumber": int.tryParse(cprNumber!),
+        if (password != null) "blser_password": password,
+        if (otp != null) "blser_otptoken": otp,
+        if (resetPassword != null) "blser_resetpassword": resetPassword,
       };
 
   @override

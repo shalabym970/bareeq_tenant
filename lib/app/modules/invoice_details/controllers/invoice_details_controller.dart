@@ -1,4 +1,5 @@
 import 'package:bareeq/app/models/invoice_item.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:get/get.dart';
 import '../../../../common/strings/error_strings.dart';
 import '../../../../common/widgets/ui.dart';
@@ -28,11 +29,15 @@ class InvoiceDetailsController extends GetxController {
   Invoice invoice = Get.arguments;
 
   @override
-  void onInit() {
-    getInvoiceItems();
-    getMessages();
-    getAttachments();
-    super.onInit();
+  void onInit() async{
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      getInvoiceItems();
+      getMessages();
+      getAttachments();
+      super.onInit();
+    }
   }
 
   @override

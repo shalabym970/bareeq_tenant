@@ -1,4 +1,5 @@
 import 'package:bareeq/app/models/case_model.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common/constants.dart';
@@ -30,9 +31,13 @@ class AddCaseController extends GetxController {
 
   @override
   onInit() async {
-    relatedUnitValue.value = null;
-    getRelatedUnits();
-    super.onInit();
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      relatedUnitValue.value = null;
+      getRelatedUnits();
+      super.onInit();
+    }
   }
 
   void getRelatedUnits() async {

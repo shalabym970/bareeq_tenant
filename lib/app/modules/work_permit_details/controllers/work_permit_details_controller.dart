@@ -3,6 +3,7 @@ import 'package:bareeq/app/models/work_permit_item.dart';
 import 'package:bareeq/app/repositories/attachment_repo.dart';
 import 'package:bareeq/app/repositories/messages_repo.dart';
 import 'package:bareeq/common/constants.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:get/get.dart';
 import 'package:mime/mime.dart';
 import '../../../../common/strings/error_strings.dart';
@@ -52,10 +53,14 @@ class WorkPermitDetailsController extends GetxController {
   File? file;
 
   @override
-  onInit() {
-    getWorkPermitItems();
-    getMessages();
-    getAttachments();
+  onInit() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      getWorkPermitItems();
+      getMessages();
+      getAttachments();
+    }
     methodFile.value = null;
     riskFile.value = null;
     insuranceFile.value = null;
@@ -284,7 +289,6 @@ class WorkPermitDetailsController extends GetxController {
           documentBody: base64Body,
           mimeType: mimeType,
         ));
-
       } else {
         insuranceAttach.first.mimeType = mimeType;
         insuranceAttach.first.documentBody = base64Body;
