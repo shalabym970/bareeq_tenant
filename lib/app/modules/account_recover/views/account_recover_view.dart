@@ -9,10 +9,10 @@ import '../../../../common/widgets/custom_text_field.dart';
 import '../../../../common/widgets/no_internet_connection_widget.dart';
 import '../../../../common/widgets/second_custom_loading.dart';
 import '../../../services/general_services.dart';
-import '../controllers/auth_controller.dart';
+import '../controllers/acount_recover_controller.dart';
 
-class RecoverAccountView extends GetView<AuthController> {
-  const RecoverAccountView({super.key});
+class AccountRecoverView extends GetView<AccountRecoverController> {
+  const AccountRecoverView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,19 +41,20 @@ class RecoverAccountView extends GetView<AuthController> {
                         FocusScope.of(context).unfocus();
                       },
                       child: Padding(
-                          padding: EdgeInsets.only(
-                              top: 30.h, right: 15.w, left: 15.w, bottom: 10.h),
+                          padding: EdgeInsets.symmetric(horizontal: 15.w),
                           child: SingleChildScrollView(
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
+                                    SizedBox(height: 25.h),
                                 Text(Strings.recoverAccountTitle,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 17.sp,
-                                        color: ColorManager.black)),
+                                        color: ColorManager.black),
+                                    textAlign: TextAlign.center),
                                 SizedBox(height: 32.h),
                                 Form(
                                     key: controller.recoverFormKey,
@@ -70,7 +71,8 @@ class RecoverAccountView extends GetView<AuthController> {
                                           }
                                           return null; // Return null to indicate no validation error
                                         },
-                                        keyboardType: TextInputType.emailAddress,
+                                        keyboardType:
+                                            TextInputType.emailAddress,
                                         maxLines: 1,
                                         labelWidget: Text(Strings.email,
                                             style: TextStyle(

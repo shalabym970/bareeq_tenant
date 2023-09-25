@@ -6,6 +6,7 @@ import '../../../../common/strings/strings.dart';
 import '../../../../common/widgets/ui.dart';
 import '../../../helper/cash_helper.dart';
 import '../../../models/contact_model.dart';
+import '../../../routes/app_routes.dart';
 import '../../../services/check_internet_connection_service.dart';
 import '../../../services/session_services.dart';
 
@@ -21,20 +22,36 @@ class ChangePasswordController extends GetxController {
   final currentPasswordVisible = true.obs;
   final newPasswordVisible = true.obs;
   final connectionController = Get.find<InternetConnectionController>();
-
+  Contact changePasswordContact = Get.arguments;
 
   changePassword() async {
     try {
       if (changePasswordKey.currentState!.validate()) {
         changePasswordKey.currentState?.save();
         changePassLoading.value = true;
-        _contact.value = Contact(password: confirmPassController.text);
-        await profileRepo.updateProfile(request: _contact.value).then((value) {
-          Get.find<SessionServices>().currentUser.value.password =
-              confirmPassController.text;
-        }).then((value) => updateSharedUserData());
-        Ui.showToast(content: Strings.passwordChangedSuccessfully);
-        Get.back();
+        if (Get.previousRoute == Routes.otp) {
+          _contact.value = Contact(
+              password: confirmPassController.text,
+              id: changePasswordContact.id);
+          await profileRepo
+              .updateProfile(request: _contact.value)
+              .then((value) {
+            Ui.showToast(content: Strings.passwordChangedSuccessfully);
+            Get.offAllNamed(Routes.login);
+          });
+        } else {
+          _contact.value = Contact(
+              password: confirmPassController.text,
+              id: Get.find<SessionServices>().currentUser.value.id);
+          await profileRepo
+              .updateProfile(request: _contact.value)
+              .then((value) {
+            Get.find<SessionServices>().currentUser.value.password =
+                confirmPassController.text;
+          }).then((value) => updateSharedUserData());
+          Ui.showToast(content: Strings.passwordChangedSuccessfully);
+          Get.back();
+        }
       }
     } catch (e) {
       changePassLoading.value = false;
@@ -46,6 +63,7 @@ class ChangePasswordController extends GetxController {
   }
 
   updateSharedUserData() {
-    CashHelper.saveData(key:'user_password', value :confirmPassController.text.toString());
+    CashHelper.saveData(
+        key: 'user_password', value: confirmPassController.text.toString());
   }
 }

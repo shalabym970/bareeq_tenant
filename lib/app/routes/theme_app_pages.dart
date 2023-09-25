@@ -1,3 +1,4 @@
+import 'package:bareeq/app/modules/account_recover/views/otp_view.dart';
 import 'package:bareeq/app/modules/cases/views/cases_view.dart';
 import 'package:bareeq/app/modules/contacts/bindings/contacts_binding.dart';
 import 'package:bareeq/app/modules/create_work_permit_item/views/create_work_permit_item_view.dart';
@@ -6,11 +7,13 @@ import 'package:bareeq/app/modules/work_permits/views/work_permits_view.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import '../middleware/auth_middleware.dart';
+import '../modules/account_recover/bindings/account_recover_binding.dart';
+import '../modules/account_recover/bindings/otp_binding.dart';
+import '../modules/account_recover/views/account_recover_view.dart';
 import '../modules/activity_details/bindings/activity_details_binding.dart';
 import '../modules/activity_details/views/activity_details_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/login_view.dart';
-import '../modules/auth/views/recover_account_view.dart';
 import '../modules/case_details/bindings/case_details_binding.dart';
 import '../modules/case_details/views/case_details_view.dart';
 import '../modules/cases/bindings/cases_binding.dart';
@@ -80,8 +83,8 @@ class ThemeAppPages {
         binding: InvoiceDetailsBinding()),
     GetPage(
         name: Routes.passwordRecovering,
-        page: () => const RecoverAccountView(),
-        binding: AuthBinding()),
+        page: () => const AccountRecoverView(),
+        binding: AccountRecoverBinding()),
     GetPage(
         name: Routes.leasedPropertyDetails,
         page: () => const LeasedPropertyDetailsView(),
@@ -158,5 +161,7 @@ class ThemeAppPages {
         name: Routes.createWorkPermitItem,
         page: () => const CreateWorkPermitItemView(),
         binding: CreateWorkPermitItemBinding()),
+    GetPage(
+        name: Routes.otp, page: () => const OtpView(), binding: OtpBinding()),
   ];
 }

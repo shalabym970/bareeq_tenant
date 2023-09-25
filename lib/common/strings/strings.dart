@@ -227,6 +227,8 @@ class Strings {
   static const String selectItemType = 'Select Item Type';
   static const String id = 'ID: ';
   static const String ok = 'Ok';
+  static const String resend = 'Resend';
+
   static const String workPermitAddedSuccessfully =
       'Work Permit Added Successfully ';
   static const String workPermitUpdatedSuccessfully =
@@ -257,4 +259,8 @@ class Strings {
       "You don't make any change to save it";
   static const String notConnectedToInternet =
       "You are not connected to the Internet";
+  static const String enterVerificationCode =
+      "Enter the verification code that was sent to you via email";
+  static const String verificationCode = "Verification Code";
+  static const String ifYouDidNotReceivedACode = "if you don't received a code";
 }

@@ -21,6 +21,7 @@ class ErrorStrings {
   static const String failedAddWorkPermit = 'Failed to create work permit';
   static const String failedToSave = 'Failed to save new data!!';
   static const String failedToChangePass = 'Failed to change password !!';
+  static const String failedToResendOtp = 'Failed to resend otp !!';
   static const String failedAddContact = 'Failed to create Contact';
   static const String failedAddWorkCase = 'Failed to add Case';
   static const String enterCompanyName = 'Enter Company Name';
@@ -43,4 +44,7 @@ class ErrorStrings {
   static const String failedReply = 'Failed to reply the message !!';
   static const String errorConvertFileToBase64 =
       'Error converting file to base64: ';
+  static const String nothingMatchingEmail =
+      'Nothing there matching email with inserted email please enter the correct one';
+  static const String wrongOtp = 'Incorrect Otp ';
 }

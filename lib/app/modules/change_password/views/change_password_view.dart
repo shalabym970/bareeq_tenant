@@ -1,3 +1,4 @@
+import 'package:bareeq/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -43,46 +44,54 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                             Form(
                                 key: controller.changePasswordKey,
                                 child: Column(children: [
-                                  Obx(() => CustomTextField(
-                                      hint: Strings.enterCurrentPass,
-                                      controller:
-                                          controller.currentPassController,
-                                      validator: (value) => value!.isEmpty
-                                          ? ErrorStrings.enterCurrentPassword
-                                          : value !=
-                                                  Get.find<SessionServices>()
-                                                      .currentUser
+                                  if (Get.previousRoute == Routes.profile)
+                                    Column(children: [
+                                      Obx(() => CustomTextField(
+                                          hint: Strings.enterCurrentPass,
+                                          controller:
+                                              controller.currentPassController,
+                                          validator: (value) => value!.isEmpty
+                                              ? ErrorStrings
+                                                  .enterCurrentPassword
+                                              : value !=
+                                                      Get.find<
+                                                              SessionServices>()
+                                                          .currentUser
+                                                          .value
+                                                          .password
+                                                  ? ErrorStrings.notMatchPass
+                                                  : null,
+                                          obscureText: controller
+                                              .currentPasswordVisible.value,
+                                          keyboardType:
+                                              TextInputType.visiblePassword,
+                                          suffixIcon: IconButton(
+                                            icon: Icon(
+                                              controller.currentPasswordVisible
                                                       .value
-                                                      .password
-                                              ? ErrorStrings.notMatchPass
-                                              : null,
-                                      obscureText: controller
-                                          .currentPasswordVisible.value,
-                                      keyboardType: TextInputType.visiblePassword,
-                                      suffixIcon: IconButton(
-                                        icon: Icon(
-                                          controller
-                                                  .currentPasswordVisible.value
-                                              ? Icons.visibility_off
-                                              : Icons.visibility,
-                                          color: ColorManager.mainColor,
-                                          size: 20.sp,
-                                        ),
-                                        onPressed: () {
-                                          controller.currentPasswordVisible
-                                                  .value =
-                                              !controller
-                                                  .currentPasswordVisible.value;
-                                        },
-                                      ),
-                                      labelWidget: const LabelTextField(
-                                          label: Strings.currentPassword,
-                                          isRequired: true))),
-                                  SizedBox(height: 20.h),
+                                                  ? Icons.visibility_off
+                                                  : Icons.visibility,
+                                              color: ColorManager.mainColor,
+                                              size: 20.sp,
+                                            ),
+                                            onPressed: () {
+                                              controller.currentPasswordVisible
+                                                      .value =
+                                                  !controller
+                                                      .currentPasswordVisible
+                                                      .value;
+                                            },
+                                          ),
+                                          labelWidget: const LabelTextField(
+                                              label: Strings.currentPassword,
+                                              isRequired: true))),
+                                      SizedBox(height: 20.h),
+                                    ]),
                                   Obx(() => CustomTextField(
                                       hint: Strings.enterNewPass,
                                       controller: controller.newPassController,
-                                      keyboardType: TextInputType.visiblePassword,
+                                      keyboardType:
+                                          TextInputType.visiblePassword,
                                       validator: (value) => value!.isEmpty
                                           ? ErrorStrings.enterNewPassword
                                           : value ==
@@ -129,7 +138,8 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                                               ? ErrorStrings
                                                   .enterCorrectConfirmationPass
                                               : null,
-                                      keyboardType: TextInputType.visiblePassword,
+                                      keyboardType:
+                                          TextInputType.visiblePassword,
                                       obscureText:
                                           controller.newPasswordVisible.value,
                                       labelWidget: const LabelTextField(

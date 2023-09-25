@@ -25,4 +25,5 @@ class Routes {
   static const String activity = "/activity";
   static const String createWorkPermitItem = "/create_work_permit_item";
   static const String contacts = "/contacts";
+
 }
