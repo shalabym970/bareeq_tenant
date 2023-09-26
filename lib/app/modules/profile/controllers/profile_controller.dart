@@ -90,7 +90,8 @@ class ProfileController extends GetxController {
               mobilePhone: mobileNumberController.text,
               jobTile: jobTitleController.text,
               crNumber: crNumberController.text,
-              cprNumber: cprNumberController.text);
+              cprNumber: cprNumberController.text,
+              id: Get.find<SessionServices>().currentUser.value.id);
           await profileRepo
               .updateProfile(request: _contact.value)
               .then((value) {

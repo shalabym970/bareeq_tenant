@@ -22,7 +22,7 @@ class ChangePasswordController extends GetxController {
   final currentPasswordVisible = true.obs;
   final newPasswordVisible = true.obs;
   final connectionController = Get.find<InternetConnectionController>();
-  Contact changePasswordContact = Get.arguments;
+  var changePasswordContact = Get.arguments;
 
   changePassword() async {
     try {
@@ -32,7 +32,7 @@ class ChangePasswordController extends GetxController {
         if (Get.previousRoute == Routes.otp) {
           _contact.value = Contact(
               password: confirmPassController.text,
-              id: changePasswordContact.id);
+              id: changePasswordContact?.id);
           await profileRepo
               .updateProfile(request: _contact.value)
               .then((value) {
