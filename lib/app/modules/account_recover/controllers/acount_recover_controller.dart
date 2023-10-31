@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:bareeq/app/routes/app_routes.dart';
 import 'package:bareeq/app/services/general_services.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,7 +30,7 @@ class AccountRecoverController extends GetxController {
         for (Contact contact in _contacts) {
           if (contact.emailAddress == recoverEmailController.text) {
             foundEmail = true;
-            randomNumber =  GeneralServices.generateOtp();
+            randomNumber = GeneralServices.generateOtp();
             _contact.value = Contact(
                 otp: randomNumber.toString(),
                 resetPassword: true,

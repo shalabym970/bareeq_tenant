@@ -50,30 +50,27 @@ class WorkPermitsView extends GetView<WorkPermitsController> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           CustomTextField(
-                                            hint: Strings.search,
-                                            controller:
-                                                controller.searchController,
-                                            height: 50.h,
-                                            width: 1.sw,
-                                            focusNode: controller.focusNode,
-                                            onChanged: (value) {
-                                              controller.onChangeSearching(
-                                                  searchString: value);
-                                            },
-                                            suffixIcon: controller
-                                                    .isSearching.isTrue
-                                                ? GestureDetector(
-                                                    onTap: () {
-                                                      controller.stopSearch();
-                                                    },
-                                                    child: Icon(
-                                                      Icons.clear,
-                                                      color: ColorManager.black,
-                                                      size: 25.sp,
-                                                    ),
-                                                  )
-                                                : null,
-                                          ),
+                                              hint: Strings.search,
+                                              controller:
+                                                  controller.searchController,
+                                              height: 50.h,
+                                              width: 1.sw,
+                                              focusNode: controller.focusNode,
+                                              onChanged: (value) {
+                                                controller.onChangeSearching(
+                                                    searchString: value);
+                                              },
+                                              suffixIcon: controller
+                                                      .isSearching.isTrue
+                                                  ? GestureDetector(
+                                                      onTap: () {
+                                                        controller.stopSearch();
+                                                      },
+                                                      child: Icon(Icons.clear,
+                                                          color: ColorManager
+                                                              .black,
+                                                          size: 25.sp))
+                                                  : null),
                                           SizedBox(height: 10.h),
                                           controller.isSearching.isTrue
                                               ? controller.searchingList.isEmpty

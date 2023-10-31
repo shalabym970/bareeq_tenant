@@ -38,40 +38,46 @@ class MessageListItem extends StatelessWidget {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
+                                Expanded(
+                                    child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
                                       Row(children: [
-                                        Text(
-                                            message.direction == true
-                                                ? Get.find<SessionServices>()
-                                                    .currentUser
-                                                    .value
-                                                    .fullName
-                                                    .toString()
-                                                : Constants.environmentName,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 12.sp,
-                                                color: ColorManager.mainColor)),
+                                        Expanded(
+                                            child: Text(
+                                                message.direction == true
+                                                    ? Get.find<
+                                                            SessionServices>()
+                                                        .currentUser
+                                                        .value
+                                                        .fullName
+                                                        .toString()
+                                                    : Constants.environmentName,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 12.sp,
+                                                    color:
+                                                        ColorManager.mainColor),
+                                                maxLines: 1)),
                                         SizedBox(width: 10.w),
-                                        Text(message.createdOn.toString(),
-                                            style: TextStyle(
-                                                color: Colors.grey[800],
-                                                fontSize: 10.sp))
+                                        Expanded(
+                                            child: Text(
+                                                message.createdOn.toString(),
+                                                style: TextStyle(
+                                                    color: Colors.grey[800],
+                                                    fontSize: 10.sp)))
                                       ]),
-                                      SizedBox(
-                                        height: 5.h,
-                                      ),
+                                      SizedBox(height: 5.h),
                                       Text(message.subject.toString(),
                                           style: TextStyle(
                                               fontSize: 12.sp,
                                               color: ColorManager.black
                                                   .withOpacity(0.7),
                                               fontWeight: FontWeight.w500))
-                                    ]),
+                                    ])),
                                 Row(children: [
                                   Container(
                                       decoration: BoxDecoration(
@@ -155,13 +161,13 @@ class MessageListItem extends StatelessWidget {
                                 ])
                               ]),
                           SizedBox(height: 5.h),
-                          Text(message.messageBody.toString(),
+                         Expanded(child:  Text(message.messageBody.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 12.sp,
                                   color: ColorManager.black,
                                   height: 1.5.h),
-                              maxLines: 1),
+                              maxLines: 1)) ,
                           if (message.direction == true)
                             Align(
                                 alignment: Alignment.centerRight,
