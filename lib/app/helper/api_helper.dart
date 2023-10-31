@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:bareeq/app/helper/cash_helper.dart';
 import 'package:bareeq/app/helper/token_helper.dart';
-import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 import '../../common/constants.dart';

@@ -19,7 +19,6 @@ dependencies:
   url_launcher: ^6.1.7
   shimmer: ^2.0.0
   flutter_local_notifications: ^12.0.4
-  firebase_messaging: ^14.0.3
   flutter_screenutil: ^5.8.4
   shared_preferences: ^2.0.15
   connectivity: ^3.0.6

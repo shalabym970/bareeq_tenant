@@ -45,7 +45,7 @@ class ActivityAttachmentsList extends GetView<ActivityDetailsController> {
                                     attachment: attachment,
                                     onDelete: () {
                                       controller.deleteAttachment(
-                                          attachment: attachment!);
+                                          attachment: attachment);
                                     });
                               }))),
               Obx(() => controller.uploadedFiles.isNotEmpty

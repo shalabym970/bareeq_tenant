@@ -1,9 +1,6 @@
-import 'package:bareeq/app/modules/dashboard/widgets/recent_invoices/recent_invoices_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../../../../common/color_manager.dart';
 import '../../../../../common/images_paths.dart';
 import '../../../../../common/strings/strings.dart';
 import 'invoices_list.dart';
