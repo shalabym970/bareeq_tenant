@@ -48,7 +48,7 @@ class WorkPermitItemCard extends StatelessWidget {
                               workPermitItem.type != null
                                   ? GeneralServices.getKeyFromValue(
                                       Constants.workPermitItemTypesMap,
-                                      workPermitItem!.type!)
+                                      workPermitItem.type!)
                                   : Strings.na,
                               style: TextStyle(
                                   fontSize: 10.sp,

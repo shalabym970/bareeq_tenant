@@ -49,7 +49,7 @@ class LeasedPropertyGeneralDetailsWidget
                           value: controller.lease.type != null
                               ? GeneralServices.getKeyFromValue(
                                   Constants.leaseTypeMap,
-                                  controller.lease!.type!)
+                                  controller.lease.type!)
                               : Strings.na),
                       SizedBox(height: 20.h),
                       customDetailsItem(
