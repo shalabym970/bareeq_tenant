@@ -11,7 +11,7 @@ import '../controllers/fit_out_process_details_controller.dart';
 import '../widgets/Fit_out_process_dates_widget.dart';
 import '../widgets/Fit_out_process_general_details.dart';
 import '../widgets/fit_out_messages_list.dart';
-import '../widgets/fit_out_steps/Fit_out_process_steps_list.dart';
+import '../widgets/fit_out_steps/fit_out_process_steps_list.dart';
 
 class FitOutProcessDetailsView extends GetView<FitOutProcessDetailsController> {
   const FitOutProcessDetailsView({super.key});

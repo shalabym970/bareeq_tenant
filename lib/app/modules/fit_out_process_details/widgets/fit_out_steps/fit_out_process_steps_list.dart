@@ -7,7 +7,7 @@ import '../../../../../common/widgets/empty_list_widget.dart';
 import '../../../../../common/widgets/error_widget.dart';
 import '../../../../../common/widgets/horizontal_list_loading.dart';
 import '../../controllers/fit_out_process_details_controller.dart';
-import 'Fit_out_step_item.dart';
+import 'fit_out_step_item.dart';
 
 class FitOutProcessStepsList extends GetView<FitOutProcessDetailsController> {
   const FitOutProcessStepsList({super.key});
