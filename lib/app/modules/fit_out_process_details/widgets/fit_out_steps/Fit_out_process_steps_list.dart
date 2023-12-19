@@ -25,7 +25,7 @@ class FitOutProcessStepsList extends GetView<FitOutProcessDetailsController> {
                       iconHeight: 20.h,
                       fontSize: 15.sp,
                     )
-                  : controller.messages.isEmpty
+                  : controller.fitOutSteps.isEmpty
                       ? const Center(
                           child: EmptyListWidget(
                               message: Strings.nothingFitOutSteps))
